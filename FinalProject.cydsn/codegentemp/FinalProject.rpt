@@ -1,4 +1,4 @@
-Loading plugins phase: Elapsed time ==> 0s.208ms
+Loading plugins phase: Elapsed time ==> 0s.207ms
 Initializing data phase: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\ericz\Documents\boxy\FinalProject.cydsn\FinalProject.cyprj -d CY8C5868AXI-LP035 -s C:\Users\ericz\Documents\boxy\FinalProject.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
@@ -19,15 +19,15 @@ ADD: pft.M0028: warning: Clock Warning: (SPIM_3_IntClock's accuracy range '24 MH
  * C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\SPI_Master_v2_50\SPI_Master_v2_50.cysch (Instance:IntClock)
  * C:\Users\ericz\Documents\boxy\FinalProject.cydsn\FinalProject.cydwr (SPIM_3_IntClock)
 
-ADD: pft.M0028: warning: Clock Warning: (Clock_2's accuracy range '20  Hz -50% +100%, (10  Hz - 40  Hz)' is not within the specified tolerance range '20  Hz +/- 5%, (19  Hz - 21  Hz)'.).
+ADD: pft.M0028: warning: Clock Warning: (Clock_2's accuracy range '30.303  Hz -50% +100%, (15.152  Hz - 60.606  Hz)' is not within the specified tolerance range '30  Hz +/- 5%, (28.5  Hz - 31.5  Hz)'.).
  * C:\Users\ericz\Documents\boxy\FinalProject.cydsn\FinalProject.cydwr (Clock_2)
  * C:\Users\ericz\Documents\boxy\FinalProject.cydsn\TopDesign\TopDesign.cysch (Instance:Clock_2)
 
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 1s.442ms
+Elaboration phase: Elapsed time ==> 1s.309ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.072ms
+HDL generation phase: Elapsed time ==> 0s.060ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -61,7 +61,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\ericz
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Tue May 12 14:16:45 2026
+Tue May 12 14:50:50 2026
 
 
 ======================================================================
@@ -71,19 +71,15 @@ Options  :    -yv2 -q10 FinalProject.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Tue May 12 14:16:45 2026
+Tue May 12 14:50:50 2026
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_SPI_Master_v2_50\B_SPI_Master_v2_50.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
-Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'
-Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'
-Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\AMux_v1_80\AMux_v1_80.v'
-Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'
-Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\OneTerminal\OneTerminal.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PWM_v3_30\B_PWM_v3_30.v'
@@ -119,7 +115,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\ericz
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Tue May 12 14:16:45 2026
+Tue May 12 14:50:50 2026
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -137,11 +133,8 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\conte
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\AMux_v1_80\AMux_v1_80.v'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\OneTerminal\OneTerminal.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PWM_v3_30\B_PWM_v3_30.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
@@ -158,7 +151,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\ericz
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Tue May 12 14:16:46 2026
+Tue May 12 14:50:50 2026
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -176,11 +169,8 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\conte
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\AMux_v1_80\AMux_v1_80.v'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\OneTerminal\OneTerminal.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PWM_v3_30\B_PWM_v3_30.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
@@ -208,8 +198,6 @@ Detecting unused logic.
 	\SPIM_0:BSPIM:control_1\
 	\SPIM_0:BSPIM:control_0\
 	\SPIM_0:Net_294\
-	\ADC_DelSig_1:Net_268\
-	\ADC_DelSig_1:Net_270\
 	\SPIM_1:BSPIM:mosi_after_ld\
 	\SPIM_1:BSPIM:so_send\
 	\SPIM_1:BSPIM:mosi_fin\
@@ -437,7 +425,7 @@ Detecting unused logic.
 	\PWM_1:PWMUDB:add_vi_vv_MODGEN_1_3\
 	\PWM_1:PWMUDB:add_vi_vv_MODGEN_1_2\
 
-Deleted 212 User equations/components.
+Deleted 210 User equations/components.
 Deleted 30 Synthesized equations/components.
 
 ------------------------------------------------------
@@ -459,10 +447,6 @@ Aliasing tmpOE__SS0_net_0 to one
 Aliasing tmpOE__DC0_net_0 to one
 Aliasing tmpOE__LED0_net_0 to one
 Aliasing tmpOE__RESET0_net_0 to one
-Aliasing tmpOE__POT_IN_net_0 to one
-Aliasing \ADC_DelSig_1:Net_482\ to zero
-Aliasing \ADC_DelSig_1:Net_252\ to zero
-Aliasing \ADC_DelSig_1:soc\ to one
 Aliasing \SPIM_1:BSPIM:pol_supprt\ to zero
 Aliasing \SPIM_1:BSPIM:tx_status_3\ to \SPIM_1:BSPIM:load_rx_data\
 Aliasing \SPIM_1:BSPIM:tx_status_6\ to zero
@@ -616,215 +600,209 @@ Removing Lhs of wire tmpOE__SCLK0_net_0[120] = one[8]
 Removing Lhs of wire tmpOE__SS0_net_0[126] = one[8]
 Removing Lhs of wire tmpOE__DC0_net_0[132] = one[8]
 Removing Lhs of wire tmpOE__LED0_net_0[138] = one[8]
-Removing Rhs of wire Net_496[139] = \PWM_1:Net_96\[875]
-Removing Rhs of wire Net_496[139] = \PWM_1:PWMUDB:pwm_i_reg\[867]
+Removing Rhs of wire Net_496[139] = \PWM_1:Net_96\[814]
+Removing Rhs of wire Net_496[139] = \PWM_1:PWMUDB:pwm_i_reg\[806]
 Removing Lhs of wire tmpOE__RESET0_net_0[145] = one[8]
-Removing Lhs of wire tmpOE__POT_IN_net_0[152] = one[8]
-Removing Rhs of wire \ADC_DelSig_1:Net_488\[170] = \ADC_DelSig_1:Net_250\[205]
-Removing Lhs of wire \ADC_DelSig_1:Net_481\[172] = zero[2]
-Removing Lhs of wire \ADC_DelSig_1:Net_482\[173] = zero[2]
-Removing Lhs of wire \ADC_DelSig_1:Net_252\[207] = zero[2]
-Removing Lhs of wire \ADC_DelSig_1:soc\[209] = one[8]
-Removing Rhs of wire \SPIM_1:Net_276\[212] = \SPIM_1:Net_288\[213]
-Removing Rhs of wire \SPIM_1:BSPIM:load_rx_data\[217] = \SPIM_1:BSPIM:dpcounter_one\[218]
-Removing Lhs of wire \SPIM_1:BSPIM:pol_supprt\[219] = zero[2]
-Removing Lhs of wire \SPIM_1:BSPIM:miso_to_dp\[220] = \SPIM_1:Net_244\[221]
-Removing Lhs of wire \SPIM_1:Net_244\[221] = Net_89[314]
-Removing Rhs of wire Net_95[225] = \SPIM_1:BSPIM:mosi_reg\[226]
-Removing Rhs of wire \SPIM_1:BSPIM:tx_status_1\[248] = \SPIM_1:BSPIM:dpMOSI_fifo_empty\[249]
-Removing Rhs of wire \SPIM_1:BSPIM:tx_status_2\[250] = \SPIM_1:BSPIM:dpMOSI_fifo_not_full\[251]
-Removing Lhs of wire \SPIM_1:BSPIM:tx_status_3\[252] = \SPIM_1:BSPIM:load_rx_data\[217]
-Removing Rhs of wire \SPIM_1:BSPIM:rx_status_4\[254] = \SPIM_1:BSPIM:dpMISO_fifo_full\[255]
-Removing Rhs of wire \SPIM_1:BSPIM:rx_status_5\[256] = \SPIM_1:BSPIM:dpMISO_fifo_not_empty\[257]
-Removing Lhs of wire \SPIM_1:BSPIM:tx_status_6\[259] = zero[2]
-Removing Lhs of wire \SPIM_1:BSPIM:tx_status_5\[260] = zero[2]
-Removing Lhs of wire \SPIM_1:BSPIM:rx_status_3\[261] = zero[2]
-Removing Lhs of wire \SPIM_1:BSPIM:rx_status_2\[262] = zero[2]
-Removing Lhs of wire \SPIM_1:BSPIM:rx_status_1\[263] = zero[2]
-Removing Lhs of wire \SPIM_1:BSPIM:rx_status_0\[264] = zero[2]
-Removing Lhs of wire \SPIM_1:Net_273\[274] = zero[2]
-Removing Lhs of wire \SPIM_1:Net_289\[315] = zero[2]
-Removing Lhs of wire tmpOE__MOSI1_net_0[317] = one[8]
-Removing Lhs of wire tmpOE__SCLK1_net_0[323] = one[8]
-Removing Lhs of wire tmpOE__SS1_net_0[329] = one[8]
-Removing Lhs of wire tmpOE__LED1_net_0[335] = one[8]
-Removing Lhs of wire tmpOE__RESET1_net_0[341] = one[8]
-Removing Lhs of wire tmpOE__DC1_net_0[347] = one[8]
-Removing Lhs of wire tmpOE__MISO1_net_0[353] = one[8]
-Removing Rhs of wire \SPIM_2:Net_276\[363] = \SPIM_2:Net_288\[364]
-Removing Rhs of wire \SPIM_2:BSPIM:load_rx_data\[368] = \SPIM_2:BSPIM:dpcounter_one\[369]
-Removing Lhs of wire \SPIM_2:BSPIM:pol_supprt\[370] = zero[2]
-Removing Lhs of wire \SPIM_2:BSPIM:miso_to_dp\[371] = \SPIM_2:Net_244\[372]
-Removing Lhs of wire \SPIM_2:Net_244\[372] = Net_155[464]
-Removing Rhs of wire Net_152[376] = \SPIM_2:BSPIM:mosi_reg\[377]
-Removing Rhs of wire \SPIM_2:BSPIM:tx_status_1\[399] = \SPIM_2:BSPIM:dpMOSI_fifo_empty\[400]
-Removing Rhs of wire \SPIM_2:BSPIM:tx_status_2\[401] = \SPIM_2:BSPIM:dpMOSI_fifo_not_full\[402]
-Removing Lhs of wire \SPIM_2:BSPIM:tx_status_3\[403] = \SPIM_2:BSPIM:load_rx_data\[368]
-Removing Rhs of wire \SPIM_2:BSPIM:rx_status_4\[405] = \SPIM_2:BSPIM:dpMISO_fifo_full\[406]
-Removing Rhs of wire \SPIM_2:BSPIM:rx_status_5\[407] = \SPIM_2:BSPIM:dpMISO_fifo_not_empty\[408]
-Removing Lhs of wire \SPIM_2:BSPIM:tx_status_6\[410] = zero[2]
-Removing Lhs of wire \SPIM_2:BSPIM:tx_status_5\[411] = zero[2]
-Removing Lhs of wire \SPIM_2:BSPIM:rx_status_3\[412] = zero[2]
-Removing Lhs of wire \SPIM_2:BSPIM:rx_status_2\[413] = zero[2]
-Removing Lhs of wire \SPIM_2:BSPIM:rx_status_1\[414] = zero[2]
-Removing Lhs of wire \SPIM_2:BSPIM:rx_status_0\[415] = zero[2]
-Removing Lhs of wire \SPIM_2:Net_273\[425] = zero[2]
-Removing Lhs of wire \SPIM_2:Net_289\[465] = zero[2]
-Removing Lhs of wire tmpOE__MOSI2_net_0[467] = one[8]
-Removing Lhs of wire tmpOE__MISO2_net_0[473] = one[8]
-Removing Lhs of wire tmpOE__SCLK2_net_0[478] = one[8]
-Removing Lhs of wire tmpOE__SS2_net_0[484] = one[8]
-Removing Lhs of wire tmpOE__DC2_net_0[490] = one[8]
-Removing Lhs of wire tmpOE__LED2_net_0[496] = one[8]
-Removing Lhs of wire tmpOE__RESET2_net_0[502] = one[8]
-Removing Rhs of wire \SPIM_3:Net_276\[511] = \SPIM_3:Net_288\[512]
-Removing Rhs of wire \SPIM_3:BSPIM:load_rx_data\[516] = \SPIM_3:BSPIM:dpcounter_one\[517]
-Removing Lhs of wire \SPIM_3:BSPIM:pol_supprt\[518] = zero[2]
-Removing Lhs of wire \SPIM_3:BSPIM:miso_to_dp\[519] = \SPIM_3:Net_244\[520]
-Removing Lhs of wire \SPIM_3:Net_244\[520] = Net_166[612]
-Removing Rhs of wire Net_163[524] = \SPIM_3:BSPIM:mosi_reg\[525]
-Removing Rhs of wire \SPIM_3:BSPIM:tx_status_1\[547] = \SPIM_3:BSPIM:dpMOSI_fifo_empty\[548]
-Removing Rhs of wire \SPIM_3:BSPIM:tx_status_2\[549] = \SPIM_3:BSPIM:dpMOSI_fifo_not_full\[550]
-Removing Lhs of wire \SPIM_3:BSPIM:tx_status_3\[551] = \SPIM_3:BSPIM:load_rx_data\[516]
-Removing Rhs of wire \SPIM_3:BSPIM:rx_status_4\[553] = \SPIM_3:BSPIM:dpMISO_fifo_full\[554]
-Removing Rhs of wire \SPIM_3:BSPIM:rx_status_5\[555] = \SPIM_3:BSPIM:dpMISO_fifo_not_empty\[556]
-Removing Lhs of wire \SPIM_3:BSPIM:tx_status_6\[558] = zero[2]
-Removing Lhs of wire \SPIM_3:BSPIM:tx_status_5\[559] = zero[2]
-Removing Lhs of wire \SPIM_3:BSPIM:rx_status_3\[560] = zero[2]
-Removing Lhs of wire \SPIM_3:BSPIM:rx_status_2\[561] = zero[2]
-Removing Lhs of wire \SPIM_3:BSPIM:rx_status_1\[562] = zero[2]
-Removing Lhs of wire \SPIM_3:BSPIM:rx_status_0\[563] = zero[2]
-Removing Lhs of wire \SPIM_3:Net_273\[573] = zero[2]
-Removing Lhs of wire \SPIM_3:Net_289\[613] = zero[2]
-Removing Lhs of wire tmpOE__MOSI3_net_0[615] = one[8]
-Removing Lhs of wire tmpOE__MISO3_net_0[621] = one[8]
-Removing Lhs of wire tmpOE__SCLK3_net_0[626] = one[8]
-Removing Lhs of wire tmpOE__SS3_net_0[632] = one[8]
-Removing Lhs of wire tmpOE__DC3_net_0[638] = one[8]
-Removing Lhs of wire tmpOE__LED3_net_0[644] = one[8]
-Removing Lhs of wire tmpOE__RESET3_net_0[650] = one[8]
-Removing Lhs of wire tmpOE__SDA_1_net_0[657] = one[8]
-Removing Lhs of wire tmpOE__SCL_1_net_0[663] = one[8]
-Removing Rhs of wire \I2C_1:sda_x_wire\[668] = \I2C_1:Net_643_1\[669]
-Removing Rhs of wire \I2C_1:Net_697\[671] = \I2C_1:Net_643_2\[677]
-Removing Rhs of wire \I2C_1:Net_1109_0\[674] = \I2C_1:scl_yfb\[687]
-Removing Rhs of wire \I2C_1:Net_1109_1\[675] = \I2C_1:sda_yfb\[688]
-Removing Lhs of wire \I2C_1:scl_x_wire\[678] = \I2C_1:Net_643_0\[676]
-Removing Lhs of wire \I2C_1:Net_969\[679] = one[8]
-Removing Lhs of wire \I2C_1:Net_968\[680] = one[8]
-Removing Lhs of wire \I2C_1:tmpOE__Bufoe_scl_net_0\[690] = one[8]
-Removing Lhs of wire \I2C_1:tmpOE__Bufoe_sda_net_0\[692] = one[8]
-Removing Lhs of wire tmpOE__MODE_net_0[699] = one[8]
-Removing Lhs of wire tmpOE__LED_MODE_1_net_0[716] = one[8]
-Removing Lhs of wire tmpOE__LED_MODE_2_net_0[728] = one[8]
-Removing Lhs of wire tmpOE__LED_STATUS_net_0[738] = one[8]
-Removing Lhs of wire \PWM_1:PWMUDB:ctrl_enable\[764] = \PWM_1:PWMUDB:control_7\[756]
-Removing Lhs of wire \PWM_1:PWMUDB:hwCapture\[774] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:hwEnable\[775] = \PWM_1:PWMUDB:control_7\[756]
-Removing Lhs of wire \PWM_1:PWMUDB:trig_out\[779] = one[8]
-Removing Lhs of wire \PWM_1:PWMUDB:runmode_enable\\R\[781] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:runmode_enable\\S\[782] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:final_enable\[783] = \PWM_1:PWMUDB:runmode_enable\[780]
-Removing Lhs of wire \PWM_1:PWMUDB:ltch_kill_reg\\R\[787] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:ltch_kill_reg\\S\[788] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:min_kill_reg\\R\[789] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:min_kill_reg\\S\[790] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:final_kill\[793] = one[8]
-Removing Lhs of wire \PWM_1:PWMUDB:add_vi_vv_MODGEN_1_1\[797] = \PWM_1:PWMUDB:MODULE_1:g2:a0:s_1\[1037]
-Removing Lhs of wire \PWM_1:PWMUDB:add_vi_vv_MODGEN_1_0\[799] = \PWM_1:PWMUDB:MODULE_1:g2:a0:s_0\[1038]
-Removing Lhs of wire \PWM_1:PWMUDB:dith_count_1\\R\[800] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:dith_count_1\\S\[801] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:dith_count_0\\R\[802] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:dith_count_0\\S\[803] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:reset\[806] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:status_6\[807] = zero[2]
-Removing Rhs of wire \PWM_1:PWMUDB:status_5\[808] = \PWM_1:PWMUDB:final_kill_reg\[822]
-Removing Lhs of wire \PWM_1:PWMUDB:status_4\[809] = zero[2]
-Removing Rhs of wire \PWM_1:PWMUDB:status_3\[810] = \PWM_1:PWMUDB:fifo_full\[829]
-Removing Rhs of wire \PWM_1:PWMUDB:status_1\[812] = \PWM_1:PWMUDB:cmp2_status_reg\[821]
-Removing Rhs of wire \PWM_1:PWMUDB:status_0\[813] = \PWM_1:PWMUDB:cmp1_status_reg\[820]
-Removing Lhs of wire \PWM_1:PWMUDB:cmp2_status\[818] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:cmp2\[819] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:cmp1_status_reg\\R\[823] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:cmp1_status_reg\\S\[824] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:cmp2_status_reg\\R\[825] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:cmp2_status_reg\\S\[826] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:final_kill_reg\\R\[827] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:final_kill_reg\\S\[828] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:cs_addr_2\[830] = \PWM_1:PWMUDB:tc_i\[785]
-Removing Lhs of wire \PWM_1:PWMUDB:cs_addr_1\[831] = \PWM_1:PWMUDB:runmode_enable\[780]
-Removing Lhs of wire \PWM_1:PWMUDB:cs_addr_0\[832] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:compare1\[865] = \PWM_1:PWMUDB:cmp1_less\[836]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm1_i\[870] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm2_i\[872] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm_temp\[878] = \PWM_1:PWMUDB:cmp1\[816]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_23\[919] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_22\[920] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_21\[921] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_20\[922] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_19\[923] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_18\[924] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_17\[925] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_16\[926] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_15\[927] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_14\[928] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_13\[929] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_12\[930] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_11\[931] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_10\[932] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_9\[933] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_8\[934] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_7\[935] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_6\[936] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_5\[937] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_4\[938] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_3\[939] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_2\[940] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_1\[941] = \PWM_1:PWMUDB:MODIN1_1\[942]
-Removing Lhs of wire \PWM_1:PWMUDB:MODIN1_1\[942] = \PWM_1:PWMUDB:dith_count_1\[796]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_0\[943] = \PWM_1:PWMUDB:MODIN1_0\[944]
-Removing Lhs of wire \PWM_1:PWMUDB:MODIN1_0\[944] = \PWM_1:PWMUDB:dith_count_0\[798]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_0\[1076] = one[8]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\[1077] = one[8]
-Removing Lhs of wire tmpOE__TOGGLE_LANTERN_net_0[1085] = one[8]
-Removing Lhs of wire \SPIM_0:BSPIM:so_send_reg\\D\[1099] = zero[2]
-Removing Lhs of wire \SPIM_0:BSPIM:mosi_pre_reg\\D\[1105] = zero[2]
-Removing Lhs of wire \SPIM_0:BSPIM:dpcounter_one_reg\\D\[1107] = \SPIM_0:BSPIM:load_rx_data\[10]
-Removing Lhs of wire \SPIM_0:BSPIM:mosi_from_dp_reg\\D\[1108] = \SPIM_0:BSPIM:mosi_from_dp\[25]
-Removing Lhs of wire \SPIM_1:BSPIM:so_send_reg\\D\[1112] = zero[2]
-Removing Lhs of wire \SPIM_1:BSPIM:mosi_pre_reg\\D\[1118] = zero[2]
-Removing Lhs of wire \SPIM_1:BSPIM:dpcounter_one_reg\\D\[1120] = \SPIM_1:BSPIM:load_rx_data\[217]
-Removing Lhs of wire \SPIM_1:BSPIM:mosi_from_dp_reg\\D\[1121] = \SPIM_1:BSPIM:mosi_from_dp\[232]
-Removing Lhs of wire \SPIM_2:BSPIM:so_send_reg\\D\[1125] = zero[2]
-Removing Lhs of wire \SPIM_2:BSPIM:mosi_pre_reg\\D\[1131] = zero[2]
-Removing Lhs of wire \SPIM_2:BSPIM:dpcounter_one_reg\\D\[1133] = \SPIM_2:BSPIM:load_rx_data\[368]
-Removing Lhs of wire \SPIM_2:BSPIM:mosi_from_dp_reg\\D\[1134] = \SPIM_2:BSPIM:mosi_from_dp\[383]
-Removing Lhs of wire \SPIM_3:BSPIM:so_send_reg\\D\[1138] = zero[2]
-Removing Lhs of wire \SPIM_3:BSPIM:mosi_pre_reg\\D\[1144] = zero[2]
-Removing Lhs of wire \SPIM_3:BSPIM:dpcounter_one_reg\\D\[1146] = \SPIM_3:BSPIM:load_rx_data\[516]
-Removing Lhs of wire \SPIM_3:BSPIM:mosi_from_dp_reg\\D\[1147] = \SPIM_3:BSPIM:mosi_from_dp\[531]
-Removing Lhs of wire \Debouncer_1:DEBOUNCER[0]:d_sync_0\\D\[1151] = Net_331[700]
-Removing Lhs of wire \Debouncer_1:DEBOUNCER[0]:d_sync_1\\D\[1152] = \Debouncer_1:DEBOUNCER[0]:d_sync_0\[708]
-Removing Lhs of wire Net_357D[1153] = zero[2]
-Removing Lhs of wire Net_354D[1155] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:min_kill_reg\\D\[1156] = one[8]
-Removing Lhs of wire \PWM_1:PWMUDB:prevCapture\\D\[1157] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:trig_last\\D\[1158] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:ltch_kill_reg\\D\[1161] = one[8]
-Removing Lhs of wire \PWM_1:PWMUDB:prevCompare1\\D\[1164] = \PWM_1:PWMUDB:cmp1\[816]
-Removing Lhs of wire \PWM_1:PWMUDB:cmp1_status_reg\\D\[1165] = \PWM_1:PWMUDB:cmp1_status\[817]
-Removing Lhs of wire \PWM_1:PWMUDB:cmp2_status_reg\\D\[1166] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm_i_reg\\D\[1168] = \PWM_1:PWMUDB:pwm_i\[868]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm1_i_reg\\D\[1169] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm2_i_reg\\D\[1170] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:tc_i_reg\\D\[1171] = \PWM_1:PWMUDB:status_2\[811]
-Removing Lhs of wire \Debouncer_2:DEBOUNCER[0]:d_sync_0\\D\[1172] = Net_679[1086]
-Removing Lhs of wire \Debouncer_2:DEBOUNCER[0]:d_sync_1\\D\[1173] = \Debouncer_2:DEBOUNCER[0]:d_sync_0\[1092]
-Removing Lhs of wire Net_675D[1174] = zero[2]
-Removing Lhs of wire Net_674D[1176] = zero[2]
+Removing Rhs of wire \SPIM_1:Net_276\[151] = \SPIM_1:Net_288\[152]
+Removing Rhs of wire \SPIM_1:BSPIM:load_rx_data\[156] = \SPIM_1:BSPIM:dpcounter_one\[157]
+Removing Lhs of wire \SPIM_1:BSPIM:pol_supprt\[158] = zero[2]
+Removing Lhs of wire \SPIM_1:BSPIM:miso_to_dp\[159] = \SPIM_1:Net_244\[160]
+Removing Lhs of wire \SPIM_1:Net_244\[160] = Net_89[253]
+Removing Rhs of wire Net_95[164] = \SPIM_1:BSPIM:mosi_reg\[165]
+Removing Rhs of wire \SPIM_1:BSPIM:tx_status_1\[187] = \SPIM_1:BSPIM:dpMOSI_fifo_empty\[188]
+Removing Rhs of wire \SPIM_1:BSPIM:tx_status_2\[189] = \SPIM_1:BSPIM:dpMOSI_fifo_not_full\[190]
+Removing Lhs of wire \SPIM_1:BSPIM:tx_status_3\[191] = \SPIM_1:BSPIM:load_rx_data\[156]
+Removing Rhs of wire \SPIM_1:BSPIM:rx_status_4\[193] = \SPIM_1:BSPIM:dpMISO_fifo_full\[194]
+Removing Rhs of wire \SPIM_1:BSPIM:rx_status_5\[195] = \SPIM_1:BSPIM:dpMISO_fifo_not_empty\[196]
+Removing Lhs of wire \SPIM_1:BSPIM:tx_status_6\[198] = zero[2]
+Removing Lhs of wire \SPIM_1:BSPIM:tx_status_5\[199] = zero[2]
+Removing Lhs of wire \SPIM_1:BSPIM:rx_status_3\[200] = zero[2]
+Removing Lhs of wire \SPIM_1:BSPIM:rx_status_2\[201] = zero[2]
+Removing Lhs of wire \SPIM_1:BSPIM:rx_status_1\[202] = zero[2]
+Removing Lhs of wire \SPIM_1:BSPIM:rx_status_0\[203] = zero[2]
+Removing Lhs of wire \SPIM_1:Net_273\[213] = zero[2]
+Removing Lhs of wire \SPIM_1:Net_289\[254] = zero[2]
+Removing Lhs of wire tmpOE__MOSI1_net_0[256] = one[8]
+Removing Lhs of wire tmpOE__SCLK1_net_0[262] = one[8]
+Removing Lhs of wire tmpOE__SS1_net_0[268] = one[8]
+Removing Lhs of wire tmpOE__LED1_net_0[274] = one[8]
+Removing Lhs of wire tmpOE__RESET1_net_0[280] = one[8]
+Removing Lhs of wire tmpOE__DC1_net_0[286] = one[8]
+Removing Lhs of wire tmpOE__MISO1_net_0[292] = one[8]
+Removing Rhs of wire \SPIM_2:Net_276\[302] = \SPIM_2:Net_288\[303]
+Removing Rhs of wire \SPIM_2:BSPIM:load_rx_data\[307] = \SPIM_2:BSPIM:dpcounter_one\[308]
+Removing Lhs of wire \SPIM_2:BSPIM:pol_supprt\[309] = zero[2]
+Removing Lhs of wire \SPIM_2:BSPIM:miso_to_dp\[310] = \SPIM_2:Net_244\[311]
+Removing Lhs of wire \SPIM_2:Net_244\[311] = Net_155[403]
+Removing Rhs of wire Net_152[315] = \SPIM_2:BSPIM:mosi_reg\[316]
+Removing Rhs of wire \SPIM_2:BSPIM:tx_status_1\[338] = \SPIM_2:BSPIM:dpMOSI_fifo_empty\[339]
+Removing Rhs of wire \SPIM_2:BSPIM:tx_status_2\[340] = \SPIM_2:BSPIM:dpMOSI_fifo_not_full\[341]
+Removing Lhs of wire \SPIM_2:BSPIM:tx_status_3\[342] = \SPIM_2:BSPIM:load_rx_data\[307]
+Removing Rhs of wire \SPIM_2:BSPIM:rx_status_4\[344] = \SPIM_2:BSPIM:dpMISO_fifo_full\[345]
+Removing Rhs of wire \SPIM_2:BSPIM:rx_status_5\[346] = \SPIM_2:BSPIM:dpMISO_fifo_not_empty\[347]
+Removing Lhs of wire \SPIM_2:BSPIM:tx_status_6\[349] = zero[2]
+Removing Lhs of wire \SPIM_2:BSPIM:tx_status_5\[350] = zero[2]
+Removing Lhs of wire \SPIM_2:BSPIM:rx_status_3\[351] = zero[2]
+Removing Lhs of wire \SPIM_2:BSPIM:rx_status_2\[352] = zero[2]
+Removing Lhs of wire \SPIM_2:BSPIM:rx_status_1\[353] = zero[2]
+Removing Lhs of wire \SPIM_2:BSPIM:rx_status_0\[354] = zero[2]
+Removing Lhs of wire \SPIM_2:Net_273\[364] = zero[2]
+Removing Lhs of wire \SPIM_2:Net_289\[404] = zero[2]
+Removing Lhs of wire tmpOE__MOSI2_net_0[406] = one[8]
+Removing Lhs of wire tmpOE__MISO2_net_0[412] = one[8]
+Removing Lhs of wire tmpOE__SCLK2_net_0[417] = one[8]
+Removing Lhs of wire tmpOE__SS2_net_0[423] = one[8]
+Removing Lhs of wire tmpOE__DC2_net_0[429] = one[8]
+Removing Lhs of wire tmpOE__LED2_net_0[435] = one[8]
+Removing Lhs of wire tmpOE__RESET2_net_0[441] = one[8]
+Removing Rhs of wire \SPIM_3:Net_276\[450] = \SPIM_3:Net_288\[451]
+Removing Rhs of wire \SPIM_3:BSPIM:load_rx_data\[455] = \SPIM_3:BSPIM:dpcounter_one\[456]
+Removing Lhs of wire \SPIM_3:BSPIM:pol_supprt\[457] = zero[2]
+Removing Lhs of wire \SPIM_3:BSPIM:miso_to_dp\[458] = \SPIM_3:Net_244\[459]
+Removing Lhs of wire \SPIM_3:Net_244\[459] = Net_166[551]
+Removing Rhs of wire Net_163[463] = \SPIM_3:BSPIM:mosi_reg\[464]
+Removing Rhs of wire \SPIM_3:BSPIM:tx_status_1\[486] = \SPIM_3:BSPIM:dpMOSI_fifo_empty\[487]
+Removing Rhs of wire \SPIM_3:BSPIM:tx_status_2\[488] = \SPIM_3:BSPIM:dpMOSI_fifo_not_full\[489]
+Removing Lhs of wire \SPIM_3:BSPIM:tx_status_3\[490] = \SPIM_3:BSPIM:load_rx_data\[455]
+Removing Rhs of wire \SPIM_3:BSPIM:rx_status_4\[492] = \SPIM_3:BSPIM:dpMISO_fifo_full\[493]
+Removing Rhs of wire \SPIM_3:BSPIM:rx_status_5\[494] = \SPIM_3:BSPIM:dpMISO_fifo_not_empty\[495]
+Removing Lhs of wire \SPIM_3:BSPIM:tx_status_6\[497] = zero[2]
+Removing Lhs of wire \SPIM_3:BSPIM:tx_status_5\[498] = zero[2]
+Removing Lhs of wire \SPIM_3:BSPIM:rx_status_3\[499] = zero[2]
+Removing Lhs of wire \SPIM_3:BSPIM:rx_status_2\[500] = zero[2]
+Removing Lhs of wire \SPIM_3:BSPIM:rx_status_1\[501] = zero[2]
+Removing Lhs of wire \SPIM_3:BSPIM:rx_status_0\[502] = zero[2]
+Removing Lhs of wire \SPIM_3:Net_273\[512] = zero[2]
+Removing Lhs of wire \SPIM_3:Net_289\[552] = zero[2]
+Removing Lhs of wire tmpOE__MOSI3_net_0[554] = one[8]
+Removing Lhs of wire tmpOE__MISO3_net_0[560] = one[8]
+Removing Lhs of wire tmpOE__SCLK3_net_0[565] = one[8]
+Removing Lhs of wire tmpOE__SS3_net_0[571] = one[8]
+Removing Lhs of wire tmpOE__DC3_net_0[577] = one[8]
+Removing Lhs of wire tmpOE__LED3_net_0[583] = one[8]
+Removing Lhs of wire tmpOE__RESET3_net_0[589] = one[8]
+Removing Lhs of wire tmpOE__SDA_1_net_0[596] = one[8]
+Removing Lhs of wire tmpOE__SCL_1_net_0[602] = one[8]
+Removing Rhs of wire \I2C_1:sda_x_wire\[607] = \I2C_1:Net_643_1\[608]
+Removing Rhs of wire \I2C_1:Net_697\[610] = \I2C_1:Net_643_2\[616]
+Removing Rhs of wire \I2C_1:Net_1109_0\[613] = \I2C_1:scl_yfb\[626]
+Removing Rhs of wire \I2C_1:Net_1109_1\[614] = \I2C_1:sda_yfb\[627]
+Removing Lhs of wire \I2C_1:scl_x_wire\[617] = \I2C_1:Net_643_0\[615]
+Removing Lhs of wire \I2C_1:Net_969\[618] = one[8]
+Removing Lhs of wire \I2C_1:Net_968\[619] = one[8]
+Removing Lhs of wire \I2C_1:tmpOE__Bufoe_scl_net_0\[629] = one[8]
+Removing Lhs of wire \I2C_1:tmpOE__Bufoe_sda_net_0\[631] = one[8]
+Removing Lhs of wire tmpOE__MODE_net_0[638] = one[8]
+Removing Lhs of wire tmpOE__LED_MODE_1_net_0[655] = one[8]
+Removing Lhs of wire tmpOE__LED_MODE_2_net_0[667] = one[8]
+Removing Lhs of wire tmpOE__LED_STATUS_net_0[677] = one[8]
+Removing Lhs of wire \PWM_1:PWMUDB:ctrl_enable\[703] = \PWM_1:PWMUDB:control_7\[695]
+Removing Lhs of wire \PWM_1:PWMUDB:hwCapture\[713] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:hwEnable\[714] = \PWM_1:PWMUDB:control_7\[695]
+Removing Lhs of wire \PWM_1:PWMUDB:trig_out\[718] = one[8]
+Removing Lhs of wire \PWM_1:PWMUDB:runmode_enable\\R\[720] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:runmode_enable\\S\[721] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:final_enable\[722] = \PWM_1:PWMUDB:runmode_enable\[719]
+Removing Lhs of wire \PWM_1:PWMUDB:ltch_kill_reg\\R\[726] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:ltch_kill_reg\\S\[727] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:min_kill_reg\\R\[728] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:min_kill_reg\\S\[729] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:final_kill\[732] = one[8]
+Removing Lhs of wire \PWM_1:PWMUDB:add_vi_vv_MODGEN_1_1\[736] = \PWM_1:PWMUDB:MODULE_1:g2:a0:s_1\[976]
+Removing Lhs of wire \PWM_1:PWMUDB:add_vi_vv_MODGEN_1_0\[738] = \PWM_1:PWMUDB:MODULE_1:g2:a0:s_0\[977]
+Removing Lhs of wire \PWM_1:PWMUDB:dith_count_1\\R\[739] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:dith_count_1\\S\[740] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:dith_count_0\\R\[741] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:dith_count_0\\S\[742] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:reset\[745] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:status_6\[746] = zero[2]
+Removing Rhs of wire \PWM_1:PWMUDB:status_5\[747] = \PWM_1:PWMUDB:final_kill_reg\[761]
+Removing Lhs of wire \PWM_1:PWMUDB:status_4\[748] = zero[2]
+Removing Rhs of wire \PWM_1:PWMUDB:status_3\[749] = \PWM_1:PWMUDB:fifo_full\[768]
+Removing Rhs of wire \PWM_1:PWMUDB:status_1\[751] = \PWM_1:PWMUDB:cmp2_status_reg\[760]
+Removing Rhs of wire \PWM_1:PWMUDB:status_0\[752] = \PWM_1:PWMUDB:cmp1_status_reg\[759]
+Removing Lhs of wire \PWM_1:PWMUDB:cmp2_status\[757] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:cmp2\[758] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:cmp1_status_reg\\R\[762] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:cmp1_status_reg\\S\[763] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:cmp2_status_reg\\R\[764] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:cmp2_status_reg\\S\[765] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:final_kill_reg\\R\[766] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:final_kill_reg\\S\[767] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:cs_addr_2\[769] = \PWM_1:PWMUDB:tc_i\[724]
+Removing Lhs of wire \PWM_1:PWMUDB:cs_addr_1\[770] = \PWM_1:PWMUDB:runmode_enable\[719]
+Removing Lhs of wire \PWM_1:PWMUDB:cs_addr_0\[771] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:compare1\[804] = \PWM_1:PWMUDB:cmp1_less\[775]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm1_i\[809] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm2_i\[811] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm_temp\[817] = \PWM_1:PWMUDB:cmp1\[755]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_23\[858] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_22\[859] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_21\[860] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_20\[861] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_19\[862] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_18\[863] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_17\[864] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_16\[865] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_15\[866] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_14\[867] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_13\[868] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_12\[869] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_11\[870] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_10\[871] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_9\[872] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_8\[873] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_7\[874] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_6\[875] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_5\[876] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_4\[877] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_3\[878] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_2\[879] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_1\[880] = \PWM_1:PWMUDB:MODIN1_1\[881]
+Removing Lhs of wire \PWM_1:PWMUDB:MODIN1_1\[881] = \PWM_1:PWMUDB:dith_count_1\[735]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:a_0\[882] = \PWM_1:PWMUDB:MODIN1_0\[883]
+Removing Lhs of wire \PWM_1:PWMUDB:MODIN1_0\[883] = \PWM_1:PWMUDB:dith_count_0\[737]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_0\[1015] = one[8]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\[1016] = one[8]
+Removing Lhs of wire tmpOE__TOGGLE_LANTERN_net_0[1024] = one[8]
+Removing Lhs of wire \SPIM_0:BSPIM:so_send_reg\\D\[1038] = zero[2]
+Removing Lhs of wire \SPIM_0:BSPIM:mosi_pre_reg\\D\[1044] = zero[2]
+Removing Lhs of wire \SPIM_0:BSPIM:dpcounter_one_reg\\D\[1046] = \SPIM_0:BSPIM:load_rx_data\[10]
+Removing Lhs of wire \SPIM_0:BSPIM:mosi_from_dp_reg\\D\[1047] = \SPIM_0:BSPIM:mosi_from_dp\[25]
+Removing Lhs of wire \SPIM_1:BSPIM:so_send_reg\\D\[1051] = zero[2]
+Removing Lhs of wire \SPIM_1:BSPIM:mosi_pre_reg\\D\[1057] = zero[2]
+Removing Lhs of wire \SPIM_1:BSPIM:dpcounter_one_reg\\D\[1059] = \SPIM_1:BSPIM:load_rx_data\[156]
+Removing Lhs of wire \SPIM_1:BSPIM:mosi_from_dp_reg\\D\[1060] = \SPIM_1:BSPIM:mosi_from_dp\[171]
+Removing Lhs of wire \SPIM_2:BSPIM:so_send_reg\\D\[1064] = zero[2]
+Removing Lhs of wire \SPIM_2:BSPIM:mosi_pre_reg\\D\[1070] = zero[2]
+Removing Lhs of wire \SPIM_2:BSPIM:dpcounter_one_reg\\D\[1072] = \SPIM_2:BSPIM:load_rx_data\[307]
+Removing Lhs of wire \SPIM_2:BSPIM:mosi_from_dp_reg\\D\[1073] = \SPIM_2:BSPIM:mosi_from_dp\[322]
+Removing Lhs of wire \SPIM_3:BSPIM:so_send_reg\\D\[1077] = zero[2]
+Removing Lhs of wire \SPIM_3:BSPIM:mosi_pre_reg\\D\[1083] = zero[2]
+Removing Lhs of wire \SPIM_3:BSPIM:dpcounter_one_reg\\D\[1085] = \SPIM_3:BSPIM:load_rx_data\[455]
+Removing Lhs of wire \SPIM_3:BSPIM:mosi_from_dp_reg\\D\[1086] = \SPIM_3:BSPIM:mosi_from_dp\[470]
+Removing Lhs of wire \Debouncer_1:DEBOUNCER[0]:d_sync_0\\D\[1090] = Net_331[639]
+Removing Lhs of wire \Debouncer_1:DEBOUNCER[0]:d_sync_1\\D\[1091] = \Debouncer_1:DEBOUNCER[0]:d_sync_0\[647]
+Removing Lhs of wire Net_357D[1092] = zero[2]
+Removing Lhs of wire Net_354D[1094] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:min_kill_reg\\D\[1095] = one[8]
+Removing Lhs of wire \PWM_1:PWMUDB:prevCapture\\D\[1096] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:trig_last\\D\[1097] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:ltch_kill_reg\\D\[1100] = one[8]
+Removing Lhs of wire \PWM_1:PWMUDB:prevCompare1\\D\[1103] = \PWM_1:PWMUDB:cmp1\[755]
+Removing Lhs of wire \PWM_1:PWMUDB:cmp1_status_reg\\D\[1104] = \PWM_1:PWMUDB:cmp1_status\[756]
+Removing Lhs of wire \PWM_1:PWMUDB:cmp2_status_reg\\D\[1105] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm_i_reg\\D\[1107] = \PWM_1:PWMUDB:pwm_i\[807]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm1_i_reg\\D\[1108] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm2_i_reg\\D\[1109] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:tc_i_reg\\D\[1110] = \PWM_1:PWMUDB:status_2\[750]
+Removing Lhs of wire \Debouncer_2:DEBOUNCER[0]:d_sync_0\\D\[1111] = Net_679[1025]
+Removing Lhs of wire \Debouncer_2:DEBOUNCER[0]:d_sync_1\\D\[1112] = \Debouncer_2:DEBOUNCER[0]:d_sync_0\[1031]
+Removing Lhs of wire Net_675D[1113] = zero[2]
+Removing Lhs of wire Net_674D[1115] = zero[2]
 
 ------------------------------------------------------
-Aliased 0 equations, 231 wires.
+Aliased 0 equations, 225 wires.
 ------------------------------------------------------
 
 ----------------------------------------------------------
@@ -962,12 +940,12 @@ Aliasing \PWM_1:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_24\ to zero
 Aliasing \PWM_1:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\ to zero
 Aliasing \PWM_1:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ to zero
 Aliasing \PWM_1:PWMUDB:final_kill_reg\\D\ to zero
-Removing Lhs of wire \PWM_1:PWMUDB:final_capture\[834] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_24\[1047] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\[1057] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\[1067] = zero[2]
-Removing Lhs of wire \PWM_1:PWMUDB:runmode_enable\\D\[1159] = \PWM_1:PWMUDB:control_7\[756]
-Removing Lhs of wire \PWM_1:PWMUDB:final_kill_reg\\D\[1167] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:final_capture\[773] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_24\[986] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\[996] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\[1006] = zero[2]
+Removing Lhs of wire \PWM_1:PWMUDB:runmode_enable\\D\[1098] = \PWM_1:PWMUDB:control_7\[695]
+Removing Lhs of wire \PWM_1:PWMUDB:final_kill_reg\\D\[1106] = zero[2]
 
 ------------------------------------------------------
 Aliased 0 equations, 6 wires.
@@ -1000,10 +978,10 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\ericz\Documents\boxy\FinalProject.cydsn\FinalProject.cyprj -dcpsoc3 FinalProject.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 1s.141ms
+Warp synthesis phase: Elapsed time ==> 1s.093ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.3.0.9604, Family: PSoC3, Started at: Tuesday, 12 May 2026 14:16:46
+cyp3fit: V3.3.0.9604, Family: PSoC3, Started at: Tuesday, 12 May 2026 14:50:51
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\ericz\Documents\boxy\FinalProject.cydsn\FinalProject.cyprj -d CY8C5868AXI-LP035 FinalProject.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
@@ -1034,15 +1012,13 @@ Design parsing phase: Elapsed time ==> 0s.014ms
     Converted constant MacroCell: Net_674 from registered to combinatorial
 Assigning clock I2C_1_BusClock to clock BUS_CLK because it is a pass-through
 <CYPRESSTAG name="Global Clock Selection" icon="FILE_RPT_TECHM">
-    Digital Clock 0: Automatic-assigning  clock 'ADC_DelSig_1_Ext_CP_Clk'. Fanout=1, Signal=\ADC_DelSig_1:Net_93\
-    Digital Clock 1: Automatic-assigning  clock 'SPIM_1_IntClock'. Fanout=1, Signal=\SPIM_1:Net_276\
-    Digital Clock 2: Automatic-assigning  clock 'SPIM_2_IntClock'. Fanout=1, Signal=\SPIM_2:Net_276\
-    Digital Clock 3: Automatic-assigning  clock 'SPIM_0_IntClock'. Fanout=1, Signal=\SPIM_0:Net_276\
-    Digital Clock 4: Automatic-assigning  clock 'SPIM_3_IntClock'. Fanout=1, Signal=\SPIM_3:Net_276\
-    Digital Clock 5: Automatic-assigning  clock 'Clock_3'. Fanout=1, Signal=Net_412
-    Analog  Clock 0: Automatic-assigning  clock 'ADC_DelSig_1_theACLK'. Fanout=1, Signal=\ADC_DelSig_1:Net_488\
-    Digital Clock 6: Automatic-assigning  clock 'Clock_1'. Fanout=2, Signal=Net_670
-    Digital Clock 7: Automatic-assigning  clock 'Clock_2'. Fanout=1, Signal=Net_392
+    Digital Clock 0: Automatic-assigning  clock 'SPIM_1_IntClock'. Fanout=1, Signal=\SPIM_1:Net_276\
+    Digital Clock 1: Automatic-assigning  clock 'SPIM_2_IntClock'. Fanout=1, Signal=\SPIM_2:Net_276\
+    Digital Clock 2: Automatic-assigning  clock 'SPIM_0_IntClock'. Fanout=1, Signal=\SPIM_0:Net_276\
+    Digital Clock 3: Automatic-assigning  clock 'SPIM_3_IntClock'. Fanout=1, Signal=\SPIM_3:Net_276\
+    Digital Clock 4: Automatic-assigning  clock 'Clock_3'. Fanout=1, Signal=Net_412
+    Digital Clock 5: Automatic-assigning  clock 'Clock_1'. Fanout=2, Signal=Net_670
+    Digital Clock 6: Automatic-assigning  clock 'Clock_2'. Fanout=1, Signal=Net_392
 </CYPRESSTAG>
 
 Removing unused cells resulting from optimization
@@ -1373,46 +1349,6 @@ Design Equations
         PORT MAP (
             pa_out => RESET0(0)__PA ,
             pad => RESET0(0)_PAD );
-        Properties:
-        {
-        }
-
-    Pin : Name = POT_IN(0)
-        Attributes:
-            In Group/Port: True
-            In Sync Option: AUTO
-            Out Sync Option: AUTO
-            Interrupt generated: False
-            Interrupt mode: NONE
-            Drive mode: HI_Z_ANALOG
-            VTrip: EITHER
-            Slew: FAST
-            Input Sync needed: False
-            Output Sync needed: False
-            SC shield enabled: False
-            POR State: ANY
-            LCD Mode: COMMON
-            Register Mode: RegComb
-            CaSense Mode: NEITHER
-            Treat as pin: True
-            Is OE Registered: False
-            Uses Analog: True
-            Can contain Digital: False
-            Is SIO: False
-            SIO Output Buf: NONREGULATED
-            SIO Input Buf: SINGLE_ENDED
-            SIO HiFreq: LOW
-            SIO Hyst: DISABLED
-            SIO Vtrip: MULTIPLIER_0_5
-            SIO Multiplier Index: 0
-            SIO RefSel: VCC_IO
-            Required Capabilitites: ANALOG
-            Initial Value: 0
-            IO Voltage: 0
-        PORT MAP (
-            pa_out => POT_IN(0)__PA ,
-            analog_term => Net_73 ,
-            pad => POT_IN(0)_PAD );
         Properties:
         {
         }
@@ -2732,16 +2668,6 @@ Design Equations
               \PWM_1:PWMUDB:runmode_enable\ * \PWM_1:PWMUDB:tc_i\
         );
         Output = \PWM_1:PWMUDB:status_2\ (fanout=1)
-
-    MacroCell: Name=__ONE__, Mode=(Combinatorial)
-        Total # of inputs        : 0
-        Total # of product terms : 0
-            Clock Enable: True
-        Main Equation            : 0 pterms
-        !(
-            0
-        );
-        Output = __ONE__ (fanout=1)
 
     MacroCell: Name=Net_13, Mode=(D-Register)
         Total # of inputs        : 11
@@ -4121,14 +4047,6 @@ Design Equations
             int_type = "10"
         }
 
-    interrupt: Name =\ADC_DelSig_1:IRQ\
-        PORT MAP (
-            interrupt => Net_82 );
-        Properties:
-        {
-            int_type = "10"
-        }
-
     interrupt: Name =DMA_Complete_ISR_1
         PORT MAP (
             interrupt => Net_116 );
@@ -4194,12 +4112,12 @@ Technology mapping summary
 
 Resource Type                 : Used : Free :  Max :  % Used
 ============================================================
-Digital Clocks                :    8 :    0 :    8 : 100.00 %
-Analog Clocks                 :    1 :    3 :    4 : 25.00 %
+Digital Clocks                :    7 :    1 :    8 : 87.50 %
+Analog Clocks                 :    0 :    4 :    4 :  0.00 %
 CapSense Buffers              :    0 :    2 :    2 :  0.00 %
 Digital Filter Block          :    0 :    1 :    1 :  0.00 %
-Interrupts                    :    9 :   23 :   32 : 28.13 %
-IO                            :   39 :   33 :   72 : 54.17 %
+Interrupts                    :    8 :   24 :   32 : 25.00 %
+IO                            :   38 :   34 :   72 : 52.78 %
 Segment LCD                   :    0 :    1 :    1 :  0.00 %
 CAN 2.0b                      :    0 :    1 :    1 :  0.00 %
 I2C                           :    1 :    0 :    1 : 100.00 %
@@ -4207,7 +4125,7 @@ USB                           :    0 :    1 :    1 :  0.00 %
 DMA Channels                  :    4 :   20 :   24 : 16.67 %
 Timer                         :    0 :    4 :    4 :  0.00 %
 UDB                           :      :      :      :        
-  Macrocells                  :   64 :  128 :  192 : 33.33 %
+  Macrocells                  :   63 :  129 :  192 : 32.81 %
   Unique P-terms              :  143 :  241 :  384 : 37.24 %
   Total P-terms               :  163 :      :      :        
   Datapath Cells              :    5 :   19 :   24 : 20.83 %
@@ -4219,18 +4137,17 @@ UDB                           :      :      :      :
     Count7 Cells              :    4 :      :      :        
 Opamp                         :    0 :    4 :    4 :  0.00 %
 Comparator                    :    0 :    4 :    4 :  0.00 %
-Delta-Sigma ADC               :    1 :    0 :    1 : 100.00 %
+Delta-Sigma ADC               :    0 :    1 :    1 :  0.00 %
 LPF                           :    0 :    2 :    2 :  0.00 %
 SAR ADC                       :    0 :    2 :    2 :  0.00 %
 Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    4 :    4 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.112ms
-Tech mapping phase: Elapsed time ==> 0s.180ms
+Technology Mapping: Elapsed time ==> 0s.131ms
+Tech mapping phase: Elapsed time ==> 0s.167ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
-Info: apr.M0002: Analog signal "\ADC_DelSig_1:Net_35\" is connected to one terminal only. (App=cydsfit)
 Initial Analog Placement Results:
 IO_5@[IOP=(3)][IoId=(5)] : DC0(0) (fixed)
 IO_5@[IOP=(0)][IoId=(5)] : DC1(0) (fixed)
@@ -4252,7 +4169,6 @@ IO_4@[IOP=(3)][IoId=(4)] : MOSI0(0) (fixed)
 IO_4@[IOP=(0)][IoId=(4)] : MOSI1(0) (fixed)
 IO_4@[IOP=(5)][IoId=(4)] : MOSI2(0) (fixed)
 IO_4@[IOP=(2)][IoId=(4)] : MOSI3(0) (fixed)
-IO_5@[IOP=(6)][IoId=(5)] : POT_IN(0) (fixed)
 IO_6@[IOP=(3)][IoId=(6)] : RESET0(0) (fixed)
 IO_6@[IOP=(0)][IoId=(6)] : RESET1(0) (fixed)
 IO_6@[IOP=(5)][IoId=(6)] : RESET2(0) (fixed)
@@ -4268,48 +4184,6 @@ IO_7@[IOP=(0)][IoId=(7)] : SS1(0) (fixed)
 IO_7@[IOP=(5)][IoId=(7)] : SS2(0) (fixed)
 IO_7@[IOP=(2)][IoId=(7)] : SS3(0) (fixed)
 IO_5@[IOP=(15)][IoId=(5)] : TOGGLE_LANTERN(0) (fixed)
-DSM[0]@[FFB(DSM,0)] : \ADC_DelSig_1:DSM\
-Vref[6]@[FFB(Vref,6)] : \ADC_DelSig_1:vRef_2\
-Analog Placement Results:
-IO_5@[IOP=(3)][IoId=(5)] : DC0(0) (fixed)
-IO_5@[IOP=(0)][IoId=(5)] : DC1(0) (fixed)
-IO_5@[IOP=(5)][IoId=(5)] : DC2(0) (fixed)
-IO_5@[IOP=(2)][IoId=(5)] : DC3(0) (fixed)
-IO_2@[IOP=(3)][IoId=(2)] : LED0(0) (fixed)
-IO_2@[IOP=(0)][IoId=(2)] : LED1(0) (fixed)
-IO_2@[IOP=(5)][IoId=(2)] : LED2(0) (fixed)
-IO_2@[IOP=(2)][IoId=(2)] : LED3(0) (fixed)
-IO_2@[IOP=(6)][IoId=(2)] : LED_MODE_1(0) (fixed)
-IO_3@[IOP=(6)][IoId=(3)] : LED_MODE_2(0) (fixed)
-IO_0@[IOP=(6)][IoId=(0)] : LED_STATUS(0) (fixed)
-IO_1@[IOP=(3)][IoId=(1)] : MISO0(0) (fixed)
-IO_1@[IOP=(0)][IoId=(1)] : MISO1(0) (fixed)
-IO_1@[IOP=(5)][IoId=(1)] : MISO2(0) (fixed)
-IO_1@[IOP=(2)][IoId=(1)] : MISO3(0) (fixed)
-IO_1@[IOP=(6)][IoId=(1)] : MODE(0) (fixed)
-IO_4@[IOP=(3)][IoId=(4)] : MOSI0(0) (fixed)
-IO_4@[IOP=(0)][IoId=(4)] : MOSI1(0) (fixed)
-IO_4@[IOP=(5)][IoId=(4)] : MOSI2(0) (fixed)
-IO_4@[IOP=(2)][IoId=(4)] : MOSI3(0) (fixed)
-IO_5@[IOP=(6)][IoId=(5)] : POT_IN(0) (fixed)
-IO_6@[IOP=(3)][IoId=(6)] : RESET0(0) (fixed)
-IO_6@[IOP=(0)][IoId=(6)] : RESET1(0) (fixed)
-IO_6@[IOP=(5)][IoId=(6)] : RESET2(0) (fixed)
-IO_6@[IOP=(2)][IoId=(6)] : RESET3(0) (fixed)
-IO_3@[IOP=(3)][IoId=(3)] : SCLK0(0) (fixed)
-IO_3@[IOP=(0)][IoId=(3)] : SCLK1(0) (fixed)
-IO_3@[IOP=(5)][IoId=(3)] : SCLK2(0) (fixed)
-IO_3@[IOP=(2)][IoId=(3)] : SCLK3(0) (fixed)
-IO_0@[IOP=(2)][IoId=(0)] : SCL_1(0) (fixed)
-IO_0@[IOP=(5)][IoId=(0)] : SDA_1(0) (fixed)
-IO_7@[IOP=(3)][IoId=(7)] : SS0(0) (fixed)
-IO_7@[IOP=(0)][IoId=(7)] : SS1(0) (fixed)
-IO_7@[IOP=(5)][IoId=(7)] : SS2(0) (fixed)
-IO_7@[IOP=(2)][IoId=(7)] : SS3(0) (fixed)
-IO_5@[IOP=(15)][IoId=(5)] : TOGGLE_LANTERN(0) (fixed)
-DSM[0]@[FFB(DSM,0)] : \ADC_DelSig_1:DSM\
-Vref[6]@[FFB(Vref,6)] : \ADC_DelSig_1:vRef_2\
-
 Analog Placement phase: Elapsed time ==> 0s.018ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
@@ -4319,79 +4193,16 @@ Analog Routing phase: Elapsed time ==> 0s.000ms
 ============ Analog Final Answer Routes ============
 Dump of CyAnalogRoutingResultsDB
 Map of net to items {
-  Net: \ADC_DelSig_1:Net_20\ {
-    dsm_0_vminus
-  }
-  Net: \ADC_DelSig_1:Net_244\ {
-    common_vssa
-  }
-  Net: \ADC_DelSig_1:Net_35\ {
-  }
-  Net: Net_73 {
-    dsm_0_vplus
-    agl1_x_dsm_0_vplus
-    agl1
-    agl1_x_p6_5
-    p6_5
-  }
-  Net: \ADC_DelSig_1:Net_249\ {
-  }
-  Net: \ADC_DelSig_1:Net_257\ {
-  }
-  Net: \ADC_DelSig_1:Net_109\ {
-  }
-  Net: \ADC_DelSig_1:Net_34\ {
-  }
-  Net: AmuxNet::\ADC_DelSig_1:AMux\ {
-    dsm_0_vminus
-    dsm_0_vminus_x_dsm_0_vminus_vssa
-    dsm_0_vminus_vssa
-    common_vssa
-  }
 }
 Map of item to net {
-  dsm_0_vplus                                      -> Net_73
-  agl1_x_dsm_0_vplus                               -> Net_73
-  agl1                                             -> Net_73
-  agl1_x_p6_5                                      -> Net_73
-  p6_5                                             -> Net_73
-  dsm_0_vminus                                     -> \ADC_DelSig_1:Net_20\
-  common_vssa                                      -> \ADC_DelSig_1:Net_244\
-  dsm_0_vminus_x_dsm_0_vminus_vssa                 -> AmuxNet::\ADC_DelSig_1:AMux\
-  dsm_0_vminus_vssa                                -> AmuxNet::\ADC_DelSig_1:AMux\
 }
 Mux Info {
-  Mux: \ADC_DelSig_1:AMux\ {
-     Mouth: \ADC_DelSig_1:Net_20\
-     Guts:  AmuxNet::\ADC_DelSig_1:AMux\
-     IsSingleSwitching: False
-     IsStaticSwitching: True
-     IsAtMostOneSwitch: False
-    Arm: 0 {
-      Net:   \ADC_DelSig_1:Net_244\
-      Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
-      Inner: __open__
-      Path {
-        common_vssa
-        dsm_0_vminus_vssa
-        dsm_0_vminus_x_dsm_0_vminus_vssa
-        dsm_0_vminus
-      }
-    }
-    Arm: 1 {
-      Net:   \ADC_DelSig_1:Net_35\
-      Outer: __open__
-      Inner: __open__
-      Path {
-      }
-    }
-  }
 }
 Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.170ms
+Analog Code Generation phase: Elapsed time ==> 0s.193ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
@@ -4406,33 +4217,33 @@ PLD Packing Summary
 ------------------------------------------------------------
             Resource Type : Used : Free :  Max :  % Used
     ====================================================
-                     PLDs :   31 :   17 :   48 :  64.58%
+                     PLDs :   24 :   24 :   48 :  50.00%
 
 <CYPRESSTAG name="PLD Statistics">
 
         PLD Resource Type :     Average/LAB
     =======================================
-                   Inputs :            6.94
-                   Pterms :            4.97
-               Macrocells :            2.06
+                   Inputs :            7.42
+                   Pterms :            6.42
+               Macrocells :            2.63
 </CYPRESSTAG>
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.001ms
+PLD Packing: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.083ms
+Partitioning: Elapsed time ==> 0s.064ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
 Annealing: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
-Inital cost was 802, final cost is 802 (0.00% improvement).</CYPRESSTAG>
+Inital cost was 815, final cost is 815 (0.00% improvement).</CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -4442,16 +4253,221 @@ Final Placement Summary
 
        Resource Type :      Count : Avg Inputs : Avg Outputs
     ========================================================
-                 UDB :         17 :       9.53 :       3.76
+                 UDB :         14 :      11.36 :       4.50
 <CYPRESSTAG name="Final Placement Details">
 <CYPRESSTAG name="Component Details">
 
 ------------------------------------------------------------
 Component Placement Details
 ------------------------------------------------------------
-UDB [UDB=(0,0)] is empty.
+UDB [UDB=(0,0)] contents:
+LAB@[UDB=(0,0)][LB=0] #macrocells=3, #inputs=10, #pterms=8
+{
+    [McSlotId=0]:     MacroCell: Name=\SPIM_3:BSPIM:state_1\, Mode=(T-Register) @ [UDB=(0,0)][LB=0][MC=0]
+        Total # of inputs        : 10
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\SPIM_3:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        (
+              !\SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
+              \SPIM_3:BSPIM:state_0\
+            + !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_0\ * 
+              !\SPIM_3:BSPIM:count_4\ * !\SPIM_3:BSPIM:count_3\ * 
+              \SPIM_3:BSPIM:count_2\ * !\SPIM_3:BSPIM:count_1\ * 
+              \SPIM_3:BSPIM:count_0\ * !\SPIM_3:BSPIM:tx_status_1\
+            + \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_0\
+            + \SPIM_3:BSPIM:state_1\ * !\SPIM_3:BSPIM:state_0\ * 
+              !\SPIM_3:BSPIM:count_4\ * !\SPIM_3:BSPIM:count_3\ * 
+              !\SPIM_3:BSPIM:count_2\ * \SPIM_3:BSPIM:count_1\ * 
+              !\SPIM_3:BSPIM:count_0\ * !\SPIM_3:BSPIM:ld_ident\
+        );
+        Output = \SPIM_3:BSPIM:state_1\ (fanout=12)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\SPIM_3:BSPIM:state_2\, Mode=(D-Register) @ [UDB=(0,0)][LB=0][MC=1]
+        Total # of inputs        : 10
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (\SPIM_3:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              !\SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
+              \SPIM_3:BSPIM:state_0\
+            + !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\ * 
+              !\SPIM_3:BSPIM:state_0\ * !\SPIM_3:BSPIM:count_4\ * 
+              !\SPIM_3:BSPIM:count_3\ * !\SPIM_3:BSPIM:count_2\ * 
+              \SPIM_3:BSPIM:count_1\ * !\SPIM_3:BSPIM:count_0\ * 
+              !\SPIM_3:BSPIM:ld_ident\
+            + !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_0\ * 
+              !\SPIM_3:BSPIM:count_4\ * !\SPIM_3:BSPIM:count_3\ * 
+              \SPIM_3:BSPIM:count_2\ * !\SPIM_3:BSPIM:count_1\ * 
+              \SPIM_3:BSPIM:count_0\ * !\SPIM_3:BSPIM:tx_status_1\
+        );
+        Output = \SPIM_3:BSPIM:state_2\ (fanout=12)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\SPIM_3:BSPIM:state_0\, Mode=(T-Register) @ [UDB=(0,0)][LB=0][MC=2]
+        Total # of inputs        : 4
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (\SPIM_3:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\
+            + \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\
+            + !\SPIM_3:BSPIM:state_1\ * !\SPIM_3:BSPIM:state_0\ * 
+              !\SPIM_3:BSPIM:tx_status_1\
+        );
+        Output = \SPIM_3:BSPIM:state_0\ (fanout=12)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(0,0)][LB=1] #macrocells=4, #inputs=11, #pterms=8
+{
+    [McSlotId=0]:     MacroCell: Name=\SPIM_2:BSPIM:load_cond\, Mode=(T-Register) @ [UDB=(0,0)][LB=1][MC=0]
+        Total # of inputs        : 9
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\SPIM_2:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        (
+              !\SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:count_4\ * 
+              !\SPIM_2:BSPIM:count_3\ * !\SPIM_2:BSPIM:count_2\ * 
+              !\SPIM_2:BSPIM:count_1\ * !\SPIM_2:BSPIM:count_0\ * 
+              \SPIM_2:BSPIM:load_cond\
+            + \SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
+              !\SPIM_2:BSPIM:state_0\ * !\SPIM_2:BSPIM:load_cond\
+            + \SPIM_2:BSPIM:state_1\ * !\SPIM_2:BSPIM:count_4\ * 
+              !\SPIM_2:BSPIM:count_3\ * !\SPIM_2:BSPIM:count_2\ * 
+              !\SPIM_2:BSPIM:count_1\ * !\SPIM_2:BSPIM:count_0\ * 
+              \SPIM_2:BSPIM:load_cond\
+            + \SPIM_2:BSPIM:state_0\ * !\SPIM_2:BSPIM:count_4\ * 
+              !\SPIM_2:BSPIM:count_3\ * !\SPIM_2:BSPIM:count_2\ * 
+              !\SPIM_2:BSPIM:count_1\ * !\SPIM_2:BSPIM:count_0\ * 
+              \SPIM_2:BSPIM:load_cond\
+        );
+        Output = \SPIM_2:BSPIM:load_cond\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=Net_153, Mode=(D-Register) @ [UDB=(0,0)][LB=1][MC=1]
+        Total # of inputs        : 4
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (\SPIM_2:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\SPIM_2:BSPIM:state_2\ * \SPIM_2:BSPIM:state_1\ * 
+              \SPIM_2:BSPIM:state_0\
+            + \SPIM_2:BSPIM:state_1\ * \SPIM_2:BSPIM:state_0\ * Net_153
+        );
+        Output = Net_153 (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\SPIM_2:BSPIM:rx_status_6\, Mode=(Combinatorial) @ [UDB=(0,0)][LB=1][MC=2]
+        Total # of inputs        : 6
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\SPIM_2:BSPIM:count_4\ * !\SPIM_2:BSPIM:count_3\ * 
+              !\SPIM_2:BSPIM:count_2\ * !\SPIM_2:BSPIM:count_1\ * 
+              \SPIM_2:BSPIM:count_0\ * \SPIM_2:BSPIM:rx_status_4\
+        );
+        Output = \SPIM_2:BSPIM:rx_status_6\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\SPIM_2:BSPIM:tx_status_4\, Mode=(Combinatorial) @ [UDB=(0,0)][LB=1][MC=3]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
+              !\SPIM_2:BSPIM:state_0\
+        );
+        Output = \SPIM_2:BSPIM:tx_status_4\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+datapathcell: Name =\SPIM_2:BSPIM:sR8:Dp:u0\
+    PORT MAP (
+        clock => \SPIM_2:Net_276\ ,
+        cs_addr_2 => \SPIM_2:BSPIM:state_2\ ,
+        cs_addr_1 => \SPIM_2:BSPIM:state_1\ ,
+        cs_addr_0 => \SPIM_2:BSPIM:state_0\ ,
+        route_si => Net_155 ,
+        f1_load => \SPIM_2:BSPIM:load_rx_data\ ,
+        so_comb => \SPIM_2:BSPIM:mosi_from_dp\ ,
+        f0_bus_stat_comb => \SPIM_2:BSPIM:tx_status_2\ ,
+        f0_blk_stat_comb => \SPIM_2:BSPIM:tx_status_1\ ,
+        f1_bus_stat_comb => \SPIM_2:BSPIM:rx_status_5\ ,
+        f1_blk_stat_comb => \SPIM_2:BSPIM:rx_status_4\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000000000000000000001100000000000001010000000001000100010000000000011100000000010001000000000000000101000000000000010100000011111111000000001111111111111111000000000010001000001000111100000000000000000100"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+statusicell: Name =\SPIM_2:BSPIM:RxStsReg\
+    PORT MAP (
+        clock => \SPIM_2:Net_276\ ,
+        status_6 => \SPIM_2:BSPIM:rx_status_6\ ,
+        status_5 => \SPIM_2:BSPIM:rx_status_5\ ,
+        status_4 => \SPIM_2:BSPIM:rx_status_4\ );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "0000000"
+        cy_md_select = "1000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
 UDB [UDB=(0,1)] contents:
-LAB@[UDB=(0,1)][LB=0] #macrocells=1, #inputs=11, #pterms=7
+LAB@[UDB=(0,1)][LB=0] #macrocells=2, #inputs=11, #pterms=8
 {
     [McSlotId=0]:     MacroCell: Name=Net_152, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=0]
         Total # of inputs        : 11
@@ -4480,132 +4496,168 @@ LAB@[UDB=(0,1)][LB=0] #macrocells=1, #inputs=11, #pterms=7
         {
         }
 
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(0,1)][LB=1] #macrocells=3, #inputs=10, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=Net_154, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=0]
-        Total # of inputs        : 4
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (\SPIM_2:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        !(
-              !\SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
-              \SPIM_2:BSPIM:state_0\
-            + !\SPIM_2:BSPIM:state_2\ * \SPIM_2:BSPIM:state_1\ * !Net_154
-            + \SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
-              !\SPIM_2:BSPIM:state_0\ * !Net_154
-            + \SPIM_2:BSPIM:state_1\ * \SPIM_2:BSPIM:state_0\ * !Net_154
-        );
-        Output = Net_154 (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\SPIM_2:BSPIM:ld_ident\, Mode=(T-Register) @ [UDB=(0,1)][LB=1][MC=1]
-        Total # of inputs        : 9
-        Total # of product terms : 3
-        List of special equations: 
-            Clock  = (\SPIM_2:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        (
-              \SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
-              !\SPIM_2:BSPIM:state_0\ * !\SPIM_2:BSPIM:ld_ident\
-            + \SPIM_2:BSPIM:state_2\ * \SPIM_2:BSPIM:state_1\ * 
-              !\SPIM_2:BSPIM:state_0\ * \SPIM_2:BSPIM:ld_ident\
-            + \SPIM_2:BSPIM:state_1\ * !\SPIM_2:BSPIM:state_0\ * 
-              !\SPIM_2:BSPIM:count_4\ * !\SPIM_2:BSPIM:count_3\ * 
-              !\SPIM_2:BSPIM:count_2\ * \SPIM_2:BSPIM:count_1\ * 
-              !\SPIM_2:BSPIM:count_0\ * \SPIM_2:BSPIM:ld_ident\
-        );
-        Output = \SPIM_2:BSPIM:ld_ident\ (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\SPIM_2:BSPIM:tx_status_4\, Mode=(Combinatorial) @ [UDB=(0,1)][LB=1][MC=3]
-        Total # of inputs        : 3
+    [McSlotId=1]:     MacroCell: Name=\SPIM_2:BSPIM:load_rx_data\, Mode=(Combinatorial) @ [UDB=(0,1)][LB=0][MC=1]
+        Total # of inputs        : 5
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !\SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
-              !\SPIM_2:BSPIM:state_0\
+              !\SPIM_2:BSPIM:count_4\ * !\SPIM_2:BSPIM:count_3\ * 
+              !\SPIM_2:BSPIM:count_2\ * !\SPIM_2:BSPIM:count_1\ * 
+              \SPIM_2:BSPIM:count_0\
         );
-        Output = \SPIM_2:BSPIM:tx_status_4\ (fanout=1)
+        Output = \SPIM_2:BSPIM:load_rx_data\ (fanout=2)
         Properties               : 
         {
         }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
 }
 
-statusicell: Name =\SPIM_2:BSPIM:TxStsReg\
+LAB@[UDB=(0,1)][LB=1] #macrocells=3, #inputs=11, #pterms=8
+{
+    [McSlotId=0]:     MacroCell: Name=\SPIM_3:BSPIM:load_cond\, Mode=(T-Register) @ [UDB=(0,1)][LB=1][MC=0]
+        Total # of inputs        : 9
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\SPIM_3:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        (
+              !\SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:count_4\ * 
+              !\SPIM_3:BSPIM:count_3\ * !\SPIM_3:BSPIM:count_2\ * 
+              !\SPIM_3:BSPIM:count_1\ * !\SPIM_3:BSPIM:count_0\ * 
+              \SPIM_3:BSPIM:load_cond\
+            + \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
+              !\SPIM_3:BSPIM:state_0\ * !\SPIM_3:BSPIM:load_cond\
+            + \SPIM_3:BSPIM:state_1\ * !\SPIM_3:BSPIM:count_4\ * 
+              !\SPIM_3:BSPIM:count_3\ * !\SPIM_3:BSPIM:count_2\ * 
+              !\SPIM_3:BSPIM:count_1\ * !\SPIM_3:BSPIM:count_0\ * 
+              \SPIM_3:BSPIM:load_cond\
+            + \SPIM_3:BSPIM:state_0\ * !\SPIM_3:BSPIM:count_4\ * 
+              !\SPIM_3:BSPIM:count_3\ * !\SPIM_3:BSPIM:count_2\ * 
+              !\SPIM_3:BSPIM:count_1\ * !\SPIM_3:BSPIM:count_0\ * 
+              \SPIM_3:BSPIM:load_cond\
+        );
+        Output = \SPIM_3:BSPIM:load_cond\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\SPIM_3:BSPIM:ld_ident\, Mode=(T-Register) @ [UDB=(0,1)][LB=1][MC=1]
+        Total # of inputs        : 9
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (\SPIM_3:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
+              !\SPIM_3:BSPIM:state_0\ * !\SPIM_3:BSPIM:ld_ident\
+            + \SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\ * 
+              !\SPIM_3:BSPIM:state_0\ * \SPIM_3:BSPIM:ld_ident\
+            + \SPIM_3:BSPIM:state_1\ * !\SPIM_3:BSPIM:state_0\ * 
+              !\SPIM_3:BSPIM:count_4\ * !\SPIM_3:BSPIM:count_3\ * 
+              !\SPIM_3:BSPIM:count_2\ * \SPIM_3:BSPIM:count_1\ * 
+              !\SPIM_3:BSPIM:count_0\ * \SPIM_3:BSPIM:ld_ident\
+        );
+        Output = \SPIM_3:BSPIM:ld_ident\ (fanout=4)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\SPIM_3:BSPIM:rx_status_6\, Mode=(Combinatorial) @ [UDB=(0,1)][LB=1][MC=2]
+        Total # of inputs        : 6
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\SPIM_3:BSPIM:count_4\ * !\SPIM_3:BSPIM:count_3\ * 
+              !\SPIM_3:BSPIM:count_2\ * !\SPIM_3:BSPIM:count_1\ * 
+              \SPIM_3:BSPIM:count_0\ * \SPIM_3:BSPIM:rx_status_4\
+        );
+        Output = \SPIM_3:BSPIM:rx_status_6\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+count7cell: Name =\SPIM_2:BSPIM:BitCounter\
     PORT MAP (
         clock => \SPIM_2:Net_276\ ,
-        status_4 => \SPIM_2:BSPIM:tx_status_4\ ,
-        status_3 => \SPIM_2:BSPIM:load_rx_data\ ,
-        status_2 => \SPIM_2:BSPIM:tx_status_2\ ,
-        status_1 => \SPIM_2:BSPIM:tx_status_1\ ,
-        status_0 => \SPIM_2:BSPIM:tx_status_0\ ,
-        interrupt => Net_149 );
+        enable => \SPIM_2:BSPIM:cnt_enable\ ,
+        count_6 => \SPIM_2:BSPIM:count_6\ ,
+        count_5 => \SPIM_2:BSPIM:count_5\ ,
+        count_4 => \SPIM_2:BSPIM:count_4\ ,
+        count_3 => \SPIM_2:BSPIM:count_3\ ,
+        count_2 => \SPIM_2:BSPIM:count_2\ ,
+        count_1 => \SPIM_2:BSPIM:count_1\ ,
+        count_0 => \SPIM_2:BSPIM:count_0\ ,
+        tc => \SPIM_2:BSPIM:cnt_tc\ );
     Properties:
     {
-        cy_force_order = 1
-        cy_int_mask = "0000000"
-        cy_md_select = "0001001"
+        cy_alt_mode = 0
+        cy_init_value = "0000000"
+        cy_period = "0001111"
+        cy_route_en = 1
+        cy_route_ld = 0
     }
     Clock Polarity: Active High
     Clock Enable: True
 
 UDB [UDB=(0,2)] contents:
-LAB@[UDB=(0,2)][LB=0] #macrocells=2, #inputs=5, #pterms=5
+LAB@[UDB=(0,2)][LB=0] #macrocells=2, #inputs=11, #pterms=8
 {
-    [McSlotId=0]:     MacroCell: Name=Net_153, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=0]
-        Total # of inputs        : 4
-        Total # of product terms : 2
+    [McSlotId=0]:     MacroCell: Name=Net_163, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=0]
+        Total # of inputs        : 11
+        Total # of product terms : 7
         List of special equations: 
-            Clock  = (\SPIM_2:Net_276\) => Global
+            Clock  = (\SPIM_3:Net_276\) => Global
             Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              !\SPIM_2:BSPIM:state_2\ * \SPIM_2:BSPIM:state_1\ * 
-              \SPIM_2:BSPIM:state_0\
-            + \SPIM_2:BSPIM:state_1\ * \SPIM_2:BSPIM:state_0\ * Net_153
+        Main Equation            : 7 pterms
+        !(
+              !Net_163 * !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_0\
+            + !\SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
+              !\SPIM_3:BSPIM:state_0\
+            + !\SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_0\ * 
+              !\SPIM_3:BSPIM:count_4\ * !\SPIM_3:BSPIM:count_3\ * 
+              !\SPIM_3:BSPIM:count_2\ * \SPIM_3:BSPIM:count_1\ * 
+              !\SPIM_3:BSPIM:count_0\ * !\SPIM_3:BSPIM:ld_ident\
+            + \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
+              \SPIM_3:BSPIM:state_0\
+            + \SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\ * 
+              !\SPIM_3:BSPIM:state_0\
+            + \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:mosi_from_dp\
+            + !\SPIM_3:BSPIM:state_0\ * !\SPIM_3:BSPIM:mosi_from_dp\
         );
-        Output = Net_153 (fanout=2)
+        Output = Net_163 (fanout=2)
         Properties               : 
         {
         }
 
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\SPIM_2:BSPIM:state_0\, Mode=(T-Register) @ [UDB=(0,2)][LB=0][MC=2]
-        Total # of inputs        : 4
-        Total # of product terms : 3
-        List of special equations: 
-            Clock  = (\SPIM_2:Net_276\) => Global
+    [McSlotId=1]:     MacroCell: Name=\SPIM_3:BSPIM:load_rx_data\, Mode=(Combinatorial) @ [UDB=(0,2)][LB=0][MC=1]
+        Total # of inputs        : 5
+        Total # of product terms : 1
             Clock Enable: True
-        Main Equation            : 3 pterms
+        Main Equation            : 1 pterm
         (
-              !\SPIM_2:BSPIM:state_2\ * \SPIM_2:BSPIM:state_1\
-            + \SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\
-            + !\SPIM_2:BSPIM:state_1\ * !\SPIM_2:BSPIM:state_0\ * 
-              !\SPIM_2:BSPIM:tx_status_1\
+              !\SPIM_3:BSPIM:count_4\ * !\SPIM_3:BSPIM:count_3\ * 
+              !\SPIM_3:BSPIM:count_2\ * !\SPIM_3:BSPIM:count_1\ * 
+              \SPIM_3:BSPIM:count_0\
         );
-        Output = \SPIM_2:BSPIM:state_0\ (fanout=12)
+        Output = \SPIM_3:BSPIM:load_rx_data\ (fanout=2)
         Properties               : 
         {
         }
 
+    [McSlotId=2]: (empty)
     [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(0,2)][LB=1] #macrocells=4, #inputs=10, #pterms=7
+LAB@[UDB=(0,2)][LB=1] #macrocells=3, #inputs=10, #pterms=8
 {
     [McSlotId=0]:     MacroCell: Name=\SPIM_2:BSPIM:state_1\, Mode=(T-Register) @ [UDB=(0,2)][LB=1][MC=0]
         Total # of inputs        : 10
@@ -4657,211 +4709,24 @@ LAB@[UDB=(0,2)][LB=1] #macrocells=4, #inputs=10, #pterms=7
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\SPIM_2:BSPIM:tx_status_0\, Mode=(Combinatorial) @ [UDB=(0,2)][LB=1][MC=2]
-        Total # of inputs        : 3
-        Total # of product terms : 1
+    [McSlotId=2]:     MacroCell: Name=\SPIM_2:BSPIM:ld_ident\, Mode=(T-Register) @ [UDB=(0,2)][LB=1][MC=2]
+        Total # of inputs        : 9
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (\SPIM_2:Net_276\) => Global
             Clock Enable: True
-        Main Equation            : 1 pterm
+        Main Equation            : 3 pterms
         (
               \SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
-              \SPIM_2:BSPIM:state_0\
-        );
-        Output = \SPIM_2:BSPIM:tx_status_0\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\SPIM_2:BSPIM:load_rx_data\, Mode=(Combinatorial) @ [UDB=(0,2)][LB=1][MC=3]
-        Total # of inputs        : 5
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\SPIM_2:BSPIM:count_4\ * !\SPIM_2:BSPIM:count_3\ * 
-              !\SPIM_2:BSPIM:count_2\ * !\SPIM_2:BSPIM:count_1\ * 
-              \SPIM_2:BSPIM:count_0\
-        );
-        Output = \SPIM_2:BSPIM:load_rx_data\ (fanout=2)
-        Properties               : 
-        {
-        }
-}
-
-datapathcell: Name =\SPIM_2:BSPIM:sR8:Dp:u0\
-    PORT MAP (
-        clock => \SPIM_2:Net_276\ ,
-        cs_addr_2 => \SPIM_2:BSPIM:state_2\ ,
-        cs_addr_1 => \SPIM_2:BSPIM:state_1\ ,
-        cs_addr_0 => \SPIM_2:BSPIM:state_0\ ,
-        route_si => Net_155 ,
-        f1_load => \SPIM_2:BSPIM:load_rx_data\ ,
-        so_comb => \SPIM_2:BSPIM:mosi_from_dp\ ,
-        f0_bus_stat_comb => \SPIM_2:BSPIM:tx_status_2\ ,
-        f0_blk_stat_comb => \SPIM_2:BSPIM:tx_status_1\ ,
-        f1_bus_stat_comb => \SPIM_2:BSPIM:rx_status_5\ ,
-        f1_blk_stat_comb => \SPIM_2:BSPIM:rx_status_4\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000000000000000000001100000000000001010000000001000100010000000000011100000000010001000000000000000101000000000000010100000011111111000000001111111111111111000000000010001000001000111100000000000000000100"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(0,3)] is empty.
-UDB [UDB=(0,4)] is empty.
-UDB [UDB=(0,5)] is empty.
-UDB [UDB=(1,0)] is empty.
-UDB [UDB=(1,1)] contents:
-LAB@[UDB=(1,1)][LB=0] #macrocells=1, #inputs=9, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\SPIM_2:BSPIM:load_cond\, Mode=(T-Register) @ [UDB=(1,1)][LB=0][MC=0]
-        Total # of inputs        : 9
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (\SPIM_2:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        (
-              !\SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:count_4\ * 
-              !\SPIM_2:BSPIM:count_3\ * !\SPIM_2:BSPIM:count_2\ * 
-              !\SPIM_2:BSPIM:count_1\ * !\SPIM_2:BSPIM:count_0\ * 
-              \SPIM_2:BSPIM:load_cond\
-            + \SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
-              !\SPIM_2:BSPIM:state_0\ * !\SPIM_2:BSPIM:load_cond\
-            + \SPIM_2:BSPIM:state_1\ * !\SPIM_2:BSPIM:count_4\ * 
-              !\SPIM_2:BSPIM:count_3\ * !\SPIM_2:BSPIM:count_2\ * 
-              !\SPIM_2:BSPIM:count_1\ * !\SPIM_2:BSPIM:count_0\ * 
-              \SPIM_2:BSPIM:load_cond\
-            + \SPIM_2:BSPIM:state_0\ * !\SPIM_2:BSPIM:count_4\ * 
-              !\SPIM_2:BSPIM:count_3\ * !\SPIM_2:BSPIM:count_2\ * 
-              !\SPIM_2:BSPIM:count_1\ * !\SPIM_2:BSPIM:count_0\ * 
-              \SPIM_2:BSPIM:load_cond\
-        );
-        Output = \SPIM_2:BSPIM:load_cond\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(1,1)][LB=1] #macrocells=1, #inputs=4, #pterms=4
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\SPIM_2:BSPIM:cnt_enable\, Mode=(T-Register) @ [UDB=(1,1)][LB=1][MC=2]
-        Total # of inputs        : 4
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (\SPIM_2:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        (
-              !\SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
-              !\SPIM_2:BSPIM:state_0\ * \SPIM_2:BSPIM:cnt_enable\
-            + !\SPIM_2:BSPIM:state_2\ * \SPIM_2:BSPIM:state_1\ * 
-              \SPIM_2:BSPIM:state_0\ * !\SPIM_2:BSPIM:cnt_enable\
-            + \SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
-              \SPIM_2:BSPIM:state_0\ * \SPIM_2:BSPIM:cnt_enable\
+              !\SPIM_2:BSPIM:state_0\ * !\SPIM_2:BSPIM:ld_ident\
             + \SPIM_2:BSPIM:state_2\ * \SPIM_2:BSPIM:state_1\ * 
-              !\SPIM_2:BSPIM:state_0\ * \SPIM_2:BSPIM:cnt_enable\
-        );
-        Output = \SPIM_2:BSPIM:cnt_enable\ (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-statusicell: Name =\SPIM_2:BSPIM:RxStsReg\
-    PORT MAP (
-        clock => \SPIM_2:Net_276\ ,
-        status_6 => \SPIM_2:BSPIM:rx_status_6\ ,
-        status_5 => \SPIM_2:BSPIM:rx_status_5\ ,
-        status_4 => \SPIM_2:BSPIM:rx_status_4\ );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_int_mask = "0000000"
-        cy_md_select = "1000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(1,2)] contents:
-LAB@[UDB=(1,2)][LB=0] #macrocells=2, #inputs=2, #pterms=2
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\Debouncer_2:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(1,2)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_670) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_679
-        );
-        Output = \Debouncer_2:DEBOUNCER[0]:d_sync_0\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\Debouncer_2:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(1,2)][LB=0][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_670) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Debouncer_2:DEBOUNCER[0]:d_sync_0\
-        );
-        Output = \Debouncer_2:DEBOUNCER[0]:d_sync_1\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(1,2)][LB=1] #macrocells=1, #inputs=6, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\SPIM_2:BSPIM:rx_status_6\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=1][MC=2]
-        Total # of inputs        : 6
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
+              !\SPIM_2:BSPIM:state_0\ * \SPIM_2:BSPIM:ld_ident\
+            + \SPIM_2:BSPIM:state_1\ * !\SPIM_2:BSPIM:state_0\ * 
               !\SPIM_2:BSPIM:count_4\ * !\SPIM_2:BSPIM:count_3\ * 
-              !\SPIM_2:BSPIM:count_2\ * !\SPIM_2:BSPIM:count_1\ * 
-              \SPIM_2:BSPIM:count_0\ * \SPIM_2:BSPIM:rx_status_4\
+              !\SPIM_2:BSPIM:count_2\ * \SPIM_2:BSPIM:count_1\ * 
+              !\SPIM_2:BSPIM:count_0\ * \SPIM_2:BSPIM:ld_ident\
         );
-        Output = \SPIM_2:BSPIM:rx_status_6\ (fanout=1)
+        Output = \SPIM_2:BSPIM:ld_ident\ (fanout=4)
         Properties               : 
         {
         }
@@ -4869,277 +4734,19 @@ LAB@[UDB=(1,2)][LB=1] #macrocells=1, #inputs=6, #pterms=1
     [McSlotId=3]: (empty)
 }
 
-count7cell: Name =\SPIM_2:BSPIM:BitCounter\
+datapathcell: Name =\SPIM_3:BSPIM:sR8:Dp:u0\
     PORT MAP (
-        clock => \SPIM_2:Net_276\ ,
-        enable => \SPIM_2:BSPIM:cnt_enable\ ,
-        count_6 => \SPIM_2:BSPIM:count_6\ ,
-        count_5 => \SPIM_2:BSPIM:count_5\ ,
-        count_4 => \SPIM_2:BSPIM:count_4\ ,
-        count_3 => \SPIM_2:BSPIM:count_3\ ,
-        count_2 => \SPIM_2:BSPIM:count_2\ ,
-        count_1 => \SPIM_2:BSPIM:count_1\ ,
-        count_0 => \SPIM_2:BSPIM:count_0\ ,
-        tc => \SPIM_2:BSPIM:cnt_tc\ );
-    Properties:
-    {
-        cy_alt_mode = 0
-        cy_init_value = "0000000"
-        cy_period = "0001111"
-        cy_route_en = 1
-        cy_route_ld = 0
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(1,3)] is empty.
-UDB [UDB=(1,4)] contents:
-LAB@[UDB=(1,4)][LB=0] #macrocells=1, #inputs=0, #pterms=0
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(1,4)][LB=0][MC=1]
-        Total # of inputs        : 0
-        Total # of product terms : 0
-            Clock Enable: True
-        Main Equation            : 0 pterms
-        !(
-            0
-        );
-        Output = __ONE__ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-UDB [UDB=(1,5)] is empty.
-UDB [UDB=(2,0)] contents:
-LAB@[UDB=(2,0)][LB=0] #macrocells=3, #inputs=11, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=Net_13, Mode=(D-Register) @ [UDB=(2,0)][LB=0][MC=0]
-        Total # of inputs        : 11
-        Total # of product terms : 7
-        List of special equations: 
-            Clock  = (\SPIM_0:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 7 pterms
-        !(
-              !Net_13 * !\SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_0\
-            + !\SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
-              !\SPIM_0:BSPIM:state_0\
-            + !\SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_0\ * 
-              !\SPIM_0:BSPIM:count_4\ * !\SPIM_0:BSPIM:count_3\ * 
-              !\SPIM_0:BSPIM:count_2\ * \SPIM_0:BSPIM:count_1\ * 
-              !\SPIM_0:BSPIM:count_0\ * !\SPIM_0:BSPIM:ld_ident\
-            + \SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
-              \SPIM_0:BSPIM:state_0\
-            + \SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_1\ * 
-              !\SPIM_0:BSPIM:state_0\
-            + \SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:mosi_from_dp\
-            + !\SPIM_0:BSPIM:state_0\ * !\SPIM_0:BSPIM:mosi_from_dp\
-        );
-        Output = Net_13 (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\SPIM_0:BSPIM:load_rx_data\, Mode=(Combinatorial) @ [UDB=(2,0)][LB=0][MC=1]
-        Total # of inputs        : 5
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\SPIM_0:BSPIM:count_4\ * !\SPIM_0:BSPIM:count_3\ * 
-              !\SPIM_0:BSPIM:count_2\ * !\SPIM_0:BSPIM:count_1\ * 
-              \SPIM_0:BSPIM:count_0\
-        );
-        Output = \SPIM_0:BSPIM:load_rx_data\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\SPIM_0:BSPIM:tx_status_0\, Mode=(Combinatorial) @ [UDB=(2,0)][LB=0][MC=2]
-        Total # of inputs        : 3
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
-              \SPIM_0:BSPIM:state_0\
-        );
-        Output = \SPIM_0:BSPIM:tx_status_0\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(2,0)][LB=1] #macrocells=3, #inputs=10, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=\SPIM_0:BSPIM:state_1\, Mode=(T-Register) @ [UDB=(2,0)][LB=1][MC=0]
-        Total # of inputs        : 10
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (\SPIM_0:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        (
-              !\SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
-              \SPIM_0:BSPIM:state_0\
-            + !\SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_0\ * 
-              !\SPIM_0:BSPIM:count_4\ * !\SPIM_0:BSPIM:count_3\ * 
-              \SPIM_0:BSPIM:count_2\ * !\SPIM_0:BSPIM:count_1\ * 
-              \SPIM_0:BSPIM:count_0\ * !\SPIM_0:BSPIM:tx_status_1\
-            + \SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_0\
-            + \SPIM_0:BSPIM:state_1\ * !\SPIM_0:BSPIM:state_0\ * 
-              !\SPIM_0:BSPIM:count_4\ * !\SPIM_0:BSPIM:count_3\ * 
-              !\SPIM_0:BSPIM:count_2\ * \SPIM_0:BSPIM:count_1\ * 
-              !\SPIM_0:BSPIM:count_0\ * !\SPIM_0:BSPIM:ld_ident\
-        );
-        Output = \SPIM_0:BSPIM:state_1\ (fanout=12)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\SPIM_0:BSPIM:state_2\, Mode=(D-Register) @ [UDB=(2,0)][LB=1][MC=1]
-        Total # of inputs        : 10
-        Total # of product terms : 3
-        List of special equations: 
-            Clock  = (\SPIM_0:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        (
-              !\SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
-              \SPIM_0:BSPIM:state_0\
-            + !\SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_1\ * 
-              !\SPIM_0:BSPIM:state_0\ * !\SPIM_0:BSPIM:count_4\ * 
-              !\SPIM_0:BSPIM:count_3\ * !\SPIM_0:BSPIM:count_2\ * 
-              \SPIM_0:BSPIM:count_1\ * !\SPIM_0:BSPIM:count_0\ * 
-              !\SPIM_0:BSPIM:ld_ident\
-            + !\SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_0\ * 
-              !\SPIM_0:BSPIM:count_4\ * !\SPIM_0:BSPIM:count_3\ * 
-              \SPIM_0:BSPIM:count_2\ * !\SPIM_0:BSPIM:count_1\ * 
-              \SPIM_0:BSPIM:count_0\ * !\SPIM_0:BSPIM:tx_status_1\
-        );
-        Output = \SPIM_0:BSPIM:state_2\ (fanout=12)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\SPIM_0:BSPIM:ld_ident\, Mode=(T-Register) @ [UDB=(2,0)][LB=1][MC=2]
-        Total # of inputs        : 9
-        Total # of product terms : 3
-        List of special equations: 
-            Clock  = (\SPIM_0:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        (
-              \SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
-              !\SPIM_0:BSPIM:state_0\ * !\SPIM_0:BSPIM:ld_ident\
-            + \SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_1\ * 
-              !\SPIM_0:BSPIM:state_0\ * \SPIM_0:BSPIM:ld_ident\
-            + \SPIM_0:BSPIM:state_1\ * !\SPIM_0:BSPIM:state_0\ * 
-              !\SPIM_0:BSPIM:count_4\ * !\SPIM_0:BSPIM:count_3\ * 
-              !\SPIM_0:BSPIM:count_2\ * \SPIM_0:BSPIM:count_1\ * 
-              !\SPIM_0:BSPIM:count_0\ * \SPIM_0:BSPIM:ld_ident\
-        );
-        Output = \SPIM_0:BSPIM:ld_ident\ (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-UDB [UDB=(2,1)] contents:
-LAB@[UDB=(2,1)][LB=0] #macrocells=1, #inputs=4, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\SPIM_3:BSPIM:cnt_enable\, Mode=(T-Register) @ [UDB=(2,1)][LB=0][MC=0]
-        Total # of inputs        : 4
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (\SPIM_3:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        (
-              !\SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
-              !\SPIM_3:BSPIM:state_0\ * \SPIM_3:BSPIM:cnt_enable\
-            + !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\ * 
-              \SPIM_3:BSPIM:state_0\ * !\SPIM_3:BSPIM:cnt_enable\
-            + \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
-              \SPIM_3:BSPIM:state_0\ * \SPIM_3:BSPIM:cnt_enable\
-            + \SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\ * 
-              !\SPIM_3:BSPIM:state_0\ * \SPIM_3:BSPIM:cnt_enable\
-        );
-        Output = \SPIM_3:BSPIM:cnt_enable\ (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(2,1)][LB=1] #macrocells=2, #inputs=5, #pterms=6
-{
-    [McSlotId=0]:     MacroCell: Name=Net_164, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=0]
-        Total # of inputs        : 4
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (\SPIM_3:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\ * 
-              \SPIM_3:BSPIM:state_0\
-            + \SPIM_3:BSPIM:state_1\ * \SPIM_3:BSPIM:state_0\ * Net_164
-        );
-        Output = Net_164 (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=Net_165, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=1]
-        Total # of inputs        : 4
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (\SPIM_3:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        !(
-              !\SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
-              \SPIM_3:BSPIM:state_0\
-            + !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\ * !Net_165
-            + \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
-              !\SPIM_3:BSPIM:state_0\ * !Net_165
-            + \SPIM_3:BSPIM:state_1\ * \SPIM_3:BSPIM:state_0\ * !Net_165
-        );
-        Output = Net_165 (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-datapathcell: Name =\SPIM_0:BSPIM:sR8:Dp:u0\
-    PORT MAP (
-        clock => \SPIM_0:Net_276\ ,
-        cs_addr_2 => \SPIM_0:BSPIM:state_2\ ,
-        cs_addr_1 => \SPIM_0:BSPIM:state_1\ ,
-        cs_addr_0 => \SPIM_0:BSPIM:state_0\ ,
-        route_si => Net_7 ,
-        f1_load => \SPIM_0:BSPIM:load_rx_data\ ,
-        so_comb => \SPIM_0:BSPIM:mosi_from_dp\ ,
-        f0_bus_stat_comb => \SPIM_0:BSPIM:tx_status_2\ ,
-        f0_blk_stat_comb => \SPIM_0:BSPIM:tx_status_1\ ,
-        f1_bus_stat_comb => \SPIM_0:BSPIM:rx_status_5\ ,
-        f1_blk_stat_comb => \SPIM_0:BSPIM:rx_status_4\ );
+        clock => \SPIM_3:Net_276\ ,
+        cs_addr_2 => \SPIM_3:BSPIM:state_2\ ,
+        cs_addr_1 => \SPIM_3:BSPIM:state_1\ ,
+        cs_addr_0 => \SPIM_3:BSPIM:state_0\ ,
+        route_si => Net_166 ,
+        f1_load => \SPIM_3:BSPIM:load_rx_data\ ,
+        so_comb => \SPIM_3:BSPIM:mosi_from_dp\ ,
+        f0_bus_stat_comb => \SPIM_3:BSPIM:tx_status_2\ ,
+        f0_blk_stat_comb => \SPIM_3:BSPIM:tx_status_1\ ,
+        f1_bus_stat_comb => \SPIM_3:BSPIM:rx_status_5\ ,
+        f1_blk_stat_comb => \SPIM_3:BSPIM:rx_status_4\ );
     Properties:
     {
         a0_init = "00000000"
@@ -5166,126 +4773,6 @@ datapathcell: Name =\SPIM_0:BSPIM:sR8:Dp:u0\
     }
     Clock Polarity: Active High
     Clock Enable: True
-
-statusicell: Name =\SPIM_0:BSPIM:TxStsReg\
-    PORT MAP (
-        clock => \SPIM_0:Net_276\ ,
-        status_4 => \SPIM_0:BSPIM:tx_status_4\ ,
-        status_3 => \SPIM_0:BSPIM:load_rx_data\ ,
-        status_2 => \SPIM_0:BSPIM:tx_status_2\ ,
-        status_1 => \SPIM_0:BSPIM:tx_status_1\ ,
-        status_0 => \SPIM_0:BSPIM:tx_status_0\ ,
-        interrupt => Net_15 );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_int_mask = "0000000"
-        cy_md_select = "0001001"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(2,2)] contents:
-LAB@[UDB=(2,2)][LB=0] #macrocells=2, #inputs=7, #pterms=5
-{
-    [McSlotId=0]:     MacroCell: Name=Net_97, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=0]
-        Total # of inputs        : 4
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (\SPIM_1:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        !(
-              !\SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
-              \SPIM_1:BSPIM:state_0\
-            + !\SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_1\ * !Net_97
-            + \SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
-              !\SPIM_1:BSPIM:state_0\ * !Net_97
-            + \SPIM_1:BSPIM:state_1\ * \SPIM_1:BSPIM:state_0\ * !Net_97
-        );
-        Output = Net_97 (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\SPIM_0:BSPIM:tx_status_4\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=0][MC=1]
-        Total # of inputs        : 3
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
-              !\SPIM_0:BSPIM:state_0\
-        );
-        Output = \SPIM_0:BSPIM:tx_status_4\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(2,2)][LB=1] #macrocells=1, #inputs=6, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\SPIM_0:BSPIM:rx_status_6\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=1][MC=2]
-        Total # of inputs        : 6
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\SPIM_0:BSPIM:count_4\ * !\SPIM_0:BSPIM:count_3\ * 
-              !\SPIM_0:BSPIM:count_2\ * !\SPIM_0:BSPIM:count_1\ * 
-              \SPIM_0:BSPIM:count_0\ * \SPIM_0:BSPIM:rx_status_4\
-        );
-        Output = \SPIM_0:BSPIM:rx_status_6\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-statusicell: Name =\SPIM_0:BSPIM:RxStsReg\
-    PORT MAP (
-        clock => \SPIM_0:Net_276\ ,
-        status_6 => \SPIM_0:BSPIM:rx_status_6\ ,
-        status_5 => \SPIM_0:BSPIM:rx_status_5\ ,
-        status_4 => \SPIM_0:BSPIM:rx_status_4\ );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_int_mask = "0000000"
-        cy_md_select = "1000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(2,3)] contents:
-LAB@[UDB=(2,3)][LB=0] #macrocells=1, #inputs=2, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=Net_677, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_670) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\Debouncer_2:DEBOUNCER[0]:d_sync_0\ * 
-              \Debouncer_2:DEBOUNCER[0]:d_sync_1\
-        );
-        Output = Net_677 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
 
 count7cell: Name =\SPIM_3:BSPIM:BitCounter\
     PORT MAP (
@@ -5310,47 +4797,13 @@ count7cell: Name =\SPIM_3:BSPIM:BitCounter\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(2,4)] contents:
-LAB@[UDB=(2,4)][LB=0] #macrocells=2, #inputs=2, #pterms=2
+UDB [UDB=(0,3)] is empty.
+UDB [UDB=(0,4)] is empty.
+UDB [UDB=(0,5)] is empty.
+UDB [UDB=(1,0)] contents:
+LAB@[UDB=(1,0)][LB=0] #macrocells=3, #inputs=5, #pterms=7
 {
-    [McSlotId=0]:     MacroCell: Name=\Debouncer_1:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_670) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Debouncer_1:DEBOUNCER[0]:d_sync_0\
-        );
-        Output = \Debouncer_1:DEBOUNCER[0]:d_sync_1\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\Debouncer_1:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_670) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_331
-        );
-        Output = \Debouncer_1:DEBOUNCER[0]:d_sync_0\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(2,4)][LB=1] #macrocells=2, #inputs=5, #pterms=2
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\SPIM_3:BSPIM:tx_status_0\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=1][MC=1]
+    [McSlotId=0]:     MacroCell: Name=\SPIM_3:BSPIM:tx_status_0\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=0][MC=0]
         Total # of inputs        : 3
         Total # of product terms : 1
             Clock Enable: True
@@ -5364,46 +4817,66 @@ LAB@[UDB=(2,4)][LB=1] #macrocells=2, #inputs=5, #pterms=2
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=Net_387, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=Net_164, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=2]
+        Total # of inputs        : 4
+        Total # of product terms : 2
         List of special equations: 
-            Clock  = (Net_670) => Global
+            Clock  = (\SPIM_3:Net_276\) => Global
             Clock Enable: True
-        Main Equation            : 1 pterm
+        Main Equation            : 2 pterms
         (
-              !\Debouncer_1:DEBOUNCER[0]:d_sync_0\ * 
-              \Debouncer_1:DEBOUNCER[0]:d_sync_1\
+              !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\ * 
+              \SPIM_3:BSPIM:state_0\
+            + \SPIM_3:BSPIM:state_1\ * \SPIM_3:BSPIM:state_0\ * Net_164
         );
-        Output = Net_387 (fanout=1)
+        Output = Net_164 (fanout=2)
         Properties               : 
         {
         }
 
-    [McSlotId=3]: (empty)
+    [McSlotId=3]:     MacroCell: Name=Net_165, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=3]
+        Total # of inputs        : 4
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\SPIM_3:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        !(
+              !\SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
+              \SPIM_3:BSPIM:state_0\
+            + !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\ * !Net_165
+            + \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
+              !\SPIM_3:BSPIM:state_0\ * !Net_165
+            + \SPIM_3:BSPIM:state_1\ * \SPIM_3:BSPIM:state_0\ * !Net_165
+        );
+        Output = Net_165 (fanout=2)
+        Properties               : 
+        {
+        }
 }
 
-UDB [UDB=(2,5)] contents:
-LAB@[UDB=(2,5)][LB=1] #macrocells=2, #inputs=9, #pterms=2
+statusicell: Name =\SPIM_3:BSPIM:RxStsReg\
+    PORT MAP (
+        clock => \SPIM_3:Net_276\ ,
+        status_6 => \SPIM_3:BSPIM:rx_status_6\ ,
+        status_5 => \SPIM_3:BSPIM:rx_status_5\ ,
+        status_4 => \SPIM_3:BSPIM:rx_status_4\ );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "0000000"
+        cy_md_select = "1000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(1,1)] contents:
+LAB@[UDB=(1,1)][LB=0] #macrocells=2, #inputs=4, #pterms=5
 {
     [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\SPIM_1:BSPIM:rx_status_6\, Mode=(Combinatorial) @ [UDB=(2,5)][LB=1][MC=1]
-        Total # of inputs        : 6
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\SPIM_1:BSPIM:count_4\ * !\SPIM_1:BSPIM:count_3\ * 
-              !\SPIM_1:BSPIM:count_2\ * !\SPIM_1:BSPIM:count_1\ * 
-              \SPIM_1:BSPIM:count_0\ * \SPIM_1:BSPIM:rx_status_4\
-        );
-        Output = \SPIM_1:BSPIM:rx_status_6\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\SPIM_3:BSPIM:tx_status_4\, Mode=(Combinatorial) @ [UDB=(2,5)][LB=1][MC=3]
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\SPIM_3:BSPIM:tx_status_4\, Mode=(Combinatorial) @ [UDB=(1,1)][LB=0][MC=2]
         Total # of inputs        : 3
         Total # of product terms : 1
             Clock Enable: True
@@ -5416,27 +4889,205 @@ LAB@[UDB=(2,5)][LB=1] #macrocells=2, #inputs=9, #pterms=2
         Properties               : 
         {
         }
+
+    [McSlotId=3]:     MacroCell: Name=\SPIM_3:BSPIM:cnt_enable\, Mode=(T-Register) @ [UDB=(1,1)][LB=0][MC=3]
+        Total # of inputs        : 4
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\SPIM_3:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        (
+              !\SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
+              !\SPIM_3:BSPIM:state_0\ * \SPIM_3:BSPIM:cnt_enable\
+            + !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\ * 
+              \SPIM_3:BSPIM:state_0\ * !\SPIM_3:BSPIM:cnt_enable\
+            + \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
+              \SPIM_3:BSPIM:state_0\ * \SPIM_3:BSPIM:cnt_enable\
+            + \SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\ * 
+              !\SPIM_3:BSPIM:state_0\ * \SPIM_3:BSPIM:cnt_enable\
+        );
+        Output = \SPIM_3:BSPIM:cnt_enable\ (fanout=3)
+        Properties               : 
+        {
+        }
 }
 
-statusicell: Name =\SPIM_1:BSPIM:RxStsReg\
+LAB@[UDB=(1,1)][LB=1] #macrocells=3, #inputs=5, #pterms=8
+{
+    [McSlotId=0]:     MacroCell: Name=\SPIM_2:BSPIM:cnt_enable\, Mode=(T-Register) @ [UDB=(1,1)][LB=1][MC=0]
+        Total # of inputs        : 4
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\SPIM_2:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        (
+              !\SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
+              !\SPIM_2:BSPIM:state_0\ * \SPIM_2:BSPIM:cnt_enable\
+            + !\SPIM_2:BSPIM:state_2\ * \SPIM_2:BSPIM:state_1\ * 
+              \SPIM_2:BSPIM:state_0\ * !\SPIM_2:BSPIM:cnt_enable\
+            + \SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
+              \SPIM_2:BSPIM:state_0\ * \SPIM_2:BSPIM:cnt_enable\
+            + \SPIM_2:BSPIM:state_2\ * \SPIM_2:BSPIM:state_1\ * 
+              !\SPIM_2:BSPIM:state_0\ * \SPIM_2:BSPIM:cnt_enable\
+        );
+        Output = \SPIM_2:BSPIM:cnt_enable\ (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\SPIM_2:BSPIM:state_0\, Mode=(T-Register) @ [UDB=(1,1)][LB=1][MC=1]
+        Total # of inputs        : 4
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (\SPIM_2:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              !\SPIM_2:BSPIM:state_2\ * \SPIM_2:BSPIM:state_1\
+            + \SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\
+            + !\SPIM_2:BSPIM:state_1\ * !\SPIM_2:BSPIM:state_0\ * 
+              !\SPIM_2:BSPIM:tx_status_1\
+        );
+        Output = \SPIM_2:BSPIM:state_0\ (fanout=12)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\SPIM_2:BSPIM:tx_status_0\, Mode=(Combinatorial) @ [UDB=(1,1)][LB=1][MC=2]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
+              \SPIM_2:BSPIM:state_0\
+        );
+        Output = \SPIM_2:BSPIM:tx_status_0\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+statusicell: Name =\SPIM_3:BSPIM:TxStsReg\
     PORT MAP (
-        clock => \SPIM_1:Net_276\ ,
-        status_6 => \SPIM_1:BSPIM:rx_status_6\ ,
-        status_5 => \SPIM_1:BSPIM:rx_status_5\ ,
-        status_4 => \SPIM_1:BSPIM:rx_status_4\ );
+        clock => \SPIM_3:Net_276\ ,
+        status_4 => \SPIM_3:BSPIM:tx_status_4\ ,
+        status_3 => \SPIM_3:BSPIM:load_rx_data\ ,
+        status_2 => \SPIM_3:BSPIM:tx_status_2\ ,
+        status_1 => \SPIM_3:BSPIM:tx_status_1\ ,
+        status_0 => \SPIM_3:BSPIM:tx_status_0\ ,
+        interrupt => Net_160 );
     Properties:
     {
         cy_force_order = 1
         cy_int_mask = "0000000"
-        cy_md_select = "1000000"
+        cy_md_select = "0001001"
     }
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(3,0)] contents:
-LAB@[UDB=(3,0)][LB=0] #macrocells=1, #inputs=4, #pterms=3
+UDB [UDB=(1,2)] contents:
+statusicell: Name =\SPIM_2:BSPIM:TxStsReg\
+    PORT MAP (
+        clock => \SPIM_2:Net_276\ ,
+        status_4 => \SPIM_2:BSPIM:tx_status_4\ ,
+        status_3 => \SPIM_2:BSPIM:load_rx_data\ ,
+        status_2 => \SPIM_2:BSPIM:tx_status_2\ ,
+        status_1 => \SPIM_2:BSPIM:tx_status_1\ ,
+        status_0 => \SPIM_2:BSPIM:tx_status_0\ ,
+        interrupt => Net_149 );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "0000000"
+        cy_md_select = "0001001"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(1,3)] is empty.
+UDB [UDB=(1,4)] is empty.
+UDB [UDB=(1,5)] is empty.
+UDB [UDB=(2,0)] contents:
+LAB@[UDB=(2,0)][LB=0] #macrocells=1, #inputs=4, #pterms=4
 {
-    [McSlotId=0]:     MacroCell: Name=\SPIM_0:BSPIM:state_0\, Mode=(T-Register) @ [UDB=(3,0)][LB=0][MC=0]
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=Net_154, Mode=(D-Register) @ [UDB=(2,0)][LB=0][MC=1]
+        Total # of inputs        : 4
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\SPIM_2:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        !(
+              !\SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
+              \SPIM_2:BSPIM:state_0\
+            + !\SPIM_2:BSPIM:state_2\ * \SPIM_2:BSPIM:state_1\ * !Net_154
+            + \SPIM_2:BSPIM:state_2\ * !\SPIM_2:BSPIM:state_1\ * 
+              !\SPIM_2:BSPIM:state_0\ * !Net_154
+            + \SPIM_2:BSPIM:state_1\ * \SPIM_2:BSPIM:state_0\ * !Net_154
+        );
+        Output = Net_154 (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(2,0)][LB=1] #macrocells=1, #inputs=2, #pterms=1
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=Net_677, Mode=(D-Register) @ [UDB=(2,0)][LB=1][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_670) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\Debouncer_2:DEBOUNCER[0]:d_sync_0\ * 
+              \Debouncer_2:DEBOUNCER[0]:d_sync_1\
+        );
+        Output = Net_677 (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+controlcell: Name =\PWM_1:PWMUDB:genblk1:ctrlreg\
+    PORT MAP (
+        clock => Net_412 ,
+        control_7 => \PWM_1:PWMUDB:control_7\ ,
+        control_6 => \PWM_1:PWMUDB:control_6\ ,
+        control_5 => \PWM_1:PWMUDB:control_5\ ,
+        control_4 => \PWM_1:PWMUDB:control_4\ ,
+        control_3 => \PWM_1:PWMUDB:control_3\ ,
+        control_2 => \PWM_1:PWMUDB:control_2\ ,
+        control_1 => \PWM_1:PWMUDB:control_1\ ,
+        control_0 => \PWM_1:PWMUDB:control_0\ );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "11111111"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(2,1)] contents:
+LAB@[UDB=(2,1)][LB=0] #macrocells=2, #inputs=5, #pterms=7
+{
+    [McSlotId=0]:     MacroCell: Name=\SPIM_0:BSPIM:state_0\, Mode=(T-Register) @ [UDB=(2,1)][LB=0][MC=0]
         Total # of inputs        : 4
         Total # of product terms : 3
         List of special equations: 
@@ -5456,12 +5107,30 @@ LAB@[UDB=(3,0)][LB=0] #macrocells=1, #inputs=4, #pterms=3
 
     [McSlotId=1]: (empty)
     [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
+    [McSlotId=3]:     MacroCell: Name=Net_26, Mode=(D-Register) @ [UDB=(2,1)][LB=0][MC=3]
+        Total # of inputs        : 4
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\SPIM_0:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        !(
+              !\SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
+              \SPIM_0:BSPIM:state_0\
+            + !\SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_1\ * !Net_26
+            + \SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
+              !\SPIM_0:BSPIM:state_0\ * !Net_26
+            + \SPIM_0:BSPIM:state_1\ * \SPIM_0:BSPIM:state_0\ * !Net_26
+        );
+        Output = Net_26 (fanout=2)
+        Properties               : 
+        {
+        }
 }
 
-LAB@[UDB=(3,0)][LB=1] #macrocells=4, #inputs=4, #pterms=4
+LAB@[UDB=(2,1)][LB=1] #macrocells=4, #inputs=4, #pterms=4
 {
-    [McSlotId=0]:     MacroCell: Name=Net_496, Mode=(D-Register) @ [UDB=(3,0)][LB=1][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\PWM_1:PWMUDB:status_0\, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=0]
         Total # of inputs        : 2
         Total # of product terms : 1
         List of special equations: 
@@ -5469,29 +5138,14 @@ LAB@[UDB=(3,0)][LB=1] #macrocells=4, #inputs=4, #pterms=4
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \PWM_1:PWMUDB:runmode_enable\ * \PWM_1:PWMUDB:cmp1_less\
+              !\PWM_1:PWMUDB:prevCompare1\ * \PWM_1:PWMUDB:cmp1_less\
         );
-        Output = Net_496 (fanout=4)
+        Output = \PWM_1:PWMUDB:status_0\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\PWM_1:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(3,0)][LB=1][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_412) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_1:PWMUDB:control_7\
-        );
-        Output = \PWM_1:PWMUDB:runmode_enable\ (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:prevCompare1\, Mode=(D-Register) @ [UDB=(3,0)][LB=1][MC=2]
+    [McSlotId=1]:     MacroCell: Name=\PWM_1:PWMUDB:prevCompare1\, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -5506,7 +5160,7 @@ LAB@[UDB=(3,0)][LB=1] #macrocells=4, #inputs=4, #pterms=4
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=\PWM_1:PWMUDB:status_0\, Mode=(D-Register) @ [UDB=(3,0)][LB=1][MC=3]
+    [McSlotId=2]:     MacroCell: Name=Net_496, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=2]
         Total # of inputs        : 2
         Total # of product terms : 1
         List of special equations: 
@@ -5514,9 +5168,24 @@ LAB@[UDB=(3,0)][LB=1] #macrocells=4, #inputs=4, #pterms=4
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !\PWM_1:PWMUDB:prevCompare1\ * \PWM_1:PWMUDB:cmp1_less\
+              \PWM_1:PWMUDB:runmode_enable\ * \PWM_1:PWMUDB:cmp1_less\
         );
-        Output = \PWM_1:PWMUDB:status_0\ (fanout=1)
+        Output = Net_496 (fanout=4)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\PWM_1:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_412) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_1:PWMUDB:control_7\
+        );
+        Output = \PWM_1:PWMUDB:runmode_enable\ (fanout=3)
         Properties               : 
         {
         }
@@ -5572,46 +5241,24 @@ statusicell: Name =\PWM_1:PWMUDB:genblk8:stsreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-controlcell: Name =\PWM_1:PWMUDB:genblk1:ctrlreg\
-    PORT MAP (
-        clock => Net_412 ,
-        control_7 => \PWM_1:PWMUDB:control_7\ ,
-        control_6 => \PWM_1:PWMUDB:control_6\ ,
-        control_5 => \PWM_1:PWMUDB:control_5\ ,
-        control_4 => \PWM_1:PWMUDB:control_4\ ,
-        control_3 => \PWM_1:PWMUDB:control_3\ ,
-        control_2 => \PWM_1:PWMUDB:control_2\ ,
-        control_1 => \PWM_1:PWMUDB:control_1\ ,
-        control_0 => \PWM_1:PWMUDB:control_0\ );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "11111111"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(3,1)] contents:
-LAB@[UDB=(3,1)][LB=0] #macrocells=3, #inputs=7, #pterms=7
+UDB [UDB=(2,2)] contents:
+LAB@[UDB=(2,2)][LB=0] #macrocells=3, #inputs=6, #pterms=6
 {
-    [McSlotId=0]:     MacroCell: Name=\PWM_1:PWMUDB:status_2\, Mode=(Combinatorial) @ [UDB=(3,1)][LB=0][MC=0]
-        Total # of inputs        : 2
+    [McSlotId=0]:     MacroCell: Name=\SPIM_0:BSPIM:tx_status_4\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=0][MC=0]
+        Total # of inputs        : 3
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \PWM_1:PWMUDB:runmode_enable\ * \PWM_1:PWMUDB:tc_i\
+              !\SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
+              !\SPIM_0:BSPIM:state_0\
         );
-        Output = \PWM_1:PWMUDB:status_2\ (fanout=1)
+        Output = \SPIM_0:BSPIM:tx_status_4\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\SPIM_0:BSPIM:cnt_enable\, Mode=(T-Register) @ [UDB=(3,1)][LB=0][MC=2]
+    [McSlotId=1]:     MacroCell: Name=\SPIM_0:BSPIM:cnt_enable\, Mode=(T-Register) @ [UDB=(2,2)][LB=0][MC=1]
         Total # of inputs        : 4
         Total # of product terms : 4
         List of special equations: 
@@ -5633,48 +5280,69 @@ LAB@[UDB=(3,1)][LB=0] #macrocells=3, #inputs=7, #pterms=7
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=Net_25, Mode=(D-Register) @ [UDB=(3,1)][LB=0][MC=3]
-        Total # of inputs        : 4
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (\SPIM_0:Net_276\) => Global
+    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:status_2\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=0][MC=2]
+        Total # of inputs        : 2
+        Total # of product terms : 1
             Clock Enable: True
-        Main Equation            : 2 pterms
+        Main Equation            : 1 pterm
         (
-              !\SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_1\ * 
-              \SPIM_0:BSPIM:state_0\
-            + \SPIM_0:BSPIM:state_1\ * \SPIM_0:BSPIM:state_0\ * Net_25
+              \PWM_1:PWMUDB:runmode_enable\ * \PWM_1:PWMUDB:tc_i\
         );
-        Output = Net_25 (fanout=2)
+        Output = \PWM_1:PWMUDB:status_2\ (fanout=1)
         Properties               : 
         {
         }
+
+    [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(3,1)][LB=1] #macrocells=1, #inputs=4, #pterms=4
+LAB@[UDB=(2,2)][LB=1] #macrocells=3, #inputs=3, #pterms=3
 {
-    [McSlotId=0]:     MacroCell: Name=Net_26, Mode=(D-Register) @ [UDB=(3,1)][LB=1][MC=0]
-        Total # of inputs        : 4
-        Total # of product terms : 4
+    [McSlotId=0]:     MacroCell: Name=\Debouncer_2:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=0]
+        Total # of inputs        : 1
+        Total # of product terms : 1
         List of special equations: 
-            Clock  = (\SPIM_0:Net_276\) => Global
+            Clock  = (Net_670) => Global
             Clock Enable: True
-        Main Equation            : 4 pterms
-        !(
-              !\SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
-              \SPIM_0:BSPIM:state_0\
-            + !\SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_1\ * !Net_26
-            + \SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
-              !\SPIM_0:BSPIM:state_0\ * !Net_26
-            + \SPIM_0:BSPIM:state_1\ * \SPIM_0:BSPIM:state_0\ * !Net_26
+        Main Equation            : 1 pterm
+        (
+              \Debouncer_2:DEBOUNCER[0]:d_sync_0\
         );
-        Output = Net_26 (fanout=2)
+        Output = \Debouncer_2:DEBOUNCER[0]:d_sync_1\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\Debouncer_2:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_670) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_679
+        );
+        Output = \Debouncer_2:DEBOUNCER[0]:d_sync_0\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\Debouncer_1:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_670) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Debouncer_1:DEBOUNCER[0]:d_sync_0\
+        );
+        Output = \Debouncer_1:DEBOUNCER[0]:d_sync_1\ (fanout=1)
+        Properties               : 
+        {
+        }
+
     [McSlotId=3]: (empty)
 }
 
@@ -5701,10 +5369,142 @@ count7cell: Name =\SPIM_0:BSPIM:BitCounter\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(3,2)] contents:
-LAB@[UDB=(3,2)][LB=0] #macrocells=1, #inputs=9, #pterms=4
+UDB [UDB=(2,3)] contents:
+LAB@[UDB=(2,3)][LB=1] #macrocells=2, #inputs=3, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=\SPIM_0:BSPIM:load_cond\, Mode=(T-Register) @ [UDB=(3,2)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=Net_387, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_670) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\Debouncer_1:DEBOUNCER[0]:d_sync_0\ * 
+              \Debouncer_1:DEBOUNCER[0]:d_sync_1\
+        );
+        Output = Net_387 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\Debouncer_1:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_670) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_331
+        );
+        Output = \Debouncer_1:DEBOUNCER[0]:d_sync_0\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+statusicell: Name =\SPIM_1:BSPIM:RxStsReg\
+    PORT MAP (
+        clock => \SPIM_1:Net_276\ ,
+        status_6 => \SPIM_1:BSPIM:rx_status_6\ ,
+        status_5 => \SPIM_1:BSPIM:rx_status_5\ ,
+        status_4 => \SPIM_1:BSPIM:rx_status_4\ );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "0000000"
+        cy_md_select = "1000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(2,4)] is empty.
+UDB [UDB=(2,5)] is empty.
+UDB [UDB=(3,0)] contents:
+LAB@[UDB=(3,0)][LB=0] #macrocells=3, #inputs=10, #pterms=8
+{
+    [McSlotId=0]:     MacroCell: Name=\SPIM_0:BSPIM:state_1\, Mode=(T-Register) @ [UDB=(3,0)][LB=0][MC=0]
+        Total # of inputs        : 10
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\SPIM_0:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        (
+              !\SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
+              \SPIM_0:BSPIM:state_0\
+            + !\SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_0\ * 
+              !\SPIM_0:BSPIM:count_4\ * !\SPIM_0:BSPIM:count_3\ * 
+              \SPIM_0:BSPIM:count_2\ * !\SPIM_0:BSPIM:count_1\ * 
+              \SPIM_0:BSPIM:count_0\ * !\SPIM_0:BSPIM:tx_status_1\
+            + \SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_0\
+            + \SPIM_0:BSPIM:state_1\ * !\SPIM_0:BSPIM:state_0\ * 
+              !\SPIM_0:BSPIM:count_4\ * !\SPIM_0:BSPIM:count_3\ * 
+              !\SPIM_0:BSPIM:count_2\ * \SPIM_0:BSPIM:count_1\ * 
+              !\SPIM_0:BSPIM:count_0\ * !\SPIM_0:BSPIM:ld_ident\
+        );
+        Output = \SPIM_0:BSPIM:state_1\ (fanout=12)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\SPIM_0:BSPIM:state_2\, Mode=(D-Register) @ [UDB=(3,0)][LB=0][MC=1]
+        Total # of inputs        : 10
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (\SPIM_0:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              !\SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
+              \SPIM_0:BSPIM:state_0\
+            + !\SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_1\ * 
+              !\SPIM_0:BSPIM:state_0\ * !\SPIM_0:BSPIM:count_4\ * 
+              !\SPIM_0:BSPIM:count_3\ * !\SPIM_0:BSPIM:count_2\ * 
+              \SPIM_0:BSPIM:count_1\ * !\SPIM_0:BSPIM:count_0\ * 
+              !\SPIM_0:BSPIM:ld_ident\
+            + !\SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_0\ * 
+              !\SPIM_0:BSPIM:count_4\ * !\SPIM_0:BSPIM:count_3\ * 
+              \SPIM_0:BSPIM:count_2\ * !\SPIM_0:BSPIM:count_1\ * 
+              \SPIM_0:BSPIM:count_0\ * !\SPIM_0:BSPIM:tx_status_1\
+        );
+        Output = \SPIM_0:BSPIM:state_2\ (fanout=12)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\SPIM_0:BSPIM:ld_ident\, Mode=(T-Register) @ [UDB=(3,0)][LB=0][MC=2]
+        Total # of inputs        : 9
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (\SPIM_0:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              \SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
+              !\SPIM_0:BSPIM:state_0\ * !\SPIM_0:BSPIM:ld_ident\
+            + \SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_1\ * 
+              !\SPIM_0:BSPIM:state_0\ * \SPIM_0:BSPIM:ld_ident\
+            + \SPIM_0:BSPIM:state_1\ * !\SPIM_0:BSPIM:state_0\ * 
+              !\SPIM_0:BSPIM:count_4\ * !\SPIM_0:BSPIM:count_3\ * 
+              !\SPIM_0:BSPIM:count_2\ * \SPIM_0:BSPIM:count_1\ * 
+              !\SPIM_0:BSPIM:count_0\ * \SPIM_0:BSPIM:ld_ident\
+        );
+        Output = \SPIM_0:BSPIM:ld_ident\ (fanout=4)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(3,0)][LB=1] #macrocells=3, #inputs=11, #pterms=7
+{
+    [McSlotId=0]:     MacroCell: Name=\SPIM_0:BSPIM:load_cond\, Mode=(T-Register) @ [UDB=(3,0)][LB=1][MC=0]
         Total # of inputs        : 9
         Total # of product terms : 4
         List of special equations: 
@@ -5732,233 +5532,54 @@ LAB@[UDB=(3,2)][LB=0] #macrocells=1, #inputs=9, #pterms=4
         {
         }
 
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(3,2)][LB=1] #macrocells=3, #inputs=10, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=\SPIM_3:BSPIM:state_1\, Mode=(T-Register) @ [UDB=(3,2)][LB=1][MC=0]
-        Total # of inputs        : 10
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (\SPIM_3:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        (
-              !\SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
-              \SPIM_3:BSPIM:state_0\
-            + !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_0\ * 
-              !\SPIM_3:BSPIM:count_4\ * !\SPIM_3:BSPIM:count_3\ * 
-              \SPIM_3:BSPIM:count_2\ * !\SPIM_3:BSPIM:count_1\ * 
-              \SPIM_3:BSPIM:count_0\ * !\SPIM_3:BSPIM:tx_status_1\
-            + \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_0\
-            + \SPIM_3:BSPIM:state_1\ * !\SPIM_3:BSPIM:state_0\ * 
-              !\SPIM_3:BSPIM:count_4\ * !\SPIM_3:BSPIM:count_3\ * 
-              !\SPIM_3:BSPIM:count_2\ * \SPIM_3:BSPIM:count_1\ * 
-              !\SPIM_3:BSPIM:count_0\ * !\SPIM_3:BSPIM:ld_ident\
-        );
-        Output = \SPIM_3:BSPIM:state_1\ (fanout=12)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\SPIM_3:BSPIM:state_2\, Mode=(D-Register) @ [UDB=(3,2)][LB=1][MC=1]
-        Total # of inputs        : 10
-        Total # of product terms : 3
-        List of special equations: 
-            Clock  = (\SPIM_3:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        (
-              !\SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
-              \SPIM_3:BSPIM:state_0\
-            + !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\ * 
-              !\SPIM_3:BSPIM:state_0\ * !\SPIM_3:BSPIM:count_4\ * 
-              !\SPIM_3:BSPIM:count_3\ * !\SPIM_3:BSPIM:count_2\ * 
-              \SPIM_3:BSPIM:count_1\ * !\SPIM_3:BSPIM:count_0\ * 
-              !\SPIM_3:BSPIM:ld_ident\
-            + !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_0\ * 
-              !\SPIM_3:BSPIM:count_4\ * !\SPIM_3:BSPIM:count_3\ * 
-              \SPIM_3:BSPIM:count_2\ * !\SPIM_3:BSPIM:count_1\ * 
-              \SPIM_3:BSPIM:count_0\ * !\SPIM_3:BSPIM:tx_status_1\
-        );
-        Output = \SPIM_3:BSPIM:state_2\ (fanout=12)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\SPIM_3:BSPIM:state_0\, Mode=(T-Register) @ [UDB=(3,2)][LB=1][MC=2]
+    [McSlotId=1]:     MacroCell: Name=Net_25, Mode=(D-Register) @ [UDB=(3,0)][LB=1][MC=1]
         Total # of inputs        : 4
-        Total # of product terms : 3
+        Total # of product terms : 2
         List of special equations: 
-            Clock  = (\SPIM_3:Net_276\) => Global
+            Clock  = (\SPIM_0:Net_276\) => Global
             Clock Enable: True
-        Main Equation            : 3 pterms
+        Main Equation            : 2 pterms
         (
-              !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\
-            + \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\
-            + !\SPIM_3:BSPIM:state_1\ * !\SPIM_3:BSPIM:state_0\ * 
-              !\SPIM_3:BSPIM:tx_status_1\
+              !\SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_1\ * 
+              \SPIM_0:BSPIM:state_0\
+            + \SPIM_0:BSPIM:state_1\ * \SPIM_0:BSPIM:state_0\ * Net_25
         );
-        Output = \SPIM_3:BSPIM:state_0\ (fanout=12)
+        Output = Net_25 (fanout=2)
         Properties               : 
         {
         }
 
-    [McSlotId=3]: (empty)
-}
-
-statusicell: Name =\SPIM_3:BSPIM:TxStsReg\
-    PORT MAP (
-        clock => \SPIM_3:Net_276\ ,
-        status_4 => \SPIM_3:BSPIM:tx_status_4\ ,
-        status_3 => \SPIM_3:BSPIM:load_rx_data\ ,
-        status_2 => \SPIM_3:BSPIM:tx_status_2\ ,
-        status_1 => \SPIM_3:BSPIM:tx_status_1\ ,
-        status_0 => \SPIM_3:BSPIM:tx_status_0\ ,
-        interrupt => Net_160 );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_int_mask = "0000000"
-        cy_md_select = "0001001"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(3,3)] contents:
-LAB@[UDB=(3,3)][LB=0] #macrocells=2, #inputs=11, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=Net_163, Mode=(D-Register) @ [UDB=(3,3)][LB=0][MC=0]
-        Total # of inputs        : 11
-        Total # of product terms : 7
-        List of special equations: 
-            Clock  = (\SPIM_3:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 7 pterms
-        !(
-              !Net_163 * !\SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_0\
-            + !\SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
-              !\SPIM_3:BSPIM:state_0\
-            + !\SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_0\ * 
-              !\SPIM_3:BSPIM:count_4\ * !\SPIM_3:BSPIM:count_3\ * 
-              !\SPIM_3:BSPIM:count_2\ * \SPIM_3:BSPIM:count_1\ * 
-              !\SPIM_3:BSPIM:count_0\ * !\SPIM_3:BSPIM:ld_ident\
-            + \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
-              \SPIM_3:BSPIM:state_0\
-            + \SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\ * 
-              !\SPIM_3:BSPIM:state_0\
-            + \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:mosi_from_dp\
-            + !\SPIM_3:BSPIM:state_0\ * !\SPIM_3:BSPIM:mosi_from_dp\
-        );
-        Output = Net_163 (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\SPIM_3:BSPIM:load_rx_data\, Mode=(Combinatorial) @ [UDB=(3,3)][LB=0][MC=1]
-        Total # of inputs        : 5
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\SPIM_3:BSPIM:count_4\ * !\SPIM_3:BSPIM:count_3\ * 
-              !\SPIM_3:BSPIM:count_2\ * !\SPIM_3:BSPIM:count_1\ * 
-              \SPIM_3:BSPIM:count_0\
-        );
-        Output = \SPIM_3:BSPIM:load_rx_data\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(3,3)][LB=1] #macrocells=3, #inputs=11, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=\SPIM_3:BSPIM:load_cond\, Mode=(T-Register) @ [UDB=(3,3)][LB=1][MC=0]
-        Total # of inputs        : 9
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (\SPIM_3:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        (
-              !\SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:count_4\ * 
-              !\SPIM_3:BSPIM:count_3\ * !\SPIM_3:BSPIM:count_2\ * 
-              !\SPIM_3:BSPIM:count_1\ * !\SPIM_3:BSPIM:count_0\ * 
-              \SPIM_3:BSPIM:load_cond\
-            + \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
-              !\SPIM_3:BSPIM:state_0\ * !\SPIM_3:BSPIM:load_cond\
-            + \SPIM_3:BSPIM:state_1\ * !\SPIM_3:BSPIM:count_4\ * 
-              !\SPIM_3:BSPIM:count_3\ * !\SPIM_3:BSPIM:count_2\ * 
-              !\SPIM_3:BSPIM:count_1\ * !\SPIM_3:BSPIM:count_0\ * 
-              \SPIM_3:BSPIM:load_cond\
-            + \SPIM_3:BSPIM:state_0\ * !\SPIM_3:BSPIM:count_4\ * 
-              !\SPIM_3:BSPIM:count_3\ * !\SPIM_3:BSPIM:count_2\ * 
-              !\SPIM_3:BSPIM:count_1\ * !\SPIM_3:BSPIM:count_0\ * 
-              \SPIM_3:BSPIM:load_cond\
-        );
-        Output = \SPIM_3:BSPIM:load_cond\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\SPIM_3:BSPIM:rx_status_6\, Mode=(Combinatorial) @ [UDB=(3,3)][LB=1][MC=2]
+    [McSlotId=2]:     MacroCell: Name=\SPIM_0:BSPIM:rx_status_6\, Mode=(Combinatorial) @ [UDB=(3,0)][LB=1][MC=2]
         Total # of inputs        : 6
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !\SPIM_3:BSPIM:count_4\ * !\SPIM_3:BSPIM:count_3\ * 
-              !\SPIM_3:BSPIM:count_2\ * !\SPIM_3:BSPIM:count_1\ * 
-              \SPIM_3:BSPIM:count_0\ * \SPIM_3:BSPIM:rx_status_4\
+              !\SPIM_0:BSPIM:count_4\ * !\SPIM_0:BSPIM:count_3\ * 
+              !\SPIM_0:BSPIM:count_2\ * !\SPIM_0:BSPIM:count_1\ * 
+              \SPIM_0:BSPIM:count_0\ * \SPIM_0:BSPIM:rx_status_4\
         );
-        Output = \SPIM_3:BSPIM:rx_status_6\ (fanout=1)
+        Output = \SPIM_0:BSPIM:rx_status_6\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=\SPIM_3:BSPIM:ld_ident\, Mode=(T-Register) @ [UDB=(3,3)][LB=1][MC=3]
-        Total # of inputs        : 9
-        Total # of product terms : 3
-        List of special equations: 
-            Clock  = (\SPIM_3:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        (
-              \SPIM_3:BSPIM:state_2\ * !\SPIM_3:BSPIM:state_1\ * 
-              !\SPIM_3:BSPIM:state_0\ * !\SPIM_3:BSPIM:ld_ident\
-            + \SPIM_3:BSPIM:state_2\ * \SPIM_3:BSPIM:state_1\ * 
-              !\SPIM_3:BSPIM:state_0\ * \SPIM_3:BSPIM:ld_ident\
-            + \SPIM_3:BSPIM:state_1\ * !\SPIM_3:BSPIM:state_0\ * 
-              !\SPIM_3:BSPIM:count_4\ * !\SPIM_3:BSPIM:count_3\ * 
-              !\SPIM_3:BSPIM:count_2\ * \SPIM_3:BSPIM:count_1\ * 
-              !\SPIM_3:BSPIM:count_0\ * \SPIM_3:BSPIM:ld_ident\
-        );
-        Output = \SPIM_3:BSPIM:ld_ident\ (fanout=4)
-        Properties               : 
-        {
-        }
+    [McSlotId=3]: (empty)
 }
 
-datapathcell: Name =\SPIM_3:BSPIM:sR8:Dp:u0\
+datapathcell: Name =\SPIM_0:BSPIM:sR8:Dp:u0\
     PORT MAP (
-        clock => \SPIM_3:Net_276\ ,
-        cs_addr_2 => \SPIM_3:BSPIM:state_2\ ,
-        cs_addr_1 => \SPIM_3:BSPIM:state_1\ ,
-        cs_addr_0 => \SPIM_3:BSPIM:state_0\ ,
-        route_si => Net_166 ,
-        f1_load => \SPIM_3:BSPIM:load_rx_data\ ,
-        so_comb => \SPIM_3:BSPIM:mosi_from_dp\ ,
-        f0_bus_stat_comb => \SPIM_3:BSPIM:tx_status_2\ ,
-        f0_blk_stat_comb => \SPIM_3:BSPIM:tx_status_1\ ,
-        f1_bus_stat_comb => \SPIM_3:BSPIM:rx_status_5\ ,
-        f1_blk_stat_comb => \SPIM_3:BSPIM:rx_status_4\ );
+        clock => \SPIM_0:Net_276\ ,
+        cs_addr_2 => \SPIM_0:BSPIM:state_2\ ,
+        cs_addr_1 => \SPIM_0:BSPIM:state_1\ ,
+        cs_addr_0 => \SPIM_0:BSPIM:state_0\ ,
+        route_si => Net_7 ,
+        f1_load => \SPIM_0:BSPIM:load_rx_data\ ,
+        so_comb => \SPIM_0:BSPIM:mosi_from_dp\ ,
+        f0_bus_stat_comb => \SPIM_0:BSPIM:tx_status_2\ ,
+        f0_blk_stat_comb => \SPIM_0:BSPIM:tx_status_1\ ,
+        f1_bus_stat_comb => \SPIM_0:BSPIM:rx_status_5\ ,
+        f1_blk_stat_comb => \SPIM_0:BSPIM:rx_status_4\ );
     Properties:
     {
         a0_init = "00000000"
@@ -5986,12 +5607,12 @@ datapathcell: Name =\SPIM_3:BSPIM:sR8:Dp:u0\
     Clock Polarity: Active High
     Clock Enable: True
 
-statusicell: Name =\SPIM_3:BSPIM:RxStsReg\
+statusicell: Name =\SPIM_0:BSPIM:RxStsReg\
     PORT MAP (
-        clock => \SPIM_3:Net_276\ ,
-        status_6 => \SPIM_3:BSPIM:rx_status_6\ ,
-        status_5 => \SPIM_3:BSPIM:rx_status_5\ ,
-        status_4 => \SPIM_3:BSPIM:rx_status_4\ );
+        clock => \SPIM_0:Net_276\ ,
+        status_6 => \SPIM_0:BSPIM:rx_status_6\ ,
+        status_5 => \SPIM_0:BSPIM:rx_status_5\ ,
+        status_4 => \SPIM_0:BSPIM:rx_status_4\ );
     Properties:
     {
         cy_force_order = 1
@@ -6001,10 +5622,299 @@ statusicell: Name =\SPIM_3:BSPIM:RxStsReg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(3,4)] contents:
-LAB@[UDB=(3,4)][LB=0] #macrocells=2, #inputs=11, #pterms=8
+UDB [UDB=(3,1)] contents:
+LAB@[UDB=(3,1)][LB=0] #macrocells=2, #inputs=5, #pterms=7
 {
-    [McSlotId=0]:     MacroCell: Name=Net_95, Mode=(D-Register) @ [UDB=(3,4)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=Net_97, Mode=(D-Register) @ [UDB=(3,1)][LB=0][MC=0]
+        Total # of inputs        : 4
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\SPIM_1:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        !(
+              !\SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
+              \SPIM_1:BSPIM:state_0\
+            + !\SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_1\ * !Net_97
+            + \SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
+              !\SPIM_1:BSPIM:state_0\ * !Net_97
+            + \SPIM_1:BSPIM:state_1\ * \SPIM_1:BSPIM:state_0\ * !Net_97
+        );
+        Output = Net_97 (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\SPIM_1:BSPIM:state_0\, Mode=(T-Register) @ [UDB=(3,1)][LB=0][MC=1]
+        Total # of inputs        : 4
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (\SPIM_1:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              !\SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_1\
+            + \SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\
+            + !\SPIM_1:BSPIM:state_1\ * !\SPIM_1:BSPIM:state_0\ * 
+              !\SPIM_1:BSPIM:tx_status_1\
+        );
+        Output = \SPIM_1:BSPIM:state_0\ (fanout=12)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(3,1)][LB=1] #macrocells=3, #inputs=11, #pterms=8
+{
+    [McSlotId=0]:     MacroCell: Name=Net_13, Mode=(D-Register) @ [UDB=(3,1)][LB=1][MC=0]
+        Total # of inputs        : 11
+        Total # of product terms : 7
+        List of special equations: 
+            Clock  = (\SPIM_0:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 7 pterms
+        !(
+              !Net_13 * !\SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_0\
+            + !\SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
+              !\SPIM_0:BSPIM:state_0\
+            + !\SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_0\ * 
+              !\SPIM_0:BSPIM:count_4\ * !\SPIM_0:BSPIM:count_3\ * 
+              !\SPIM_0:BSPIM:count_2\ * \SPIM_0:BSPIM:count_1\ * 
+              !\SPIM_0:BSPIM:count_0\ * !\SPIM_0:BSPIM:ld_ident\
+            + \SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
+              \SPIM_0:BSPIM:state_0\
+            + \SPIM_0:BSPIM:state_2\ * \SPIM_0:BSPIM:state_1\ * 
+              !\SPIM_0:BSPIM:state_0\
+            + \SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:mosi_from_dp\
+            + !\SPIM_0:BSPIM:state_0\ * !\SPIM_0:BSPIM:mosi_from_dp\
+        );
+        Output = Net_13 (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\SPIM_0:BSPIM:load_rx_data\, Mode=(Combinatorial) @ [UDB=(3,1)][LB=1][MC=1]
+        Total # of inputs        : 5
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\SPIM_0:BSPIM:count_4\ * !\SPIM_0:BSPIM:count_3\ * 
+              !\SPIM_0:BSPIM:count_2\ * !\SPIM_0:BSPIM:count_1\ * 
+              \SPIM_0:BSPIM:count_0\
+        );
+        Output = \SPIM_0:BSPIM:load_rx_data\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\SPIM_0:BSPIM:tx_status_0\, Mode=(Combinatorial) @ [UDB=(3,1)][LB=1][MC=3]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \SPIM_0:BSPIM:state_2\ * !\SPIM_0:BSPIM:state_1\ * 
+              \SPIM_0:BSPIM:state_0\
+        );
+        Output = \SPIM_0:BSPIM:tx_status_0\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+statusicell: Name =\SPIM_0:BSPIM:TxStsReg\
+    PORT MAP (
+        clock => \SPIM_0:Net_276\ ,
+        status_4 => \SPIM_0:BSPIM:tx_status_4\ ,
+        status_3 => \SPIM_0:BSPIM:load_rx_data\ ,
+        status_2 => \SPIM_0:BSPIM:tx_status_2\ ,
+        status_1 => \SPIM_0:BSPIM:tx_status_1\ ,
+        status_0 => \SPIM_0:BSPIM:tx_status_0\ ,
+        interrupt => Net_15 );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "0000000"
+        cy_md_select = "0001001"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(3,2)] contents:
+LAB@[UDB=(3,2)][LB=0] #macrocells=3, #inputs=10, #pterms=8
+{
+    [McSlotId=0]:     MacroCell: Name=\SPIM_1:BSPIM:state_1\, Mode=(T-Register) @ [UDB=(3,2)][LB=0][MC=0]
+        Total # of inputs        : 10
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\SPIM_1:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        (
+              !\SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
+              \SPIM_1:BSPIM:state_0\
+            + !\SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_0\ * 
+              !\SPIM_1:BSPIM:count_4\ * !\SPIM_1:BSPIM:count_3\ * 
+              \SPIM_1:BSPIM:count_2\ * !\SPIM_1:BSPIM:count_1\ * 
+              \SPIM_1:BSPIM:count_0\ * !\SPIM_1:BSPIM:tx_status_1\
+            + \SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_0\
+            + \SPIM_1:BSPIM:state_1\ * !\SPIM_1:BSPIM:state_0\ * 
+              !\SPIM_1:BSPIM:count_4\ * !\SPIM_1:BSPIM:count_3\ * 
+              !\SPIM_1:BSPIM:count_2\ * \SPIM_1:BSPIM:count_1\ * 
+              !\SPIM_1:BSPIM:count_0\ * !\SPIM_1:BSPIM:ld_ident\
+        );
+        Output = \SPIM_1:BSPIM:state_1\ (fanout=12)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\SPIM_1:BSPIM:state_2\, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=1]
+        Total # of inputs        : 10
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (\SPIM_1:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              !\SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
+              \SPIM_1:BSPIM:state_0\
+            + !\SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_1\ * 
+              !\SPIM_1:BSPIM:state_0\ * !\SPIM_1:BSPIM:count_4\ * 
+              !\SPIM_1:BSPIM:count_3\ * !\SPIM_1:BSPIM:count_2\ * 
+              \SPIM_1:BSPIM:count_1\ * !\SPIM_1:BSPIM:count_0\ * 
+              !\SPIM_1:BSPIM:ld_ident\
+            + !\SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_0\ * 
+              !\SPIM_1:BSPIM:count_4\ * !\SPIM_1:BSPIM:count_3\ * 
+              \SPIM_1:BSPIM:count_2\ * !\SPIM_1:BSPIM:count_1\ * 
+              \SPIM_1:BSPIM:count_0\ * !\SPIM_1:BSPIM:tx_status_1\
+        );
+        Output = \SPIM_1:BSPIM:state_2\ (fanout=12)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\SPIM_1:BSPIM:ld_ident\, Mode=(T-Register) @ [UDB=(3,2)][LB=0][MC=2]
+        Total # of inputs        : 9
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (\SPIM_1:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              \SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
+              !\SPIM_1:BSPIM:state_0\ * !\SPIM_1:BSPIM:ld_ident\
+            + \SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_1\ * 
+              !\SPIM_1:BSPIM:state_0\ * \SPIM_1:BSPIM:ld_ident\
+            + \SPIM_1:BSPIM:state_1\ * !\SPIM_1:BSPIM:state_0\ * 
+              !\SPIM_1:BSPIM:count_4\ * !\SPIM_1:BSPIM:count_3\ * 
+              !\SPIM_1:BSPIM:count_2\ * \SPIM_1:BSPIM:count_1\ * 
+              !\SPIM_1:BSPIM:count_0\ * \SPIM_1:BSPIM:ld_ident\
+        );
+        Output = \SPIM_1:BSPIM:ld_ident\ (fanout=4)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(3,2)][LB=1] #macrocells=4, #inputs=5, #pterms=8
+{
+    [McSlotId=0]:     MacroCell: Name=\SPIM_1:BSPIM:cnt_enable\, Mode=(T-Register) @ [UDB=(3,2)][LB=1][MC=0]
+        Total # of inputs        : 4
+        Total # of product terms : 4
+        List of special equations: 
+            Clock  = (\SPIM_1:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        (
+              !\SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
+              !\SPIM_1:BSPIM:state_0\ * \SPIM_1:BSPIM:cnt_enable\
+            + !\SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_1\ * 
+              \SPIM_1:BSPIM:state_0\ * !\SPIM_1:BSPIM:cnt_enable\
+            + \SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
+              \SPIM_1:BSPIM:state_0\ * \SPIM_1:BSPIM:cnt_enable\
+            + \SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_1\ * 
+              !\SPIM_1:BSPIM:state_0\ * \SPIM_1:BSPIM:cnt_enable\
+        );
+        Output = \SPIM_1:BSPIM:cnt_enable\ (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=Net_96, Mode=(D-Register) @ [UDB=(3,2)][LB=1][MC=1]
+        Total # of inputs        : 4
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (\SPIM_1:Net_276\) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_1\ * 
+              \SPIM_1:BSPIM:state_0\
+            + \SPIM_1:BSPIM:state_1\ * \SPIM_1:BSPIM:state_0\ * Net_96
+        );
+        Output = Net_96 (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\SPIM_1:BSPIM:tx_status_4\, Mode=(Combinatorial) @ [UDB=(3,2)][LB=1][MC=2]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
+              !\SPIM_1:BSPIM:state_0\
+        );
+        Output = \SPIM_1:BSPIM:tx_status_4\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\SPIM_1:BSPIM:tx_status_0\, Mode=(Combinatorial) @ [UDB=(3,2)][LB=1][MC=3]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
+              \SPIM_1:BSPIM:state_0\
+        );
+        Output = \SPIM_1:BSPIM:tx_status_0\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+statusicell: Name =\SPIM_1:BSPIM:TxStsReg\
+    PORT MAP (
+        clock => \SPIM_1:Net_276\ ,
+        status_4 => \SPIM_1:BSPIM:tx_status_4\ ,
+        status_3 => \SPIM_1:BSPIM:load_rx_data\ ,
+        status_2 => \SPIM_1:BSPIM:tx_status_2\ ,
+        status_1 => \SPIM_1:BSPIM:tx_status_1\ ,
+        status_0 => \SPIM_1:BSPIM:tx_status_0\ ,
+        interrupt => Net_113 );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "0000000"
+        cy_md_select = "0001001"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(3,3)] contents:
+LAB@[UDB=(3,3)][LB=0] #macrocells=2, #inputs=11, #pterms=8
+{
+    [McSlotId=0]:     MacroCell: Name=Net_95, Mode=(D-Register) @ [UDB=(3,3)][LB=0][MC=0]
         Total # of inputs        : 11
         Total # of product terms : 7
         List of special equations: 
@@ -6031,7 +5941,7 @@ LAB@[UDB=(3,4)][LB=0] #macrocells=2, #inputs=11, #pterms=8
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\SPIM_1:BSPIM:load_rx_data\, Mode=(Combinatorial) @ [UDB=(3,4)][LB=0][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\SPIM_1:BSPIM:load_rx_data\, Mode=(Combinatorial) @ [UDB=(3,3)][LB=0][MC=1]
         Total # of inputs        : 5
         Total # of product terms : 1
             Clock Enable: True
@@ -6050,49 +5960,52 @@ LAB@[UDB=(3,4)][LB=0] #macrocells=2, #inputs=11, #pterms=8
     [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(3,4)][LB=1] #macrocells=2, #inputs=5, #pterms=7
+LAB@[UDB=(3,3)][LB=1] #macrocells=2, #inputs=10, #pterms=5
 {
-    [McSlotId=0]:     MacroCell: Name=\SPIM_1:BSPIM:cnt_enable\, Mode=(T-Register) @ [UDB=(3,4)][LB=1][MC=0]
-        Total # of inputs        : 4
+    [McSlotId=0]:     MacroCell: Name=\SPIM_1:BSPIM:load_cond\, Mode=(T-Register) @ [UDB=(3,3)][LB=1][MC=0]
+        Total # of inputs        : 9
         Total # of product terms : 4
         List of special equations: 
             Clock  = (\SPIM_1:Net_276\) => Global
             Clock Enable: True
         Main Equation            : 4 pterms
         (
-              !\SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
-              !\SPIM_1:BSPIM:state_0\ * \SPIM_1:BSPIM:cnt_enable\
-            + !\SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_1\ * 
-              \SPIM_1:BSPIM:state_0\ * !\SPIM_1:BSPIM:cnt_enable\
+              !\SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:count_4\ * 
+              !\SPIM_1:BSPIM:count_3\ * !\SPIM_1:BSPIM:count_2\ * 
+              !\SPIM_1:BSPIM:count_1\ * !\SPIM_1:BSPIM:count_0\ * 
+              \SPIM_1:BSPIM:load_cond\
             + \SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
-              \SPIM_1:BSPIM:state_0\ * \SPIM_1:BSPIM:cnt_enable\
-            + \SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_1\ * 
-              !\SPIM_1:BSPIM:state_0\ * \SPIM_1:BSPIM:cnt_enable\
+              !\SPIM_1:BSPIM:state_0\ * !\SPIM_1:BSPIM:load_cond\
+            + \SPIM_1:BSPIM:state_1\ * !\SPIM_1:BSPIM:count_4\ * 
+              !\SPIM_1:BSPIM:count_3\ * !\SPIM_1:BSPIM:count_2\ * 
+              !\SPIM_1:BSPIM:count_1\ * !\SPIM_1:BSPIM:count_0\ * 
+              \SPIM_1:BSPIM:load_cond\
+            + \SPIM_1:BSPIM:state_0\ * !\SPIM_1:BSPIM:count_4\ * 
+              !\SPIM_1:BSPIM:count_3\ * !\SPIM_1:BSPIM:count_2\ * 
+              !\SPIM_1:BSPIM:count_1\ * !\SPIM_1:BSPIM:count_0\ * 
+              \SPIM_1:BSPIM:load_cond\
         );
-        Output = \SPIM_1:BSPIM:cnt_enable\ (fanout=3)
+        Output = \SPIM_1:BSPIM:load_cond\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\SPIM_1:BSPIM:state_0\, Mode=(T-Register) @ [UDB=(3,4)][LB=1][MC=1]
-        Total # of inputs        : 4
-        Total # of product terms : 3
-        List of special equations: 
-            Clock  = (\SPIM_1:Net_276\) => Global
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\SPIM_1:BSPIM:rx_status_6\, Mode=(Combinatorial) @ [UDB=(3,3)][LB=1][MC=2]
+        Total # of inputs        : 6
+        Total # of product terms : 1
             Clock Enable: True
-        Main Equation            : 3 pterms
+        Main Equation            : 1 pterm
         (
-              !\SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_1\
-            + \SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\
-            + !\SPIM_1:BSPIM:state_1\ * !\SPIM_1:BSPIM:state_0\ * 
-              !\SPIM_1:BSPIM:tx_status_1\
+              !\SPIM_1:BSPIM:count_4\ * !\SPIM_1:BSPIM:count_3\ * 
+              !\SPIM_1:BSPIM:count_2\ * !\SPIM_1:BSPIM:count_1\ * 
+              \SPIM_1:BSPIM:count_0\ * \SPIM_1:BSPIM:rx_status_4\
         );
-        Output = \SPIM_1:BSPIM:state_0\ (fanout=12)
+        Output = \SPIM_1:BSPIM:rx_status_6\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=2]: (empty)
     [McSlotId=3]: (empty)
 }
 
@@ -6159,178 +6072,8 @@ count7cell: Name =\SPIM_1:BSPIM:BitCounter\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(3,5)] contents:
-LAB@[UDB=(3,5)][LB=0] #macrocells=3, #inputs=10, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=\SPIM_1:BSPIM:load_cond\, Mode=(T-Register) @ [UDB=(3,5)][LB=0][MC=0]
-        Total # of inputs        : 9
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (\SPIM_1:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        (
-              !\SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:count_4\ * 
-              !\SPIM_1:BSPIM:count_3\ * !\SPIM_1:BSPIM:count_2\ * 
-              !\SPIM_1:BSPIM:count_1\ * !\SPIM_1:BSPIM:count_0\ * 
-              \SPIM_1:BSPIM:load_cond\
-            + \SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
-              !\SPIM_1:BSPIM:state_0\ * !\SPIM_1:BSPIM:load_cond\
-            + \SPIM_1:BSPIM:state_1\ * !\SPIM_1:BSPIM:count_4\ * 
-              !\SPIM_1:BSPIM:count_3\ * !\SPIM_1:BSPIM:count_2\ * 
-              !\SPIM_1:BSPIM:count_1\ * !\SPIM_1:BSPIM:count_0\ * 
-              \SPIM_1:BSPIM:load_cond\
-            + \SPIM_1:BSPIM:state_0\ * !\SPIM_1:BSPIM:count_4\ * 
-              !\SPIM_1:BSPIM:count_3\ * !\SPIM_1:BSPIM:count_2\ * 
-              !\SPIM_1:BSPIM:count_1\ * !\SPIM_1:BSPIM:count_0\ * 
-              \SPIM_1:BSPIM:load_cond\
-        );
-        Output = \SPIM_1:BSPIM:load_cond\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\SPIM_1:BSPIM:ld_ident\, Mode=(T-Register) @ [UDB=(3,5)][LB=0][MC=1]
-        Total # of inputs        : 9
-        Total # of product terms : 3
-        List of special equations: 
-            Clock  = (\SPIM_1:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        (
-              \SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
-              !\SPIM_1:BSPIM:state_0\ * !\SPIM_1:BSPIM:ld_ident\
-            + \SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_1\ * 
-              !\SPIM_1:BSPIM:state_0\ * \SPIM_1:BSPIM:ld_ident\
-            + \SPIM_1:BSPIM:state_1\ * !\SPIM_1:BSPIM:state_0\ * 
-              !\SPIM_1:BSPIM:count_4\ * !\SPIM_1:BSPIM:count_3\ * 
-              !\SPIM_1:BSPIM:count_2\ * \SPIM_1:BSPIM:count_1\ * 
-              !\SPIM_1:BSPIM:count_0\ * \SPIM_1:BSPIM:ld_ident\
-        );
-        Output = \SPIM_1:BSPIM:ld_ident\ (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\SPIM_1:BSPIM:tx_status_0\, Mode=(Combinatorial) @ [UDB=(3,5)][LB=0][MC=2]
-        Total # of inputs        : 3
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
-              \SPIM_1:BSPIM:state_0\
-        );
-        Output = \SPIM_1:BSPIM:tx_status_0\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(3,5)][LB=1] #macrocells=4, #inputs=11, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=\SPIM_1:BSPIM:state_1\, Mode=(T-Register) @ [UDB=(3,5)][LB=1][MC=0]
-        Total # of inputs        : 10
-        Total # of product terms : 4
-        List of special equations: 
-            Clock  = (\SPIM_1:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        (
-              !\SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
-              \SPIM_1:BSPIM:state_0\
-            + !\SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_0\ * 
-              !\SPIM_1:BSPIM:count_4\ * !\SPIM_1:BSPIM:count_3\ * 
-              \SPIM_1:BSPIM:count_2\ * !\SPIM_1:BSPIM:count_1\ * 
-              \SPIM_1:BSPIM:count_0\ * !\SPIM_1:BSPIM:tx_status_1\
-            + \SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_0\
-            + \SPIM_1:BSPIM:state_1\ * !\SPIM_1:BSPIM:state_0\ * 
-              !\SPIM_1:BSPIM:count_4\ * !\SPIM_1:BSPIM:count_3\ * 
-              !\SPIM_1:BSPIM:count_2\ * \SPIM_1:BSPIM:count_1\ * 
-              !\SPIM_1:BSPIM:count_0\ * !\SPIM_1:BSPIM:ld_ident\
-        );
-        Output = \SPIM_1:BSPIM:state_1\ (fanout=12)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\SPIM_1:BSPIM:state_2\, Mode=(D-Register) @ [UDB=(3,5)][LB=1][MC=1]
-        Total # of inputs        : 10
-        Total # of product terms : 3
-        List of special equations: 
-            Clock  = (\SPIM_1:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        (
-              !\SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
-              \SPIM_1:BSPIM:state_0\
-            + !\SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_1\ * 
-              !\SPIM_1:BSPIM:state_0\ * !\SPIM_1:BSPIM:count_4\ * 
-              !\SPIM_1:BSPIM:count_3\ * !\SPIM_1:BSPIM:count_2\ * 
-              \SPIM_1:BSPIM:count_1\ * !\SPIM_1:BSPIM:count_0\ * 
-              !\SPIM_1:BSPIM:ld_ident\
-            + !\SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_0\ * 
-              !\SPIM_1:BSPIM:count_4\ * !\SPIM_1:BSPIM:count_3\ * 
-              \SPIM_1:BSPIM:count_2\ * !\SPIM_1:BSPIM:count_1\ * 
-              \SPIM_1:BSPIM:count_0\ * !\SPIM_1:BSPIM:tx_status_1\
-        );
-        Output = \SPIM_1:BSPIM:state_2\ (fanout=12)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=Net_96, Mode=(D-Register) @ [UDB=(3,5)][LB=1][MC=2]
-        Total # of inputs        : 4
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (\SPIM_1:Net_276\) => Global
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              !\SPIM_1:BSPIM:state_2\ * \SPIM_1:BSPIM:state_1\ * 
-              \SPIM_1:BSPIM:state_0\
-            + \SPIM_1:BSPIM:state_1\ * \SPIM_1:BSPIM:state_0\ * Net_96
-        );
-        Output = Net_96 (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\SPIM_1:BSPIM:tx_status_4\, Mode=(Combinatorial) @ [UDB=(3,5)][LB=1][MC=3]
-        Total # of inputs        : 3
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\SPIM_1:BSPIM:state_2\ * !\SPIM_1:BSPIM:state_1\ * 
-              !\SPIM_1:BSPIM:state_0\
-        );
-        Output = \SPIM_1:BSPIM:tx_status_4\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-statusicell: Name =\SPIM_1:BSPIM:TxStsReg\
-    PORT MAP (
-        clock => \SPIM_1:Net_276\ ,
-        status_4 => \SPIM_1:BSPIM:tx_status_4\ ,
-        status_3 => \SPIM_1:BSPIM:load_rx_data\ ,
-        status_2 => \SPIM_1:BSPIM:tx_status_2\ ,
-        status_1 => \SPIM_1:BSPIM:tx_status_1\ ,
-        status_0 => \SPIM_1:BSPIM:tx_status_0\ ,
-        interrupt => Net_113 );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_int_mask = "0000000"
-        cy_md_select = "0001001"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
+UDB [UDB=(3,4)] is empty.
+UDB [UDB=(3,5)] is empty.
 Intr container @ [IntrContainer=(0)]: 
   Intr@ [IntrContainer=(0)][IntrId=(0)] 
     interrupt: Name =DMA_Complete_ISR_0
@@ -6395,14 +6138,6 @@ Intr container @ [IntrContainer=(0)]:
         Properties:
         {
             int_type = "00"
-        }
-  Intr@ [IntrContainer=(0)][IntrId=(29)] 
-    interrupt: Name =\ADC_DelSig_1:IRQ\
-        PORT MAP (
-            interrupt => Net_82 );
-        Properties:
-        {
-            int_type = "10"
         }
 Drq container @ [DrqContainer=(0)]: 
   Dma@ [DrqContainer=(0)][DrqId=(0)] 
@@ -7844,47 +7579,6 @@ Pin : Name = LED_MODE_2(0)
     {
     }
 
-[IoId=5]: 
-Pin : Name = POT_IN(0)
-    Attributes:
-        In Group/Port: True
-        In Sync Option: AUTO
-        Out Sync Option: AUTO
-        Interrupt generated: False
-        Interrupt mode: NONE
-        Drive mode: HI_Z_ANALOG
-        VTrip: EITHER
-        Slew: FAST
-        Input Sync needed: False
-        Output Sync needed: False
-        SC shield enabled: False
-        POR State: ANY
-        LCD Mode: COMMON
-        Register Mode: RegComb
-        CaSense Mode: NEITHER
-        Treat as pin: True
-        Is OE Registered: False
-        Uses Analog: True
-        Can contain Digital: False
-        Is SIO: False
-        SIO Output Buf: NONREGULATED
-        SIO Input Buf: SINGLE_ENDED
-        SIO HiFreq: LOW
-        SIO Hyst: DISABLED
-        SIO Vtrip: MULTIPLIER_0_5
-        SIO Multiplier Index: 0
-        SIO RefSel: VCC_IO
-        Required Capabilitites: ANALOG
-        Initial Value: 0
-        IO Voltage: 0
-    PORT MAP (
-        pa_out => POT_IN(0)__PA ,
-        analog_term => Net_73 ,
-        pad => POT_IN(0)_PAD );
-    Properties:
-    {
-    }
-
 Port 12 is empty
 Port 15 contains the following IO cells:
 [IoId=5]: 
@@ -7946,78 +7640,27 @@ Clock group 0:
             clk_sync => ClockBlock_MASTER_CLK ,
             clk_bus_glb => ClockBlock_BUS_CLK ,
             clk_bus => ClockBlock_BUS_CLK_local ,
-            dclk_glb_0 => \ADC_DelSig_1:Net_93\ ,
-            dclk_0 => \ADC_DelSig_1:Net_93_local\ ,
-            dclk_glb_1 => \SPIM_1:Net_276\ ,
-            dclk_1 => \SPIM_1:Net_276_local\ ,
-            dclk_glb_2 => \SPIM_2:Net_276\ ,
-            dclk_2 => \SPIM_2:Net_276_local\ ,
-            dclk_glb_3 => \SPIM_0:Net_276\ ,
-            dclk_3 => \SPIM_0:Net_276_local\ ,
-            dclk_glb_4 => \SPIM_3:Net_276\ ,
-            dclk_4 => \SPIM_3:Net_276_local\ ,
-            dclk_glb_5 => Net_412 ,
-            dclk_5 => Net_412_local ,
-            aclk_glb_0 => \ADC_DelSig_1:Net_488\ ,
-            aclk_0 => \ADC_DelSig_1:Net_488_local\ ,
-            clk_a_dig_glb_0 => \ADC_DelSig_1:Net_488_adig\ ,
-            clk_a_dig_0 => \ADC_DelSig_1:Net_488_adig_local\ ,
-            dclk_glb_6 => Net_670 ,
-            dclk_6 => Net_670_local ,
-            dclk_glb_7 => Net_392 ,
-            dclk_7 => Net_392_local );
+            dclk_glb_0 => \SPIM_1:Net_276\ ,
+            dclk_0 => \SPIM_1:Net_276_local\ ,
+            dclk_glb_1 => \SPIM_2:Net_276\ ,
+            dclk_1 => \SPIM_2:Net_276_local\ ,
+            dclk_glb_2 => \SPIM_0:Net_276\ ,
+            dclk_2 => \SPIM_0:Net_276_local\ ,
+            dclk_glb_3 => \SPIM_3:Net_276\ ,
+            dclk_3 => \SPIM_3:Net_276_local\ ,
+            dclk_glb_4 => Net_412 ,
+            dclk_4 => Net_412_local ,
+            dclk_glb_5 => Net_670 ,
+            dclk_5 => Net_670_local ,
+            dclk_glb_6 => Net_392 ,
+            dclk_6 => Net_392_local );
         Properties:
         {
         }
 Comparator group 0: empty
 Digital Filter Block group 0: empty
-Delta-Sigma ADC group 0: 
-    DS Modulator @ F(DSM,0): 
-    dsmodcell: Name =\ADC_DelSig_1:DSM\
-        PORT MAP (
-            aclock => \ADC_DelSig_1:Net_488\ ,
-            vplus => Net_73 ,
-            vminus => \ADC_DelSig_1:Net_20\ ,
-            reset_dec => \ADC_DelSig_1:mod_reset\ ,
-            extclk_cp_udb => \ADC_DelSig_1:Net_93_local\ ,
-            ext_pin_1 => \ADC_DelSig_1:Net_249\ ,
-            ext_pin_2 => \ADC_DelSig_1:Net_257\ ,
-            ext_vssa => \ADC_DelSig_1:Net_109\ ,
-            qtz_ref => \ADC_DelSig_1:Net_34\ ,
-            dec_clock => \ADC_DelSig_1:aclock\ ,
-            mod_dat_3 => \ADC_DelSig_1:mod_dat_3\ ,
-            mod_dat_2 => \ADC_DelSig_1:mod_dat_2\ ,
-            mod_dat_1 => \ADC_DelSig_1:mod_dat_1\ ,
-            mod_dat_0 => \ADC_DelSig_1:mod_dat_0\ ,
-            dout_udb_7 => \ADC_DelSig_1:Net_245_7\ ,
-            dout_udb_6 => \ADC_DelSig_1:Net_245_6\ ,
-            dout_udb_5 => \ADC_DelSig_1:Net_245_5\ ,
-            dout_udb_4 => \ADC_DelSig_1:Net_245_4\ ,
-            dout_udb_3 => \ADC_DelSig_1:Net_245_3\ ,
-            dout_udb_2 => \ADC_DelSig_1:Net_245_2\ ,
-            dout_udb_1 => \ADC_DelSig_1:Net_245_1\ ,
-            dout_udb_0 => \ADC_DelSig_1:Net_245_0\ );
-        Properties:
-        {
-            cy_registers = ""
-            resolution = 16
-        }
-Decimator group 0: 
-    Decimator Block @ F(Decimator,0): 
-    decimatorcell: Name =\ADC_DelSig_1:DEC\
-        PORT MAP (
-            aclock => \ADC_DelSig_1:aclock\ ,
-            mod_dat_3 => \ADC_DelSig_1:mod_dat_3\ ,
-            mod_dat_2 => \ADC_DelSig_1:mod_dat_2\ ,
-            mod_dat_1 => \ADC_DelSig_1:mod_dat_1\ ,
-            mod_dat_0 => \ADC_DelSig_1:mod_dat_0\ ,
-            ext_start => __ONE__ ,
-            modrst => \ADC_DelSig_1:mod_reset\ ,
-            interrupt => Net_82 );
-        Properties:
-        {
-            cy_registers = ""
-        }
+Delta-Sigma ADC group 0: empty
+Decimator group 0: empty
 EMIF group 0: empty
 I2C group 0: 
     I2C Block @ F(I2C,0): 
@@ -8044,38 +7687,9 @@ USB group 0: empty
 VIDAC group 0: empty
 Opamp group 0: empty
 CapSense Buffers group 0: empty
-Vref group 0: 
-    Vref Block @ F(Vref,6): 
-    vrefcell: Name =\ADC_DelSig_1:vRef_2\
-        PORT MAP (
-            vout => \ADC_DelSig_1:Net_244\ );
-        Properties:
-        {
-            autoenable = 1
-            guid = "15B3DB15-B7B3-4d62-A2DF-25EA392A7161"
-            ignoresleep = 0
-            name = "Vssa (GND)"
-        }
+Vref group 0: empty
 LPF group 0: empty
 SAR ADC group 0: empty
-
-Blocks not positioned by the digital component placer:
-    Amux Block @ <No Location>: 
-    amuxcell: Name =\ADC_DelSig_1:AMux\
-        PORT MAP (
-            muxin_1 => \ADC_DelSig_1:Net_35\ ,
-            muxin_0 => \ADC_DelSig_1:Net_244\ ,
-            vout => \ADC_DelSig_1:Net_20\ );
-        Properties:
-        {
-            api_type = 0
-            connect_mode = 1
-            cy_registers = ""
-            hw_control = 0
-            init_mux_sel = "00"
-            muxin_width = 2
-            one_active = 0
-        }
 </CYPRESSTAG>
 <CYPRESSTAG name="Port Configuration Details">
 
@@ -8123,39 +7737,38 @@ Port | Pin | Fixed |      Type |       Drive Mode |              Name | Connecti
      |   1 |     * |      NONE |      RES_PULL_UP |           MODE(0) | FB(Net_331)
      |   2 |     * |      NONE |         CMOS_OUT |     LED_MODE_1(0) | 
      |   3 |     * |      NONE |         CMOS_OUT |     LED_MODE_2(0) | 
-     |   5 |     * |      NONE |      HI_Z_ANALOG |         POT_IN(0) | Analog(Net_73)
 -----+-----+-------+-----------+------------------+-------------------+-----------------------------------------------
   15 |   5 |     * |      NONE |      RES_PULL_UP | TOGGLE_LANTERN(0) | FB(Net_679)
 ----------------------------------------------------------------------------------------------------------------------
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.002ms
-Digital Placement phase: Elapsed time ==> 1s.373ms
+Digital component placer commit/Report: Elapsed time ==> 0s.003ms
+Digital Placement phase: Elapsed time ==> 1s.336ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 1s.543ms
+Digital Routing phase: Elapsed time ==> 1s.401ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.208ms
+Bitstream and API generation phase: Elapsed time ==> 0s.191ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.022ms
+Bitstream verification phase: Elapsed time ==> 0s.021ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in FinalProject_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.433ms
+Static timing analysis phase: Elapsed time ==> 0s.422ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.166ms
+Design database save phase: Elapsed time ==> 0s.112ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 4s.143ms
+cydsfit: Elapsed time ==> 3s.891ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 4s.165ms
-API generation phase: Elapsed time ==> 2s.569ms
-Dependency generation phase: Elapsed time ==> 0s.027ms
-Cleanup phase: Elapsed time ==> 0s.001ms
+Fitter phase: Elapsed time ==> 3s.913ms
+API generation phase: Elapsed time ==> 2s.195ms
+Dependency generation phase: Elapsed time ==> 0s.031ms
+Cleanup phase: Elapsed time ==> 0s.000ms

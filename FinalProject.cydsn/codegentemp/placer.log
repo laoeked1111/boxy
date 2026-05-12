@@ -6,7 +6,7 @@
 
 #Build Date:         Apr 25 2016 12:55:34
 
-#File Generated:     May 12 2026 14:16:47
+#File Generated:     May 12 2026 14:50:51
 
 #Purpose:            
 
@@ -44,7 +44,7 @@ Phase 2
 Phase 3
 
 Design Statistics after Packing
-    Number of Combinational MCs 	:	18
+    Number of Combinational MCs 	:	17
     Number of Sequential MCs    	:	46
     Number of DPs               	:	5
     Number of Controls          	:	5
@@ -53,9 +53,9 @@ Design Statistics after Packing
     Number of count7cells       	:	4
 
 Device Utilization Summary after Packing
-    Macrocells                  :	64/192
+    Macrocells                  :	63/192
     UDBS                        :	14/24
-    IOs                         :	36/72
+    IOs                         :	35/72
 
 
 D2088: Phase 3, elapsed time : 0.0 (sec)
@@ -79,11 +79,33 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 19
-Clock: ADC_DelSig_1_Ext_CP_Clk | Frequency: N/A       | Target:  24.0 MHz
-Clock: ADC_DelSig_1_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
-Clock: ADC_DelSig_1_theACLK | Frequency: N/A       | Target:   0.3 MHz
-Clock: ADC_DelSig_1_theACLK(fixed-function) | Frequency: N/A       | Target:   0.3 MHz
+Number of clocks: 14
+Clock: Clock_1              | Frequency: 142.8 MHz | Target:   0.0 MHz
+Clock: Clock_2              | Frequency: N/A       | Target:   0.0 MHz
+Clock: Clock_2(routed)      | Frequency: N/A       | Target:   0.0 MHz
+Clock: Clock_3              | Frequency:  85.3 MHz | Target:  12.0 MHz
+Clock: CyBUS_CLK            | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
+Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
+Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
+Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
+Clock: SPIM_0_IntClock      | Frequency:  65.0 MHz | Target:  24.0 MHz
+Clock: SPIM_1_IntClock      | Frequency:  65.0 MHz | Target:  24.0 MHz
+Clock: SPIM_2_IntClock      | Frequency:  63.4 MHz | Target:  24.0 MHz
+Clock: SPIM_3_IntClock      | Frequency:  65.0 MHz | Target:  24.0 MHz
+
+======================================================================
+                     End of Clock Summary
+######################################################################
+
+D2088: Phase 6, elapsed time : 0.0 (sec)
+
+Phase 7
+######################################################################
+                     Clock Summary 
+======================================================================
+Number of clocks: 14
 Clock: Clock_1              | Frequency: 142.8 MHz | Target:   0.0 MHz
 Clock: Clock_2              | Frequency: N/A       | Target:   0.0 MHz
 Clock: Clock_2(routed)      | Frequency: N/A       | Target:   0.0 MHz
@@ -98,38 +120,6 @@ Clock: SPIM_0_IntClock      | Frequency:  65.0 MHz | Target:  24.0 MHz
 Clock: SPIM_1_IntClock      | Frequency:  65.0 MHz | Target:  24.0 MHz
 Clock: SPIM_2_IntClock      | Frequency:  65.0 MHz | Target:  24.0 MHz
 Clock: SPIM_3_IntClock      | Frequency:  65.0 MHz | Target:  24.0 MHz
-Clock: \ADC_DelSig_1:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
-
-======================================================================
-                     End of Clock Summary
-######################################################################
-
-D2088: Phase 6, elapsed time : 0.0 (sec)
-
-Phase 7
-######################################################################
-                     Clock Summary 
-======================================================================
-Number of clocks: 19
-Clock: ADC_DelSig_1_Ext_CP_Clk | Frequency: N/A       | Target:  24.0 MHz
-Clock: ADC_DelSig_1_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
-Clock: ADC_DelSig_1_theACLK | Frequency: N/A       | Target:   0.3 MHz
-Clock: ADC_DelSig_1_theACLK(fixed-function) | Frequency: N/A       | Target:   0.3 MHz
-Clock: Clock_1              | Frequency: 142.8 MHz | Target:   0.0 MHz
-Clock: Clock_2              | Frequency: N/A       | Target:   0.0 MHz
-Clock: Clock_2(routed)      | Frequency: N/A       | Target:   0.0 MHz
-Clock: Clock_3              | Frequency:  85.3 MHz | Target:  12.0 MHz
-Clock: CyBUS_CLK            | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
-Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
-Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
-Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: SPIM_0_IntClock      | Frequency:  65.0 MHz | Target:  24.0 MHz
-Clock: SPIM_1_IntClock      | Frequency:  65.0 MHz | Target:  24.0 MHz
-Clock: SPIM_2_IntClock      | Frequency:  65.0 MHz | Target:  24.0 MHz
-Clock: SPIM_3_IntClock      | Frequency:  65.0 MHz | Target:  24.0 MHz
-Clock: \ADC_DelSig_1:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -137,18 +127,18 @@ Clock: \ADC_DelSig_1:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
 D2088: Phase 7, elapsed time : 0.6 (sec)
 
 Final Design Statistics
-    Number of Combinational MCs 	:	18
+    Number of Combinational MCs 	:	17
     Number of Sequential MCs    	:	46
     Number of DPs               	:	5
     Number of Controls          	:	5
     Number of Status            	:	9
     Number of SyncCells         	:	0
     Number of count7cells       	:	4
-    Number of IOs       	:	36
+    Number of IOs       	:	35
 
 Device Utilization Summary
-    Macrocells                  :	64/192
-    IOs                         :	36/72
+    Macrocells                  :	63/192
+    IOs                         :	35/72
 
 
 
@@ -164,12 +154,8 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 19
-Clock: ADC_DelSig_1_Ext_CP_Clk | Frequency: N/A       | Target:  24.0 MHz
-Clock: ADC_DelSig_1_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  24.0 MHz
-Clock: ADC_DelSig_1_theACLK | Frequency: N/A       | Target:   0.3 MHz
-Clock: ADC_DelSig_1_theACLK(fixed-function) | Frequency: N/A       | Target:   0.3 MHz
-Clock: Clock_1              | Frequency:  79.7 MHz | Target:   0.0 MHz
+Number of clocks: 14
+Clock: Clock_1              | Frequency: 104.8 MHz | Target:   0.0 MHz
 Clock: Clock_2              | Frequency: N/A       | Target:   0.0 MHz
 Clock: Clock_2(routed)      | Frequency: N/A       | Target:   0.0 MHz
 Clock: Clock_3              | Frequency:  77.2 MHz | Target:  13.2 MHz
@@ -179,11 +165,10 @@ Clock: CyILO                | Frequency: N/A       | Target:   0.0 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:   3.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  24.0 MHz
-Clock: SPIM_0_IntClock      | Frequency:  62.3 MHz | Target:  26.3 MHz
-Clock: SPIM_1_IntClock      | Frequency:  67.4 MHz | Target:  26.3 MHz
-Clock: SPIM_2_IntClock      | Frequency:  65.0 MHz | Target:  26.3 MHz
-Clock: SPIM_3_IntClock      | Frequency:  65.0 MHz | Target:  26.3 MHz
-Clock: \ADC_DelSig_1:DSM\/dec_clock | Frequency: N/A       | Target:   0.1 MHz
+Clock: SPIM_0_IntClock      | Frequency:  66.8 MHz | Target:  26.3 MHz
+Clock: SPIM_1_IntClock      | Frequency:  65.0 MHz | Target:  26.3 MHz
+Clock: SPIM_2_IntClock      | Frequency:  69.7 MHz | Target:  26.3 MHz
+Clock: SPIM_3_IntClock      | Frequency:  67.4 MHz | Target:  26.3 MHz
 
 ======================================================================
                      End of Clock Summary

@@ -16,18 +16,6 @@ CY_ISR(Mode_Handler) {
     mode_changed = 1;
 }
 
-// automatic brightness adjustment for lantern
-volatile uint8_t brightIdx = 0;
-volatile uint8_t brightness = 255;
-volatile uint8_t brightnessChanged = 0;
-CY_ISR(Bright_Handler) {
-    if (mode == 2) {
-        brightnessChanged = 1;
-        brightIdx += 1;
-        brightness = sineBrightness[brightIdx];
-    }
-}
-
 // changing between orange and blue lantern
 volatile uint8_t lanternMode = 0;
 volatile uint8_t lanternModeChanged = 0;
@@ -35,6 +23,25 @@ CY_ISR(LanternToggle_Handler) {
     lanternMode = (lanternMode == 0) ? 1 : 0;
     lanternModeChanged = 1;
 }
+
+// automatic brightness adjustment for lantern
+volatile uint8_t brightIdx = 0;
+volatile uint8_t brightness = 255;
+volatile uint8_t brightnessChanged = 0;
+CY_ISR(Bright_Handler) {
+    
+    if (mode != 2 && brightness != 255) {
+        brightnessChanged = 1;
+        brightness = 255;
+    }
+    
+    if (mode == 2) {
+        brightnessChanged = 1;
+        brightIdx += 1;
+        brightness = sineBrightness[brightIdx];
+    }
+}
+
 
 int main() {
     
@@ -58,10 +65,6 @@ int main() {
     tftStart(1);
     tftStart(2);
     tftStart(3);
-    
-    // get ADC data
-    ADC_DelSig_1_Start();
-    ADC_DelSig_1_StartConvert();
     
     // start IMU
     I2C_1_Start();

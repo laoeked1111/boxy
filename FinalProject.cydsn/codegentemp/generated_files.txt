@@ -50,13 +50,6 @@
   <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\RESET0.h" value="NONE;RESET0" />
   <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_0.c" value="ARM_C_FILE;DMA_Complete_ISR_0" />
   <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_0.h" value="NONE;DMA_Complete_ISR_0" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\POT_IN_aliases.h" value="NONE;POT_IN" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\POT_IN.c" value="ARM_C_FILE;POT_IN" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\POT_IN.h" value="NONE;POT_IN" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1.c" value="ARM_C_FILE;ADC_DelSig_1" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1.h" value="NONE;ADC_DelSig_1" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_PM.c" value="ARM_C_FILE;ADC_DelSig_1" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_INT.c" value="ARM_C_FILE;ADC_DelSig_1" />
   <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_1.c" value="ARM_C_FILE;SPIM_1" />
   <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_1.h" value="NONE;SPIM_1" />
   <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_1_PM.c" value="ARM_C_FILE;SPIM_1" />
@@ -193,14 +186,6 @@
   <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LANTERN_TOGGLE_ISR.h" value="NONE;LANTERN_TOGGLE_ISR" />
   <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_0_IntClock.c" value="ARM_C_FILE;SPIM_0_IntClock" />
   <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_0_IntClock.h" value="NONE;SPIM_0_IntClock" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_AMux.c" value="ARM_C_FILE;ADC_DelSig_1_AMux" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_AMux.h" value="NONE;ADC_DelSig_1_AMux" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_Ext_CP_Clk.c" value="ARM_C_FILE;ADC_DelSig_1_Ext_CP_Clk" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_Ext_CP_Clk.h" value="NONE;ADC_DelSig_1_Ext_CP_Clk" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_IRQ.c" value="ARM_C_FILE;ADC_DelSig_1_IRQ" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_IRQ.h" value="NONE;ADC_DelSig_1_IRQ" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_theACLK.c" value="ARM_C_FILE;ADC_DelSig_1_theACLK" />
-  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_theACLK.h" value="NONE;ADC_DelSig_1_theACLK" />
   <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_1_IntClock.c" value="ARM_C_FILE;SPIM_1_IntClock" />
   <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_1_IntClock.h" value="NONE;SPIM_1_IntClock" />
   <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_2_IntClock.c" value="ARM_C_FILE;SPIM_2_IntClock" />
