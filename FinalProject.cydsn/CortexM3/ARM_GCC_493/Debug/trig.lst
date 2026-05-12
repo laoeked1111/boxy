@@ -1,0 +1,1086 @@
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"trig.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.getSinQ15,"ax",%progbits
+  19              		.align	2
+  20              		.global	getSinQ15
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	getSinQ15, %function
+  24              	getSinQ15:
+  25              	.LFB63:
+  26              		.file 1 ".\\trig.c"
+   1:.\trig.c      **** 
+   2:.\trig.c      **** #include <project.h>
+   3:.\trig.c      **** #include "trig.h"
+   4:.\trig.c      **** 
+   5:.\trig.c      **** // Sine lookup table in degrees in Q15 format.
+   6:.\trig.c      **** const int16_t sinLUT[360] = {
+   7:.\trig.c      ****     0,   572,  1144,  1715,  2286,  2856,  3425,  3993,  4560,  5126,
+   8:.\trig.c      ****     5690,  6252,  6813,  7371,  7927,  8481,  9032,  9580, 10126, 10668,
+   9:.\trig.c      ****     11207, 11743, 12275, 12803, 13328, 13848, 14365, 14876, 15384, 15886,
+  10:.\trig.c      ****     16384, 16877, 17364, 17847, 18324, 18795, 19261, 19720, 20174, 20622,
+  11:.\trig.c      ****     21063, 21498, 21926, 22348, 22763, 23170, 23571, 23965, 24351, 24730,
+  12:.\trig.c      ****     25102, 25466, 25822, 26170, 26510, 26842, 27166, 27482, 27789, 28088,
+  13:.\trig.c      ****     28378, 28660, 28932, 29197, 29452, 29698, 29935, 30163, 30382, 30592,
+  14:.\trig.c      ****     30792, 30983, 31164, 31336, 31499, 31651, 31795, 31928, 32052, 32166,
+  15:.\trig.c      ****     32270, 32365, 32449, 32524, 32588, 32643, 32688, 32723, 32748, 32763,
+  16:.\trig.c      ****     32768, 32763, 32748, 32723, 32688, 32643, 32588, 32524, 32449, 32365,
+  17:.\trig.c      ****     32270, 32166, 32052, 31928, 31795, 31651, 31499, 31336, 31164, 30983,
+  18:.\trig.c      ****     30792, 30592, 30382, 30163, 29935, 29698, 29452, 29197, 28932, 28660,
+  19:.\trig.c      ****     28378, 28088, 27789, 27482, 27166, 26842, 26510, 26170, 25822, 25466,
+  20:.\trig.c      ****     25102, 24730, 24351, 23965, 23571, 23170, 22763, 22348, 21926, 21498,
+  21:.\trig.c      ****     21063, 20622, 20174, 19720, 19261, 18795, 18324, 17847, 17364, 16877,
+  22:.\trig.c      ****     16384, 15886, 15384, 14876, 14365, 13848, 13328, 12803, 12275, 11743,
+  23:.\trig.c      ****     11207, 10668, 10126,  9580,  9032,  8481,  7927,  7371,  6813,  6252,
+  24:.\trig.c      ****     5690,  5126,  4560,  3993,  3425,  2856,  2286,  1715,  1144,   572,
+  25:.\trig.c      ****     0,  -572, -1144, -1715, -2286, -2856, -3425, -3993, -4560, -5126,
+  26:.\trig.c      ****     -5690, -6252, -6813, -7371, -7927, -8481, -9032, -9580, -10126, -10668,
+  27:.\trig.c      ****     -11207, -11743, -12275, -12803, -13328, -13848, -14365, -14876, -15384, -15886,
+  28:.\trig.c      ****     -16384, -16877, -17364, -17847, -18324, -18795, -19261, -19720, -20174, -20622,
+  29:.\trig.c      ****     -21063, -21498, -21926, -22348, -22763, -23170, -23571, -23965, -24351, -24730,
+  30:.\trig.c      ****     -25102, -25466, -25822, -26170, -26510, -26842, -27166, -27482, -27789, -28088,
+  31:.\trig.c      ****     -28378, -28660, -28932, -29197, -29452, -29698, -29935, -30163, -30382, -30592,
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 2
+
+
+  32:.\trig.c      ****     -30792, -30983, -31164, -31336, -31499, -31651, -31795, -31928, -32052, -32166,
+  33:.\trig.c      ****     -32270, -32365, -32449, -32524, -32588, -32643, -32688, -32723, -32748, -32763,
+  34:.\trig.c      ****     -32768, -32763, -32748, -32723, -32688, -32643, -32588, -32524, -32449, -32365,
+  35:.\trig.c      ****     -32270, -32166, -32052, -31928, -31795, -31651, -31499, -31336, -31164, -30983,
+  36:.\trig.c      ****     30792, -30592, -30382, -30163, -29935, -29698, -29452, -29197, -28932, -28660,
+  37:.\trig.c      ****     -28378, -28088, -27789, -27482, -27166, -26842, -26510, -26170, -25822, -25466,
+  38:.\trig.c      ****     -25102, -24730, -24351, -23965, -23571, -23170, -22763, -22348, -21926, -21498,
+  39:.\trig.c      ****     -21063, -20622, -20174, -19720, -19261, -18795, -18324, -17847, -17364, -16877,
+  40:.\trig.c      ****     -16384, -15886, -15384, -14876, -14365, -13848, -13328, -12803, -12275, -11743,
+  41:.\trig.c      ****     -11207, -10668, -10126,  -9580,  -9032,  -8481,  -7927,  -7371,  -6813,  -6252,
+  42:.\trig.c      ****     -5690,  -5126,  -4560,  -3993,  -3425,  -2856,  -2286,  -1715,  -1144,   -572
+  43:.\trig.c      **** };
+  44:.\trig.c      **** 
+  45:.\trig.c      **** 
+  46:.\trig.c      **** int16_t getSinQ15(uint16_t degrees)
+  47:.\trig.c      **** {
+  27              		.loc 1 47 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  48:.\trig.c      ****     return sinLUT[degrees % 360];
+  33              		.loc 1 48 0
+  34 0000 C308     		lsrs	r3, r0, #3
+  35 0002 064A     		ldr	r2, .L2
+  36 0004 A2FB0323 		umull	r2, r3, r2, r3
+  37 0008 9B08     		lsrs	r3, r3, #2
+  38 000a 4FF4B472 		mov	r2, #360
+  39 000e 02FB1300 		mls	r0, r2, r3, r0
+  40              	.LVL1:
+  41 0012 80B2     		uxth	r0, r0
+  49:.\trig.c      **** }
+  42              		.loc 1 49 0
+  43 0014 024B     		ldr	r3, .L2+4
+  44 0016 33F91000 		ldrsh	r0, [r3, r0, lsl #1]
+  45 001a 7047     		bx	lr
+  46              	.L3:
+  47              		.align	2
+  48              	.L2:
+  49 001c 176CC116 		.word	381774871
+  50 0020 00000000 		.word	.LANCHOR0
+  51              		.cfi_endproc
+  52              	.LFE63:
+  53              		.size	getSinQ15, .-getSinQ15
+  54              		.section	.text.getCosQ15,"ax",%progbits
+  55              		.align	2
+  56              		.global	getCosQ15
+  57              		.thumb
+  58              		.thumb_func
+  59              		.type	getCosQ15, %function
+  60              	getCosQ15:
+  61              	.LFB64:
+  50:.\trig.c      **** 
+  51:.\trig.c      **** int16_t getCosQ15(uint16_t degrees)
+  52:.\trig.c      **** {
+  62              		.loc 1 52 0
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 3
+
+
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		@ link register save eliminated.
+  67              	.LVL2:
+  53:.\trig.c      ****     return sinLUT[(degrees + 90) % 360];                // 90 degree phase offset
+  68              		.loc 1 53 0
+  69 0000 5A30     		adds	r0, r0, #90
+  70              	.LVL3:
+  71 0002 074A     		ldr	r2, .L5
+  72 0004 80FB0223 		smull	r2, r3, r0, r2
+  73 0008 C218     		adds	r2, r0, r3
+  74 000a C317     		asrs	r3, r0, #31
+  75 000c C3EB2223 		rsb	r3, r3, r2, asr #8
+  76 0010 4FF4B472 		mov	r2, #360
+  77 0014 02FB1303 		mls	r3, r2, r3, r0
+  54:.\trig.c      **** }
+  78              		.loc 1 54 0
+  79 0018 024A     		ldr	r2, .L5+4
+  80 001a 32F91300 		ldrsh	r0, [r2, r3, lsl #1]
+  81 001e 7047     		bx	lr
+  82              	.L6:
+  83              		.align	2
+  84              	.L5:
+  85 0020 B7600BB6 		.word	-1240768329
+  86 0024 00000000 		.word	.LANCHOR0
+  87              		.cfi_endproc
+  88              	.LFE64:
+  89              		.size	getCosQ15, .-getCosQ15
+  90              		.global	sinLUT
+  91              		.section	.rodata
+  92              		.align	2
+  93              		.set	.LANCHOR0,. + 0
+  94              		.type	sinLUT, %object
+  95              		.size	sinLUT, 720
+  96              	sinLUT:
+  97 0000 0000     		.short	0
+  98 0002 3C02     		.short	572
+  99 0004 7804     		.short	1144
+ 100 0006 B306     		.short	1715
+ 101 0008 EE08     		.short	2286
+ 102 000a 280B     		.short	2856
+ 103 000c 610D     		.short	3425
+ 104 000e 990F     		.short	3993
+ 105 0010 D011     		.short	4560
+ 106 0012 0614     		.short	5126
+ 107 0014 3A16     		.short	5690
+ 108 0016 6C18     		.short	6252
+ 109 0018 9D1A     		.short	6813
+ 110 001a CB1C     		.short	7371
+ 111 001c F71E     		.short	7927
+ 112 001e 2121     		.short	8481
+ 113 0020 4823     		.short	9032
+ 114 0022 6C25     		.short	9580
+ 115 0024 8E27     		.short	10126
+ 116 0026 AC29     		.short	10668
+ 117 0028 C72B     		.short	11207
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 4
+
+
+ 118 002a DF2D     		.short	11743
+ 119 002c F32F     		.short	12275
+ 120 002e 0332     		.short	12803
+ 121 0030 1034     		.short	13328
+ 122 0032 1836     		.short	13848
+ 123 0034 1D38     		.short	14365
+ 124 0036 1C3A     		.short	14876
+ 125 0038 183C     		.short	15384
+ 126 003a 0E3E     		.short	15886
+ 127 003c 0040     		.short	16384
+ 128 003e ED41     		.short	16877
+ 129 0040 D443     		.short	17364
+ 130 0042 B745     		.short	17847
+ 131 0044 9447     		.short	18324
+ 132 0046 6B49     		.short	18795
+ 133 0048 3D4B     		.short	19261
+ 134 004a 084D     		.short	19720
+ 135 004c CE4E     		.short	20174
+ 136 004e 8E50     		.short	20622
+ 137 0050 4752     		.short	21063
+ 138 0052 FA53     		.short	21498
+ 139 0054 A655     		.short	21926
+ 140 0056 4C57     		.short	22348
+ 141 0058 EB58     		.short	22763
+ 142 005a 825A     		.short	23170
+ 143 005c 135C     		.short	23571
+ 144 005e 9D5D     		.short	23965
+ 145 0060 1F5F     		.short	24351
+ 146 0062 9A60     		.short	24730
+ 147 0064 0E62     		.short	25102
+ 148 0066 7A63     		.short	25466
+ 149 0068 DE64     		.short	25822
+ 150 006a 3A66     		.short	26170
+ 151 006c 8E67     		.short	26510
+ 152 006e DA68     		.short	26842
+ 153 0070 1E6A     		.short	27166
+ 154 0072 5A6B     		.short	27482
+ 155 0074 8D6C     		.short	27789
+ 156 0076 B86D     		.short	28088
+ 157 0078 DA6E     		.short	28378
+ 158 007a F46F     		.short	28660
+ 159 007c 0471     		.short	28932
+ 160 007e 0D72     		.short	29197
+ 161 0080 0C73     		.short	29452
+ 162 0082 0274     		.short	29698
+ 163 0084 EF74     		.short	29935
+ 164 0086 D375     		.short	30163
+ 165 0088 AE76     		.short	30382
+ 166 008a 8077     		.short	30592
+ 167 008c 4878     		.short	30792
+ 168 008e 0779     		.short	30983
+ 169 0090 BC79     		.short	31164
+ 170 0092 687A     		.short	31336
+ 171 0094 0B7B     		.short	31499
+ 172 0096 A37B     		.short	31651
+ 173 0098 337C     		.short	31795
+ 174 009a B87C     		.short	31928
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 5
+
+
+ 175 009c 347D     		.short	32052
+ 176 009e A67D     		.short	32166
+ 177 00a0 0E7E     		.short	32270
+ 178 00a2 6D7E     		.short	32365
+ 179 00a4 C17E     		.short	32449
+ 180 00a6 0C7F     		.short	32524
+ 181 00a8 4C7F     		.short	32588
+ 182 00aa 837F     		.short	32643
+ 183 00ac B07F     		.short	32688
+ 184 00ae D37F     		.short	32723
+ 185 00b0 EC7F     		.short	32748
+ 186 00b2 FB7F     		.short	32763
+ 187 00b4 0080     		.short	-32768
+ 188 00b6 FB7F     		.short	32763
+ 189 00b8 EC7F     		.short	32748
+ 190 00ba D37F     		.short	32723
+ 191 00bc B07F     		.short	32688
+ 192 00be 837F     		.short	32643
+ 193 00c0 4C7F     		.short	32588
+ 194 00c2 0C7F     		.short	32524
+ 195 00c4 C17E     		.short	32449
+ 196 00c6 6D7E     		.short	32365
+ 197 00c8 0E7E     		.short	32270
+ 198 00ca A67D     		.short	32166
+ 199 00cc 347D     		.short	32052
+ 200 00ce B87C     		.short	31928
+ 201 00d0 337C     		.short	31795
+ 202 00d2 A37B     		.short	31651
+ 203 00d4 0B7B     		.short	31499
+ 204 00d6 687A     		.short	31336
+ 205 00d8 BC79     		.short	31164
+ 206 00da 0779     		.short	30983
+ 207 00dc 4878     		.short	30792
+ 208 00de 8077     		.short	30592
+ 209 00e0 AE76     		.short	30382
+ 210 00e2 D375     		.short	30163
+ 211 00e4 EF74     		.short	29935
+ 212 00e6 0274     		.short	29698
+ 213 00e8 0C73     		.short	29452
+ 214 00ea 0D72     		.short	29197
+ 215 00ec 0471     		.short	28932
+ 216 00ee F46F     		.short	28660
+ 217 00f0 DA6E     		.short	28378
+ 218 00f2 B86D     		.short	28088
+ 219 00f4 8D6C     		.short	27789
+ 220 00f6 5A6B     		.short	27482
+ 221 00f8 1E6A     		.short	27166
+ 222 00fa DA68     		.short	26842
+ 223 00fc 8E67     		.short	26510
+ 224 00fe 3A66     		.short	26170
+ 225 0100 DE64     		.short	25822
+ 226 0102 7A63     		.short	25466
+ 227 0104 0E62     		.short	25102
+ 228 0106 9A60     		.short	24730
+ 229 0108 1F5F     		.short	24351
+ 230 010a 9D5D     		.short	23965
+ 231 010c 135C     		.short	23571
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 6
+
+
+ 232 010e 825A     		.short	23170
+ 233 0110 EB58     		.short	22763
+ 234 0112 4C57     		.short	22348
+ 235 0114 A655     		.short	21926
+ 236 0116 FA53     		.short	21498
+ 237 0118 4752     		.short	21063
+ 238 011a 8E50     		.short	20622
+ 239 011c CE4E     		.short	20174
+ 240 011e 084D     		.short	19720
+ 241 0120 3D4B     		.short	19261
+ 242 0122 6B49     		.short	18795
+ 243 0124 9447     		.short	18324
+ 244 0126 B745     		.short	17847
+ 245 0128 D443     		.short	17364
+ 246 012a ED41     		.short	16877
+ 247 012c 0040     		.short	16384
+ 248 012e 0E3E     		.short	15886
+ 249 0130 183C     		.short	15384
+ 250 0132 1C3A     		.short	14876
+ 251 0134 1D38     		.short	14365
+ 252 0136 1836     		.short	13848
+ 253 0138 1034     		.short	13328
+ 254 013a 0332     		.short	12803
+ 255 013c F32F     		.short	12275
+ 256 013e DF2D     		.short	11743
+ 257 0140 C72B     		.short	11207
+ 258 0142 AC29     		.short	10668
+ 259 0144 8E27     		.short	10126
+ 260 0146 6C25     		.short	9580
+ 261 0148 4823     		.short	9032
+ 262 014a 2121     		.short	8481
+ 263 014c F71E     		.short	7927
+ 264 014e CB1C     		.short	7371
+ 265 0150 9D1A     		.short	6813
+ 266 0152 6C18     		.short	6252
+ 267 0154 3A16     		.short	5690
+ 268 0156 0614     		.short	5126
+ 269 0158 D011     		.short	4560
+ 270 015a 990F     		.short	3993
+ 271 015c 610D     		.short	3425
+ 272 015e 280B     		.short	2856
+ 273 0160 EE08     		.short	2286
+ 274 0162 B306     		.short	1715
+ 275 0164 7804     		.short	1144
+ 276 0166 3C02     		.short	572
+ 277 0168 0000     		.short	0
+ 278 016a C4FD     		.short	-572
+ 279 016c 88FB     		.short	-1144
+ 280 016e 4DF9     		.short	-1715
+ 281 0170 12F7     		.short	-2286
+ 282 0172 D8F4     		.short	-2856
+ 283 0174 9FF2     		.short	-3425
+ 284 0176 67F0     		.short	-3993
+ 285 0178 30EE     		.short	-4560
+ 286 017a FAEB     		.short	-5126
+ 287 017c C6E9     		.short	-5690
+ 288 017e 94E7     		.short	-6252
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 7
+
+
+ 289 0180 63E5     		.short	-6813
+ 290 0182 35E3     		.short	-7371
+ 291 0184 09E1     		.short	-7927
+ 292 0186 DFDE     		.short	-8481
+ 293 0188 B8DC     		.short	-9032
+ 294 018a 94DA     		.short	-9580
+ 295 018c 72D8     		.short	-10126
+ 296 018e 54D6     		.short	-10668
+ 297 0190 39D4     		.short	-11207
+ 298 0192 21D2     		.short	-11743
+ 299 0194 0DD0     		.short	-12275
+ 300 0196 FDCD     		.short	-12803
+ 301 0198 F0CB     		.short	-13328
+ 302 019a E8C9     		.short	-13848
+ 303 019c E3C7     		.short	-14365
+ 304 019e E4C5     		.short	-14876
+ 305 01a0 E8C3     		.short	-15384
+ 306 01a2 F2C1     		.short	-15886
+ 307 01a4 00C0     		.short	-16384
+ 308 01a6 13BE     		.short	-16877
+ 309 01a8 2CBC     		.short	-17364
+ 310 01aa 49BA     		.short	-17847
+ 311 01ac 6CB8     		.short	-18324
+ 312 01ae 95B6     		.short	-18795
+ 313 01b0 C3B4     		.short	-19261
+ 314 01b2 F8B2     		.short	-19720
+ 315 01b4 32B1     		.short	-20174
+ 316 01b6 72AF     		.short	-20622
+ 317 01b8 B9AD     		.short	-21063
+ 318 01ba 06AC     		.short	-21498
+ 319 01bc 5AAA     		.short	-21926
+ 320 01be B4A8     		.short	-22348
+ 321 01c0 15A7     		.short	-22763
+ 322 01c2 7EA5     		.short	-23170
+ 323 01c4 EDA3     		.short	-23571
+ 324 01c6 63A2     		.short	-23965
+ 325 01c8 E1A0     		.short	-24351
+ 326 01ca 669F     		.short	-24730
+ 327 01cc F29D     		.short	-25102
+ 328 01ce 869C     		.short	-25466
+ 329 01d0 229B     		.short	-25822
+ 330 01d2 C699     		.short	-26170
+ 331 01d4 7298     		.short	-26510
+ 332 01d6 2697     		.short	-26842
+ 333 01d8 E295     		.short	-27166
+ 334 01da A694     		.short	-27482
+ 335 01dc 7393     		.short	-27789
+ 336 01de 4892     		.short	-28088
+ 337 01e0 2691     		.short	-28378
+ 338 01e2 0C90     		.short	-28660
+ 339 01e4 FC8E     		.short	-28932
+ 340 01e6 F38D     		.short	-29197
+ 341 01e8 F48C     		.short	-29452
+ 342 01ea FE8B     		.short	-29698
+ 343 01ec 118B     		.short	-29935
+ 344 01ee 2D8A     		.short	-30163
+ 345 01f0 5289     		.short	-30382
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 8
+
+
+ 346 01f2 8088     		.short	-30592
+ 347 01f4 B887     		.short	-30792
+ 348 01f6 F986     		.short	-30983
+ 349 01f8 4486     		.short	-31164
+ 350 01fa 9885     		.short	-31336
+ 351 01fc F584     		.short	-31499
+ 352 01fe 5D84     		.short	-31651
+ 353 0200 CD83     		.short	-31795
+ 354 0202 4883     		.short	-31928
+ 355 0204 CC82     		.short	-32052
+ 356 0206 5A82     		.short	-32166
+ 357 0208 F281     		.short	-32270
+ 358 020a 9381     		.short	-32365
+ 359 020c 3F81     		.short	-32449
+ 360 020e F480     		.short	-32524
+ 361 0210 B480     		.short	-32588
+ 362 0212 7D80     		.short	-32643
+ 363 0214 5080     		.short	-32688
+ 364 0216 2D80     		.short	-32723
+ 365 0218 1480     		.short	-32748
+ 366 021a 0580     		.short	-32763
+ 367 021c 0080     		.short	-32768
+ 368 021e 0580     		.short	-32763
+ 369 0220 1480     		.short	-32748
+ 370 0222 2D80     		.short	-32723
+ 371 0224 5080     		.short	-32688
+ 372 0226 7D80     		.short	-32643
+ 373 0228 B480     		.short	-32588
+ 374 022a F480     		.short	-32524
+ 375 022c 3F81     		.short	-32449
+ 376 022e 9381     		.short	-32365
+ 377 0230 F281     		.short	-32270
+ 378 0232 5A82     		.short	-32166
+ 379 0234 CC82     		.short	-32052
+ 380 0236 4883     		.short	-31928
+ 381 0238 CD83     		.short	-31795
+ 382 023a 5D84     		.short	-31651
+ 383 023c F584     		.short	-31499
+ 384 023e 9885     		.short	-31336
+ 385 0240 4486     		.short	-31164
+ 386 0242 F986     		.short	-30983
+ 387 0244 4878     		.short	30792
+ 388 0246 8088     		.short	-30592
+ 389 0248 5289     		.short	-30382
+ 390 024a 2D8A     		.short	-30163
+ 391 024c 118B     		.short	-29935
+ 392 024e FE8B     		.short	-29698
+ 393 0250 F48C     		.short	-29452
+ 394 0252 F38D     		.short	-29197
+ 395 0254 FC8E     		.short	-28932
+ 396 0256 0C90     		.short	-28660
+ 397 0258 2691     		.short	-28378
+ 398 025a 4892     		.short	-28088
+ 399 025c 7393     		.short	-27789
+ 400 025e A694     		.short	-27482
+ 401 0260 E295     		.short	-27166
+ 402 0262 2697     		.short	-26842
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 9
+
+
+ 403 0264 7298     		.short	-26510
+ 404 0266 C699     		.short	-26170
+ 405 0268 229B     		.short	-25822
+ 406 026a 869C     		.short	-25466
+ 407 026c F29D     		.short	-25102
+ 408 026e 669F     		.short	-24730
+ 409 0270 E1A0     		.short	-24351
+ 410 0272 63A2     		.short	-23965
+ 411 0274 EDA3     		.short	-23571
+ 412 0276 7EA5     		.short	-23170
+ 413 0278 15A7     		.short	-22763
+ 414 027a B4A8     		.short	-22348
+ 415 027c 5AAA     		.short	-21926
+ 416 027e 06AC     		.short	-21498
+ 417 0280 B9AD     		.short	-21063
+ 418 0282 72AF     		.short	-20622
+ 419 0284 32B1     		.short	-20174
+ 420 0286 F8B2     		.short	-19720
+ 421 0288 C3B4     		.short	-19261
+ 422 028a 95B6     		.short	-18795
+ 423 028c 6CB8     		.short	-18324
+ 424 028e 49BA     		.short	-17847
+ 425 0290 2CBC     		.short	-17364
+ 426 0292 13BE     		.short	-16877
+ 427 0294 00C0     		.short	-16384
+ 428 0296 F2C1     		.short	-15886
+ 429 0298 E8C3     		.short	-15384
+ 430 029a E4C5     		.short	-14876
+ 431 029c E3C7     		.short	-14365
+ 432 029e E8C9     		.short	-13848
+ 433 02a0 F0CB     		.short	-13328
+ 434 02a2 FDCD     		.short	-12803
+ 435 02a4 0DD0     		.short	-12275
+ 436 02a6 21D2     		.short	-11743
+ 437 02a8 39D4     		.short	-11207
+ 438 02aa 54D6     		.short	-10668
+ 439 02ac 72D8     		.short	-10126
+ 440 02ae 94DA     		.short	-9580
+ 441 02b0 B8DC     		.short	-9032
+ 442 02b2 DFDE     		.short	-8481
+ 443 02b4 09E1     		.short	-7927
+ 444 02b6 35E3     		.short	-7371
+ 445 02b8 63E5     		.short	-6813
+ 446 02ba 94E7     		.short	-6252
+ 447 02bc C6E9     		.short	-5690
+ 448 02be FAEB     		.short	-5126
+ 449 02c0 30EE     		.short	-4560
+ 450 02c2 67F0     		.short	-3993
+ 451 02c4 9FF2     		.short	-3425
+ 452 02c6 D8F4     		.short	-2856
+ 453 02c8 12F7     		.short	-2286
+ 454 02ca 4DF9     		.short	-1715
+ 455 02cc 88FB     		.short	-1144
+ 456 02ce C4FD     		.short	-572
+ 457              		.text
+ 458              	.Letext0:
+ 459              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 10
+
+
+ 460              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 461              		.file 4 "Generated_Source\\PSoC5/core_cm3.h"
+ 462              		.section	.debug_info,"",%progbits
+ 463              	.Ldebug_info0:
+ 464 0000 50010000 		.4byte	0x150
+ 465 0004 0400     		.2byte	0x4
+ 466 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 467 000a 04       		.byte	0x4
+ 468 000b 01       		.uleb128 0x1
+ 469 000c F5000000 		.4byte	.LASF24
+ 470 0010 01       		.byte	0x1
+ 471 0011 66000000 		.4byte	.LASF25
+ 472 0015 96000000 		.4byte	.LASF26
+ 473 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 474 001d 00000000 		.4byte	0
+ 475 0021 00000000 		.4byte	.Ldebug_line0
+ 476 0025 02       		.uleb128 0x2
+ 477 0026 01       		.byte	0x1
+ 478 0027 06       		.byte	0x6
+ 479 0028 A4010000 		.4byte	.LASF0
+ 480 002c 02       		.uleb128 0x2
+ 481 002d 01       		.byte	0x1
+ 482 002e 08       		.byte	0x8
+ 483 002f 7A000000 		.4byte	.LASF1
+ 484 0033 03       		.uleb128 0x3
+ 485 0034 83010000 		.4byte	.LASF3
+ 486 0038 02       		.byte	0x2
+ 487 0039 29       		.byte	0x29
+ 488 003a 3E000000 		.4byte	0x3e
+ 489 003e 02       		.uleb128 0x2
+ 490 003f 02       		.byte	0x2
+ 491 0040 05       		.byte	0x5
+ 492 0041 D1010000 		.4byte	.LASF2
+ 493 0045 03       		.uleb128 0x3
+ 494 0046 6F000000 		.4byte	.LASF4
+ 495 004a 02       		.byte	0x2
+ 496 004b 2B       		.byte	0x2b
+ 497 004c 50000000 		.4byte	0x50
+ 498 0050 02       		.uleb128 0x2
+ 499 0051 02       		.byte	0x2
+ 500 0052 07       		.byte	0x7
+ 501 0053 0E000000 		.4byte	.LASF5
+ 502 0057 03       		.uleb128 0x3
+ 503 0058 B0010000 		.4byte	.LASF6
+ 504 005c 02       		.byte	0x2
+ 505 005d 3F       		.byte	0x3f
+ 506 005e 62000000 		.4byte	0x62
+ 507 0062 02       		.uleb128 0x2
+ 508 0063 04       		.byte	0x4
+ 509 0064 05       		.byte	0x5
+ 510 0065 8D000000 		.4byte	.LASF7
+ 511 0069 02       		.uleb128 0x2
+ 512 006a 04       		.byte	0x4
+ 513 006b 07       		.byte	0x7
+ 514 006c 3D000000 		.4byte	.LASF8
+ 515 0070 02       		.uleb128 0x2
+ 516 0071 08       		.byte	0x8
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 11
+
+
+ 517 0072 05       		.byte	0x5
+ 518 0073 00000000 		.4byte	.LASF9
+ 519 0077 02       		.uleb128 0x2
+ 520 0078 08       		.byte	0x8
+ 521 0079 07       		.byte	0x7
+ 522 007a 4F000000 		.4byte	.LASF10
+ 523 007e 04       		.uleb128 0x4
+ 524 007f 04       		.byte	0x4
+ 525 0080 05       		.byte	0x5
+ 526 0081 696E7400 		.ascii	"int\000"
+ 527 0085 02       		.uleb128 0x2
+ 528 0086 04       		.byte	0x4
+ 529 0087 07       		.byte	0x7
+ 530 0088 21000000 		.4byte	.LASF11
+ 531 008c 03       		.uleb128 0x3
+ 532 008d 2E000000 		.4byte	.LASF12
+ 533 0091 03       		.byte	0x3
+ 534 0092 20       		.byte	0x20
+ 535 0093 33000000 		.4byte	0x33
+ 536 0097 03       		.uleb128 0x3
+ 537 0098 BA010000 		.4byte	.LASF13
+ 538 009c 03       		.byte	0x3
+ 539 009d 21       		.byte	0x21
+ 540 009e 45000000 		.4byte	0x45
+ 541 00a2 03       		.uleb128 0x3
+ 542 00a3 DB010000 		.4byte	.LASF14
+ 543 00a7 03       		.byte	0x3
+ 544 00a8 2C       		.byte	0x2c
+ 545 00a9 57000000 		.4byte	0x57
+ 546 00ad 02       		.uleb128 0x2
+ 547 00ae 04       		.byte	0x4
+ 548 00af 04       		.byte	0x4
+ 549 00b0 C3010000 		.4byte	.LASF15
+ 550 00b4 02       		.uleb128 0x2
+ 551 00b5 08       		.byte	0x8
+ 552 00b6 04       		.byte	0x4
+ 553 00b7 EE000000 		.4byte	.LASF16
+ 554 00bb 02       		.uleb128 0x2
+ 555 00bc 01       		.byte	0x1
+ 556 00bd 08       		.byte	0x8
+ 557 00be 88000000 		.4byte	.LASF17
+ 558 00c2 02       		.uleb128 0x2
+ 559 00c3 04       		.byte	0x4
+ 560 00c4 07       		.byte	0x7
+ 561 00c5 ED010000 		.4byte	.LASF18
+ 562 00c9 05       		.uleb128 0x5
+ 563 00ca 8D010000 		.4byte	.LASF19
+ 564 00ce 01       		.byte	0x1
+ 565 00cf 2E       		.byte	0x2e
+ 566 00d0 8C000000 		.4byte	0x8c
+ 567 00d4 00000000 		.4byte	.LFB63
+ 568 00d8 24000000 		.4byte	.LFE63-.LFB63
+ 569 00dc 01       		.uleb128 0x1
+ 570 00dd 9C       		.byte	0x9c
+ 571 00de F2000000 		.4byte	0xf2
+ 572 00e2 06       		.uleb128 0x6
+ 573 00e3 C9010000 		.4byte	.LASF21
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 12
+
+
+ 574 00e7 01       		.byte	0x1
+ 575 00e8 2E       		.byte	0x2e
+ 576 00e9 97000000 		.4byte	0x97
+ 577 00ed 00000000 		.4byte	.LLST0
+ 578 00f1 00       		.byte	0
+ 579 00f2 05       		.uleb128 0x5
+ 580 00f3 E3010000 		.4byte	.LASF20
+ 581 00f7 01       		.byte	0x1
+ 582 00f8 33       		.byte	0x33
+ 583 00f9 8C000000 		.4byte	0x8c
+ 584 00fd 00000000 		.4byte	.LFB64
+ 585 0101 28000000 		.4byte	.LFE64-.LFB64
+ 586 0105 01       		.uleb128 0x1
+ 587 0106 9C       		.byte	0x9c
+ 588 0107 1B010000 		.4byte	0x11b
+ 589 010b 06       		.uleb128 0x6
+ 590 010c C9010000 		.4byte	.LASF21
+ 591 0110 01       		.byte	0x1
+ 592 0111 33       		.byte	0x33
+ 593 0112 97000000 		.4byte	0x97
+ 594 0116 21000000 		.4byte	.LLST1
+ 595 011a 00       		.byte	0
+ 596 011b 07       		.uleb128 0x7
+ 597 011c 97010000 		.4byte	.LASF22
+ 598 0120 04       		.byte	0x4
+ 599 0121 9606     		.2byte	0x696
+ 600 0123 27010000 		.4byte	0x127
+ 601 0127 08       		.uleb128 0x8
+ 602 0128 A2000000 		.4byte	0xa2
+ 603 012c 09       		.uleb128 0x9
+ 604 012d 8C000000 		.4byte	0x8c
+ 605 0131 3D010000 		.4byte	0x13d
+ 606 0135 0A       		.uleb128 0xa
+ 607 0136 C2000000 		.4byte	0xc2
+ 608 013a 6701     		.2byte	0x167
+ 609 013c 00       		.byte	0
+ 610 013d 0B       		.uleb128 0xb
+ 611 013e 36000000 		.4byte	.LASF23
+ 612 0142 01       		.byte	0x1
+ 613 0143 06       		.byte	0x6
+ 614 0144 4E010000 		.4byte	0x14e
+ 615 0148 05       		.uleb128 0x5
+ 616 0149 03       		.byte	0x3
+ 617 014a 00000000 		.4byte	sinLUT
+ 618 014e 0C       		.uleb128 0xc
+ 619 014f 2C010000 		.4byte	0x12c
+ 620 0153 00       		.byte	0
+ 621              		.section	.debug_abbrev,"",%progbits
+ 622              	.Ldebug_abbrev0:
+ 623 0000 01       		.uleb128 0x1
+ 624 0001 11       		.uleb128 0x11
+ 625 0002 01       		.byte	0x1
+ 626 0003 25       		.uleb128 0x25
+ 627 0004 0E       		.uleb128 0xe
+ 628 0005 13       		.uleb128 0x13
+ 629 0006 0B       		.uleb128 0xb
+ 630 0007 03       		.uleb128 0x3
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 13
+
+
+ 631 0008 0E       		.uleb128 0xe
+ 632 0009 1B       		.uleb128 0x1b
+ 633 000a 0E       		.uleb128 0xe
+ 634 000b 55       		.uleb128 0x55
+ 635 000c 17       		.uleb128 0x17
+ 636 000d 11       		.uleb128 0x11
+ 637 000e 01       		.uleb128 0x1
+ 638 000f 10       		.uleb128 0x10
+ 639 0010 17       		.uleb128 0x17
+ 640 0011 00       		.byte	0
+ 641 0012 00       		.byte	0
+ 642 0013 02       		.uleb128 0x2
+ 643 0014 24       		.uleb128 0x24
+ 644 0015 00       		.byte	0
+ 645 0016 0B       		.uleb128 0xb
+ 646 0017 0B       		.uleb128 0xb
+ 647 0018 3E       		.uleb128 0x3e
+ 648 0019 0B       		.uleb128 0xb
+ 649 001a 03       		.uleb128 0x3
+ 650 001b 0E       		.uleb128 0xe
+ 651 001c 00       		.byte	0
+ 652 001d 00       		.byte	0
+ 653 001e 03       		.uleb128 0x3
+ 654 001f 16       		.uleb128 0x16
+ 655 0020 00       		.byte	0
+ 656 0021 03       		.uleb128 0x3
+ 657 0022 0E       		.uleb128 0xe
+ 658 0023 3A       		.uleb128 0x3a
+ 659 0024 0B       		.uleb128 0xb
+ 660 0025 3B       		.uleb128 0x3b
+ 661 0026 0B       		.uleb128 0xb
+ 662 0027 49       		.uleb128 0x49
+ 663 0028 13       		.uleb128 0x13
+ 664 0029 00       		.byte	0
+ 665 002a 00       		.byte	0
+ 666 002b 04       		.uleb128 0x4
+ 667 002c 24       		.uleb128 0x24
+ 668 002d 00       		.byte	0
+ 669 002e 0B       		.uleb128 0xb
+ 670 002f 0B       		.uleb128 0xb
+ 671 0030 3E       		.uleb128 0x3e
+ 672 0031 0B       		.uleb128 0xb
+ 673 0032 03       		.uleb128 0x3
+ 674 0033 08       		.uleb128 0x8
+ 675 0034 00       		.byte	0
+ 676 0035 00       		.byte	0
+ 677 0036 05       		.uleb128 0x5
+ 678 0037 2E       		.uleb128 0x2e
+ 679 0038 01       		.byte	0x1
+ 680 0039 3F       		.uleb128 0x3f
+ 681 003a 19       		.uleb128 0x19
+ 682 003b 03       		.uleb128 0x3
+ 683 003c 0E       		.uleb128 0xe
+ 684 003d 3A       		.uleb128 0x3a
+ 685 003e 0B       		.uleb128 0xb
+ 686 003f 3B       		.uleb128 0x3b
+ 687 0040 0B       		.uleb128 0xb
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 14
+
+
+ 688 0041 27       		.uleb128 0x27
+ 689 0042 19       		.uleb128 0x19
+ 690 0043 49       		.uleb128 0x49
+ 691 0044 13       		.uleb128 0x13
+ 692 0045 11       		.uleb128 0x11
+ 693 0046 01       		.uleb128 0x1
+ 694 0047 12       		.uleb128 0x12
+ 695 0048 06       		.uleb128 0x6
+ 696 0049 40       		.uleb128 0x40
+ 697 004a 18       		.uleb128 0x18
+ 698 004b 9742     		.uleb128 0x2117
+ 699 004d 19       		.uleb128 0x19
+ 700 004e 01       		.uleb128 0x1
+ 701 004f 13       		.uleb128 0x13
+ 702 0050 00       		.byte	0
+ 703 0051 00       		.byte	0
+ 704 0052 06       		.uleb128 0x6
+ 705 0053 05       		.uleb128 0x5
+ 706 0054 00       		.byte	0
+ 707 0055 03       		.uleb128 0x3
+ 708 0056 0E       		.uleb128 0xe
+ 709 0057 3A       		.uleb128 0x3a
+ 710 0058 0B       		.uleb128 0xb
+ 711 0059 3B       		.uleb128 0x3b
+ 712 005a 0B       		.uleb128 0xb
+ 713 005b 49       		.uleb128 0x49
+ 714 005c 13       		.uleb128 0x13
+ 715 005d 02       		.uleb128 0x2
+ 716 005e 17       		.uleb128 0x17
+ 717 005f 00       		.byte	0
+ 718 0060 00       		.byte	0
+ 719 0061 07       		.uleb128 0x7
+ 720 0062 34       		.uleb128 0x34
+ 721 0063 00       		.byte	0
+ 722 0064 03       		.uleb128 0x3
+ 723 0065 0E       		.uleb128 0xe
+ 724 0066 3A       		.uleb128 0x3a
+ 725 0067 0B       		.uleb128 0xb
+ 726 0068 3B       		.uleb128 0x3b
+ 727 0069 05       		.uleb128 0x5
+ 728 006a 49       		.uleb128 0x49
+ 729 006b 13       		.uleb128 0x13
+ 730 006c 3F       		.uleb128 0x3f
+ 731 006d 19       		.uleb128 0x19
+ 732 006e 3C       		.uleb128 0x3c
+ 733 006f 19       		.uleb128 0x19
+ 734 0070 00       		.byte	0
+ 735 0071 00       		.byte	0
+ 736 0072 08       		.uleb128 0x8
+ 737 0073 35       		.uleb128 0x35
+ 738 0074 00       		.byte	0
+ 739 0075 49       		.uleb128 0x49
+ 740 0076 13       		.uleb128 0x13
+ 741 0077 00       		.byte	0
+ 742 0078 00       		.byte	0
+ 743 0079 09       		.uleb128 0x9
+ 744 007a 01       		.uleb128 0x1
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 15
+
+
+ 745 007b 01       		.byte	0x1
+ 746 007c 49       		.uleb128 0x49
+ 747 007d 13       		.uleb128 0x13
+ 748 007e 01       		.uleb128 0x1
+ 749 007f 13       		.uleb128 0x13
+ 750 0080 00       		.byte	0
+ 751 0081 00       		.byte	0
+ 752 0082 0A       		.uleb128 0xa
+ 753 0083 21       		.uleb128 0x21
+ 754 0084 00       		.byte	0
+ 755 0085 49       		.uleb128 0x49
+ 756 0086 13       		.uleb128 0x13
+ 757 0087 2F       		.uleb128 0x2f
+ 758 0088 05       		.uleb128 0x5
+ 759 0089 00       		.byte	0
+ 760 008a 00       		.byte	0
+ 761 008b 0B       		.uleb128 0xb
+ 762 008c 34       		.uleb128 0x34
+ 763 008d 00       		.byte	0
+ 764 008e 03       		.uleb128 0x3
+ 765 008f 0E       		.uleb128 0xe
+ 766 0090 3A       		.uleb128 0x3a
+ 767 0091 0B       		.uleb128 0xb
+ 768 0092 3B       		.uleb128 0x3b
+ 769 0093 0B       		.uleb128 0xb
+ 770 0094 49       		.uleb128 0x49
+ 771 0095 13       		.uleb128 0x13
+ 772 0096 3F       		.uleb128 0x3f
+ 773 0097 19       		.uleb128 0x19
+ 774 0098 02       		.uleb128 0x2
+ 775 0099 18       		.uleb128 0x18
+ 776 009a 00       		.byte	0
+ 777 009b 00       		.byte	0
+ 778 009c 0C       		.uleb128 0xc
+ 779 009d 26       		.uleb128 0x26
+ 780 009e 00       		.byte	0
+ 781 009f 49       		.uleb128 0x49
+ 782 00a0 13       		.uleb128 0x13
+ 783 00a1 00       		.byte	0
+ 784 00a2 00       		.byte	0
+ 785 00a3 00       		.byte	0
+ 786              		.section	.debug_loc,"",%progbits
+ 787              	.Ldebug_loc0:
+ 788              	.LLST0:
+ 789 0000 00000000 		.4byte	.LVL0
+ 790 0004 12000000 		.4byte	.LVL1
+ 791 0008 0100     		.2byte	0x1
+ 792 000a 50       		.byte	0x50
+ 793 000b 12000000 		.4byte	.LVL1
+ 794 000f 24000000 		.4byte	.LFE63
+ 795 0013 0400     		.2byte	0x4
+ 796 0015 F3       		.byte	0xf3
+ 797 0016 01       		.uleb128 0x1
+ 798 0017 50       		.byte	0x50
+ 799 0018 9F       		.byte	0x9f
+ 800 0019 00000000 		.4byte	0
+ 801 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 16
+
+
+ 802              	.LLST1:
+ 803 0021 00000000 		.4byte	.LVL2
+ 804 0025 02000000 		.4byte	.LVL3
+ 805 0029 0100     		.2byte	0x1
+ 806 002b 50       		.byte	0x50
+ 807 002c 02000000 		.4byte	.LVL3
+ 808 0030 28000000 		.4byte	.LFE64
+ 809 0034 0400     		.2byte	0x4
+ 810 0036 F3       		.byte	0xf3
+ 811 0037 01       		.uleb128 0x1
+ 812 0038 50       		.byte	0x50
+ 813 0039 9F       		.byte	0x9f
+ 814 003a 00000000 		.4byte	0
+ 815 003e 00000000 		.4byte	0
+ 816              		.section	.debug_aranges,"",%progbits
+ 817 0000 24000000 		.4byte	0x24
+ 818 0004 0200     		.2byte	0x2
+ 819 0006 00000000 		.4byte	.Ldebug_info0
+ 820 000a 04       		.byte	0x4
+ 821 000b 00       		.byte	0
+ 822 000c 0000     		.2byte	0
+ 823 000e 0000     		.2byte	0
+ 824 0010 00000000 		.4byte	.LFB63
+ 825 0014 24000000 		.4byte	.LFE63-.LFB63
+ 826 0018 00000000 		.4byte	.LFB64
+ 827 001c 28000000 		.4byte	.LFE64-.LFB64
+ 828 0020 00000000 		.4byte	0
+ 829 0024 00000000 		.4byte	0
+ 830              		.section	.debug_ranges,"",%progbits
+ 831              	.Ldebug_ranges0:
+ 832 0000 00000000 		.4byte	.LFB63
+ 833 0004 24000000 		.4byte	.LFE63
+ 834 0008 00000000 		.4byte	.LFB64
+ 835 000c 28000000 		.4byte	.LFE64
+ 836 0010 00000000 		.4byte	0
+ 837 0014 00000000 		.4byte	0
+ 838              		.section	.debug_line,"",%progbits
+ 839              	.Ldebug_line0:
+ 840 0000 64010000 		.section	.debug_str,"MS",%progbits,1
+ 840      02003C01 
+ 840      00000201 
+ 840      FB0E0D00 
+ 840      01010101 
+ 841              	.LASF9:
+ 842 0000 6C6F6E67 		.ascii	"long long int\000"
+ 842      206C6F6E 
+ 842      6720696E 
+ 842      7400
+ 843              	.LASF5:
+ 844 000e 73686F72 		.ascii	"short unsigned int\000"
+ 844      7420756E 
+ 844      7369676E 
+ 844      65642069 
+ 844      6E7400
+ 845              	.LASF11:
+ 846 0021 756E7369 		.ascii	"unsigned int\000"
+ 846      676E6564 
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 17
+
+
+ 846      20696E74 
+ 846      00
+ 847              	.LASF12:
+ 848 002e 696E7431 		.ascii	"int16_t\000"
+ 848      365F7400 
+ 849              	.LASF23:
+ 850 0036 73696E4C 		.ascii	"sinLUT\000"
+ 850      555400
+ 851              	.LASF8:
+ 852 003d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 852      20756E73 
+ 852      69676E65 
+ 852      6420696E 
+ 852      7400
+ 853              	.LASF10:
+ 854 004f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 854      206C6F6E 
+ 854      6720756E 
+ 854      7369676E 
+ 854      65642069 
+ 855              	.LASF25:
+ 856 0066 2E5C7472 		.ascii	".\\trig.c\000"
+ 856      69672E63 
+ 856      00
+ 857              	.LASF4:
+ 858 006f 5F5F7569 		.ascii	"__uint16_t\000"
+ 858      6E743136 
+ 858      5F7400
+ 859              	.LASF1:
+ 860 007a 756E7369 		.ascii	"unsigned char\000"
+ 860      676E6564 
+ 860      20636861 
+ 860      7200
+ 861              	.LASF17:
+ 862 0088 63686172 		.ascii	"char\000"
+ 862      00
+ 863              	.LASF7:
+ 864 008d 6C6F6E67 		.ascii	"long int\000"
+ 864      20696E74 
+ 864      00
+ 865              	.LASF26:
+ 866 0096 433A5C55 		.ascii	"C:\\Users\\ericz\\OneDrive\\Documents\\PSoC Creator"
+ 866      73657273 
+ 866      5C657269 
+ 866      637A5C4F 
+ 866      6E654472 
+ 867 00c4 5C46696E 		.ascii	"\\FinalProjectWorkspace\\FinalProject.cydsn\000"
+ 867      616C5072 
+ 867      6F6A6563 
+ 867      74576F72 
+ 867      6B737061 
+ 868              	.LASF16:
+ 869 00ee 646F7562 		.ascii	"double\000"
+ 869      6C6500
+ 870              	.LASF24:
+ 871 00f5 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 871      4320342E 
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 18
+
+
+ 871      392E3320 
+ 871      32303135 
+ 871      30333033 
+ 872 0128 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 872      20726576 
+ 872      6973696F 
+ 872      6E203232 
+ 872      31323230 
+ 873 015b 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 873      66756E63 
+ 873      74696F6E 
+ 873      2D736563 
+ 873      74696F6E 
+ 874              	.LASF3:
+ 875 0183 5F5F696E 		.ascii	"__int16_t\000"
+ 875      7431365F 
+ 875      7400
+ 876              	.LASF19:
+ 877 018d 67657453 		.ascii	"getSinQ15\000"
+ 877      696E5131 
+ 877      3500
+ 878              	.LASF22:
+ 879 0197 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 879      52784275 
+ 879      66666572 
+ 879      00
+ 880              	.LASF0:
+ 881 01a4 7369676E 		.ascii	"signed char\000"
+ 881      65642063 
+ 881      68617200 
+ 882              	.LASF6:
+ 883 01b0 5F5F696E 		.ascii	"__int32_t\000"
+ 883      7433325F 
+ 883      7400
+ 884              	.LASF13:
+ 885 01ba 75696E74 		.ascii	"uint16_t\000"
+ 885      31365F74 
+ 885      00
+ 886              	.LASF15:
+ 887 01c3 666C6F61 		.ascii	"float\000"
+ 887      7400
+ 888              	.LASF21:
+ 889 01c9 64656772 		.ascii	"degrees\000"
+ 889      65657300 
+ 890              	.LASF2:
+ 891 01d1 73686F72 		.ascii	"short int\000"
+ 891      7420696E 
+ 891      7400
+ 892              	.LASF14:
+ 893 01db 696E7433 		.ascii	"int32_t\000"
+ 893      325F7400 
+ 894              	.LASF20:
+ 895 01e3 67657443 		.ascii	"getCosQ15\000"
+ 895      6F735131 
+ 895      3500
+ 896              	.LASF18:
+ 897 01ed 73697A65 		.ascii	"sizetype\000"
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccCr7ytt.s 			page 19
+
+
+ 897      74797065 
+ 897      00
+ 898              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

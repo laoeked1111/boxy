@@ -1,0 +1,2136 @@
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.Mode_Handler,"ax",%progbits
+  19              		.align	2
+  20              		.global	Mode_Handler
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	Mode_Handler, %function
+  24              	Mode_Handler:
+  25              	.LFB63:
+  26              		.file 1 ".\\main.c"
+   1:.\main.c      **** 
+   2:.\main.c      **** #include <project.h>
+   3:.\main.c      **** #include <stdlib.h>
+   4:.\main.c      **** #include "tft.h"
+   5:.\main.c      **** #include "dma_util.h"
+   6:.\main.c      **** #include "imu.h"
+   7:.\main.c      **** #include "rotate_liquid.h"
+   8:.\main.c      **** #include "snowglobe.h"
+   9:.\main.c      **** #include "lantern.h"
+  10:.\main.c      **** 
+  11:.\main.c      **** // handle which display mode to use
+  12:.\main.c      **** volatile uint8_t mode = 0;
+  13:.\main.c      **** volatile uint8_t mode_changed = 0; // flag
+  14:.\main.c      **** CY_ISR(Mode_Handler) {
+  27              		.loc 1 14 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  15:.\main.c      ****     mode = (mode + 1) % 3;
+  32              		.loc 1 15 0
+  33 0000 0749     		ldr	r1, .L2
+  34 0002 0A78     		ldrb	r2, [r1]	@ zero_extendqisi2
+  35 0004 0132     		adds	r2, r2, #1
+  36 0006 074B     		ldr	r3, .L2+4
+  37 0008 83FB0203 		smull	r0, r3, r3, r2
+  38 000c A3EBE273 		sub	r3, r3, r2, asr #31
+  39 0010 03EB4303 		add	r3, r3, r3, lsl #1
+  40 0014 D31A     		subs	r3, r2, r3
+  41 0016 DBB2     		uxtb	r3, r3
+  42 0018 0B70     		strb	r3, [r1]
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 2
+
+
+  16:.\main.c      ****     mode_changed = 1;
+  43              		.loc 1 16 0
+  44 001a 0123     		movs	r3, #1
+  45 001c 4B70     		strb	r3, [r1, #1]
+  46 001e 7047     		bx	lr
+  47              	.L3:
+  48              		.align	2
+  49              	.L2:
+  50 0020 00000000 		.word	.LANCHOR0
+  51 0024 56555555 		.word	1431655766
+  52              		.cfi_endproc
+  53              	.LFE63:
+  54              		.size	Mode_Handler, .-Mode_Handler
+  55              		.section	.text.Bright_Handler,"ax",%progbits
+  56              		.align	2
+  57              		.global	Bright_Handler
+  58              		.thumb
+  59              		.thumb_func
+  60              		.type	Bright_Handler, %function
+  61              	Bright_Handler:
+  62              	.LFB64:
+  17:.\main.c      **** }
+  18:.\main.c      **** 
+  19:.\main.c      **** // automatic brightness adjustment for lantern
+  20:.\main.c      **** volatile uint8_t brightIdx = 0;
+  21:.\main.c      **** volatile uint8_t brightness = 255;
+  22:.\main.c      **** volatile uint8_t brightnessChanged = 0;
+  23:.\main.c      **** CY_ISR(Bright_Handler) {
+  63              		.loc 1 23 0
+  64              		.cfi_startproc
+  65              		@ args = 0, pretend = 0, frame = 0
+  66              		@ frame_needed = 0, uses_anonymous_args = 0
+  67              		@ link register save eliminated.
+  24:.\main.c      ****     if (mode == 2) {
+  68              		.loc 1 24 0
+  69 0000 094B     		ldr	r3, .L6
+  70 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  71 0004 DBB2     		uxtb	r3, r3
+  72 0006 022B     		cmp	r3, #2
+  73 0008 0CD1     		bne	.L4
+  25:.\main.c      ****         brightnessChanged = 1;
+  74              		.loc 1 25 0
+  75 000a 074A     		ldr	r2, .L6
+  76 000c 0123     		movs	r3, #1
+  77 000e 9370     		strb	r3, [r2, #2]
+  26:.\main.c      ****         brightIdx += 1;
+  78              		.loc 1 26 0
+  79 0010 D378     		ldrb	r3, [r2, #3]	@ zero_extendqisi2
+  80 0012 0133     		adds	r3, r3, #1
+  81 0014 DBB2     		uxtb	r3, r3
+  82 0016 D370     		strb	r3, [r2, #3]
+  27:.\main.c      ****         brightness = sineBrightness[brightIdx];
+  83              		.loc 1 27 0
+  84 0018 D378     		ldrb	r3, [r2, #3]	@ zero_extendqisi2
+  85 001a DBB2     		uxtb	r3, r3
+  86 001c 034A     		ldr	r2, .L6+4
+  87 001e D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 3
+
+
+  88 0020 034B     		ldr	r3, .L6+8
+  89 0022 1A70     		strb	r2, [r3]
+  90              	.L4:
+  91 0024 7047     		bx	lr
+  92              	.L7:
+  93 0026 00BF     		.align	2
+  94              	.L6:
+  95 0028 00000000 		.word	.LANCHOR0
+  96 002c 00000000 		.word	sineBrightness
+  97 0030 00000000 		.word	.LANCHOR1
+  98              		.cfi_endproc
+  99              	.LFE64:
+ 100              		.size	Bright_Handler, .-Bright_Handler
+ 101              		.section	.text.main,"ax",%progbits
+ 102              		.align	2
+ 103              		.global	main
+ 104              		.thumb
+ 105              		.thumb_func
+ 106              		.type	main, %function
+ 107              	main:
+ 108              	.LFB65:
+  28:.\main.c      ****     }
+  29:.\main.c      **** }
+  30:.\main.c      **** 
+  31:.\main.c      **** int main() {
+ 109              		.loc 1 31 0
+ 110              		.cfi_startproc
+ 111              		@ args = 0, pretend = 0, frame = 24
+ 112              		@ frame_needed = 0, uses_anonymous_args = 0
+ 113 0000 10B5     		push	{r4, lr}
+ 114              		.cfi_def_cfa_offset 8
+ 115              		.cfi_offset 4, -8
+ 116              		.cfi_offset 14, -4
+ 117 0002 86B0     		sub	sp, sp, #24
+ 118              		.cfi_def_cfa_offset 32
+  32:.\main.c      ****     
+  33:.\main.c      ****     // enable global interrupts
+  34:.\main.c      ****     CyGlobalIntEnable;
+ 119              		.loc 1 34 0
+ 120              	@ 34 ".\main.c" 1
+ 121 0004 62B6     		CPSIE   i
+ 122              	@ 0 "" 2
+  35:.\main.c      ****     
+  36:.\main.c      ****     // start SPI
+  37:.\main.c      ****     SPIM_0_Start();
+ 123              		.loc 1 37 0
+ 124              		.thumb
+ 125 0006 FFF7FEFF 		bl	SPIM_0_Start
+ 126              	.LVL0:
+  38:.\main.c      ****     SPIM_1_Start();
+ 127              		.loc 1 38 0
+ 128 000a FFF7FEFF 		bl	SPIM_1_Start
+ 129              	.LVL1:
+  39:.\main.c      ****     SPIM_2_Start();
+ 130              		.loc 1 39 0
+ 131 000e FFF7FEFF 		bl	SPIM_2_Start
+ 132              	.LVL2:
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 4
+
+
+  40:.\main.c      ****     SPIM_3_Start();
+ 133              		.loc 1 40 0
+ 134 0012 FFF7FEFF 		bl	SPIM_3_Start
+ 135              	.LVL3:
+  41:.\main.c      ****     
+  42:.\main.c      ****     // start DMAs
+  43:.\main.c      ****     Init_DMA_SPI(0);
+ 136              		.loc 1 43 0
+ 137 0016 0020     		movs	r0, #0
+ 138 0018 FFF7FEFF 		bl	Init_DMA_SPI
+ 139              	.LVL4:
+  44:.\main.c      ****     Init_DMA_SPI(1);
+ 140              		.loc 1 44 0
+ 141 001c 0120     		movs	r0, #1
+ 142 001e FFF7FEFF 		bl	Init_DMA_SPI
+ 143              	.LVL5:
+  45:.\main.c      ****     Init_DMA_SPI(2);
+ 144              		.loc 1 45 0
+ 145 0022 0220     		movs	r0, #2
+ 146 0024 FFF7FEFF 		bl	Init_DMA_SPI
+ 147              	.LVL6:
+  46:.\main.c      ****     Init_DMA_SPI(3);
+ 148              		.loc 1 46 0
+ 149 0028 0320     		movs	r0, #3
+ 150 002a FFF7FEFF 		bl	Init_DMA_SPI
+ 151              	.LVL7:
+  47:.\main.c      ****     
+  48:.\main.c      ****     // initialize TFT screens
+  49:.\main.c      ****     tftStart(0);
+ 152              		.loc 1 49 0
+ 153 002e 0020     		movs	r0, #0
+ 154 0030 FFF7FEFF 		bl	tftStart
+ 155              	.LVL8:
+  50:.\main.c      ****     tftStart(1);
+ 156              		.loc 1 50 0
+ 157 0034 0120     		movs	r0, #1
+ 158 0036 FFF7FEFF 		bl	tftStart
+ 159              	.LVL9:
+  51:.\main.c      ****     tftStart(2);
+ 160              		.loc 1 51 0
+ 161 003a 0220     		movs	r0, #2
+ 162 003c FFF7FEFF 		bl	tftStart
+ 163              	.LVL10:
+  52:.\main.c      ****     tftStart(3);
+ 164              		.loc 1 52 0
+ 165 0040 0320     		movs	r0, #3
+ 166 0042 FFF7FEFF 		bl	tftStart
+ 167              	.LVL11:
+  53:.\main.c      ****     
+  54:.\main.c      ****     // get ADC data
+  55:.\main.c      ****     ADC_DelSig_1_Start();
+ 168              		.loc 1 55 0
+ 169 0046 FFF7FEFF 		bl	ADC_DelSig_1_Start
+ 170              	.LVL12:
+  56:.\main.c      ****     ADC_DelSig_1_StartConvert();
+ 171              		.loc 1 56 0
+ 172 004a FFF7FEFF 		bl	ADC_DelSig_1_StartConvert
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 5
+
+
+ 173              	.LVL13:
+  57:.\main.c      ****     
+  58:.\main.c      ****     // start IMU
+  59:.\main.c      ****     I2C_1_Start();
+ 174              		.loc 1 59 0
+ 175 004e FFF7FEFF 		bl	I2C_1_Start
+ 176              	.LVL14:
+  60:.\main.c      ****     MPU6050_Start();
+ 177              		.loc 1 60 0
+ 178 0052 FFF7FEFF 		bl	MPU6050_Start
+ 179              	.LVL15:
+  61:.\main.c      ****     
+  62:.\main.c      ****     int16_t ax, ay, az; // accelerometer values
+  63:.\main.c      ****     int16_t gx, gy, gz; // gyroscope values
+  64:.\main.c      ****     
+  65:.\main.c      ****     // ensure DMAs are done
+  66:.\main.c      ****     DMA_Wait_For_Completion(0);
+ 180              		.loc 1 66 0
+ 181 0056 0020     		movs	r0, #0
+ 182 0058 FFF7FEFF 		bl	DMA_Wait_For_Completion
+ 183              	.LVL16:
+  67:.\main.c      ****     DMA_Wait_For_Completion(1);
+ 184              		.loc 1 67 0
+ 185 005c 0120     		movs	r0, #1
+ 186 005e FFF7FEFF 		bl	DMA_Wait_For_Completion
+ 187              	.LVL17:
+  68:.\main.c      ****     DMA_Wait_For_Completion(2);
+ 188              		.loc 1 68 0
+ 189 0062 0220     		movs	r0, #2
+ 190 0064 FFF7FEFF 		bl	DMA_Wait_For_Completion
+ 191              	.LVL18:
+  69:.\main.c      ****     DMA_Wait_For_Completion(3);
+ 192              		.loc 1 69 0
+ 193 0068 0320     		movs	r0, #3
+ 194 006a FFF7FEFF 		bl	DMA_Wait_For_Completion
+ 195              	.LVL19:
+  70:.\main.c      ****     
+  71:.\main.c      ****     // mode switching ISR
+  72:.\main.c      ****     MODE_ISR_StartEx(Mode_Handler);
+ 196              		.loc 1 72 0
+ 197 006e 6148     		ldr	r0, .L26
+ 198 0070 FFF7FEFF 		bl	MODE_ISR_StartEx
+ 199              	.LVL20:
+  73:.\main.c      ****         
+  74:.\main.c      ****     // variables for mode 0 (fluid display)
+  75:.\main.c      ****     uint8_t fracFull[] = {128, 128, 128, 128};
+ 200              		.loc 1 75 0
+ 201 0074 604B     		ldr	r3, .L26+4
+ 202 0076 1868     		ldr	r0, [r3]	@ unaligned
+ 203 0078 0390     		str	r0, [sp, #12]	@ unaligned
+  76:.\main.c      ****     uint16_t angles[NUM_SCREENS] = {0};
+ 204              		.loc 1 76 0
+ 205 007a 0023     		movs	r3, #0
+ 206 007c 0193     		str	r3, [sp, #4]
+ 207 007e 0293     		str	r3, [sp, #8]
+  77:.\main.c      ****     
+  78:.\main.c      ****     // brightness ISR for mode 2 (lantern)
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 6
+
+
+  79:.\main.c      ****     BRIGHT_ISR_StartEx(Bright_Handler);
+ 208              		.loc 1 79 0
+ 209 0080 5E48     		ldr	r0, .L26+8
+ 210 0082 FFF7FEFF 		bl	BRIGHT_ISR_StartEx
+ 211              	.LVL21:
+  80:.\main.c      ****     
+  81:.\main.c      ****     PWM_1_Start();
+ 212              		.loc 1 81 0
+ 213 0086 FFF7FEFF 		bl	PWM_1_Start
+ 214              	.LVL22:
+ 215              	.L9:
+  82:.\main.c      ****     
+  83:.\main.c      ****     // main loop
+  84:.\main.c      ****     for (;;) {
+  85:.\main.c      ****         
+  86:.\main.c      ****         // =============================================
+  87:.\main.c      ****         // Change mode if button was pressed
+  88:.\main.c      ****         // =============================================
+  89:.\main.c      ****         if (mode_changed) {
+ 216              		.loc 1 89 0
+ 217 008a 5D4B     		ldr	r3, .L26+12
+ 218 008c 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 219 008e 13F0FF0F 		tst	r3, #255
+ 220 0092 1AD0     		beq	.L10
+  90:.\main.c      ****             mode_changed = 0;
+ 221              		.loc 1 90 0
+ 222 0094 5A4C     		ldr	r4, .L26+12
+ 223 0096 0023     		movs	r3, #0
+ 224 0098 6370     		strb	r3, [r4, #1]
+  91:.\main.c      ****             LED_MODE_1_Write(mode & 0x01);                  // change the mode indicator LEDs
+ 225              		.loc 1 91 0
+ 226 009a 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 227 009c 00F00100 		and	r0, r0, #1
+ 228 00a0 FFF7FEFF 		bl	LED_MODE_1_Write
+ 229              	.LVL23:
+  92:.\main.c      ****             LED_MODE_2_Write((mode >> 1) & 0x01);
+ 230              		.loc 1 92 0
+ 231 00a4 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 232 00a6 C0F34000 		ubfx	r0, r0, #1, #1
+ 233 00aa FFF7FEFF 		bl	LED_MODE_2_Write
+ 234              	.LVL24:
+  93:.\main.c      ****             
+  94:.\main.c      ****             if (mode == 1) snowglobeInit();
+ 235              		.loc 1 94 0
+ 236 00ae 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 237 00b0 DBB2     		uxtb	r3, r3
+ 238 00b2 012B     		cmp	r3, #1
+ 239 00b4 01D1     		bne	.L11
+ 240              		.loc 1 94 0 is_stmt 0 discriminator 1
+ 241 00b6 FFF7FEFF 		bl	snowglobeInit
+ 242              	.LVL25:
+ 243              	.L11:
+  95:.\main.c      ****             if (mode == 2) lightLantern(0);
+ 244              		.loc 1 95 0 is_stmt 1
+ 245 00ba 514B     		ldr	r3, .L26+12
+ 246 00bc 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 247 00be DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 7
+
+
+ 248 00c0 022B     		cmp	r3, #2
+ 249 00c2 02D1     		bne	.L10
+ 250              		.loc 1 95 0 is_stmt 0 discriminator 1
+ 251 00c4 0020     		movs	r0, #0
+ 252 00c6 FFF7FEFF 		bl	lightLantern
+ 253              	.LVL26:
+ 254              	.L10:
+  96:.\main.c      ****         }
+  97:.\main.c      ****         
+  98:.\main.c      ****         if (brightnessChanged) {
+ 255              		.loc 1 98 0 is_stmt 1
+ 256 00ca 4D4B     		ldr	r3, .L26+12
+ 257 00cc 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 258 00ce 13F0FF0F 		tst	r3, #255
+ 259 00d2 06D0     		beq	.L12
+  99:.\main.c      ****             brightnessChanged = 0;
+ 260              		.loc 1 99 0
+ 261 00d4 0022     		movs	r2, #0
+ 262 00d6 4A4B     		ldr	r3, .L26+12
+ 263 00d8 9A70     		strb	r2, [r3, #2]
+ 100:.\main.c      ****             PWM_1_WriteCompare(brightness);
+ 264              		.loc 1 100 0
+ 265 00da 4A4B     		ldr	r3, .L26+16
+ 266 00dc 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 267 00de FFF7FEFF 		bl	PWM_1_WriteCompare
+ 268              	.LVL27:
+ 269              	.L12:
+ 101:.\main.c      ****         }
+ 102:.\main.c      ****         
+ 103:.\main.c      ****         // =============================================
+ 104:.\main.c      ****         // Mode 0: tilt-sensitive fluid display
+ 105:.\main.c      ****         // =============================================
+ 106:.\main.c      ****         if (mode == 0) {
+ 270              		.loc 1 106 0
+ 271 00e2 474B     		ldr	r3, .L26+12
+ 272 00e4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 273 00e6 13F0FF0F 		tst	r3, #255
+ 274 00ea 6CD1     		bne	.L13
+ 107:.\main.c      ****             Read_Accel_Data(&ax, &ay, &az);
+ 275              		.loc 1 107 0
+ 276 00ec 0DF11600 		add	r0, sp, #22
+ 277 00f0 05A9     		add	r1, sp, #20
+ 278 00f2 0DF11202 		add	r2, sp, #18
+ 279 00f6 FFF7FEFF 		bl	Read_Accel_Data
+ 280              	.LVL28:
+ 108:.\main.c      ****             
+ 109:.\main.c      ****             if (abs(ax) >= abs(ay)) {                       // tilting along one axis
+ 281              		.loc 1 109 0
+ 282 00fa BDF81600 		ldrh	r0, [sp, #22]
+ 283 00fe 01B2     		sxth	r1, r0
+ 284 0100 0029     		cmp	r1, #0
+ 285 0102 B8BF     		it	lt
+ 286 0104 4942     		rsblt	r1, r1, #0
+ 287 0106 BDF81430 		ldrh	r3, [sp, #20]
+ 288 010a 1AB2     		sxth	r2, r3
+ 289 010c 002A     		cmp	r2, #0
+ 290 010e B8BF     		it	lt
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 8
+
+
+ 291 0110 5242     		rsblt	r2, r2, #0
+ 292 0112 9142     		cmp	r1, r2
+ 293 0114 29DB     		blt	.L14
+ 110:.\main.c      ****                 fracFull[0] = 128;
+ 294              		.loc 1 110 0
+ 295 0116 8023     		movs	r3, #128
+ 296 0118 8DF80C30 		strb	r3, [sp, #12]
+ 111:.\main.c      ****                 fracFull[2] = 128;
+ 297              		.loc 1 111 0
+ 298 011c 8DF80E30 		strb	r3, [sp, #14]
+ 112:.\main.c      ****                 fracFull[1] = 128 - (uint8_t) (ax >> 8);
+ 299              		.loc 1 112 0
+ 300 0120 000A     		lsrs	r0, r0, #8
+ 301 0122 1B1A     		subs	r3, r3, r0
+ 302 0124 8DF80D30 		strb	r3, [sp, #13]
+ 113:.\main.c      ****                 fracFull[3] = 128 + (uint8_t) (ax >> 8);
+ 303              		.loc 1 113 0
+ 304 0128 80F08000 		eor	r0, r0, #128
+ 305 012c 8DF80F00 		strb	r0, [sp, #15]
+ 114:.\main.c      ****                 
+ 115:.\main.c      ****                 angles[1] = (az >= 0) ? 0 : 180;
+ 306              		.loc 1 115 0
+ 307 0130 BDF81230 		ldrh	r3, [sp, #18]
+ 308 0134 13F4004F 		tst	r3, #32768
+ 309 0138 01D1     		bne	.L21
+ 310 013a 0022     		movs	r2, #0
+ 311 013c 00E0     		b	.L15
+ 312              	.L21:
+ 313 013e B422     		movs	r2, #180
+ 314              	.L15:
+ 315              		.loc 1 115 0 is_stmt 0 discriminator 4
+ 316 0140 ADF80620 		strh	r2, [sp, #6]	@ movhi
+ 116:.\main.c      ****                 angles[3] = (az >= 0) ? 0 : 180;
+ 317              		.loc 1 116 0 is_stmt 1 discriminator 4
+ 318 0144 13F4004F 		tst	r3, #32768
+ 319 0148 01D1     		bne	.L22
+ 320              		.loc 1 116 0 is_stmt 0
+ 321 014a 0023     		movs	r3, #0
+ 322 014c 00E0     		b	.L16
+ 323              	.L22:
+ 324 014e B423     		movs	r3, #180
+ 325              	.L16:
+ 326              		.loc 1 116 0 discriminator 4
+ 327 0150 ADF80A30 		strh	r3, [sp, #10]	@ movhi
+ 117:.\main.c      ****                 angles[0] = screenAtan(fracFull[3]);
+ 328              		.loc 1 117 0 is_stmt 1 discriminator 4
+ 329 0154 FFF7FEFF 		bl	screenAtan
+ 330              	.LVL29:
+ 331 0158 ADF80400 		strh	r0, [sp, #4]	@ movhi
+ 118:.\main.c      ****                 angles[2] = screenAtan(fracFull[1]);
+ 332              		.loc 1 118 0 discriminator 4
+ 333 015c 9DF80D00 		ldrb	r0, [sp, #13]	@ zero_extendqisi2
+ 334 0160 FFF7FEFF 		bl	screenAtan
+ 335              	.LVL30:
+ 336 0164 ADF80800 		strh	r0, [sp, #8]	@ movhi
+ 337 0168 28E0     		b	.L17
+ 338              	.L14:
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 9
+
+
+ 119:.\main.c      ****             } else {                                        // tilting along the other axis
+ 120:.\main.c      ****                 fracFull[1] = 128;
+ 339              		.loc 1 120 0
+ 340 016a 8022     		movs	r2, #128
+ 341 016c 8DF80D20 		strb	r2, [sp, #13]
+ 121:.\main.c      ****                 fracFull[3] = 128;
+ 342              		.loc 1 121 0
+ 343 0170 8DF80F20 		strb	r2, [sp, #15]
+ 122:.\main.c      ****                 fracFull[0] = 128 + (uint8_t) (ay >> 8);
+ 344              		.loc 1 122 0
+ 345 0174 1B0A     		lsrs	r3, r3, #8
+ 346 0176 83EA0200 		eor	r0, r3, r2
+ 347 017a 8DF80C00 		strb	r0, [sp, #12]
+ 123:.\main.c      ****                 fracFull[2] = 128 - (uint8_t) (ay >> 8);
+ 348              		.loc 1 123 0
+ 349 017e D31A     		subs	r3, r2, r3
+ 350 0180 8DF80E30 		strb	r3, [sp, #14]
+ 124:.\main.c      ****                 
+ 125:.\main.c      ****                 angles[0] = (az >= 0) ? 0 : 180;
+ 351              		.loc 1 125 0
+ 352 0184 BDF81230 		ldrh	r3, [sp, #18]
+ 353 0188 13F4004F 		tst	r3, #32768
+ 354 018c 01D1     		bne	.L23
+ 355 018e 0022     		movs	r2, #0
+ 356 0190 00E0     		b	.L18
+ 357              	.L23:
+ 358 0192 B422     		movs	r2, #180
+ 359              	.L18:
+ 360              		.loc 1 125 0 is_stmt 0 discriminator 4
+ 361 0194 ADF80420 		strh	r2, [sp, #4]	@ movhi
+ 126:.\main.c      ****                 angles[2] = (az >= 0) ? 0 : 180;
+ 362              		.loc 1 126 0 is_stmt 1 discriminator 4
+ 363 0198 13F4004F 		tst	r3, #32768
+ 364 019c 01D1     		bne	.L24
+ 365              		.loc 1 126 0 is_stmt 0
+ 366 019e 0023     		movs	r3, #0
+ 367 01a0 00E0     		b	.L19
+ 368              	.L24:
+ 369 01a2 B423     		movs	r3, #180
+ 370              	.L19:
+ 371              		.loc 1 126 0 discriminator 4
+ 372 01a4 ADF80830 		strh	r3, [sp, #8]	@ movhi
+ 127:.\main.c      ****                 angles[1] = screenAtan(fracFull[0]);
+ 373              		.loc 1 127 0 is_stmt 1 discriminator 4
+ 374 01a8 FFF7FEFF 		bl	screenAtan
+ 375              	.LVL31:
+ 376 01ac ADF80600 		strh	r0, [sp, #6]	@ movhi
+ 128:.\main.c      ****                 angles[3] = screenAtan(fracFull[2]);
+ 377              		.loc 1 128 0 discriminator 4
+ 378 01b0 9DF80E00 		ldrb	r0, [sp, #14]	@ zero_extendqisi2
+ 379 01b4 FFF7FEFF 		bl	screenAtan
+ 380              	.LVL32:
+ 381 01b8 ADF80A00 		strh	r0, [sp, #10]	@ movhi
+ 382              	.L17:
+ 129:.\main.c      ****             }
+ 130:.\main.c      ****             
+ 131:.\main.c      ****             drawLiquid(fracFull, angles);
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 10
+
+
+ 383              		.loc 1 131 0
+ 384 01bc 03A8     		add	r0, sp, #12
+ 385 01be 01A9     		add	r1, sp, #4
+ 386 01c0 FFF7FEFF 		bl	drawLiquid
+ 387              	.LVL33:
+ 388 01c4 61E7     		b	.L9
+ 389              	.L13:
+ 132:.\main.c      ****             
+ 133:.\main.c      ****         // =============================================
+ 134:.\main.c      ****         // Mode 1: snow globe
+ 135:.\main.c      ****         // =============================================
+ 136:.\main.c      ****         } else if (mode == 1) {
+ 390              		.loc 1 136 0
+ 391 01c6 0E4B     		ldr	r3, .L26+12
+ 392 01c8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 393 01ca DBB2     		uxtb	r3, r3
+ 394 01cc 012B     		cmp	r3, #1
+ 395 01ce 7FF45CAF 		bne	.L9
+ 137:.\main.c      ****             Read_Accel_Data(&ax, &ay, &az);
+ 396              		.loc 1 137 0
+ 397 01d2 0DF11600 		add	r0, sp, #22
+ 398 01d6 05A9     		add	r1, sp, #20
+ 399 01d8 0DF11202 		add	r2, sp, #18
+ 400 01dc FFF7FEFF 		bl	Read_Accel_Data
+ 401              	.LVL34:
+ 138:.\main.c      ****             snowglobeUpdate(ax, ay, az);
+ 402              		.loc 1 138 0
+ 403 01e0 BDF91600 		ldrsh	r0, [sp, #22]
+ 404 01e4 BDF91410 		ldrsh	r1, [sp, #20]
+ 405 01e8 BDF91220 		ldrsh	r2, [sp, #18]
+ 406 01ec FFF7FEFF 		bl	snowglobeUpdate
+ 407              	.LVL35:
+ 408 01f0 4BE7     		b	.L9
+ 409              	.L27:
+ 410 01f2 00BF     		.align	2
+ 411              	.L26:
+ 412 01f4 00000000 		.word	Mode_Handler
+ 413 01f8 00000000 		.word	.LANCHOR2
+ 414 01fc 00000000 		.word	Bright_Handler
+ 415 0200 00000000 		.word	.LANCHOR0
+ 416 0204 00000000 		.word	.LANCHOR1
+ 417              		.cfi_endproc
+ 418              	.LFE65:
+ 419              		.size	main, .-main
+ 420              		.global	brightnessChanged
+ 421              		.global	brightness
+ 422              		.global	brightIdx
+ 423              		.global	mode_changed
+ 424              		.global	mode
+ 425              		.comm	sineBrightness,256,4
+ 426              		.section	.rodata
+ 427              		.align	2
+ 428              		.set	.LANCHOR2,. + 0
+ 429              	.LC0:
+ 430 0000 80       		.byte	-128
+ 431 0001 80       		.byte	-128
+ 432 0002 80       		.byte	-128
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 11
+
+
+ 433 0003 80       		.byte	-128
+ 434              		.data
+ 435              		.set	.LANCHOR1,. + 0
+ 436              		.type	brightness, %object
+ 437              		.size	brightness, 1
+ 438              	brightness:
+ 439 0000 FF       		.byte	-1
+ 440              		.bss
+ 441              		.set	.LANCHOR0,. + 0
+ 442              		.type	mode, %object
+ 443              		.size	mode, 1
+ 444              	mode:
+ 445 0000 00       		.space	1
+ 446              		.type	mode_changed, %object
+ 447              		.size	mode_changed, 1
+ 448              	mode_changed:
+ 449 0001 00       		.space	1
+ 450              		.type	brightnessChanged, %object
+ 451              		.size	brightnessChanged, 1
+ 452              	brightnessChanged:
+ 453 0002 00       		.space	1
+ 454              		.type	brightIdx, %object
+ 455              		.size	brightIdx, 1
+ 456              	brightIdx:
+ 457 0003 00       		.space	1
+ 458              		.text
+ 459              	.Letext0:
+ 460              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 461              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 462              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 463              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 464              		.file 6 ".\\lantern.h"
+ 465              		.file 7 "Generated_Source\\PSoC5/SPIM_0.h"
+ 466              		.file 8 "Generated_Source\\PSoC5/SPIM_1.h"
+ 467              		.file 9 "Generated_Source\\PSoC5/SPIM_2.h"
+ 468              		.file 10 "Generated_Source\\PSoC5/SPIM_3.h"
+ 469              		.file 11 ".\\dma_util.h"
+ 470              		.file 12 ".\\tft.h"
+ 471              		.file 13 "Generated_Source\\PSoC5/ADC_DelSig_1.h"
+ 472              		.file 14 "Generated_Source\\PSoC5/I2C_1.h"
+ 473              		.file 15 ".\\imu.h"
+ 474              		.file 16 "Generated_Source\\PSoC5/MODE_ISR.h"
+ 475              		.file 17 "Generated_Source\\PSoC5/BRIGHT_ISR.h"
+ 476              		.file 18 "Generated_Source\\PSoC5/PWM_1.h"
+ 477              		.file 19 "Generated_Source\\PSoC5/LED_MODE_1.h"
+ 478              		.file 20 "Generated_Source\\PSoC5/LED_MODE_2.h"
+ 479              		.file 21 ".\\snowglobe.h"
+ 480              		.file 22 ".\\rotate_liquid.h"
+ 481              		.section	.debug_info,"",%progbits
+ 482              	.Ldebug_info0:
+ 483 0000 C4050000 		.4byte	0x5c4
+ 484 0004 0400     		.2byte	0x4
+ 485 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 486 000a 04       		.byte	0x4
+ 487 000b 01       		.uleb128 0x1
+ 488 000c CF020000 		.4byte	.LASF56
+ 489 0010 01       		.byte	0x1
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 12
+
+
+ 490 0011 BC020000 		.4byte	.LASF57
+ 491 0015 9B000000 		.4byte	.LASF58
+ 492 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 493 001d 00000000 		.4byte	0
+ 494 0021 00000000 		.4byte	.Ldebug_line0
+ 495 0025 02       		.uleb128 0x2
+ 496 0026 01       		.byte	0x1
+ 497 0027 06       		.byte	0x6
+ 498 0028 DB010000 		.4byte	.LASF0
+ 499 002c 03       		.uleb128 0x3
+ 500 002d 50010000 		.4byte	.LASF2
+ 501 0031 02       		.byte	0x2
+ 502 0032 1D       		.byte	0x1d
+ 503 0033 37000000 		.4byte	0x37
+ 504 0037 02       		.uleb128 0x2
+ 505 0038 01       		.byte	0x1
+ 506 0039 08       		.byte	0x8
+ 507 003a A9010000 		.4byte	.LASF1
+ 508 003e 03       		.uleb128 0x3
+ 509 003f 64030000 		.4byte	.LASF3
+ 510 0043 02       		.byte	0x2
+ 511 0044 29       		.byte	0x29
+ 512 0045 49000000 		.4byte	0x49
+ 513 0049 02       		.uleb128 0x2
+ 514 004a 02       		.byte	0x2
+ 515 004b 05       		.byte	0x5
+ 516 004c 36000000 		.4byte	.LASF4
+ 517 0050 03       		.uleb128 0x3
+ 518 0051 72000000 		.4byte	.LASF5
+ 519 0055 02       		.byte	0x2
+ 520 0056 2B       		.byte	0x2b
+ 521 0057 5B000000 		.4byte	0x5b
+ 522 005b 02       		.uleb128 0x2
+ 523 005c 02       		.byte	0x2
+ 524 005d 07       		.byte	0x7
+ 525 005e 2A020000 		.4byte	.LASF6
+ 526 0062 03       		.uleb128 0x3
+ 527 0063 C5020000 		.4byte	.LASF7
+ 528 0067 02       		.byte	0x2
+ 529 0068 3F       		.byte	0x3f
+ 530 0069 6D000000 		.4byte	0x6d
+ 531 006d 02       		.uleb128 0x2
+ 532 006e 04       		.byte	0x4
+ 533 006f 05       		.byte	0x5
+ 534 0070 18010000 		.4byte	.LASF8
+ 535 0074 02       		.uleb128 0x2
+ 536 0075 04       		.byte	0x4
+ 537 0076 07       		.byte	0x7
+ 538 0077 A3020000 		.4byte	.LASF9
+ 539 007b 02       		.uleb128 0x2
+ 540 007c 08       		.byte	0x8
+ 541 007d 05       		.byte	0x5
+ 542 007e FF000000 		.4byte	.LASF10
+ 543 0082 02       		.uleb128 0x2
+ 544 0083 08       		.byte	0x8
+ 545 0084 07       		.byte	0x7
+ 546 0085 E7010000 		.4byte	.LASF11
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 13
+
+
+ 547 0089 04       		.uleb128 0x4
+ 548 008a 04       		.byte	0x4
+ 549 008b 05       		.byte	0x5
+ 550 008c 696E7400 		.ascii	"int\000"
+ 551 0090 02       		.uleb128 0x2
+ 552 0091 04       		.byte	0x4
+ 553 0092 07       		.byte	0x7
+ 554 0093 FE010000 		.4byte	.LASF12
+ 555 0097 03       		.uleb128 0x3
+ 556 0098 93000000 		.4byte	.LASF13
+ 557 009c 03       		.byte	0x3
+ 558 009d 15       		.byte	0x15
+ 559 009e 2C000000 		.4byte	0x2c
+ 560 00a2 03       		.uleb128 0x3
+ 561 00a3 6E020000 		.4byte	.LASF14
+ 562 00a7 03       		.byte	0x3
+ 563 00a8 20       		.byte	0x20
+ 564 00a9 3E000000 		.4byte	0x3e
+ 565 00ad 03       		.uleb128 0x3
+ 566 00ae 0B020000 		.4byte	.LASF15
+ 567 00b2 03       		.byte	0x3
+ 568 00b3 21       		.byte	0x21
+ 569 00b4 50000000 		.4byte	0x50
+ 570 00b8 03       		.uleb128 0x3
+ 571 00b9 66020000 		.4byte	.LASF16
+ 572 00bd 03       		.byte	0x3
+ 573 00be 2C       		.byte	0x2c
+ 574 00bf 62000000 		.4byte	0x62
+ 575 00c3 05       		.uleb128 0x5
+ 576 00c4 76020000 		.4byte	.LASF17
+ 577 00c8 04       		.byte	0x4
+ 578 00c9 9201     		.2byte	0x192
+ 579 00cb 37000000 		.4byte	0x37
+ 580 00cf 05       		.uleb128 0x5
+ 581 00d0 F3000000 		.4byte	.LASF18
+ 582 00d4 04       		.byte	0x4
+ 583 00d5 9601     		.2byte	0x196
+ 584 00d7 49000000 		.4byte	0x49
+ 585 00db 02       		.uleb128 0x2
+ 586 00dc 04       		.byte	0x4
+ 587 00dd 04       		.byte	0x4
+ 588 00de F9000000 		.4byte	.LASF19
+ 589 00e2 02       		.uleb128 0x2
+ 590 00e3 08       		.byte	0x8
+ 591 00e4 04       		.byte	0x4
+ 592 00e5 B5020000 		.4byte	.LASF20
+ 593 00e9 02       		.uleb128 0x2
+ 594 00ea 01       		.byte	0x1
+ 595 00eb 08       		.byte	0x8
+ 596 00ec 50020000 		.4byte	.LASF21
+ 597 00f0 05       		.uleb128 0x5
+ 598 00f1 C5010000 		.4byte	.LASF22
+ 599 00f5 04       		.byte	0x4
+ 600 00f6 4E02     		.2byte	0x24e
+ 601 00f8 FC000000 		.4byte	0xfc
+ 602 00fc 06       		.uleb128 0x6
+ 603 00fd 04       		.byte	0x4
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 14
+
+
+ 604 00fe 02010000 		.4byte	0x102
+ 605 0102 07       		.uleb128 0x7
+ 606 0103 02       		.uleb128 0x2
+ 607 0104 04       		.byte	0x4
+ 608 0105 07       		.byte	0x7
+ 609 0106 40000000 		.4byte	.LASF23
+ 610 010a 08       		.uleb128 0x8
+ 611 010b 97000000 		.4byte	0x97
+ 612 010f 09       		.uleb128 0x9
+ 613 0110 BC030000 		.4byte	.LASF24
+ 614 0114 01       		.byte	0x1
+ 615 0115 0E       		.byte	0xe
+ 616 0116 00000000 		.4byte	.LFB63
+ 617 011a 28000000 		.4byte	.LFE63-.LFB63
+ 618 011e 01       		.uleb128 0x1
+ 619 011f 9C       		.byte	0x9c
+ 620 0120 09       		.uleb128 0x9
+ 621 0121 5A010000 		.4byte	.LASF25
+ 622 0125 01       		.byte	0x1
+ 623 0126 17       		.byte	0x17
+ 624 0127 00000000 		.4byte	.LFB64
+ 625 012b 34000000 		.4byte	.LFE64-.LFB64
+ 626 012f 01       		.uleb128 0x1
+ 627 0130 9C       		.byte	0x9c
+ 628 0131 0A       		.uleb128 0xa
+ 629 0132 68000000 		.4byte	.LASF59
+ 630 0136 01       		.byte	0x1
+ 631 0137 1F       		.byte	0x1f
+ 632 0138 89000000 		.4byte	0x89
+ 633 013c 00000000 		.4byte	.LFB65
+ 634 0140 08020000 		.4byte	.LFE65-.LFB65
+ 635 0144 01       		.uleb128 0x1
+ 636 0145 9C       		.byte	0x9c
+ 637 0146 CD030000 		.4byte	0x3cd
+ 638 014a 0B       		.uleb128 0xb
+ 639 014b 617800   		.ascii	"ax\000"
+ 640 014e 01       		.byte	0x1
+ 641 014f 3E       		.byte	0x3e
+ 642 0150 A2000000 		.4byte	0xa2
+ 643 0154 02       		.uleb128 0x2
+ 644 0155 91       		.byte	0x91
+ 645 0156 76       		.sleb128 -10
+ 646 0157 0B       		.uleb128 0xb
+ 647 0158 617900   		.ascii	"ay\000"
+ 648 015b 01       		.byte	0x1
+ 649 015c 3E       		.byte	0x3e
+ 650 015d A2000000 		.4byte	0xa2
+ 651 0161 02       		.uleb128 0x2
+ 652 0162 91       		.byte	0x91
+ 653 0163 74       		.sleb128 -12
+ 654 0164 0B       		.uleb128 0xb
+ 655 0165 617A00   		.ascii	"az\000"
+ 656 0168 01       		.byte	0x1
+ 657 0169 3E       		.byte	0x3e
+ 658 016a A2000000 		.4byte	0xa2
+ 659 016e 02       		.uleb128 0x2
+ 660 016f 91       		.byte	0x91
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 15
+
+
+ 661 0170 72       		.sleb128 -14
+ 662 0171 0C       		.uleb128 0xc
+ 663 0172 677800   		.ascii	"gx\000"
+ 664 0175 01       		.byte	0x1
+ 665 0176 3F       		.byte	0x3f
+ 666 0177 A2000000 		.4byte	0xa2
+ 667 017b 0C       		.uleb128 0xc
+ 668 017c 677900   		.ascii	"gy\000"
+ 669 017f 01       		.byte	0x1
+ 670 0180 3F       		.byte	0x3f
+ 671 0181 A2000000 		.4byte	0xa2
+ 672 0185 0C       		.uleb128 0xc
+ 673 0186 677A00   		.ascii	"gz\000"
+ 674 0189 01       		.byte	0x1
+ 675 018a 3F       		.byte	0x3f
+ 676 018b A2000000 		.4byte	0xa2
+ 677 018f 0D       		.uleb128 0xd
+ 678 0190 D2010000 		.4byte	.LASF26
+ 679 0194 01       		.byte	0x1
+ 680 0195 4B       		.byte	0x4b
+ 681 0196 CD030000 		.4byte	0x3cd
+ 682 019a 02       		.uleb128 0x2
+ 683 019b 91       		.byte	0x91
+ 684 019c 6C       		.sleb128 -20
+ 685 019d 0D       		.uleb128 0xd
+ 686 019e 5D030000 		.4byte	.LASF27
+ 687 01a2 01       		.byte	0x1
+ 688 01a3 4C       		.byte	0x4c
+ 689 01a4 DD030000 		.4byte	0x3dd
+ 690 01a8 02       		.uleb128 0x2
+ 691 01a9 91       		.byte	0x91
+ 692 01aa 64       		.sleb128 -28
+ 693 01ab 0E       		.uleb128 0xe
+ 694 01ac 0A000000 		.4byte	.LVL0
+ 695 01b0 79040000 		.4byte	0x479
+ 696 01b4 0E       		.uleb128 0xe
+ 697 01b5 0E000000 		.4byte	.LVL1
+ 698 01b9 80040000 		.4byte	0x480
+ 699 01bd 0E       		.uleb128 0xe
+ 700 01be 12000000 		.4byte	.LVL2
+ 701 01c2 87040000 		.4byte	0x487
+ 702 01c6 0E       		.uleb128 0xe
+ 703 01c7 16000000 		.4byte	.LVL3
+ 704 01cb 8E040000 		.4byte	0x48e
+ 705 01cf 0F       		.uleb128 0xf
+ 706 01d0 1C000000 		.4byte	.LVL4
+ 707 01d4 95040000 		.4byte	0x495
+ 708 01d8 E2010000 		.4byte	0x1e2
+ 709 01dc 10       		.uleb128 0x10
+ 710 01dd 01       		.uleb128 0x1
+ 711 01de 50       		.byte	0x50
+ 712 01df 01       		.uleb128 0x1
+ 713 01e0 30       		.byte	0x30
+ 714 01e1 00       		.byte	0
+ 715 01e2 0F       		.uleb128 0xf
+ 716 01e3 22000000 		.4byte	.LVL5
+ 717 01e7 95040000 		.4byte	0x495
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 16
+
+
+ 718 01eb F5010000 		.4byte	0x1f5
+ 719 01ef 10       		.uleb128 0x10
+ 720 01f0 01       		.uleb128 0x1
+ 721 01f1 50       		.byte	0x50
+ 722 01f2 01       		.uleb128 0x1
+ 723 01f3 31       		.byte	0x31
+ 724 01f4 00       		.byte	0
+ 725 01f5 0F       		.uleb128 0xf
+ 726 01f6 28000000 		.4byte	.LVL6
+ 727 01fa 95040000 		.4byte	0x495
+ 728 01fe 08020000 		.4byte	0x208
+ 729 0202 10       		.uleb128 0x10
+ 730 0203 01       		.uleb128 0x1
+ 731 0204 50       		.byte	0x50
+ 732 0205 01       		.uleb128 0x1
+ 733 0206 32       		.byte	0x32
+ 734 0207 00       		.byte	0
+ 735 0208 0F       		.uleb128 0xf
+ 736 0209 2E000000 		.4byte	.LVL7
+ 737 020d 95040000 		.4byte	0x495
+ 738 0211 1B020000 		.4byte	0x21b
+ 739 0215 10       		.uleb128 0x10
+ 740 0216 01       		.uleb128 0x1
+ 741 0217 50       		.byte	0x50
+ 742 0218 01       		.uleb128 0x1
+ 743 0219 33       		.byte	0x33
+ 744 021a 00       		.byte	0
+ 745 021b 0F       		.uleb128 0xf
+ 746 021c 34000000 		.4byte	.LVL8
+ 747 0220 A6040000 		.4byte	0x4a6
+ 748 0224 2E020000 		.4byte	0x22e
+ 749 0228 10       		.uleb128 0x10
+ 750 0229 01       		.uleb128 0x1
+ 751 022a 50       		.byte	0x50
+ 752 022b 01       		.uleb128 0x1
+ 753 022c 30       		.byte	0x30
+ 754 022d 00       		.byte	0
+ 755 022e 0F       		.uleb128 0xf
+ 756 022f 3A000000 		.4byte	.LVL9
+ 757 0233 A6040000 		.4byte	0x4a6
+ 758 0237 41020000 		.4byte	0x241
+ 759 023b 10       		.uleb128 0x10
+ 760 023c 01       		.uleb128 0x1
+ 761 023d 50       		.byte	0x50
+ 762 023e 01       		.uleb128 0x1
+ 763 023f 31       		.byte	0x31
+ 764 0240 00       		.byte	0
+ 765 0241 0F       		.uleb128 0xf
+ 766 0242 40000000 		.4byte	.LVL10
+ 767 0246 A6040000 		.4byte	0x4a6
+ 768 024a 54020000 		.4byte	0x254
+ 769 024e 10       		.uleb128 0x10
+ 770 024f 01       		.uleb128 0x1
+ 771 0250 50       		.byte	0x50
+ 772 0251 01       		.uleb128 0x1
+ 773 0252 32       		.byte	0x32
+ 774 0253 00       		.byte	0
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 17
+
+
+ 775 0254 0F       		.uleb128 0xf
+ 776 0255 46000000 		.4byte	.LVL11
+ 777 0259 A6040000 		.4byte	0x4a6
+ 778 025d 67020000 		.4byte	0x267
+ 779 0261 10       		.uleb128 0x10
+ 780 0262 01       		.uleb128 0x1
+ 781 0263 50       		.byte	0x50
+ 782 0264 01       		.uleb128 0x1
+ 783 0265 33       		.byte	0x33
+ 784 0266 00       		.byte	0
+ 785 0267 0E       		.uleb128 0xe
+ 786 0268 4A000000 		.4byte	.LVL12
+ 787 026c B7040000 		.4byte	0x4b7
+ 788 0270 0E       		.uleb128 0xe
+ 789 0271 4E000000 		.4byte	.LVL13
+ 790 0275 BE040000 		.4byte	0x4be
+ 791 0279 0E       		.uleb128 0xe
+ 792 027a 52000000 		.4byte	.LVL14
+ 793 027e C5040000 		.4byte	0x4c5
+ 794 0282 0E       		.uleb128 0xe
+ 795 0283 56000000 		.4byte	.LVL15
+ 796 0287 CC040000 		.4byte	0x4cc
+ 797 028b 0F       		.uleb128 0xf
+ 798 028c 5C000000 		.4byte	.LVL16
+ 799 0290 D3040000 		.4byte	0x4d3
+ 800 0294 9E020000 		.4byte	0x29e
+ 801 0298 10       		.uleb128 0x10
+ 802 0299 01       		.uleb128 0x1
+ 803 029a 50       		.byte	0x50
+ 804 029b 01       		.uleb128 0x1
+ 805 029c 30       		.byte	0x30
+ 806 029d 00       		.byte	0
+ 807 029e 0F       		.uleb128 0xf
+ 808 029f 62000000 		.4byte	.LVL17
+ 809 02a3 D3040000 		.4byte	0x4d3
+ 810 02a7 B1020000 		.4byte	0x2b1
+ 811 02ab 10       		.uleb128 0x10
+ 812 02ac 01       		.uleb128 0x1
+ 813 02ad 50       		.byte	0x50
+ 814 02ae 01       		.uleb128 0x1
+ 815 02af 31       		.byte	0x31
+ 816 02b0 00       		.byte	0
+ 817 02b1 0F       		.uleb128 0xf
+ 818 02b2 68000000 		.4byte	.LVL18
+ 819 02b6 D3040000 		.4byte	0x4d3
+ 820 02ba C4020000 		.4byte	0x2c4
+ 821 02be 10       		.uleb128 0x10
+ 822 02bf 01       		.uleb128 0x1
+ 823 02c0 50       		.byte	0x50
+ 824 02c1 01       		.uleb128 0x1
+ 825 02c2 32       		.byte	0x32
+ 826 02c3 00       		.byte	0
+ 827 02c4 0F       		.uleb128 0xf
+ 828 02c5 6E000000 		.4byte	.LVL19
+ 829 02c9 D3040000 		.4byte	0x4d3
+ 830 02cd D7020000 		.4byte	0x2d7
+ 831 02d1 10       		.uleb128 0x10
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 18
+
+
+ 832 02d2 01       		.uleb128 0x1
+ 833 02d3 50       		.byte	0x50
+ 834 02d4 01       		.uleb128 0x1
+ 835 02d5 33       		.byte	0x33
+ 836 02d6 00       		.byte	0
+ 837 02d7 0F       		.uleb128 0xf
+ 838 02d8 74000000 		.4byte	.LVL20
+ 839 02dc E4040000 		.4byte	0x4e4
+ 840 02e0 EE020000 		.4byte	0x2ee
+ 841 02e4 10       		.uleb128 0x10
+ 842 02e5 01       		.uleb128 0x1
+ 843 02e6 50       		.byte	0x50
+ 844 02e7 05       		.uleb128 0x5
+ 845 02e8 03       		.byte	0x3
+ 846 02e9 00000000 		.4byte	Mode_Handler
+ 847 02ed 00       		.byte	0
+ 848 02ee 0F       		.uleb128 0xf
+ 849 02ef 86000000 		.4byte	.LVL21
+ 850 02f3 F5040000 		.4byte	0x4f5
+ 851 02f7 05030000 		.4byte	0x305
+ 852 02fb 10       		.uleb128 0x10
+ 853 02fc 01       		.uleb128 0x1
+ 854 02fd 50       		.byte	0x50
+ 855 02fe 05       		.uleb128 0x5
+ 856 02ff 03       		.byte	0x3
+ 857 0300 00000000 		.4byte	Bright_Handler
+ 858 0304 00       		.byte	0
+ 859 0305 0E       		.uleb128 0xe
+ 860 0306 8A000000 		.4byte	.LVL22
+ 861 030a 06050000 		.4byte	0x506
+ 862 030e 0E       		.uleb128 0xe
+ 863 030f A4000000 		.4byte	.LVL23
+ 864 0313 0D050000 		.4byte	0x50d
+ 865 0317 0E       		.uleb128 0xe
+ 866 0318 AE000000 		.4byte	.LVL24
+ 867 031c 1E050000 		.4byte	0x51e
+ 868 0320 0E       		.uleb128 0xe
+ 869 0321 BA000000 		.4byte	.LVL25
+ 870 0325 2F050000 		.4byte	0x52f
+ 871 0329 0F       		.uleb128 0xf
+ 872 032a CA000000 		.4byte	.LVL26
+ 873 032e 36050000 		.4byte	0x536
+ 874 0332 3C030000 		.4byte	0x33c
+ 875 0336 10       		.uleb128 0x10
+ 876 0337 01       		.uleb128 0x1
+ 877 0338 50       		.byte	0x50
+ 878 0339 01       		.uleb128 0x1
+ 879 033a 30       		.byte	0x30
+ 880 033b 00       		.byte	0
+ 881 033c 0E       		.uleb128 0xe
+ 882 033d E2000000 		.4byte	.LVL27
+ 883 0341 47050000 		.4byte	0x547
+ 884 0345 0F       		.uleb128 0xf
+ 885 0346 FA000000 		.4byte	.LVL28
+ 886 034a 58050000 		.4byte	0x558
+ 887 034e 65030000 		.4byte	0x365
+ 888 0352 10       		.uleb128 0x10
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 19
+
+
+ 889 0353 01       		.uleb128 0x1
+ 890 0354 52       		.byte	0x52
+ 891 0355 02       		.uleb128 0x2
+ 892 0356 91       		.byte	0x91
+ 893 0357 72       		.sleb128 -14
+ 894 0358 10       		.uleb128 0x10
+ 895 0359 01       		.uleb128 0x1
+ 896 035a 51       		.byte	0x51
+ 897 035b 02       		.uleb128 0x2
+ 898 035c 91       		.byte	0x91
+ 899 035d 74       		.sleb128 -12
+ 900 035e 10       		.uleb128 0x10
+ 901 035f 01       		.uleb128 0x1
+ 902 0360 50       		.byte	0x50
+ 903 0361 02       		.uleb128 0x2
+ 904 0362 91       		.byte	0x91
+ 905 0363 76       		.sleb128 -10
+ 906 0364 00       		.byte	0
+ 907 0365 0E       		.uleb128 0xe
+ 908 0366 58010000 		.4byte	.LVL29
+ 909 036a 79050000 		.4byte	0x579
+ 910 036e 0E       		.uleb128 0xe
+ 911 036f 64010000 		.4byte	.LVL30
+ 912 0373 79050000 		.4byte	0x579
+ 913 0377 0E       		.uleb128 0xe
+ 914 0378 AC010000 		.4byte	.LVL31
+ 915 037c 79050000 		.4byte	0x579
+ 916 0380 0E       		.uleb128 0xe
+ 917 0381 B8010000 		.4byte	.LVL32
+ 918 0385 79050000 		.4byte	0x579
+ 919 0389 0F       		.uleb128 0xf
+ 920 038a C4010000 		.4byte	.LVL33
+ 921 038e 8E050000 		.4byte	0x58e
+ 922 0392 A3030000 		.4byte	0x3a3
+ 923 0396 10       		.uleb128 0x10
+ 924 0397 01       		.uleb128 0x1
+ 925 0398 51       		.byte	0x51
+ 926 0399 02       		.uleb128 0x2
+ 927 039a 91       		.byte	0x91
+ 928 039b 64       		.sleb128 -28
+ 929 039c 10       		.uleb128 0x10
+ 930 039d 01       		.uleb128 0x1
+ 931 039e 50       		.byte	0x50
+ 932 039f 02       		.uleb128 0x2
+ 933 03a0 91       		.byte	0x91
+ 934 03a1 6C       		.sleb128 -20
+ 935 03a2 00       		.byte	0
+ 936 03a3 0F       		.uleb128 0xf
+ 937 03a4 E0010000 		.4byte	.LVL34
+ 938 03a8 58050000 		.4byte	0x558
+ 939 03ac C3030000 		.4byte	0x3c3
+ 940 03b0 10       		.uleb128 0x10
+ 941 03b1 01       		.uleb128 0x1
+ 942 03b2 52       		.byte	0x52
+ 943 03b3 02       		.uleb128 0x2
+ 944 03b4 91       		.byte	0x91
+ 945 03b5 72       		.sleb128 -14
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 20
+
+
+ 946 03b6 10       		.uleb128 0x10
+ 947 03b7 01       		.uleb128 0x1
+ 948 03b8 51       		.byte	0x51
+ 949 03b9 02       		.uleb128 0x2
+ 950 03ba 91       		.byte	0x91
+ 951 03bb 74       		.sleb128 -12
+ 952 03bc 10       		.uleb128 0x10
+ 953 03bd 01       		.uleb128 0x1
+ 954 03be 50       		.byte	0x50
+ 955 03bf 02       		.uleb128 0x2
+ 956 03c0 91       		.byte	0x91
+ 957 03c1 76       		.sleb128 -10
+ 958 03c2 00       		.byte	0
+ 959 03c3 0E       		.uleb128 0xe
+ 960 03c4 F0010000 		.4byte	.LVL35
+ 961 03c8 B0050000 		.4byte	0x5b0
+ 962 03cc 00       		.byte	0
+ 963 03cd 11       		.uleb128 0x11
+ 964 03ce 97000000 		.4byte	0x97
+ 965 03d2 DD030000 		.4byte	0x3dd
+ 966 03d6 12       		.uleb128 0x12
+ 967 03d7 03010000 		.4byte	0x103
+ 968 03db 03       		.byte	0x3
+ 969 03dc 00       		.byte	0
+ 970 03dd 11       		.uleb128 0x11
+ 971 03de AD000000 		.4byte	0xad
+ 972 03e2 ED030000 		.4byte	0x3ed
+ 973 03e6 12       		.uleb128 0x12
+ 974 03e7 03010000 		.4byte	0x103
+ 975 03eb 03       		.byte	0x3
+ 976 03ec 00       		.byte	0
+ 977 03ed 13       		.uleb128 0x13
+ 978 03ee AF030000 		.4byte	.LASF28
+ 979 03f2 05       		.byte	0x5
+ 980 03f3 9606     		.2byte	0x696
+ 981 03f5 F9030000 		.4byte	0x3f9
+ 982 03f9 08       		.uleb128 0x8
+ 983 03fa B8000000 		.4byte	0xb8
+ 984 03fe 11       		.uleb128 0x11
+ 985 03ff 97000000 		.4byte	0x97
+ 986 0403 0E040000 		.4byte	0x40e
+ 987 0407 12       		.uleb128 0x12
+ 988 0408 03010000 		.4byte	0x103
+ 989 040c FF       		.byte	0xff
+ 990 040d 00       		.byte	0
+ 991 040e 14       		.uleb128 0x14
+ 992 040f 6E030000 		.4byte	.LASF29
+ 993 0413 06       		.byte	0x6
+ 994 0414 03       		.byte	0x3
+ 995 0415 1F040000 		.4byte	0x41f
+ 996 0419 05       		.uleb128 0x5
+ 997 041a 03       		.byte	0x3
+ 998 041b 00000000 		.4byte	sineBrightness
+ 999 041f 15       		.uleb128 0x15
+ 1000 0420 FE030000 		.4byte	0x3fe
+ 1001 0424 14       		.uleb128 0x14
+ 1002 0425 6D000000 		.4byte	.LASF30
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 21
+
+
+ 1003 0429 01       		.byte	0x1
+ 1004 042a 0C       		.byte	0xc
+ 1005 042b 0A010000 		.4byte	0x10a
+ 1006 042f 05       		.uleb128 0x5
+ 1007 0430 03       		.byte	0x3
+ 1008 0431 00000000 		.4byte	mode
+ 1009 0435 14       		.uleb128 0x14
+ 1010 0436 7D000000 		.4byte	.LASF31
+ 1011 043a 01       		.byte	0x1
+ 1012 043b 0D       		.byte	0xd
+ 1013 043c 0A010000 		.4byte	0x10a
+ 1014 0440 05       		.uleb128 0x5
+ 1015 0441 03       		.byte	0x3
+ 1016 0442 00000000 		.4byte	mode_changed
+ 1017 0446 14       		.uleb128 0x14
+ 1018 0447 21010000 		.4byte	.LASF32
+ 1019 044b 01       		.byte	0x1
+ 1020 044c 14       		.byte	0x14
+ 1021 044d 0A010000 		.4byte	0x10a
+ 1022 0451 05       		.uleb128 0x5
+ 1023 0452 03       		.byte	0x3
+ 1024 0453 00000000 		.4byte	brightIdx
+ 1025 0457 14       		.uleb128 0x14
+ 1026 0458 14020000 		.4byte	.LASF33
+ 1027 045c 01       		.byte	0x1
+ 1028 045d 15       		.byte	0x15
+ 1029 045e 0A010000 		.4byte	0x10a
+ 1030 0462 05       		.uleb128 0x5
+ 1031 0463 03       		.byte	0x3
+ 1032 0464 00000000 		.4byte	brightness
+ 1033 0468 14       		.uleb128 0x14
+ 1034 0469 7D030000 		.4byte	.LASF34
+ 1035 046d 01       		.byte	0x1
+ 1036 046e 16       		.byte	0x16
+ 1037 046f 0A010000 		.4byte	0x10a
+ 1038 0473 05       		.uleb128 0x5
+ 1039 0474 03       		.byte	0x3
+ 1040 0475 00000000 		.4byte	brightnessChanged
+ 1041 0479 16       		.uleb128 0x16
+ 1042 047a 2B010000 		.4byte	.LASF35
+ 1043 047e 07       		.byte	0x7
+ 1044 047f 53       		.byte	0x53
+ 1045 0480 16       		.uleb128 0x16
+ 1046 0481 8F030000 		.4byte	.LASF36
+ 1047 0485 08       		.byte	0x8
+ 1048 0486 53       		.byte	0x53
+ 1049 0487 16       		.uleb128 0x16
+ 1050 0488 9C010000 		.4byte	.LASF37
+ 1051 048c 09       		.byte	0x9
+ 1052 048d 53       		.byte	0x53
+ 1053 048e 16       		.uleb128 0x16
+ 1054 048f 00000000 		.4byte	.LASF38
+ 1055 0493 0A       		.byte	0xa
+ 1056 0494 53       		.byte	0x53
+ 1057 0495 17       		.uleb128 0x17
+ 1058 0496 C9030000 		.4byte	.LASF39
+ 1059 049a 0B       		.byte	0xb
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 22
+
+
+ 1060 049b 1C       		.byte	0x1c
+ 1061 049c A6040000 		.4byte	0x4a6
+ 1062 04a0 18       		.uleb128 0x18
+ 1063 04a1 C3000000 		.4byte	0xc3
+ 1064 04a5 00       		.byte	0
+ 1065 04a6 17       		.uleb128 0x17
+ 1066 04a7 8A000000 		.4byte	.LASF40
+ 1067 04ab 0C       		.byte	0xc
+ 1068 04ac 13       		.byte	0x13
+ 1069 04ad B7040000 		.4byte	0x4b7
+ 1070 04b1 18       		.uleb128 0x18
+ 1071 04b2 C3000000 		.4byte	0xc3
+ 1072 04b6 00       		.byte	0
+ 1073 04b7 16       		.uleb128 0x16
+ 1074 04b8 9C030000 		.4byte	.LASF41
+ 1075 04bc 0D       		.byte	0xd
+ 1076 04bd 3A       		.byte	0x3a
+ 1077 04be 16       		.uleb128 0x16
+ 1078 04bf 89020000 		.4byte	.LASF42
+ 1079 04c3 0D       		.byte	0xd
+ 1080 04c4 3D       		.byte	0x3d
+ 1081 04c5 16       		.uleb128 0x16
+ 1082 04c6 0D000000 		.4byte	.LASF43
+ 1083 04ca 0E       		.byte	0xe
+ 1084 04cb 93       		.byte	0x93
+ 1085 04cc 16       		.uleb128 0x16
+ 1086 04cd B7010000 		.4byte	.LASF44
+ 1087 04d1 0F       		.byte	0xf
+ 1088 04d2 08       		.byte	0x8
+ 1089 04d3 17       		.uleb128 0x17
+ 1090 04d4 38010000 		.4byte	.LASF45
+ 1091 04d8 0B       		.byte	0xb
+ 1092 04d9 1E       		.byte	0x1e
+ 1093 04da E4040000 		.4byte	0x4e4
+ 1094 04de 18       		.uleb128 0x18
+ 1095 04df C3000000 		.4byte	0xc3
+ 1096 04e3 00       		.byte	0
+ 1097 04e4 17       		.uleb128 0x17
+ 1098 04e5 25000000 		.4byte	.LASF46
+ 1099 04e9 10       		.byte	0x10
+ 1100 04ea 18       		.byte	0x18
+ 1101 04eb F5040000 		.4byte	0x4f5
+ 1102 04ef 18       		.uleb128 0x18
+ 1103 04f0 F0000000 		.4byte	0xf0
+ 1104 04f4 00       		.byte	0
+ 1105 04f5 17       		.uleb128 0x17
+ 1106 04f6 3D020000 		.4byte	.LASF47
+ 1107 04fa 11       		.byte	0x11
+ 1108 04fb 18       		.byte	0x18
+ 1109 04fc 06050000 		.4byte	0x506
+ 1110 0500 18       		.uleb128 0x18
+ 1111 0501 F0000000 		.4byte	0xf0
+ 1112 0505 00       		.byte	0
+ 1113 0506 16       		.uleb128 0x16
+ 1114 0507 19000000 		.4byte	.LASF48
+ 1115 050b 12       		.byte	0x12
+ 1116 050c 92       		.byte	0x92
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 23
+
+
+ 1117 050d 17       		.uleb128 0x17
+ 1118 050e 57000000 		.4byte	.LASF49
+ 1119 0512 13       		.byte	0x13
+ 1120 0513 26       		.byte	0x26
+ 1121 0514 1E050000 		.4byte	0x51e
+ 1122 0518 18       		.uleb128 0x18
+ 1123 0519 C3000000 		.4byte	0xc3
+ 1124 051d 00       		.byte	0
+ 1125 051e 17       		.uleb128 0x17
+ 1126 051f 55020000 		.4byte	.LASF50
+ 1127 0523 14       		.byte	0x14
+ 1128 0524 26       		.byte	0x26
+ 1129 0525 2F050000 		.4byte	0x52f
+ 1130 0529 18       		.uleb128 0x18
+ 1131 052a C3000000 		.4byte	0xc3
+ 1132 052e 00       		.byte	0
+ 1133 052f 16       		.uleb128 0x16
+ 1134 0530 49000000 		.4byte	.LASF51
+ 1135 0534 15       		.byte	0x15
+ 1136 0535 07       		.byte	0x7
+ 1137 0536 17       		.uleb128 0x17
+ 1138 0537 7C020000 		.4byte	.LASF52
+ 1139 053b 06       		.byte	0x6
+ 1140 053c 04       		.byte	0x4
+ 1141 053d 47050000 		.4byte	0x547
+ 1142 0541 18       		.uleb128 0x18
+ 1143 0542 97000000 		.4byte	0x97
+ 1144 0546 00       		.byte	0
+ 1145 0547 17       		.uleb128 0x17
+ 1146 0548 89010000 		.4byte	.LASF53
+ 1147 054c 12       		.byte	0x12
+ 1148 054d C3       		.byte	0xc3
+ 1149 054e 58050000 		.4byte	0x558
+ 1150 0552 18       		.uleb128 0x18
+ 1151 0553 C3000000 		.4byte	0xc3
+ 1152 0557 00       		.byte	0
+ 1153 0558 17       		.uleb128 0x17
+ 1154 0559 69010000 		.4byte	.LASF54
+ 1155 055d 0F       		.byte	0xf
+ 1156 055e 09       		.byte	0x9
+ 1157 055f 73050000 		.4byte	0x573
+ 1158 0563 18       		.uleb128 0x18
+ 1159 0564 73050000 		.4byte	0x573
+ 1160 0568 18       		.uleb128 0x18
+ 1161 0569 73050000 		.4byte	0x573
+ 1162 056d 18       		.uleb128 0x18
+ 1163 056e 73050000 		.4byte	0x573
+ 1164 0572 00       		.byte	0
+ 1165 0573 06       		.uleb128 0x6
+ 1166 0574 04       		.byte	0x4
+ 1167 0575 CF000000 		.4byte	0xcf
+ 1168 0579 19       		.uleb128 0x19
+ 1169 057a 1F020000 		.4byte	.LASF60
+ 1170 057e 16       		.byte	0x16
+ 1171 057f 05       		.byte	0x5
+ 1172 0580 AD000000 		.4byte	0xad
+ 1173 0584 8E050000 		.4byte	0x58e
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 24
+
+
+ 1174 0588 18       		.uleb128 0x18
+ 1175 0589 97000000 		.4byte	0x97
+ 1176 058d 00       		.byte	0
+ 1177 058e 17       		.uleb128 0x17
+ 1178 058f 0D010000 		.4byte	.LASF55
+ 1179 0593 16       		.byte	0x16
+ 1180 0594 06       		.byte	0x6
+ 1181 0595 A4050000 		.4byte	0x5a4
+ 1182 0599 18       		.uleb128 0x18
+ 1183 059a A4050000 		.4byte	0x5a4
+ 1184 059e 18       		.uleb128 0x18
+ 1185 059f AA050000 		.4byte	0x5aa
+ 1186 05a3 00       		.byte	0
+ 1187 05a4 06       		.uleb128 0x6
+ 1188 05a5 04       		.byte	0x4
+ 1189 05a6 97000000 		.4byte	0x97
+ 1190 05aa 06       		.uleb128 0x6
+ 1191 05ab 04       		.byte	0x4
+ 1192 05ac AD000000 		.4byte	0xad
+ 1193 05b0 1A       		.uleb128 0x1a
+ 1194 05b1 79010000 		.4byte	.LASF61
+ 1195 05b5 15       		.byte	0x15
+ 1196 05b6 08       		.byte	0x8
+ 1197 05b7 18       		.uleb128 0x18
+ 1198 05b8 CF000000 		.4byte	0xcf
+ 1199 05bc 18       		.uleb128 0x18
+ 1200 05bd CF000000 		.4byte	0xcf
+ 1201 05c1 18       		.uleb128 0x18
+ 1202 05c2 CF000000 		.4byte	0xcf
+ 1203 05c6 00       		.byte	0
+ 1204 05c7 00       		.byte	0
+ 1205              		.section	.debug_abbrev,"",%progbits
+ 1206              	.Ldebug_abbrev0:
+ 1207 0000 01       		.uleb128 0x1
+ 1208 0001 11       		.uleb128 0x11
+ 1209 0002 01       		.byte	0x1
+ 1210 0003 25       		.uleb128 0x25
+ 1211 0004 0E       		.uleb128 0xe
+ 1212 0005 13       		.uleb128 0x13
+ 1213 0006 0B       		.uleb128 0xb
+ 1214 0007 03       		.uleb128 0x3
+ 1215 0008 0E       		.uleb128 0xe
+ 1216 0009 1B       		.uleb128 0x1b
+ 1217 000a 0E       		.uleb128 0xe
+ 1218 000b 55       		.uleb128 0x55
+ 1219 000c 17       		.uleb128 0x17
+ 1220 000d 11       		.uleb128 0x11
+ 1221 000e 01       		.uleb128 0x1
+ 1222 000f 10       		.uleb128 0x10
+ 1223 0010 17       		.uleb128 0x17
+ 1224 0011 00       		.byte	0
+ 1225 0012 00       		.byte	0
+ 1226 0013 02       		.uleb128 0x2
+ 1227 0014 24       		.uleb128 0x24
+ 1228 0015 00       		.byte	0
+ 1229 0016 0B       		.uleb128 0xb
+ 1230 0017 0B       		.uleb128 0xb
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 25
+
+
+ 1231 0018 3E       		.uleb128 0x3e
+ 1232 0019 0B       		.uleb128 0xb
+ 1233 001a 03       		.uleb128 0x3
+ 1234 001b 0E       		.uleb128 0xe
+ 1235 001c 00       		.byte	0
+ 1236 001d 00       		.byte	0
+ 1237 001e 03       		.uleb128 0x3
+ 1238 001f 16       		.uleb128 0x16
+ 1239 0020 00       		.byte	0
+ 1240 0021 03       		.uleb128 0x3
+ 1241 0022 0E       		.uleb128 0xe
+ 1242 0023 3A       		.uleb128 0x3a
+ 1243 0024 0B       		.uleb128 0xb
+ 1244 0025 3B       		.uleb128 0x3b
+ 1245 0026 0B       		.uleb128 0xb
+ 1246 0027 49       		.uleb128 0x49
+ 1247 0028 13       		.uleb128 0x13
+ 1248 0029 00       		.byte	0
+ 1249 002a 00       		.byte	0
+ 1250 002b 04       		.uleb128 0x4
+ 1251 002c 24       		.uleb128 0x24
+ 1252 002d 00       		.byte	0
+ 1253 002e 0B       		.uleb128 0xb
+ 1254 002f 0B       		.uleb128 0xb
+ 1255 0030 3E       		.uleb128 0x3e
+ 1256 0031 0B       		.uleb128 0xb
+ 1257 0032 03       		.uleb128 0x3
+ 1258 0033 08       		.uleb128 0x8
+ 1259 0034 00       		.byte	0
+ 1260 0035 00       		.byte	0
+ 1261 0036 05       		.uleb128 0x5
+ 1262 0037 16       		.uleb128 0x16
+ 1263 0038 00       		.byte	0
+ 1264 0039 03       		.uleb128 0x3
+ 1265 003a 0E       		.uleb128 0xe
+ 1266 003b 3A       		.uleb128 0x3a
+ 1267 003c 0B       		.uleb128 0xb
+ 1268 003d 3B       		.uleb128 0x3b
+ 1269 003e 05       		.uleb128 0x5
+ 1270 003f 49       		.uleb128 0x49
+ 1271 0040 13       		.uleb128 0x13
+ 1272 0041 00       		.byte	0
+ 1273 0042 00       		.byte	0
+ 1274 0043 06       		.uleb128 0x6
+ 1275 0044 0F       		.uleb128 0xf
+ 1276 0045 00       		.byte	0
+ 1277 0046 0B       		.uleb128 0xb
+ 1278 0047 0B       		.uleb128 0xb
+ 1279 0048 49       		.uleb128 0x49
+ 1280 0049 13       		.uleb128 0x13
+ 1281 004a 00       		.byte	0
+ 1282 004b 00       		.byte	0
+ 1283 004c 07       		.uleb128 0x7
+ 1284 004d 15       		.uleb128 0x15
+ 1285 004e 00       		.byte	0
+ 1286 004f 27       		.uleb128 0x27
+ 1287 0050 19       		.uleb128 0x19
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 26
+
+
+ 1288 0051 00       		.byte	0
+ 1289 0052 00       		.byte	0
+ 1290 0053 08       		.uleb128 0x8
+ 1291 0054 35       		.uleb128 0x35
+ 1292 0055 00       		.byte	0
+ 1293 0056 49       		.uleb128 0x49
+ 1294 0057 13       		.uleb128 0x13
+ 1295 0058 00       		.byte	0
+ 1296 0059 00       		.byte	0
+ 1297 005a 09       		.uleb128 0x9
+ 1298 005b 2E       		.uleb128 0x2e
+ 1299 005c 00       		.byte	0
+ 1300 005d 3F       		.uleb128 0x3f
+ 1301 005e 19       		.uleb128 0x19
+ 1302 005f 03       		.uleb128 0x3
+ 1303 0060 0E       		.uleb128 0xe
+ 1304 0061 3A       		.uleb128 0x3a
+ 1305 0062 0B       		.uleb128 0xb
+ 1306 0063 3B       		.uleb128 0x3b
+ 1307 0064 0B       		.uleb128 0xb
+ 1308 0065 27       		.uleb128 0x27
+ 1309 0066 19       		.uleb128 0x19
+ 1310 0067 11       		.uleb128 0x11
+ 1311 0068 01       		.uleb128 0x1
+ 1312 0069 12       		.uleb128 0x12
+ 1313 006a 06       		.uleb128 0x6
+ 1314 006b 40       		.uleb128 0x40
+ 1315 006c 18       		.uleb128 0x18
+ 1316 006d 9742     		.uleb128 0x2117
+ 1317 006f 19       		.uleb128 0x19
+ 1318 0070 00       		.byte	0
+ 1319 0071 00       		.byte	0
+ 1320 0072 0A       		.uleb128 0xa
+ 1321 0073 2E       		.uleb128 0x2e
+ 1322 0074 01       		.byte	0x1
+ 1323 0075 3F       		.uleb128 0x3f
+ 1324 0076 19       		.uleb128 0x19
+ 1325 0077 03       		.uleb128 0x3
+ 1326 0078 0E       		.uleb128 0xe
+ 1327 0079 3A       		.uleb128 0x3a
+ 1328 007a 0B       		.uleb128 0xb
+ 1329 007b 3B       		.uleb128 0x3b
+ 1330 007c 0B       		.uleb128 0xb
+ 1331 007d 49       		.uleb128 0x49
+ 1332 007e 13       		.uleb128 0x13
+ 1333 007f 11       		.uleb128 0x11
+ 1334 0080 01       		.uleb128 0x1
+ 1335 0081 12       		.uleb128 0x12
+ 1336 0082 06       		.uleb128 0x6
+ 1337 0083 40       		.uleb128 0x40
+ 1338 0084 18       		.uleb128 0x18
+ 1339 0085 9742     		.uleb128 0x2117
+ 1340 0087 19       		.uleb128 0x19
+ 1341 0088 01       		.uleb128 0x1
+ 1342 0089 13       		.uleb128 0x13
+ 1343 008a 00       		.byte	0
+ 1344 008b 00       		.byte	0
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 27
+
+
+ 1345 008c 0B       		.uleb128 0xb
+ 1346 008d 34       		.uleb128 0x34
+ 1347 008e 00       		.byte	0
+ 1348 008f 03       		.uleb128 0x3
+ 1349 0090 08       		.uleb128 0x8
+ 1350 0091 3A       		.uleb128 0x3a
+ 1351 0092 0B       		.uleb128 0xb
+ 1352 0093 3B       		.uleb128 0x3b
+ 1353 0094 0B       		.uleb128 0xb
+ 1354 0095 49       		.uleb128 0x49
+ 1355 0096 13       		.uleb128 0x13
+ 1356 0097 02       		.uleb128 0x2
+ 1357 0098 18       		.uleb128 0x18
+ 1358 0099 00       		.byte	0
+ 1359 009a 00       		.byte	0
+ 1360 009b 0C       		.uleb128 0xc
+ 1361 009c 34       		.uleb128 0x34
+ 1362 009d 00       		.byte	0
+ 1363 009e 03       		.uleb128 0x3
+ 1364 009f 08       		.uleb128 0x8
+ 1365 00a0 3A       		.uleb128 0x3a
+ 1366 00a1 0B       		.uleb128 0xb
+ 1367 00a2 3B       		.uleb128 0x3b
+ 1368 00a3 0B       		.uleb128 0xb
+ 1369 00a4 49       		.uleb128 0x49
+ 1370 00a5 13       		.uleb128 0x13
+ 1371 00a6 00       		.byte	0
+ 1372 00a7 00       		.byte	0
+ 1373 00a8 0D       		.uleb128 0xd
+ 1374 00a9 34       		.uleb128 0x34
+ 1375 00aa 00       		.byte	0
+ 1376 00ab 03       		.uleb128 0x3
+ 1377 00ac 0E       		.uleb128 0xe
+ 1378 00ad 3A       		.uleb128 0x3a
+ 1379 00ae 0B       		.uleb128 0xb
+ 1380 00af 3B       		.uleb128 0x3b
+ 1381 00b0 0B       		.uleb128 0xb
+ 1382 00b1 49       		.uleb128 0x49
+ 1383 00b2 13       		.uleb128 0x13
+ 1384 00b3 02       		.uleb128 0x2
+ 1385 00b4 18       		.uleb128 0x18
+ 1386 00b5 00       		.byte	0
+ 1387 00b6 00       		.byte	0
+ 1388 00b7 0E       		.uleb128 0xe
+ 1389 00b8 898201   		.uleb128 0x4109
+ 1390 00bb 00       		.byte	0
+ 1391 00bc 11       		.uleb128 0x11
+ 1392 00bd 01       		.uleb128 0x1
+ 1393 00be 31       		.uleb128 0x31
+ 1394 00bf 13       		.uleb128 0x13
+ 1395 00c0 00       		.byte	0
+ 1396 00c1 00       		.byte	0
+ 1397 00c2 0F       		.uleb128 0xf
+ 1398 00c3 898201   		.uleb128 0x4109
+ 1399 00c6 01       		.byte	0x1
+ 1400 00c7 11       		.uleb128 0x11
+ 1401 00c8 01       		.uleb128 0x1
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 28
+
+
+ 1402 00c9 31       		.uleb128 0x31
+ 1403 00ca 13       		.uleb128 0x13
+ 1404 00cb 01       		.uleb128 0x1
+ 1405 00cc 13       		.uleb128 0x13
+ 1406 00cd 00       		.byte	0
+ 1407 00ce 00       		.byte	0
+ 1408 00cf 10       		.uleb128 0x10
+ 1409 00d0 8A8201   		.uleb128 0x410a
+ 1410 00d3 00       		.byte	0
+ 1411 00d4 02       		.uleb128 0x2
+ 1412 00d5 18       		.uleb128 0x18
+ 1413 00d6 9142     		.uleb128 0x2111
+ 1414 00d8 18       		.uleb128 0x18
+ 1415 00d9 00       		.byte	0
+ 1416 00da 00       		.byte	0
+ 1417 00db 11       		.uleb128 0x11
+ 1418 00dc 01       		.uleb128 0x1
+ 1419 00dd 01       		.byte	0x1
+ 1420 00de 49       		.uleb128 0x49
+ 1421 00df 13       		.uleb128 0x13
+ 1422 00e0 01       		.uleb128 0x1
+ 1423 00e1 13       		.uleb128 0x13
+ 1424 00e2 00       		.byte	0
+ 1425 00e3 00       		.byte	0
+ 1426 00e4 12       		.uleb128 0x12
+ 1427 00e5 21       		.uleb128 0x21
+ 1428 00e6 00       		.byte	0
+ 1429 00e7 49       		.uleb128 0x49
+ 1430 00e8 13       		.uleb128 0x13
+ 1431 00e9 2F       		.uleb128 0x2f
+ 1432 00ea 0B       		.uleb128 0xb
+ 1433 00eb 00       		.byte	0
+ 1434 00ec 00       		.byte	0
+ 1435 00ed 13       		.uleb128 0x13
+ 1436 00ee 34       		.uleb128 0x34
+ 1437 00ef 00       		.byte	0
+ 1438 00f0 03       		.uleb128 0x3
+ 1439 00f1 0E       		.uleb128 0xe
+ 1440 00f2 3A       		.uleb128 0x3a
+ 1441 00f3 0B       		.uleb128 0xb
+ 1442 00f4 3B       		.uleb128 0x3b
+ 1443 00f5 05       		.uleb128 0x5
+ 1444 00f6 49       		.uleb128 0x49
+ 1445 00f7 13       		.uleb128 0x13
+ 1446 00f8 3F       		.uleb128 0x3f
+ 1447 00f9 19       		.uleb128 0x19
+ 1448 00fa 3C       		.uleb128 0x3c
+ 1449 00fb 19       		.uleb128 0x19
+ 1450 00fc 00       		.byte	0
+ 1451 00fd 00       		.byte	0
+ 1452 00fe 14       		.uleb128 0x14
+ 1453 00ff 34       		.uleb128 0x34
+ 1454 0100 00       		.byte	0
+ 1455 0101 03       		.uleb128 0x3
+ 1456 0102 0E       		.uleb128 0xe
+ 1457 0103 3A       		.uleb128 0x3a
+ 1458 0104 0B       		.uleb128 0xb
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 29
+
+
+ 1459 0105 3B       		.uleb128 0x3b
+ 1460 0106 0B       		.uleb128 0xb
+ 1461 0107 49       		.uleb128 0x49
+ 1462 0108 13       		.uleb128 0x13
+ 1463 0109 3F       		.uleb128 0x3f
+ 1464 010a 19       		.uleb128 0x19
+ 1465 010b 02       		.uleb128 0x2
+ 1466 010c 18       		.uleb128 0x18
+ 1467 010d 00       		.byte	0
+ 1468 010e 00       		.byte	0
+ 1469 010f 15       		.uleb128 0x15
+ 1470 0110 26       		.uleb128 0x26
+ 1471 0111 00       		.byte	0
+ 1472 0112 49       		.uleb128 0x49
+ 1473 0113 13       		.uleb128 0x13
+ 1474 0114 00       		.byte	0
+ 1475 0115 00       		.byte	0
+ 1476 0116 16       		.uleb128 0x16
+ 1477 0117 2E       		.uleb128 0x2e
+ 1478 0118 00       		.byte	0
+ 1479 0119 3F       		.uleb128 0x3f
+ 1480 011a 19       		.uleb128 0x19
+ 1481 011b 03       		.uleb128 0x3
+ 1482 011c 0E       		.uleb128 0xe
+ 1483 011d 3A       		.uleb128 0x3a
+ 1484 011e 0B       		.uleb128 0xb
+ 1485 011f 3B       		.uleb128 0x3b
+ 1486 0120 0B       		.uleb128 0xb
+ 1487 0121 27       		.uleb128 0x27
+ 1488 0122 19       		.uleb128 0x19
+ 1489 0123 3C       		.uleb128 0x3c
+ 1490 0124 19       		.uleb128 0x19
+ 1491 0125 00       		.byte	0
+ 1492 0126 00       		.byte	0
+ 1493 0127 17       		.uleb128 0x17
+ 1494 0128 2E       		.uleb128 0x2e
+ 1495 0129 01       		.byte	0x1
+ 1496 012a 3F       		.uleb128 0x3f
+ 1497 012b 19       		.uleb128 0x19
+ 1498 012c 03       		.uleb128 0x3
+ 1499 012d 0E       		.uleb128 0xe
+ 1500 012e 3A       		.uleb128 0x3a
+ 1501 012f 0B       		.uleb128 0xb
+ 1502 0130 3B       		.uleb128 0x3b
+ 1503 0131 0B       		.uleb128 0xb
+ 1504 0132 27       		.uleb128 0x27
+ 1505 0133 19       		.uleb128 0x19
+ 1506 0134 3C       		.uleb128 0x3c
+ 1507 0135 19       		.uleb128 0x19
+ 1508 0136 01       		.uleb128 0x1
+ 1509 0137 13       		.uleb128 0x13
+ 1510 0138 00       		.byte	0
+ 1511 0139 00       		.byte	0
+ 1512 013a 18       		.uleb128 0x18
+ 1513 013b 05       		.uleb128 0x5
+ 1514 013c 00       		.byte	0
+ 1515 013d 49       		.uleb128 0x49
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 30
+
+
+ 1516 013e 13       		.uleb128 0x13
+ 1517 013f 00       		.byte	0
+ 1518 0140 00       		.byte	0
+ 1519 0141 19       		.uleb128 0x19
+ 1520 0142 2E       		.uleb128 0x2e
+ 1521 0143 01       		.byte	0x1
+ 1522 0144 3F       		.uleb128 0x3f
+ 1523 0145 19       		.uleb128 0x19
+ 1524 0146 03       		.uleb128 0x3
+ 1525 0147 0E       		.uleb128 0xe
+ 1526 0148 3A       		.uleb128 0x3a
+ 1527 0149 0B       		.uleb128 0xb
+ 1528 014a 3B       		.uleb128 0x3b
+ 1529 014b 0B       		.uleb128 0xb
+ 1530 014c 27       		.uleb128 0x27
+ 1531 014d 19       		.uleb128 0x19
+ 1532 014e 49       		.uleb128 0x49
+ 1533 014f 13       		.uleb128 0x13
+ 1534 0150 3C       		.uleb128 0x3c
+ 1535 0151 19       		.uleb128 0x19
+ 1536 0152 01       		.uleb128 0x1
+ 1537 0153 13       		.uleb128 0x13
+ 1538 0154 00       		.byte	0
+ 1539 0155 00       		.byte	0
+ 1540 0156 1A       		.uleb128 0x1a
+ 1541 0157 2E       		.uleb128 0x2e
+ 1542 0158 01       		.byte	0x1
+ 1543 0159 3F       		.uleb128 0x3f
+ 1544 015a 19       		.uleb128 0x19
+ 1545 015b 03       		.uleb128 0x3
+ 1546 015c 0E       		.uleb128 0xe
+ 1547 015d 3A       		.uleb128 0x3a
+ 1548 015e 0B       		.uleb128 0xb
+ 1549 015f 3B       		.uleb128 0x3b
+ 1550 0160 0B       		.uleb128 0xb
+ 1551 0161 27       		.uleb128 0x27
+ 1552 0162 19       		.uleb128 0x19
+ 1553 0163 3C       		.uleb128 0x3c
+ 1554 0164 19       		.uleb128 0x19
+ 1555 0165 00       		.byte	0
+ 1556 0166 00       		.byte	0
+ 1557 0167 00       		.byte	0
+ 1558              		.section	.debug_aranges,"",%progbits
+ 1559 0000 2C000000 		.4byte	0x2c
+ 1560 0004 0200     		.2byte	0x2
+ 1561 0006 00000000 		.4byte	.Ldebug_info0
+ 1562 000a 04       		.byte	0x4
+ 1563 000b 00       		.byte	0
+ 1564 000c 0000     		.2byte	0
+ 1565 000e 0000     		.2byte	0
+ 1566 0010 00000000 		.4byte	.LFB63
+ 1567 0014 28000000 		.4byte	.LFE63-.LFB63
+ 1568 0018 00000000 		.4byte	.LFB64
+ 1569 001c 34000000 		.4byte	.LFE64-.LFB64
+ 1570 0020 00000000 		.4byte	.LFB65
+ 1571 0024 08020000 		.4byte	.LFE65-.LFB65
+ 1572 0028 00000000 		.4byte	0
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 31
+
+
+ 1573 002c 00000000 		.4byte	0
+ 1574              		.section	.debug_ranges,"",%progbits
+ 1575              	.Ldebug_ranges0:
+ 1576 0000 00000000 		.4byte	.LFB63
+ 1577 0004 28000000 		.4byte	.LFE63
+ 1578 0008 00000000 		.4byte	.LFB64
+ 1579 000c 34000000 		.4byte	.LFE64
+ 1580 0010 00000000 		.4byte	.LFB65
+ 1581 0014 08020000 		.4byte	.LFE65
+ 1582 0018 00000000 		.4byte	0
+ 1583 001c 00000000 		.4byte	0
+ 1584              		.section	.debug_line,"",%progbits
+ 1585              	.Ldebug_line0:
+ 1586 0000 F1020000 		.section	.debug_str,"MS",%progbits,1
+ 1586      02003A02 
+ 1586      00000201 
+ 1586      FB0E0D00 
+ 1586      01010101 
+ 1587              	.LASF38:
+ 1588 0000 5350494D 		.ascii	"SPIM_3_Start\000"
+ 1588      5F335F53 
+ 1588      74617274 
+ 1588      00
+ 1589              	.LASF43:
+ 1590 000d 4932435F 		.ascii	"I2C_1_Start\000"
+ 1590      315F5374 
+ 1590      61727400 
+ 1591              	.LASF48:
+ 1592 0019 50574D5F 		.ascii	"PWM_1_Start\000"
+ 1592      315F5374 
+ 1592      61727400 
+ 1593              	.LASF46:
+ 1594 0025 4D4F4445 		.ascii	"MODE_ISR_StartEx\000"
+ 1594      5F495352 
+ 1594      5F537461 
+ 1594      72744578 
+ 1594      00
+ 1595              	.LASF4:
+ 1596 0036 73686F72 		.ascii	"short int\000"
+ 1596      7420696E 
+ 1596      7400
+ 1597              	.LASF23:
+ 1598 0040 73697A65 		.ascii	"sizetype\000"
+ 1598      74797065 
+ 1598      00
+ 1599              	.LASF51:
+ 1600 0049 736E6F77 		.ascii	"snowglobeInit\000"
+ 1600      676C6F62 
+ 1600      65496E69 
+ 1600      7400
+ 1601              	.LASF49:
+ 1602 0057 4C45445F 		.ascii	"LED_MODE_1_Write\000"
+ 1602      4D4F4445 
+ 1602      5F315F57 
+ 1602      72697465 
+ 1602      00
+ 1603              	.LASF59:
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 32
+
+
+ 1604 0068 6D61696E 		.ascii	"main\000"
+ 1604      00
+ 1605              	.LASF30:
+ 1606 006d 6D6F6465 		.ascii	"mode\000"
+ 1606      00
+ 1607              	.LASF5:
+ 1608 0072 5F5F7569 		.ascii	"__uint16_t\000"
+ 1608      6E743136 
+ 1608      5F7400
+ 1609              	.LASF31:
+ 1610 007d 6D6F6465 		.ascii	"mode_changed\000"
+ 1610      5F636861 
+ 1610      6E676564 
+ 1610      00
+ 1611              	.LASF40:
+ 1612 008a 74667453 		.ascii	"tftStart\000"
+ 1612      74617274 
+ 1612      00
+ 1613              	.LASF13:
+ 1614 0093 75696E74 		.ascii	"uint8_t\000"
+ 1614      385F7400 
+ 1615              	.LASF58:
+ 1616 009b 433A5C55 		.ascii	"C:\\Users\\ericz\\OneDrive\\Documents\\PSoC Creator"
+ 1616      73657273 
+ 1616      5C657269 
+ 1616      637A5C4F 
+ 1616      6E654472 
+ 1617 00c9 5C46696E 		.ascii	"\\FinalProjectWorkspace\\FinalProject.cydsn\000"
+ 1617      616C5072 
+ 1617      6F6A6563 
+ 1617      74576F72 
+ 1617      6B737061 
+ 1618              	.LASF18:
+ 1619 00f3 696E7431 		.ascii	"int16\000"
+ 1619      3600
+ 1620              	.LASF19:
+ 1621 00f9 666C6F61 		.ascii	"float\000"
+ 1621      7400
+ 1622              	.LASF10:
+ 1623 00ff 6C6F6E67 		.ascii	"long long int\000"
+ 1623      206C6F6E 
+ 1623      6720696E 
+ 1623      7400
+ 1624              	.LASF55:
+ 1625 010d 64726177 		.ascii	"drawLiquid\000"
+ 1625      4C697175 
+ 1625      696400
+ 1626              	.LASF8:
+ 1627 0118 6C6F6E67 		.ascii	"long int\000"
+ 1627      20696E74 
+ 1627      00
+ 1628              	.LASF32:
+ 1629 0121 62726967 		.ascii	"brightIdx\000"
+ 1629      68744964 
+ 1629      7800
+ 1630              	.LASF35:
+ 1631 012b 5350494D 		.ascii	"SPIM_0_Start\000"
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 33
+
+
+ 1631      5F305F53 
+ 1631      74617274 
+ 1631      00
+ 1632              	.LASF45:
+ 1633 0138 444D415F 		.ascii	"DMA_Wait_For_Completion\000"
+ 1633      57616974 
+ 1633      5F466F72 
+ 1633      5F436F6D 
+ 1633      706C6574 
+ 1634              	.LASF2:
+ 1635 0150 5F5F7569 		.ascii	"__uint8_t\000"
+ 1635      6E74385F 
+ 1635      7400
+ 1636              	.LASF25:
+ 1637 015a 42726967 		.ascii	"Bright_Handler\000"
+ 1637      68745F48 
+ 1637      616E646C 
+ 1637      657200
+ 1638              	.LASF54:
+ 1639 0169 52656164 		.ascii	"Read_Accel_Data\000"
+ 1639      5F416363 
+ 1639      656C5F44 
+ 1639      61746100 
+ 1640              	.LASF61:
+ 1641 0179 736E6F77 		.ascii	"snowglobeUpdate\000"
+ 1641      676C6F62 
+ 1641      65557064 
+ 1641      61746500 
+ 1642              	.LASF53:
+ 1643 0189 50574D5F 		.ascii	"PWM_1_WriteCompare\000"
+ 1643      315F5772 
+ 1643      69746543 
+ 1643      6F6D7061 
+ 1643      726500
+ 1644              	.LASF37:
+ 1645 019c 5350494D 		.ascii	"SPIM_2_Start\000"
+ 1645      5F325F53 
+ 1645      74617274 
+ 1645      00
+ 1646              	.LASF1:
+ 1647 01a9 756E7369 		.ascii	"unsigned char\000"
+ 1647      676E6564 
+ 1647      20636861 
+ 1647      7200
+ 1648              	.LASF44:
+ 1649 01b7 4D505536 		.ascii	"MPU6050_Start\000"
+ 1649      3035305F 
+ 1649      53746172 
+ 1649      7400
+ 1650              	.LASF22:
+ 1651 01c5 63796973 		.ascii	"cyisraddress\000"
+ 1651      72616464 
+ 1651      72657373 
+ 1651      00
+ 1652              	.LASF26:
+ 1653 01d2 66726163 		.ascii	"fracFull\000"
+ 1653      46756C6C 
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 34
+
+
+ 1653      00
+ 1654              	.LASF0:
+ 1655 01db 7369676E 		.ascii	"signed char\000"
+ 1655      65642063 
+ 1655      68617200 
+ 1656              	.LASF11:
+ 1657 01e7 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1657      206C6F6E 
+ 1657      6720756E 
+ 1657      7369676E 
+ 1657      65642069 
+ 1658              	.LASF12:
+ 1659 01fe 756E7369 		.ascii	"unsigned int\000"
+ 1659      676E6564 
+ 1659      20696E74 
+ 1659      00
+ 1660              	.LASF15:
+ 1661 020b 75696E74 		.ascii	"uint16_t\000"
+ 1661      31365F74 
+ 1661      00
+ 1662              	.LASF33:
+ 1663 0214 62726967 		.ascii	"brightness\000"
+ 1663      68746E65 
+ 1663      737300
+ 1664              	.LASF60:
+ 1665 021f 73637265 		.ascii	"screenAtan\000"
+ 1665      656E4174 
+ 1665      616E00
+ 1666              	.LASF6:
+ 1667 022a 73686F72 		.ascii	"short unsigned int\000"
+ 1667      7420756E 
+ 1667      7369676E 
+ 1667      65642069 
+ 1667      6E7400
+ 1668              	.LASF47:
+ 1669 023d 42524947 		.ascii	"BRIGHT_ISR_StartEx\000"
+ 1669      48545F49 
+ 1669      53525F53 
+ 1669      74617274 
+ 1669      457800
+ 1670              	.LASF21:
+ 1671 0250 63686172 		.ascii	"char\000"
+ 1671      00
+ 1672              	.LASF50:
+ 1673 0255 4C45445F 		.ascii	"LED_MODE_2_Write\000"
+ 1673      4D4F4445 
+ 1673      5F325F57 
+ 1673      72697465 
+ 1673      00
+ 1674              	.LASF16:
+ 1675 0266 696E7433 		.ascii	"int32_t\000"
+ 1675      325F7400 
+ 1676              	.LASF14:
+ 1677 026e 696E7431 		.ascii	"int16_t\000"
+ 1677      365F7400 
+ 1678              	.LASF17:
+ 1679 0276 75696E74 		.ascii	"uint8\000"
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 35
+
+
+ 1679      3800
+ 1680              	.LASF52:
+ 1681 027c 6C696768 		.ascii	"lightLantern\000"
+ 1681      744C616E 
+ 1681      7465726E 
+ 1681      00
+ 1682              	.LASF42:
+ 1683 0289 4144435F 		.ascii	"ADC_DelSig_1_StartConvert\000"
+ 1683      44656C53 
+ 1683      69675F31 
+ 1683      5F537461 
+ 1683      7274436F 
+ 1684              	.LASF9:
+ 1685 02a3 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1685      20756E73 
+ 1685      69676E65 
+ 1685      6420696E 
+ 1685      7400
+ 1686              	.LASF20:
+ 1687 02b5 646F7562 		.ascii	"double\000"
+ 1687      6C6500
+ 1688              	.LASF57:
+ 1689 02bc 2E5C6D61 		.ascii	".\\main.c\000"
+ 1689      696E2E63 
+ 1689      00
+ 1690              	.LASF7:
+ 1691 02c5 5F5F696E 		.ascii	"__int32_t\000"
+ 1691      7433325F 
+ 1691      7400
+ 1692              	.LASF56:
+ 1693 02cf 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1693      4320342E 
+ 1693      392E3320 
+ 1693      32303135 
+ 1693      30333033 
+ 1694 0302 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1694      20726576 
+ 1694      6973696F 
+ 1694      6E203232 
+ 1694      31323230 
+ 1695 0335 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1695      66756E63 
+ 1695      74696F6E 
+ 1695      2D736563 
+ 1695      74696F6E 
+ 1696              	.LASF27:
+ 1697 035d 616E676C 		.ascii	"angles\000"
+ 1697      657300
+ 1698              	.LASF3:
+ 1699 0364 5F5F696E 		.ascii	"__int16_t\000"
+ 1699      7431365F 
+ 1699      7400
+ 1700              	.LASF29:
+ 1701 036e 73696E65 		.ascii	"sineBrightness\000"
+ 1701      42726967 
+ 1701      68746E65 
+ 1701      737300
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccFJ62nx.s 			page 36
+
+
+ 1702              	.LASF34:
+ 1703 037d 62726967 		.ascii	"brightnessChanged\000"
+ 1703      68746E65 
+ 1703      73734368 
+ 1703      616E6765 
+ 1703      6400
+ 1704              	.LASF36:
+ 1705 038f 5350494D 		.ascii	"SPIM_1_Start\000"
+ 1705      5F315F53 
+ 1705      74617274 
+ 1705      00
+ 1706              	.LASF41:
+ 1707 039c 4144435F 		.ascii	"ADC_DelSig_1_Start\000"
+ 1707      44656C53 
+ 1707      69675F31 
+ 1707      5F537461 
+ 1707      727400
+ 1708              	.LASF28:
+ 1709 03af 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1709      52784275 
+ 1709      66666572 
+ 1709      00
+ 1710              	.LASF24:
+ 1711 03bc 4D6F6465 		.ascii	"Mode_Handler\000"
+ 1711      5F48616E 
+ 1711      646C6572 
+ 1711      00
+ 1712              	.LASF39:
+ 1713 03c9 496E6974 		.ascii	"Init_DMA_SPI\000"
+ 1713      5F444D41 
+ 1713      5F535049 
+ 1713      00
+ 1714              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

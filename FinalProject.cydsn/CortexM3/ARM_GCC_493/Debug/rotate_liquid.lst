@@ -1,0 +1,3571 @@
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"rotate_liquid.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.adcToAngle,"ax",%progbits
+  19              		.align	2
+  20              		.global	adcToAngle
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	adcToAngle, %function
+  24              	adcToAngle:
+  25              	.LFB63:
+  26              		.file 1 ".\\rotate_liquid.c"
+   1:.\rotate_liquid.c **** #include <project.h>
+   2:.\rotate_liquid.c **** #include <stdlib.h>
+   3:.\rotate_liquid.c **** #include "tft.h"
+   4:.\rotate_liquid.c **** #include "rotate_liquid.h"
+   5:.\rotate_liquid.c **** #include "trig.h"
+   6:.\rotate_liquid.c **** #include "dma_util.h"
+   7:.\rotate_liquid.c **** 
+   8:.\rotate_liquid.c **** //==============================================================
+   9:.\rotate_liquid.c **** // adcToAngle
+  10:.\rotate_liquid.c **** // convert a 16 bit ADC measurement to an angle from 0 to 360 (degrees)
+  11:.\rotate_liquid.c **** //==============================================================
+  12:.\rotate_liquid.c **** uint16_t adcToAngle(uint16_t adcVal)
+  13:.\rotate_liquid.c **** {
+  27              		.loc 1 13 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  14:.\rotate_liquid.c ****     return (uint16_t) ((((uint32_t) adcVal) * 360UL) >> 16);
+  33              		.loc 1 14 0
+  34 0000 4FF4B473 		mov	r3, #360
+  35 0004 03FB00F0 		mul	r0, r3, r0
+  36              	.LVL1:
+  15:.\rotate_liquid.c **** }
+  37              		.loc 1 15 0
+  38 0008 000C     		lsrs	r0, r0, #16
+  39 000a 7047     		bx	lr
+  40              		.cfi_endproc
+  41              	.LFE63:
+  42              		.size	adcToAngle, .-adcToAngle
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 2
+
+
+  43              		.section	.text.screenAtan,"ax",%progbits
+  44              		.align	2
+  45              		.global	screenAtan
+  46              		.thumb
+  47              		.thumb_func
+  48              		.type	screenAtan, %function
+  49              	screenAtan:
+  50              	.LFB64:
+  16:.\rotate_liquid.c **** 
+  17:.\rotate_liquid.c **** 
+  18:.\rotate_liquid.c **** //==============================================================
+  19:.\rotate_liquid.c **** // screenAtan
+  20:.\rotate_liquid.c **** // convert a difference in fracFull on two screens into the angle 
+  21:.\rotate_liquid.c **** // for the screens on the sides 
+  22:.\rotate_liquid.c **** //==============================================================
+  23:.\rotate_liquid.c **** 
+  24:.\rotate_liquid.c **** const uint16_t atan_lut[] = {
+  25:.\rotate_liquid.c ****     323, 323, 324, 324, 324, 324, 324, 325, 325, 325, 325, 326, 326, 326, 326, 326,
+  26:.\rotate_liquid.c ****     327, 327, 327, 327, 328, 328, 328, 328, 329, 329, 329, 329, 330, 330, 330, 330,
+  27:.\rotate_liquid.c ****     331, 331, 331, 331, 332, 332, 332, 332, 333, 333, 333, 334, 334, 334, 334, 335,
+  28:.\rotate_liquid.c ****     335, 335, 335, 336, 336, 336, 337, 337, 337, 337, 338, 338, 338, 339, 339, 339,
+  29:.\rotate_liquid.c ****     339, 340, 340, 340, 341, 341, 341, 342, 342, 342, 342, 343, 343, 343, 344, 344,
+  30:.\rotate_liquid.c ****     344, 345, 345, 345, 346, 346, 346, 346, 347, 347, 347, 348, 348, 348, 349, 349,
+  31:.\rotate_liquid.c ****     349, 350, 350, 350, 351, 351, 351, 352, 352, 352, 353, 353, 353, 354, 354, 354,
+  32:.\rotate_liquid.c ****     355, 355, 355, 356, 356, 356, 357, 357, 357, 358, 358, 358, 359, 359, 359, 0,
+  33:.\rotate_liquid.c ****     0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9,
+  34:.\rotate_liquid.c ****     9, 9, 10, 10, 10, 11, 11, 11, 12, 12, 12, 13, 13, 13, 14, 14, 14, 14, 15, 15, 15,
+  35:.\rotate_liquid.c ****     16, 16, 16, 17, 17, 17, 18, 18, 18, 18, 19, 19, 19, 20, 20, 20, 21, 21, 21, 21, 22,
+  36:.\rotate_liquid.c ****     22, 22, 23, 23, 23, 23, 24, 24, 24, 25, 25, 25, 25, 26, 26, 26, 26, 27, 27, 27, 28,
+  37:.\rotate_liquid.c ****     28, 28, 28, 29, 29, 29, 29, 30, 30, 30, 30, 31, 31, 31, 31, 32, 32, 32, 32, 33, 33,
+  38:.\rotate_liquid.c ****     33, 33, 34, 34, 34, 34, 34, 35, 35, 35, 35, 36, 36, 36, 36, 36, 37
+  39:.\rotate_liquid.c **** };
+  40:.\rotate_liquid.c **** 
+  41:.\rotate_liquid.c **** uint16_t screenAtan(uint8_t fracFull_left) {
+  51              		.loc 1 41 0
+  52              		.cfi_startproc
+  53              		@ args = 0, pretend = 0, frame = 0
+  54              		@ frame_needed = 0, uses_anonymous_args = 0
+  55              		@ link register save eliminated.
+  56              	.LVL2:
+  42:.\rotate_liquid.c ****     return atan_lut[fracFull_left];
+  43:.\rotate_liquid.c **** }
+  57              		.loc 1 43 0
+  58 0000 014B     		ldr	r3, .L3
+  59 0002 33F81000 		ldrh	r0, [r3, r0, lsl #1]
+  60              	.LVL3:
+  61 0006 7047     		bx	lr
+  62              	.L4:
+  63              		.align	2
+  64              	.L3:
+  65 0008 00000000 		.word	.LANCHOR0
+  66              		.cfi_endproc
+  67              	.LFE64:
+  68              		.size	screenAtan, .-screenAtan
+  69              		.section	.text.drawLiquid,"ax",%progbits
+  70              		.align	2
+  71              		.global	drawLiquid
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 3
+
+
+  72              		.thumb
+  73              		.thumb_func
+  74              		.type	drawLiquid, %function
+  75              	drawLiquid:
+  76              	.LFB65:
+  44:.\rotate_liquid.c **** 
+  45:.\rotate_liquid.c **** 
+  46:.\rotate_liquid.c **** //==============================================================
+  47:.\rotate_liquid.c **** // drawLiquid
+  48:.\rotate_liquid.c **** // draw the liquid which can move around in the cup
+  49:.\rotate_liquid.c **** //==============================================================
+  50:.\rotate_liquid.c **** void drawLiquid(uint8_t *fracFull, uint16_t *angles)
+  51:.\rotate_liquid.c **** {
+  77              		.loc 1 51 0
+  78              		.cfi_startproc
+  79              		@ args = 0, pretend = 0, frame = 80
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  81              	.LVL4:
+  82 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  83              		.cfi_def_cfa_offset 36
+  84              		.cfi_offset 4, -36
+  85              		.cfi_offset 5, -32
+  86              		.cfi_offset 6, -28
+  87              		.cfi_offset 7, -24
+  88              		.cfi_offset 8, -20
+  89              		.cfi_offset 9, -16
+  90              		.cfi_offset 10, -12
+  91              		.cfi_offset 11, -8
+  92              		.cfi_offset 14, -4
+  93 0004 97B0     		sub	sp, sp, #92
+  94              		.cfi_def_cfa_offset 128
+  95 0006 0746     		mov	r7, r0
+  96 0008 0E46     		mov	r6, r1
+  97              	.LVL5:
+  52:.\rotate_liquid.c ****     int32_t sinV[NUM_SCREENS], cosV[NUM_SCREENS];
+  53:.\rotate_liquid.c ****     int32_t fillRow[NUM_SCREENS];
+  54:.\rotate_liquid.c ****     int liquidLeft[NUM_SCREENS];
+  55:.\rotate_liquid.c ****     int disp;
+  56:.\rotate_liquid.c **** 
+  57:.\rotate_liquid.c ****     for (disp = 0; disp < NUM_SCREENS; disp++) {
+  98              		.loc 1 57 0
+  99 000a 0024     		movs	r4, #0
+ 100 000c 2FE0     		b	.L6
+ 101              	.LVL6:
+ 102              	.L7:
+  58:.\rotate_liquid.c ****         
+  59:.\rotate_liquid.c ****         // determine the orientation of the liquid on each screen
+  60:.\rotate_liquid.c ****         sinV[disp] = getSinQ15(angles[disp]);
+ 103              		.loc 1 60 0 discriminator 3
+ 104 000e 36F81400 		ldrh	r0, [r6, r4, lsl #1]
+ 105 0012 FFF7FEFF 		bl	getSinQ15
+ 106              	.LVL7:
+ 107 0016 8046     		mov	r8, r0
+ 108 0018 16AB     		add	r3, sp, #88
+ 109 001a 03EB8405 		add	r5, r3, r4, lsl #2
+ 110 001e 45F8100C 		str	r0, [r5, #-16]
+  61:.\rotate_liquid.c ****         cosV[disp] = getCosQ15(angles[disp]);
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 4
+
+
+ 111              		.loc 1 61 0 discriminator 3
+ 112 0022 36F81400 		ldrh	r0, [r6, r4, lsl #1]
+ 113 0026 FFF7FEFF 		bl	getCosQ15
+ 114              	.LVL8:
+ 115 002a 45F8200C 		str	r0, [r5, #-32]
+  62:.\rotate_liquid.c ****         liquidLeft[disp] = (sinV[disp] > 0);
+ 116              		.loc 1 62 0 discriminator 3
+ 117 002e B8F1000F 		cmp	r8, #0
+ 118 0032 D4BF     		ite	le
+ 119 0034 0023     		movle	r3, #0
+ 120 0036 0123     		movgt	r3, #1
+ 121 0038 45F8403C 		str	r3, [r5, #-64]
+  63:.\rotate_liquid.c ****         
+  64:.\rotate_liquid.c ****         fillRow[disp] = (int32_t)SCREEN_HEIGHT - (((int32_t)fracFull[disp] * SCREEN_HEIGHT) >> 8);
+ 122              		.loc 1 64 0 discriminator 3
+ 123 003c 3B5D     		ldrb	r3, [r7, r4]	@ zero_extendqisi2
+ 124 003e C3EB0313 		rsb	r3, r3, r3, lsl #4
+ 125 0042 5B01     		lsls	r3, r3, #5
+ 126 0044 1B12     		asrs	r3, r3, #8
+ 127 0046 C3F5F073 		rsb	r3, r3, #480
+ 128 004a 45F8303C 		str	r3, [r5, #-48]
+  65:.\rotate_liquid.c ****         
+  66:.\rotate_liquid.c ****         setRowCol(disp, 0, SCREEN_WIDTH - 1, 0, SCREEN_HEIGHT - 1);     // set drawing window to fu
+ 129              		.loc 1 66 0 discriminator 3
+ 130 004e E5B2     		uxtb	r5, r4
+ 131 0050 40F2DF13 		movw	r3, #479
+ 132 0054 0093     		str	r3, [sp]
+ 133 0056 2846     		mov	r0, r5
+ 134 0058 0021     		movs	r1, #0
+ 135 005a 40F23F12 		movw	r2, #319
+ 136 005e 0B46     		mov	r3, r1
+ 137 0060 FFF7FEFF 		bl	setRowCol
+ 138              	.LVL9:
+  67:.\rotate_liquid.c ****         write8_a0(disp, 0x2C);                                          // prepare to send data to 
+ 139              		.loc 1 67 0 discriminator 3
+ 140 0064 2846     		mov	r0, r5
+ 141 0066 2C21     		movs	r1, #44
+ 142 0068 FFF7FEFF 		bl	write8_a0
+ 143              	.LVL10:
+  57:.\rotate_liquid.c ****         
+ 144              		.loc 1 57 0 discriminator 3
+ 145 006c 0134     		adds	r4, r4, #1
+ 146              	.LVL11:
+ 147              	.L6:
+  57:.\rotate_liquid.c ****         
+ 148              		.loc 1 57 0 is_stmt 0 discriminator 1
+ 149 006e 032C     		cmp	r4, #3
+ 150 0070 CDDD     		ble	.L7
+  68:.\rotate_liquid.c ****     }
+  69:.\rotate_liquid.c **** 
+  70:.\rotate_liquid.c ****     // set each screen to receive data
+  71:.\rotate_liquid.c ****     DC0_Write(1u);
+ 151              		.loc 1 71 0 is_stmt 1
+ 152 0072 0120     		movs	r0, #1
+ 153 0074 FFF7FEFF 		bl	DC0_Write
+ 154              	.LVL12:
+  72:.\rotate_liquid.c ****     DC1_Write(1u);
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 5
+
+
+ 155              		.loc 1 72 0
+ 156 0078 0120     		movs	r0, #1
+ 157 007a FFF7FEFF 		bl	DC1_Write
+ 158              	.LVL13:
+  73:.\rotate_liquid.c ****     DC2_Write(1u);
+ 159              		.loc 1 73 0
+ 160 007e 0120     		movs	r0, #1
+ 161 0080 FFF7FEFF 		bl	DC2_Write
+ 162              	.LVL14:
+  74:.\rotate_liquid.c ****     DC3_Write(1u);
+ 163              		.loc 1 74 0
+ 164 0084 0120     		movs	r0, #1
+ 165 0086 FFF7FEFF 		bl	DC3_Write
+ 166              	.LVL15:
+  75:.\rotate_liquid.c **** 
+  76:.\rotate_liquid.c ****     // ping pong pointers for DMA buffers
+  77:.\rotate_liquid.c ****     uint8_t *fillBuf_0 = bufferA_0, *sendBuf_0 = bufferB_0;
+  78:.\rotate_liquid.c ****     uint8_t *fillBuf_1 = bufferA_1, *sendBuf_1 = bufferB_1;
+  79:.\rotate_liquid.c ****     uint8_t *fillBuf_2 = bufferA_2, *sendBuf_2 = bufferB_2;
+  80:.\rotate_liquid.c ****     uint8_t *fillBuf_3 = bufferA_3, *sendBuf_3 = bufferB_3;
+  81:.\rotate_liquid.c ****     
+  82:.\rotate_liquid.c ****     uint8_t *tmp;
+  83:.\rotate_liquid.c ****     int i, y;
+  84:.\rotate_liquid.c **** 
+  85:.\rotate_liquid.c ****     
+  86:.\rotate_liquid.c ****     // write one line to each of the screens at a time, then write the next line
+  87:.\rotate_liquid.c ****     for (y = 0; y < SCREEN_HEIGHT; y++) {
+ 167              		.loc 1 87 0
+ 168 008a 4FF00009 		mov	r9, #0
+  80:.\rotate_liquid.c ****     
+ 169              		.loc 1 80 0
+ 170 008e AB4B     		ldr	r3, .L71
+ 171 0090 0593     		str	r3, [sp, #20]
+ 172 0092 DFF8C482 		ldr	r8, .L71+28
+  79:.\rotate_liquid.c ****     uint8_t *fillBuf_3 = bufferA_3, *sendBuf_3 = bufferB_3;
+ 173              		.loc 1 79 0
+ 174 0096 AA4B     		ldr	r3, .L71+4
+ 175 0098 0493     		str	r3, [sp, #16]
+ 176 009a AA4F     		ldr	r7, .L71+8
+ 177              	.LVL16:
+  78:.\rotate_liquid.c ****     uint8_t *fillBuf_2 = bufferA_2, *sendBuf_2 = bufferB_2;
+ 178              		.loc 1 78 0
+ 179 009c AA4B     		ldr	r3, .L71+12
+ 180 009e 0393     		str	r3, [sp, #12]
+ 181 00a0 AA4E     		ldr	r6, .L71+16
+ 182              	.LVL17:
+  77:.\rotate_liquid.c ****     uint8_t *fillBuf_1 = bufferA_1, *sendBuf_1 = bufferB_1;
+ 183              		.loc 1 77 0
+ 184 00a2 AB4B     		ldr	r3, .L71+20
+ 185 00a4 0293     		str	r3, [sp, #8]
+ 186 00a6 AB4D     		ldr	r5, .L71+24
+ 187              		.loc 1 87 0
+ 188 00a8 77E1     		b	.L8
+ 189              	.LVL18:
+ 190              	.L53:
+ 191              	.LBB2:
+  88:.\rotate_liquid.c **** 
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 6
+
+
+  89:.\rotate_liquid.c ****         int32_t x_bound;
+  90:.\rotate_liquid.c ****         uint8_t leftHi, leftLo, rightHi, rightLo;
+  91:.\rotate_liquid.c **** 
+  92:.\rotate_liquid.c ****         // ================== Display 0 ==================
+  93:.\rotate_liquid.c ****         if (sinV[0] == 0) {
+ 192              		.loc 1 93 0
+ 193 00aa 129B     		ldr	r3, [sp, #72]
+ 194 00ac ABB9     		cbnz	r3, .L9
+ 195              	.LBB3:
+  94:.\rotate_liquid.c ****             int isLiq = (cosV[0] < 0) ? (y >= fillRow[0]) : (y < (SCREEN_HEIGHT - fillRow[0]));
+ 196              		.loc 1 94 0
+ 197 00ae 0E9B     		ldr	r3, [sp, #56]
+ 198 00b0 002B     		cmp	r3, #0
+ 199 00b2 05DA     		bge	.L10
+ 200              		.loc 1 94 0 is_stmt 0 discriminator 1
+ 201 00b4 0A9B     		ldr	r3, [sp, #40]
+ 202 00b6 4B45     		cmp	r3, r9
+ 203 00b8 CCBF     		ite	gt
+ 204 00ba 0023     		movgt	r3, #0
+ 205 00bc 0123     		movle	r3, #1
+ 206 00be 06E0     		b	.L11
+ 207              	.L10:
+ 208              		.loc 1 94 0 discriminator 2
+ 209 00c0 0A9B     		ldr	r3, [sp, #40]
+ 210 00c2 C3F5F073 		rsb	r3, r3, #480
+ 211 00c6 4B45     		cmp	r3, r9
+ 212 00c8 D4BF     		ite	le
+ 213 00ca 0023     		movle	r3, #0
+ 214 00cc 0123     		movgt	r3, #1
+ 215              	.L11:
+ 216              	.LVL19:
+  95:.\rotate_liquid.c ****             x_bound = isLiq ? 0 : SCREEN_WIDTH;
+ 217              		.loc 1 95 0 is_stmt 1 discriminator 4
+ 218 00ce 0BB1     		cbz	r3, .L54
+ 219              		.loc 1 95 0 is_stmt 0
+ 220 00d0 0024     		movs	r4, #0
+ 221 00d2 16E0     		b	.L13
+ 222              	.L54:
+ 223 00d4 4FF4A074 		mov	r4, #320
+ 224              	.LVL20:
+ 225 00d8 13E0     		b	.L13
+ 226              	.LVL21:
+ 227              	.L9:
+ 228              	.LBE3:
+ 229              	.LBB4:
+  96:.\rotate_liquid.c ****         } else {
+  97:.\rotate_liquid.c ****             int32_t dY2 = 2 * y - SCREEN_HEIGHT;
+ 230              		.loc 1 97 0 is_stmt 1
+ 231 00da A9F1F004 		sub	r4, r9, #240
+ 232 00de 6400     		lsls	r4, r4, #1
+ 233              	.LVL22:
+  98:.\rotate_liquid.c ****             x_bound = (SCREEN_WIDTH * sinV[0] + dY2 * cosV[0]) / (2 * sinV[0]);
+ 234              		.loc 1 98 0
+ 235 00e0 03EB8301 		add	r1, r3, r3, lsl #2
+ 236 00e4 8901     		lsls	r1, r1, #6
+ 237 00e6 0E9A     		ldr	r2, [sp, #56]
+ 238 00e8 04FB0214 		mla	r4, r4, r2, r1
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 7
+
+
+ 239              	.LVL23:
+ 240 00ec 5B00     		lsls	r3, r3, #1
+ 241 00ee 94FBF3F4 		sdiv	r4, r4, r3
+ 242              	.LVL24:
+  99:.\rotate_liquid.c ****             if (x_bound < 0) x_bound = 0;
+ 243              		.loc 1 99 0
+ 244 00f2 002C     		cmp	r4, #0
+ 245 00f4 00DA     		bge	.L14
+ 246 00f6 0024     		movs	r4, #0
+ 247              	.LVL25:
+ 248              	.L14:
+ 100:.\rotate_liquid.c ****             if (x_bound > SCREEN_WIDTH) x_bound = SCREEN_WIDTH;
+ 249              		.loc 1 100 0
+ 250 00f8 B4F5A07F 		cmp	r4, #320
+ 251 00fc 01DD     		ble	.L13
+ 252 00fe 4FF4A074 		mov	r4, #320
+ 253              	.LVL26:
+ 254              	.L13:
+ 255              	.LBE4:
+ 101:.\rotate_liquid.c ****         }
+ 102:.\rotate_liquid.c ****         if (liquidLeft[0]) { leftHi=0xFF; leftLo=0xFF; rightHi=0x00; rightLo=0x00; }
+ 256              		.loc 1 102 0
+ 257 0102 069B     		ldr	r3, [sp, #24]
+ 258 0104 23B1     		cbz	r3, .L57
+ 259 0106 4FF0000A 		mov	r10, #0
+ 260 010a 4FF0FF0B 		mov	fp, #255
+ 261 010e 03E0     		b	.L15
+ 262              	.L57:
+ 103:.\rotate_liquid.c ****         else               { leftHi=0x00; leftLo=0x00; rightHi=0xFF; rightLo=0xFF; }
+ 263              		.loc 1 103 0
+ 264 0110 4FF0FF0A 		mov	r10, #255
+ 265 0114 4FF0000B 		mov	fp, #0
+ 266              	.L15:
+ 267              	.LVL27:
+ 104:.\rotate_liquid.c **** 
+ 105:.\rotate_liquid.c ****         DMA_Wait_For_Completion(0);
+ 268              		.loc 1 105 0
+ 269 0118 0020     		movs	r0, #0
+ 270 011a FFF7FEFF 		bl	DMA_Wait_For_Completion
+ 271              	.LVL28:
+ 106:.\rotate_liquid.c ****         for (i = 0; i < x_bound; i++)
+ 272              		.loc 1 106 0
+ 273 011e 0023     		movs	r3, #0
+ 274 0120 06E0     		b	.L16
+ 275              	.LVL29:
+ 276              	.L17:
+ 107:.\rotate_liquid.c ****             { fillBuf_0[i*2]=leftHi; fillBuf_0[i*2+1]=leftLo; }
+ 277              		.loc 1 107 0 discriminator 3
+ 278 0122 05F813B0 		strb	fp, [r5, r3, lsl #1]
+ 279 0126 05EB4302 		add	r2, r5, r3, lsl #1
+ 280 012a 82F801B0 		strb	fp, [r2, #1]
+ 106:.\rotate_liquid.c ****         for (i = 0; i < x_bound; i++)
+ 281              		.loc 1 106 0 discriminator 3
+ 282 012e 0133     		adds	r3, r3, #1
+ 283              	.LVL30:
+ 284              	.L16:
+ 106:.\rotate_liquid.c ****         for (i = 0; i < x_bound; i++)
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 8
+
+
+ 285              		.loc 1 106 0 is_stmt 0 discriminator 1
+ 286 0130 A342     		cmp	r3, r4
+ 287 0132 F6DB     		blt	.L17
+ 288 0134 06E0     		b	.L18
+ 289              	.LVL31:
+ 290              	.L19:
+ 108:.\rotate_liquid.c ****         for (i = x_bound; i < SCREEN_WIDTH; i++)
+ 109:.\rotate_liquid.c ****             { fillBuf_0[i*2]=rightHi; fillBuf_0[i*2+1]=rightLo; }
+ 291              		.loc 1 109 0 is_stmt 1 discriminator 3
+ 292 0136 05F814A0 		strb	r10, [r5, r4, lsl #1]
+ 293 013a 05EB4403 		add	r3, r5, r4, lsl #1
+ 294 013e 83F801A0 		strb	r10, [r3, #1]
+ 108:.\rotate_liquid.c ****         for (i = x_bound; i < SCREEN_WIDTH; i++)
+ 295              		.loc 1 108 0 discriminator 3
+ 296 0142 0134     		adds	r4, r4, #1
+ 297              	.LVL32:
+ 298              	.L18:
+ 108:.\rotate_liquid.c ****         for (i = x_bound; i < SCREEN_WIDTH; i++)
+ 299              		.loc 1 108 0 is_stmt 0 discriminator 1
+ 300 0144 B4F5A07F 		cmp	r4, #320
+ 301 0148 F5DB     		blt	.L19
+ 110:.\rotate_liquid.c **** 
+ 111:.\rotate_liquid.c ****         DMA_Feed_SPI_Async(0, fillBuf_0, (uint16)(SCREEN_WIDTH * 2));
+ 302              		.loc 1 111 0 is_stmt 1
+ 303 014a 0020     		movs	r0, #0
+ 304 014c 2946     		mov	r1, r5
+ 305 014e 4FF42072 		mov	r2, #640
+ 306 0152 FFF7FEFF 		bl	DMA_Feed_SPI_Async
+ 307              	.LVL33:
+ 112:.\rotate_liquid.c ****         tmp=fillBuf_0; fillBuf_0=sendBuf_0; sendBuf_0=tmp;
+ 113:.\rotate_liquid.c **** 
+ 114:.\rotate_liquid.c ****         
+ 115:.\rotate_liquid.c ****         // ================== Display 1 ==================
+ 116:.\rotate_liquid.c ****         if (sinV[1] == 0) {
+ 308              		.loc 1 116 0
+ 309 0156 139B     		ldr	r3, [sp, #76]
+ 310 0158 ABB9     		cbnz	r3, .L20
+ 311              	.LBB5:
+ 117:.\rotate_liquid.c ****             int isLiq = (cosV[1] < 0) ? (y >= fillRow[1]) : (y < (SCREEN_HEIGHT - fillRow[1]));
+ 312              		.loc 1 117 0
+ 313 015a 0F9B     		ldr	r3, [sp, #60]
+ 314 015c 002B     		cmp	r3, #0
+ 315 015e 05DA     		bge	.L21
+ 316              		.loc 1 117 0 is_stmt 0 discriminator 1
+ 317 0160 0B9B     		ldr	r3, [sp, #44]
+ 318 0162 4B45     		cmp	r3, r9
+ 319 0164 CCBF     		ite	gt
+ 320 0166 0023     		movgt	r3, #0
+ 321 0168 0123     		movle	r3, #1
+ 322 016a 06E0     		b	.L22
+ 323              	.L21:
+ 324              		.loc 1 117 0 discriminator 2
+ 325 016c 0B9B     		ldr	r3, [sp, #44]
+ 326 016e C3F5F073 		rsb	r3, r3, #480
+ 327 0172 4B45     		cmp	r3, r9
+ 328 0174 D4BF     		ite	le
+ 329 0176 0023     		movle	r3, #0
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 9
+
+
+ 330 0178 0123     		movgt	r3, #1
+ 331              	.L22:
+ 332              	.LVL34:
+ 118:.\rotate_liquid.c ****             x_bound = isLiq ? 0 : SCREEN_WIDTH;
+ 333              		.loc 1 118 0 is_stmt 1 discriminator 4
+ 334 017a 0BB1     		cbz	r3, .L58
+ 335              		.loc 1 118 0 is_stmt 0
+ 336 017c 0024     		movs	r4, #0
+ 337              	.LVL35:
+ 338 017e 16E0     		b	.L24
+ 339              	.LVL36:
+ 340              	.L58:
+ 341 0180 4FF4A074 		mov	r4, #320
+ 342              	.LVL37:
+ 343 0184 13E0     		b	.L24
+ 344              	.LVL38:
+ 345              	.L20:
+ 346              	.LBE5:
+ 347              	.LBB6:
+ 119:.\rotate_liquid.c ****         } else {
+ 120:.\rotate_liquid.c ****             int32_t dY2 = 2 * y - SCREEN_HEIGHT;
+ 348              		.loc 1 120 0 is_stmt 1
+ 349 0186 A9F1F004 		sub	r4, r9, #240
+ 350              	.LVL39:
+ 351 018a 6400     		lsls	r4, r4, #1
+ 352              	.LVL40:
+ 121:.\rotate_liquid.c ****             x_bound = (SCREEN_WIDTH * sinV[1] + dY2 * cosV[1]) / (2 * sinV[1]);
+ 353              		.loc 1 121 0
+ 354 018c 03EB8301 		add	r1, r3, r3, lsl #2
+ 355 0190 8901     		lsls	r1, r1, #6
+ 356 0192 0F9A     		ldr	r2, [sp, #60]
+ 357 0194 04FB0214 		mla	r4, r4, r2, r1
+ 358              	.LVL41:
+ 359 0198 5B00     		lsls	r3, r3, #1
+ 360 019a 94FBF3F4 		sdiv	r4, r4, r3
+ 361              	.LVL42:
+ 122:.\rotate_liquid.c ****             if (x_bound < 0) x_bound = 0;
+ 362              		.loc 1 122 0
+ 363 019e 002C     		cmp	r4, #0
+ 364 01a0 00DA     		bge	.L25
+ 365 01a2 0024     		movs	r4, #0
+ 366              	.LVL43:
+ 367              	.L25:
+ 123:.\rotate_liquid.c ****             if (x_bound > SCREEN_WIDTH) x_bound = SCREEN_WIDTH;
+ 368              		.loc 1 123 0
+ 369 01a4 B4F5A07F 		cmp	r4, #320
+ 370 01a8 01DD     		ble	.L24
+ 371 01aa 4FF4A074 		mov	r4, #320
+ 372              	.LVL44:
+ 373              	.L24:
+ 374              	.LBE6:
+ 124:.\rotate_liquid.c ****         }
+ 125:.\rotate_liquid.c ****         if (liquidLeft[1]) { leftHi=0xFF; leftLo=0xFF; rightHi=0x00; rightLo=0x00; }
+ 375              		.loc 1 125 0
+ 376 01ae 079B     		ldr	r3, [sp, #28]
+ 377 01b0 23B1     		cbz	r3, .L61
+ 378 01b2 4FF0000A 		mov	r10, #0
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 10
+
+
+ 379              	.LVL45:
+ 380 01b6 4FF0FF0B 		mov	fp, #255
+ 381              	.LVL46:
+ 382 01ba 03E0     		b	.L26
+ 383              	.LVL47:
+ 384              	.L61:
+ 126:.\rotate_liquid.c ****         else               { leftHi=0x00; leftLo=0x00; rightHi=0xFF; rightLo=0xFF; }
+ 385              		.loc 1 126 0
+ 386 01bc 4FF0FF0A 		mov	r10, #255
+ 387              	.LVL48:
+ 388 01c0 4FF0000B 		mov	fp, #0
+ 389              	.LVL49:
+ 390              	.L26:
+ 127:.\rotate_liquid.c **** 
+ 128:.\rotate_liquid.c ****         DMA_Wait_For_Completion(1);
+ 391              		.loc 1 128 0
+ 392 01c4 0120     		movs	r0, #1
+ 393 01c6 FFF7FEFF 		bl	DMA_Wait_For_Completion
+ 394              	.LVL50:
+ 129:.\rotate_liquid.c ****         for (i = 0; i < x_bound; i++)
+ 395              		.loc 1 129 0
+ 396 01ca 0023     		movs	r3, #0
+ 397 01cc 06E0     		b	.L27
+ 398              	.LVL51:
+ 399              	.L28:
+ 130:.\rotate_liquid.c ****             { fillBuf_1[i*2]=leftHi; fillBuf_1[i*2+1]=leftLo; }
+ 400              		.loc 1 130 0 discriminator 3
+ 401 01ce 06F813B0 		strb	fp, [r6, r3, lsl #1]
+ 402 01d2 06EB4302 		add	r2, r6, r3, lsl #1
+ 403 01d6 82F801B0 		strb	fp, [r2, #1]
+ 129:.\rotate_liquid.c ****         for (i = 0; i < x_bound; i++)
+ 404              		.loc 1 129 0 discriminator 3
+ 405 01da 0133     		adds	r3, r3, #1
+ 406              	.LVL52:
+ 407              	.L27:
+ 129:.\rotate_liquid.c ****         for (i = 0; i < x_bound; i++)
+ 408              		.loc 1 129 0 is_stmt 0 discriminator 1
+ 409 01dc A342     		cmp	r3, r4
+ 410 01de F6DB     		blt	.L28
+ 411 01e0 06E0     		b	.L29
+ 412              	.LVL53:
+ 413              	.L30:
+ 131:.\rotate_liquid.c ****         for (i = x_bound; i < SCREEN_WIDTH; i++)
+ 132:.\rotate_liquid.c ****             { fillBuf_1[i*2]=rightHi; fillBuf_1[i*2+1]=rightLo; }
+ 414              		.loc 1 132 0 is_stmt 1 discriminator 3
+ 415 01e2 06F814A0 		strb	r10, [r6, r4, lsl #1]
+ 416 01e6 06EB4403 		add	r3, r6, r4, lsl #1
+ 417 01ea 83F801A0 		strb	r10, [r3, #1]
+ 131:.\rotate_liquid.c ****         for (i = x_bound; i < SCREEN_WIDTH; i++)
+ 418              		.loc 1 131 0 discriminator 3
+ 419 01ee 0134     		adds	r4, r4, #1
+ 420              	.LVL54:
+ 421              	.L29:
+ 131:.\rotate_liquid.c ****         for (i = x_bound; i < SCREEN_WIDTH; i++)
+ 422              		.loc 1 131 0 is_stmt 0 discriminator 1
+ 423 01f0 B4F5A07F 		cmp	r4, #320
+ 424 01f4 F5DB     		blt	.L30
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 11
+
+
+ 133:.\rotate_liquid.c **** 
+ 134:.\rotate_liquid.c ****         DMA_Feed_SPI_Async(1, fillBuf_1, (uint16)(SCREEN_WIDTH * 2));
+ 425              		.loc 1 134 0 is_stmt 1
+ 426 01f6 0120     		movs	r0, #1
+ 427 01f8 3146     		mov	r1, r6
+ 428 01fa 4FF42072 		mov	r2, #640
+ 429 01fe FFF7FEFF 		bl	DMA_Feed_SPI_Async
+ 430              	.LVL55:
+ 135:.\rotate_liquid.c ****         tmp=fillBuf_1; fillBuf_1=sendBuf_1; sendBuf_1=tmp;
+ 136:.\rotate_liquid.c **** 
+ 137:.\rotate_liquid.c ****         
+ 138:.\rotate_liquid.c ****         // ================== Display 2 ==================
+ 139:.\rotate_liquid.c ****         if (sinV[2] == 0) {
+ 431              		.loc 1 139 0
+ 432 0202 149B     		ldr	r3, [sp, #80]
+ 433 0204 ABB9     		cbnz	r3, .L31
+ 434              	.LBB7:
+ 140:.\rotate_liquid.c ****             int isLiq = (cosV[2] < 0) ? (y >= fillRow[2]) : (y < (SCREEN_HEIGHT - fillRow[2]));
+ 435              		.loc 1 140 0
+ 436 0206 109B     		ldr	r3, [sp, #64]
+ 437 0208 002B     		cmp	r3, #0
+ 438 020a 05DA     		bge	.L32
+ 439              		.loc 1 140 0 is_stmt 0 discriminator 1
+ 440 020c 0C9B     		ldr	r3, [sp, #48]
+ 441 020e 4B45     		cmp	r3, r9
+ 442 0210 CCBF     		ite	gt
+ 443 0212 0023     		movgt	r3, #0
+ 444 0214 0123     		movle	r3, #1
+ 445 0216 06E0     		b	.L33
+ 446              	.L32:
+ 447              		.loc 1 140 0 discriminator 2
+ 448 0218 0C9B     		ldr	r3, [sp, #48]
+ 449 021a C3F5F073 		rsb	r3, r3, #480
+ 450 021e 4B45     		cmp	r3, r9
+ 451 0220 D4BF     		ite	le
+ 452 0222 0023     		movle	r3, #0
+ 453 0224 0123     		movgt	r3, #1
+ 454              	.L33:
+ 455              	.LVL56:
+ 141:.\rotate_liquid.c ****             x_bound = isLiq ? 0 : SCREEN_WIDTH;
+ 456              		.loc 1 141 0 is_stmt 1 discriminator 4
+ 457 0226 0BB1     		cbz	r3, .L62
+ 458              		.loc 1 141 0 is_stmt 0
+ 459 0228 0024     		movs	r4, #0
+ 460              	.LVL57:
+ 461 022a 16E0     		b	.L35
+ 462              	.LVL58:
+ 463              	.L62:
+ 464 022c 4FF4A074 		mov	r4, #320
+ 465              	.LVL59:
+ 466 0230 13E0     		b	.L35
+ 467              	.LVL60:
+ 468              	.L31:
+ 469              	.LBE7:
+ 470              	.LBB8:
+ 142:.\rotate_liquid.c ****         } else {
+ 143:.\rotate_liquid.c ****             int32_t dY2 = 2 * y - SCREEN_HEIGHT;
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 12
+
+
+ 471              		.loc 1 143 0 is_stmt 1
+ 472 0232 A9F1F004 		sub	r4, r9, #240
+ 473              	.LVL61:
+ 474 0236 6400     		lsls	r4, r4, #1
+ 475              	.LVL62:
+ 144:.\rotate_liquid.c ****             x_bound = (SCREEN_WIDTH * sinV[2] + dY2 * cosV[2]) / (2 * sinV[2]);
+ 476              		.loc 1 144 0
+ 477 0238 03EB8301 		add	r1, r3, r3, lsl #2
+ 478 023c 8901     		lsls	r1, r1, #6
+ 479 023e 109A     		ldr	r2, [sp, #64]
+ 480 0240 04FB0214 		mla	r4, r4, r2, r1
+ 481              	.LVL63:
+ 482 0244 5B00     		lsls	r3, r3, #1
+ 483 0246 94FBF3F4 		sdiv	r4, r4, r3
+ 484              	.LVL64:
+ 145:.\rotate_liquid.c ****             if (x_bound < 0) x_bound = 0;
+ 485              		.loc 1 145 0
+ 486 024a 002C     		cmp	r4, #0
+ 487 024c 00DA     		bge	.L36
+ 488 024e 0024     		movs	r4, #0
+ 489              	.LVL65:
+ 490              	.L36:
+ 146:.\rotate_liquid.c ****             if (x_bound > SCREEN_WIDTH) x_bound = SCREEN_WIDTH;
+ 491              		.loc 1 146 0
+ 492 0250 B4F5A07F 		cmp	r4, #320
+ 493 0254 01DD     		ble	.L35
+ 494 0256 4FF4A074 		mov	r4, #320
+ 495              	.LVL66:
+ 496              	.L35:
+ 497              	.LBE8:
+ 147:.\rotate_liquid.c ****         }
+ 148:.\rotate_liquid.c ****         if (liquidLeft[2]) { leftHi=0xFF; leftLo=0xFF; rightHi=0x00; rightLo=0x00; }
+ 498              		.loc 1 148 0
+ 499 025a 089B     		ldr	r3, [sp, #32]
+ 500 025c 23B1     		cbz	r3, .L65
+ 501 025e 4FF0000A 		mov	r10, #0
+ 502              	.LVL67:
+ 503 0262 4FF0FF0B 		mov	fp, #255
+ 504              	.LVL68:
+ 505 0266 03E0     		b	.L37
+ 506              	.LVL69:
+ 507              	.L65:
+ 149:.\rotate_liquid.c ****         else               { leftHi=0x00; leftLo=0x00; rightHi=0xFF; rightLo=0xFF; }
+ 508              		.loc 1 149 0
+ 509 0268 4FF0FF0A 		mov	r10, #255
+ 510              	.LVL70:
+ 511 026c 4FF0000B 		mov	fp, #0
+ 512              	.LVL71:
+ 513              	.L37:
+ 150:.\rotate_liquid.c **** 
+ 151:.\rotate_liquid.c ****         DMA_Wait_For_Completion(2);
+ 514              		.loc 1 151 0
+ 515 0270 0220     		movs	r0, #2
+ 516 0272 FFF7FEFF 		bl	DMA_Wait_For_Completion
+ 517              	.LVL72:
+ 152:.\rotate_liquid.c ****         for (i = 0; i < x_bound; i++)
+ 518              		.loc 1 152 0
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 13
+
+
+ 519 0276 0023     		movs	r3, #0
+ 520 0278 06E0     		b	.L38
+ 521              	.LVL73:
+ 522              	.L39:
+ 153:.\rotate_liquid.c ****             { fillBuf_2[i*2]=leftHi; fillBuf_2[i*2+1]=leftLo; }
+ 523              		.loc 1 153 0 discriminator 3
+ 524 027a 07F813B0 		strb	fp, [r7, r3, lsl #1]
+ 525 027e 07EB4302 		add	r2, r7, r3, lsl #1
+ 526 0282 82F801B0 		strb	fp, [r2, #1]
+ 152:.\rotate_liquid.c ****         for (i = 0; i < x_bound; i++)
+ 527              		.loc 1 152 0 discriminator 3
+ 528 0286 0133     		adds	r3, r3, #1
+ 529              	.LVL74:
+ 530              	.L38:
+ 152:.\rotate_liquid.c ****         for (i = 0; i < x_bound; i++)
+ 531              		.loc 1 152 0 is_stmt 0 discriminator 1
+ 532 0288 A342     		cmp	r3, r4
+ 533 028a F6DB     		blt	.L39
+ 534 028c 06E0     		b	.L40
+ 535              	.LVL75:
+ 536              	.L41:
+ 154:.\rotate_liquid.c ****         for (i = x_bound; i < SCREEN_WIDTH; i++)
+ 155:.\rotate_liquid.c ****             { fillBuf_2[i*2]=rightHi; fillBuf_2[i*2+1]=rightLo; }
+ 537              		.loc 1 155 0 is_stmt 1 discriminator 3
+ 538 028e 07F814A0 		strb	r10, [r7, r4, lsl #1]
+ 539 0292 07EB4403 		add	r3, r7, r4, lsl #1
+ 540 0296 83F801A0 		strb	r10, [r3, #1]
+ 154:.\rotate_liquid.c ****         for (i = x_bound; i < SCREEN_WIDTH; i++)
+ 541              		.loc 1 154 0 discriminator 3
+ 542 029a 0134     		adds	r4, r4, #1
+ 543              	.LVL76:
+ 544              	.L40:
+ 154:.\rotate_liquid.c ****         for (i = x_bound; i < SCREEN_WIDTH; i++)
+ 545              		.loc 1 154 0 is_stmt 0 discriminator 1
+ 546 029c B4F5A07F 		cmp	r4, #320
+ 547 02a0 F5DB     		blt	.L41
+ 156:.\rotate_liquid.c **** 
+ 157:.\rotate_liquid.c ****         DMA_Feed_SPI_Async(2, fillBuf_2, (uint16)(SCREEN_WIDTH * 2));
+ 548              		.loc 1 157 0 is_stmt 1
+ 549 02a2 0220     		movs	r0, #2
+ 550 02a4 3946     		mov	r1, r7
+ 551 02a6 4FF42072 		mov	r2, #640
+ 552 02aa FFF7FEFF 		bl	DMA_Feed_SPI_Async
+ 553              	.LVL77:
+ 158:.\rotate_liquid.c ****         tmp=fillBuf_2; fillBuf_2=sendBuf_2; sendBuf_2=tmp;
+ 159:.\rotate_liquid.c **** 
+ 160:.\rotate_liquid.c ****         
+ 161:.\rotate_liquid.c ****         // ================== Display 3 ==================
+ 162:.\rotate_liquid.c ****         if (sinV[3] == 0) {
+ 554              		.loc 1 162 0
+ 555 02ae 159B     		ldr	r3, [sp, #84]
+ 556 02b0 ABB9     		cbnz	r3, .L42
+ 557              	.LBB9:
+ 163:.\rotate_liquid.c ****             int isLiq = (cosV[3] < 0) ? (y >= fillRow[3]) : (y < (SCREEN_HEIGHT - fillRow[3]));
+ 558              		.loc 1 163 0
+ 559 02b2 119B     		ldr	r3, [sp, #68]
+ 560 02b4 002B     		cmp	r3, #0
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 14
+
+
+ 561 02b6 05DA     		bge	.L43
+ 562              		.loc 1 163 0 is_stmt 0 discriminator 1
+ 563 02b8 0D9B     		ldr	r3, [sp, #52]
+ 564 02ba 4B45     		cmp	r3, r9
+ 565 02bc CCBF     		ite	gt
+ 566 02be 0023     		movgt	r3, #0
+ 567 02c0 0123     		movle	r3, #1
+ 568 02c2 06E0     		b	.L44
+ 569              	.L43:
+ 570              		.loc 1 163 0 discriminator 2
+ 571 02c4 0D9B     		ldr	r3, [sp, #52]
+ 572 02c6 C3F5F073 		rsb	r3, r3, #480
+ 573 02ca 4B45     		cmp	r3, r9
+ 574 02cc D4BF     		ite	le
+ 575 02ce 0023     		movle	r3, #0
+ 576 02d0 0123     		movgt	r3, #1
+ 577              	.L44:
+ 578              	.LVL78:
+ 164:.\rotate_liquid.c ****             x_bound = isLiq ? 0 : SCREEN_WIDTH;
+ 579              		.loc 1 164 0 is_stmt 1 discriminator 4
+ 580 02d2 0BB1     		cbz	r3, .L66
+ 581              		.loc 1 164 0 is_stmt 0
+ 582 02d4 0024     		movs	r4, #0
+ 583              	.LVL79:
+ 584 02d6 16E0     		b	.L46
+ 585              	.LVL80:
+ 586              	.L66:
+ 587 02d8 4FF4A074 		mov	r4, #320
+ 588              	.LVL81:
+ 589 02dc 13E0     		b	.L46
+ 590              	.LVL82:
+ 591              	.L42:
+ 592              	.LBE9:
+ 593              	.LBB10:
+ 165:.\rotate_liquid.c ****         } else {
+ 166:.\rotate_liquid.c ****             int32_t dY2 = 2 * y - SCREEN_HEIGHT;
+ 594              		.loc 1 166 0 is_stmt 1
+ 595 02de A9F1F004 		sub	r4, r9, #240
+ 596              	.LVL83:
+ 597 02e2 6400     		lsls	r4, r4, #1
+ 598              	.LVL84:
+ 167:.\rotate_liquid.c ****             x_bound = (SCREEN_WIDTH * sinV[3] + dY2 * cosV[3]) / (2 * sinV[3]);
+ 599              		.loc 1 167 0
+ 600 02e4 03EB8301 		add	r1, r3, r3, lsl #2
+ 601 02e8 8901     		lsls	r1, r1, #6
+ 602 02ea 119A     		ldr	r2, [sp, #68]
+ 603 02ec 04FB0214 		mla	r4, r4, r2, r1
+ 604              	.LVL85:
+ 605 02f0 5B00     		lsls	r3, r3, #1
+ 606 02f2 94FBF3F4 		sdiv	r4, r4, r3
+ 607              	.LVL86:
+ 168:.\rotate_liquid.c ****             if (x_bound < 0) x_bound = 0;
+ 608              		.loc 1 168 0
+ 609 02f6 002C     		cmp	r4, #0
+ 610 02f8 00DA     		bge	.L47
+ 611 02fa 0024     		movs	r4, #0
+ 612              	.LVL87:
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 15
+
+
+ 613              	.L47:
+ 169:.\rotate_liquid.c ****             if (x_bound > SCREEN_WIDTH) x_bound = SCREEN_WIDTH;
+ 614              		.loc 1 169 0
+ 615 02fc B4F5A07F 		cmp	r4, #320
+ 616 0300 01DD     		ble	.L46
+ 617 0302 4FF4A074 		mov	r4, #320
+ 618              	.LVL88:
+ 619              	.L46:
+ 620              	.LBE10:
+ 170:.\rotate_liquid.c ****         }
+ 171:.\rotate_liquid.c ****         if (liquidLeft[3]) { leftHi=0xFF; leftLo=0xFF; rightHi=0x00; rightLo=0x00; }
+ 621              		.loc 1 171 0
+ 622 0306 099B     		ldr	r3, [sp, #36]
+ 623 0308 23B1     		cbz	r3, .L69
+ 624 030a 4FF0000A 		mov	r10, #0
+ 625              	.LVL89:
+ 626 030e 4FF0FF0B 		mov	fp, #255
+ 627              	.LVL90:
+ 628 0312 03E0     		b	.L48
+ 629              	.LVL91:
+ 630              	.L69:
+ 172:.\rotate_liquid.c ****         else               { leftHi=0x00; leftLo=0x00; rightHi=0xFF; rightLo=0xFF; }
+ 631              		.loc 1 172 0
+ 632 0314 4FF0FF0A 		mov	r10, #255
+ 633              	.LVL92:
+ 634 0318 4FF0000B 		mov	fp, #0
+ 635              	.LVL93:
+ 636              	.L48:
+ 173:.\rotate_liquid.c **** 
+ 174:.\rotate_liquid.c ****         DMA_Wait_For_Completion(3);
+ 637              		.loc 1 174 0
+ 638 031c 0320     		movs	r0, #3
+ 639 031e FFF7FEFF 		bl	DMA_Wait_For_Completion
+ 640              	.LVL94:
+ 175:.\rotate_liquid.c ****         for (i = 0; i < x_bound; i++)
+ 641              		.loc 1 175 0
+ 642 0322 0023     		movs	r3, #0
+ 643 0324 06E0     		b	.L49
+ 644              	.LVL95:
+ 645              	.L50:
+ 176:.\rotate_liquid.c ****             { fillBuf_3[i*2]=leftHi; fillBuf_3[i*2+1]=leftLo; }
+ 646              		.loc 1 176 0 discriminator 3
+ 647 0326 08F813B0 		strb	fp, [r8, r3, lsl #1]
+ 648 032a 08EB4302 		add	r2, r8, r3, lsl #1
+ 649 032e 82F801B0 		strb	fp, [r2, #1]
+ 175:.\rotate_liquid.c ****         for (i = 0; i < x_bound; i++)
+ 650              		.loc 1 175 0 discriminator 3
+ 651 0332 0133     		adds	r3, r3, #1
+ 652              	.LVL96:
+ 653              	.L49:
+ 175:.\rotate_liquid.c ****         for (i = 0; i < x_bound; i++)
+ 654              		.loc 1 175 0 is_stmt 0 discriminator 1
+ 655 0334 A342     		cmp	r3, r4
+ 656 0336 F6DB     		blt	.L50
+ 657 0338 17E0     		b	.L51
+ 658              	.L72:
+ 659 033a 00BF     		.align	2
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 16
+
+
+ 660              	.L71:
+ 661 033c 00000000 		.word	bufferB_3
+ 662 0340 00000000 		.word	bufferB_2
+ 663 0344 00000000 		.word	bufferA_2
+ 664 0348 00000000 		.word	bufferB_1
+ 665 034c 00000000 		.word	bufferA_1
+ 666 0350 00000000 		.word	bufferB_0
+ 667 0354 00000000 		.word	bufferA_0
+ 668 0358 00000000 		.word	bufferA_3
+ 669              	.LVL97:
+ 670              	.L52:
+ 177:.\rotate_liquid.c ****         for (i = x_bound; i < SCREEN_WIDTH; i++)
+ 178:.\rotate_liquid.c ****             { fillBuf_3[i*2]=rightHi; fillBuf_3[i*2+1]=rightLo; }
+ 671              		.loc 1 178 0 is_stmt 1 discriminator 3
+ 672 035c 08F814A0 		strb	r10, [r8, r4, lsl #1]
+ 673 0360 08EB4403 		add	r3, r8, r4, lsl #1
+ 674 0364 83F801A0 		strb	r10, [r3, #1]
+ 177:.\rotate_liquid.c ****         for (i = x_bound; i < SCREEN_WIDTH; i++)
+ 675              		.loc 1 177 0 discriminator 3
+ 676 0368 0134     		adds	r4, r4, #1
+ 677              	.LVL98:
+ 678              	.L51:
+ 177:.\rotate_liquid.c ****         for (i = x_bound; i < SCREEN_WIDTH; i++)
+ 679              		.loc 1 177 0 is_stmt 0 discriminator 1
+ 680 036a B4F5A07F 		cmp	r4, #320
+ 681 036e F5DB     		blt	.L52
+ 179:.\rotate_liquid.c **** 
+ 180:.\rotate_liquid.c ****         DMA_Feed_SPI_Async(3, fillBuf_3, (uint16)(SCREEN_WIDTH * 2));
+ 682              		.loc 1 180 0 is_stmt 1 discriminator 2
+ 683 0370 0320     		movs	r0, #3
+ 684 0372 4146     		mov	r1, r8
+ 685 0374 4FF42072 		mov	r2, #640
+ 686 0378 FFF7FEFF 		bl	DMA_Feed_SPI_Async
+ 687              	.LVL99:
+ 688              	.LBE2:
+  87:.\rotate_liquid.c **** 
+ 689              		.loc 1 87 0 discriminator 2
+ 690 037c 09F10109 		add	r9, r9, #1
+ 691              	.LVL100:
+ 692              	.LBB11:
+ 181:.\rotate_liquid.c ****         tmp=fillBuf_3; fillBuf_3=sendBuf_3; sendBuf_3=tmp;
+ 693              		.loc 1 181 0 discriminator 2
+ 694 0380 4346     		mov	r3, r8
+ 695 0382 DDF81480 		ldr	r8, [sp, #20]
+ 696              	.LVL101:
+ 697 0386 0593     		str	r3, [sp, #20]
+ 698              	.LVL102:
+ 699 0388 3B46     		mov	r3, r7
+ 700              	.LVL103:
+ 158:.\rotate_liquid.c **** 
+ 701              		.loc 1 158 0 discriminator 2
+ 702 038a 049F     		ldr	r7, [sp, #16]
+ 703              	.LVL104:
+ 704 038c 0493     		str	r3, [sp, #16]
+ 705              	.LVL105:
+ 706              		.loc 1 181 0 discriminator 2
+ 707 038e 3346     		mov	r3, r6
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 17
+
+
+ 708              	.LVL106:
+ 135:.\rotate_liquid.c **** 
+ 709              		.loc 1 135 0 discriminator 2
+ 710 0390 039E     		ldr	r6, [sp, #12]
+ 711              	.LVL107:
+ 712 0392 0393     		str	r3, [sp, #12]
+ 713              	.LVL108:
+ 714              		.loc 1 181 0 discriminator 2
+ 715 0394 2B46     		mov	r3, r5
+ 716              	.LVL109:
+ 112:.\rotate_liquid.c **** 
+ 717              		.loc 1 112 0 discriminator 2
+ 718 0396 029D     		ldr	r5, [sp, #8]
+ 719              	.LVL110:
+ 720 0398 0293     		str	r3, [sp, #8]
+ 721              	.LVL111:
+ 722              	.L8:
+ 723              	.LBE11:
+  87:.\rotate_liquid.c **** 
+ 724              		.loc 1 87 0 discriminator 1
+ 725 039a B9F5F07F 		cmp	r9, #480
+ 726 039e FFF684AE 		blt	.L53
+ 182:.\rotate_liquid.c ****            
+ 183:.\rotate_liquid.c ****     }
+ 184:.\rotate_liquid.c **** 
+ 185:.\rotate_liquid.c ****     // wait for all DMAs to finish before returning
+ 186:.\rotate_liquid.c ****     DMA_Wait_For_Completion(0);
+ 727              		.loc 1 186 0
+ 728 03a2 0020     		movs	r0, #0
+ 729 03a4 FFF7FEFF 		bl	DMA_Wait_For_Completion
+ 730              	.LVL112:
+ 187:.\rotate_liquid.c ****     DMA_Wait_For_Completion(1);
+ 731              		.loc 1 187 0
+ 732 03a8 0120     		movs	r0, #1
+ 733 03aa FFF7FEFF 		bl	DMA_Wait_For_Completion
+ 734              	.LVL113:
+ 188:.\rotate_liquid.c ****     DMA_Wait_For_Completion(2);
+ 735              		.loc 1 188 0
+ 736 03ae 0220     		movs	r0, #2
+ 737 03b0 FFF7FEFF 		bl	DMA_Wait_For_Completion
+ 738              	.LVL114:
+ 189:.\rotate_liquid.c ****     DMA_Wait_For_Completion(3);
+ 739              		.loc 1 189 0
+ 740 03b4 0320     		movs	r0, #3
+ 741 03b6 FFF7FEFF 		bl	DMA_Wait_For_Completion
+ 742              	.LVL115:
+ 190:.\rotate_liquid.c **** }...
+ 743              		.loc 1 190 0
+ 744 03ba 17B0     		add	sp, sp, #92
+ 745              		.cfi_def_cfa_offset 36
+ 746              		@ sp needed
+ 747 03bc BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 748              		.cfi_endproc
+ 749              	.LFE65:
+ 750              		.size	drawLiquid, .-drawLiquid
+ 751              		.global	atan_lut
+ 752              		.section	.rodata
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 18
+
+
+ 753              		.align	2
+ 754              		.set	.LANCHOR0,. + 0
+ 755              		.type	atan_lut, %object
+ 756              		.size	atan_lut, 512
+ 757              	atan_lut:
+ 758 0000 4301     		.short	323
+ 759 0002 4301     		.short	323
+ 760 0004 4401     		.short	324
+ 761 0006 4401     		.short	324
+ 762 0008 4401     		.short	324
+ 763 000a 4401     		.short	324
+ 764 000c 4401     		.short	324
+ 765 000e 4501     		.short	325
+ 766 0010 4501     		.short	325
+ 767 0012 4501     		.short	325
+ 768 0014 4501     		.short	325
+ 769 0016 4601     		.short	326
+ 770 0018 4601     		.short	326
+ 771 001a 4601     		.short	326
+ 772 001c 4601     		.short	326
+ 773 001e 4601     		.short	326
+ 774 0020 4701     		.short	327
+ 775 0022 4701     		.short	327
+ 776 0024 4701     		.short	327
+ 777 0026 4701     		.short	327
+ 778 0028 4801     		.short	328
+ 779 002a 4801     		.short	328
+ 780 002c 4801     		.short	328
+ 781 002e 4801     		.short	328
+ 782 0030 4901     		.short	329
+ 783 0032 4901     		.short	329
+ 784 0034 4901     		.short	329
+ 785 0036 4901     		.short	329
+ 786 0038 4A01     		.short	330
+ 787 003a 4A01     		.short	330
+ 788 003c 4A01     		.short	330
+ 789 003e 4A01     		.short	330
+ 790 0040 4B01     		.short	331
+ 791 0042 4B01     		.short	331
+ 792 0044 4B01     		.short	331
+ 793 0046 4B01     		.short	331
+ 794 0048 4C01     		.short	332
+ 795 004a 4C01     		.short	332
+ 796 004c 4C01     		.short	332
+ 797 004e 4C01     		.short	332
+ 798 0050 4D01     		.short	333
+ 799 0052 4D01     		.short	333
+ 800 0054 4D01     		.short	333
+ 801 0056 4E01     		.short	334
+ 802 0058 4E01     		.short	334
+ 803 005a 4E01     		.short	334
+ 804 005c 4E01     		.short	334
+ 805 005e 4F01     		.short	335
+ 806 0060 4F01     		.short	335
+ 807 0062 4F01     		.short	335
+ 808 0064 4F01     		.short	335
+ 809 0066 5001     		.short	336
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 19
+
+
+ 810 0068 5001     		.short	336
+ 811 006a 5001     		.short	336
+ 812 006c 5101     		.short	337
+ 813 006e 5101     		.short	337
+ 814 0070 5101     		.short	337
+ 815 0072 5101     		.short	337
+ 816 0074 5201     		.short	338
+ 817 0076 5201     		.short	338
+ 818 0078 5201     		.short	338
+ 819 007a 5301     		.short	339
+ 820 007c 5301     		.short	339
+ 821 007e 5301     		.short	339
+ 822 0080 5301     		.short	339
+ 823 0082 5401     		.short	340
+ 824 0084 5401     		.short	340
+ 825 0086 5401     		.short	340
+ 826 0088 5501     		.short	341
+ 827 008a 5501     		.short	341
+ 828 008c 5501     		.short	341
+ 829 008e 5601     		.short	342
+ 830 0090 5601     		.short	342
+ 831 0092 5601     		.short	342
+ 832 0094 5601     		.short	342
+ 833 0096 5701     		.short	343
+ 834 0098 5701     		.short	343
+ 835 009a 5701     		.short	343
+ 836 009c 5801     		.short	344
+ 837 009e 5801     		.short	344
+ 838 00a0 5801     		.short	344
+ 839 00a2 5901     		.short	345
+ 840 00a4 5901     		.short	345
+ 841 00a6 5901     		.short	345
+ 842 00a8 5A01     		.short	346
+ 843 00aa 5A01     		.short	346
+ 844 00ac 5A01     		.short	346
+ 845 00ae 5A01     		.short	346
+ 846 00b0 5B01     		.short	347
+ 847 00b2 5B01     		.short	347
+ 848 00b4 5B01     		.short	347
+ 849 00b6 5C01     		.short	348
+ 850 00b8 5C01     		.short	348
+ 851 00ba 5C01     		.short	348
+ 852 00bc 5D01     		.short	349
+ 853 00be 5D01     		.short	349
+ 854 00c0 5D01     		.short	349
+ 855 00c2 5E01     		.short	350
+ 856 00c4 5E01     		.short	350
+ 857 00c6 5E01     		.short	350
+ 858 00c8 5F01     		.short	351
+ 859 00ca 5F01     		.short	351
+ 860 00cc 5F01     		.short	351
+ 861 00ce 6001     		.short	352
+ 862 00d0 6001     		.short	352
+ 863 00d2 6001     		.short	352
+ 864 00d4 6101     		.short	353
+ 865 00d6 6101     		.short	353
+ 866 00d8 6101     		.short	353
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 20
+
+
+ 867 00da 6201     		.short	354
+ 868 00dc 6201     		.short	354
+ 869 00de 6201     		.short	354
+ 870 00e0 6301     		.short	355
+ 871 00e2 6301     		.short	355
+ 872 00e4 6301     		.short	355
+ 873 00e6 6401     		.short	356
+ 874 00e8 6401     		.short	356
+ 875 00ea 6401     		.short	356
+ 876 00ec 6501     		.short	357
+ 877 00ee 6501     		.short	357
+ 878 00f0 6501     		.short	357
+ 879 00f2 6601     		.short	358
+ 880 00f4 6601     		.short	358
+ 881 00f6 6601     		.short	358
+ 882 00f8 6701     		.short	359
+ 883 00fa 6701     		.short	359
+ 884 00fc 6701     		.short	359
+ 885 00fe 0000     		.short	0
+ 886 0100 0000     		.short	0
+ 887 0102 0000     		.short	0
+ 888 0104 0100     		.short	1
+ 889 0106 0100     		.short	1
+ 890 0108 0100     		.short	1
+ 891 010a 0200     		.short	2
+ 892 010c 0200     		.short	2
+ 893 010e 0200     		.short	2
+ 894 0110 0300     		.short	3
+ 895 0112 0300     		.short	3
+ 896 0114 0300     		.short	3
+ 897 0116 0400     		.short	4
+ 898 0118 0400     		.short	4
+ 899 011a 0400     		.short	4
+ 900 011c 0500     		.short	5
+ 901 011e 0500     		.short	5
+ 902 0120 0500     		.short	5
+ 903 0122 0600     		.short	6
+ 904 0124 0600     		.short	6
+ 905 0126 0600     		.short	6
+ 906 0128 0700     		.short	7
+ 907 012a 0700     		.short	7
+ 908 012c 0700     		.short	7
+ 909 012e 0800     		.short	8
+ 910 0130 0800     		.short	8
+ 911 0132 0800     		.short	8
+ 912 0134 0900     		.short	9
+ 913 0136 0900     		.short	9
+ 914 0138 0900     		.short	9
+ 915 013a 0A00     		.short	10
+ 916 013c 0A00     		.short	10
+ 917 013e 0A00     		.short	10
+ 918 0140 0B00     		.short	11
+ 919 0142 0B00     		.short	11
+ 920 0144 0B00     		.short	11
+ 921 0146 0C00     		.short	12
+ 922 0148 0C00     		.short	12
+ 923 014a 0C00     		.short	12
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 21
+
+
+ 924 014c 0D00     		.short	13
+ 925 014e 0D00     		.short	13
+ 926 0150 0D00     		.short	13
+ 927 0152 0E00     		.short	14
+ 928 0154 0E00     		.short	14
+ 929 0156 0E00     		.short	14
+ 930 0158 0E00     		.short	14
+ 931 015a 0F00     		.short	15
+ 932 015c 0F00     		.short	15
+ 933 015e 0F00     		.short	15
+ 934 0160 1000     		.short	16
+ 935 0162 1000     		.short	16
+ 936 0164 1000     		.short	16
+ 937 0166 1100     		.short	17
+ 938 0168 1100     		.short	17
+ 939 016a 1100     		.short	17
+ 940 016c 1200     		.short	18
+ 941 016e 1200     		.short	18
+ 942 0170 1200     		.short	18
+ 943 0172 1200     		.short	18
+ 944 0174 1300     		.short	19
+ 945 0176 1300     		.short	19
+ 946 0178 1300     		.short	19
+ 947 017a 1400     		.short	20
+ 948 017c 1400     		.short	20
+ 949 017e 1400     		.short	20
+ 950 0180 1500     		.short	21
+ 951 0182 1500     		.short	21
+ 952 0184 1500     		.short	21
+ 953 0186 1500     		.short	21
+ 954 0188 1600     		.short	22
+ 955 018a 1600     		.short	22
+ 956 018c 1600     		.short	22
+ 957 018e 1700     		.short	23
+ 958 0190 1700     		.short	23
+ 959 0192 1700     		.short	23
+ 960 0194 1700     		.short	23
+ 961 0196 1800     		.short	24
+ 962 0198 1800     		.short	24
+ 963 019a 1800     		.short	24
+ 964 019c 1900     		.short	25
+ 965 019e 1900     		.short	25
+ 966 01a0 1900     		.short	25
+ 967 01a2 1900     		.short	25
+ 968 01a4 1A00     		.short	26
+ 969 01a6 1A00     		.short	26
+ 970 01a8 1A00     		.short	26
+ 971 01aa 1A00     		.short	26
+ 972 01ac 1B00     		.short	27
+ 973 01ae 1B00     		.short	27
+ 974 01b0 1B00     		.short	27
+ 975 01b2 1C00     		.short	28
+ 976 01b4 1C00     		.short	28
+ 977 01b6 1C00     		.short	28
+ 978 01b8 1C00     		.short	28
+ 979 01ba 1D00     		.short	29
+ 980 01bc 1D00     		.short	29
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 22
+
+
+ 981 01be 1D00     		.short	29
+ 982 01c0 1D00     		.short	29
+ 983 01c2 1E00     		.short	30
+ 984 01c4 1E00     		.short	30
+ 985 01c6 1E00     		.short	30
+ 986 01c8 1E00     		.short	30
+ 987 01ca 1F00     		.short	31
+ 988 01cc 1F00     		.short	31
+ 989 01ce 1F00     		.short	31
+ 990 01d0 1F00     		.short	31
+ 991 01d2 2000     		.short	32
+ 992 01d4 2000     		.short	32
+ 993 01d6 2000     		.short	32
+ 994 01d8 2000     		.short	32
+ 995 01da 2100     		.short	33
+ 996 01dc 2100     		.short	33
+ 997 01de 2100     		.short	33
+ 998 01e0 2100     		.short	33
+ 999 01e2 2200     		.short	34
+ 1000 01e4 2200     		.short	34
+ 1001 01e6 2200     		.short	34
+ 1002 01e8 2200     		.short	34
+ 1003 01ea 2200     		.short	34
+ 1004 01ec 2300     		.short	35
+ 1005 01ee 2300     		.short	35
+ 1006 01f0 2300     		.short	35
+ 1007 01f2 2300     		.short	35
+ 1008 01f4 2400     		.short	36
+ 1009 01f6 2400     		.short	36
+ 1010 01f8 2400     		.short	36
+ 1011 01fa 2400     		.short	36
+ 1012 01fc 2400     		.short	36
+ 1013 01fe 2500     		.short	37
+ 1014              		.text
+ 1015              	.Letext0:
+ 1016              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1017              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 1018              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 1019              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 1020              		.file 6 ".\\dma_util.h"
+ 1021              		.file 7 ".\\trig.h"
+ 1022              		.file 8 ".\\tft.h"
+ 1023              		.file 9 "Generated_Source\\PSoC5/DC0.h"
+ 1024              		.file 10 "Generated_Source\\PSoC5/DC1.h"
+ 1025              		.file 11 "Generated_Source\\PSoC5/DC2.h"
+ 1026              		.file 12 "Generated_Source\\PSoC5/DC3.h"
+ 1027              		.section	.debug_info,"",%progbits
+ 1028              	.Ldebug_info0:
+ 1029 0000 10070000 		.4byte	0x710
+ 1030 0004 0400     		.2byte	0x4
+ 1031 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1032 000a 04       		.byte	0x4
+ 1033 000b 01       		.uleb128 0x1
+ 1034 000c 86020000 		.4byte	.LASF69
+ 1035 0010 01       		.byte	0x1
+ 1036 0011 3E010000 		.4byte	.LASF70
+ 1037 0015 69000000 		.4byte	.LASF71
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 23
+
+
+ 1038 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 1039 001d 00000000 		.4byte	0
+ 1040 0021 00000000 		.4byte	.Ldebug_line0
+ 1041 0025 02       		.uleb128 0x2
+ 1042 0026 01       		.byte	0x1
+ 1043 0027 06       		.byte	0x6
+ 1044 0028 08000000 		.4byte	.LASF0
+ 1045 002c 03       		.uleb128 0x3
+ 1046 002d 50010000 		.4byte	.LASF2
+ 1047 0031 02       		.byte	0x2
+ 1048 0032 1D       		.byte	0x1d
+ 1049 0033 37000000 		.4byte	0x37
+ 1050 0037 02       		.uleb128 0x2
+ 1051 0038 01       		.byte	0x1
+ 1052 0039 08       		.byte	0x8
+ 1053 003a 88010000 		.4byte	.LASF1
+ 1054 003e 03       		.uleb128 0x3
+ 1055 003f 1B030000 		.4byte	.LASF3
+ 1056 0043 02       		.byte	0x2
+ 1057 0044 29       		.byte	0x29
+ 1058 0045 49000000 		.4byte	0x49
+ 1059 0049 02       		.uleb128 0x2
+ 1060 004a 02       		.byte	0x2
+ 1061 004b 05       		.byte	0x5
+ 1062 004c 14000000 		.4byte	.LASF4
+ 1063 0050 03       		.uleb128 0x3
+ 1064 0051 4F000000 		.4byte	.LASF5
+ 1065 0055 02       		.byte	0x2
+ 1066 0056 2B       		.byte	0x2b
+ 1067 0057 5B000000 		.4byte	0x5b
+ 1068 005b 02       		.uleb128 0x2
+ 1069 005c 02       		.byte	0x2
+ 1070 005d 07       		.byte	0x7
+ 1071 005e F9010000 		.4byte	.LASF6
+ 1072 0062 03       		.uleb128 0x3
+ 1073 0063 7C020000 		.4byte	.LASF7
+ 1074 0067 02       		.byte	0x2
+ 1075 0068 3F       		.byte	0x3f
+ 1076 0069 6D000000 		.4byte	0x6d
+ 1077 006d 02       		.uleb128 0x2
+ 1078 006e 04       		.byte	0x4
+ 1079 006f 05       		.byte	0x5
+ 1080 0070 1D010000 		.4byte	.LASF8
+ 1081 0074 03       		.uleb128 0x3
+ 1082 0075 44000000 		.4byte	.LASF9
+ 1083 0079 02       		.byte	0x2
+ 1084 007a 41       		.byte	0x41
+ 1085 007b 7F000000 		.4byte	0x7f
+ 1086 007f 02       		.uleb128 0x2
+ 1087 0080 04       		.byte	0x4
+ 1088 0081 07       		.byte	0x7
+ 1089 0082 51020000 		.4byte	.LASF10
+ 1090 0086 02       		.uleb128 0x2
+ 1091 0087 08       		.byte	0x8
+ 1092 0088 05       		.byte	0x5
+ 1093 0089 36000000 		.4byte	.LASF11
+ 1094 008d 02       		.uleb128 0x2
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 24
+
+
+ 1095 008e 08       		.byte	0x8
+ 1096 008f 07       		.byte	0x7
+ 1097 0090 AE010000 		.4byte	.LASF12
+ 1098 0094 04       		.uleb128 0x4
+ 1099 0095 04       		.byte	0x4
+ 1100 0096 05       		.byte	0x5
+ 1101 0097 696E7400 		.ascii	"int\000"
+ 1102 009b 02       		.uleb128 0x2
+ 1103 009c 04       		.byte	0x4
+ 1104 009d 07       		.byte	0x7
+ 1105 009e D3010000 		.4byte	.LASF13
+ 1106 00a2 03       		.uleb128 0x3
+ 1107 00a3 61000000 		.4byte	.LASF14
+ 1108 00a7 03       		.byte	0x3
+ 1109 00a8 15       		.byte	0x15
+ 1110 00a9 2C000000 		.4byte	0x2c
+ 1111 00ad 03       		.uleb128 0x3
+ 1112 00ae 6A030000 		.4byte	.LASF15
+ 1113 00b2 03       		.byte	0x3
+ 1114 00b3 20       		.byte	0x20
+ 1115 00b4 3E000000 		.4byte	0x3e
+ 1116 00b8 03       		.uleb128 0x3
+ 1117 00b9 E0010000 		.4byte	.LASF16
+ 1118 00bd 03       		.byte	0x3
+ 1119 00be 21       		.byte	0x21
+ 1120 00bf 50000000 		.4byte	0x50
+ 1121 00c3 03       		.uleb128 0x3
+ 1122 00c4 1B020000 		.4byte	.LASF17
+ 1123 00c8 03       		.byte	0x3
+ 1124 00c9 2C       		.byte	0x2c
+ 1125 00ca 62000000 		.4byte	0x62
+ 1126 00ce 03       		.uleb128 0x3
+ 1127 00cf CA010000 		.4byte	.LASF18
+ 1128 00d3 03       		.byte	0x3
+ 1129 00d4 2D       		.byte	0x2d
+ 1130 00d5 74000000 		.4byte	0x74
+ 1131 00d9 05       		.uleb128 0x5
+ 1132 00da 82010000 		.4byte	.LASF19
+ 1133 00de 04       		.byte	0x4
+ 1134 00df 9201     		.2byte	0x192
+ 1135 00e1 37000000 		.4byte	0x37
+ 1136 00e5 05       		.uleb128 0x5
+ 1137 00e6 5A000000 		.4byte	.LASF20
+ 1138 00ea 04       		.byte	0x4
+ 1139 00eb 9301     		.2byte	0x193
+ 1140 00ed 5B000000 		.4byte	0x5b
+ 1141 00f1 02       		.uleb128 0x2
+ 1142 00f2 04       		.byte	0x4
+ 1143 00f3 04       		.byte	0x4
+ 1144 00f4 F2000000 		.4byte	.LASF21
+ 1145 00f8 02       		.uleb128 0x2
+ 1146 00f9 08       		.byte	0x8
+ 1147 00fa 04       		.byte	0x4
+ 1148 00fb 63020000 		.4byte	.LASF22
+ 1149 00ff 02       		.uleb128 0x2
+ 1150 0100 01       		.byte	0x1
+ 1151 0101 08       		.byte	0x8
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 25
+
+
+ 1152 0102 0C020000 		.4byte	.LASF23
+ 1153 0106 02       		.uleb128 0x2
+ 1154 0107 04       		.byte	0x4
+ 1155 0108 07       		.byte	0x7
+ 1156 0109 26000000 		.4byte	.LASF24
+ 1157 010d 06       		.uleb128 0x6
+ 1158 010e E7000000 		.4byte	.LASF25
+ 1159 0112 01       		.byte	0x1
+ 1160 0113 0C       		.byte	0xc
+ 1161 0114 B8000000 		.4byte	0xb8
+ 1162 0118 00000000 		.4byte	.LFB63
+ 1163 011c 0C000000 		.4byte	.LFE63-.LFB63
+ 1164 0120 01       		.uleb128 0x1
+ 1165 0121 9C       		.byte	0x9c
+ 1166 0122 36010000 		.4byte	0x136
+ 1167 0126 07       		.uleb128 0x7
+ 1168 0127 4A020000 		.4byte	.LASF27
+ 1169 012b 01       		.byte	0x1
+ 1170 012c 0C       		.byte	0xc
+ 1171 012d B8000000 		.4byte	0xb8
+ 1172 0131 00000000 		.4byte	.LLST0
+ 1173 0135 00       		.byte	0
+ 1174 0136 06       		.uleb128 0x6
+ 1175 0137 EE010000 		.4byte	.LASF26
+ 1176 013b 01       		.byte	0x1
+ 1177 013c 29       		.byte	0x29
+ 1178 013d B8000000 		.4byte	0xb8
+ 1179 0141 00000000 		.4byte	.LFB64
+ 1180 0145 0C000000 		.4byte	.LFE64-.LFB64
+ 1181 0149 01       		.uleb128 0x1
+ 1182 014a 9C       		.byte	0x9c
+ 1183 014b 5F010000 		.4byte	0x15f
+ 1184 014f 07       		.uleb128 0x7
+ 1185 0150 91030000 		.4byte	.LASF28
+ 1186 0154 01       		.byte	0x1
+ 1187 0155 29       		.byte	0x29
+ 1188 0156 A2000000 		.4byte	0xa2
+ 1189 015a 21000000 		.4byte	.LLST1
+ 1190 015e 00       		.byte	0
+ 1191 015f 08       		.uleb128 0x8
+ 1192 0160 12010000 		.4byte	.LASF72
+ 1193 0164 01       		.byte	0x1
+ 1194 0165 32       		.byte	0x32
+ 1195 0166 00000000 		.4byte	.LFB65
+ 1196 016a C0030000 		.4byte	.LFE65-.LFB65
+ 1197 016e 01       		.uleb128 0x1
+ 1198 016f 9C       		.byte	0x9c
+ 1199 0170 70050000 		.4byte	0x570
+ 1200 0174 07       		.uleb128 0x7
+ 1201 0175 96010000 		.4byte	.LASF29
+ 1202 0179 01       		.byte	0x1
+ 1203 017a 32       		.byte	0x32
+ 1204 017b 70050000 		.4byte	0x570
+ 1205 017f 42000000 		.4byte	.LLST2
+ 1206 0183 07       		.uleb128 0x7
+ 1207 0184 14030000 		.4byte	.LASF30
+ 1208 0188 01       		.byte	0x1
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 26
+
+
+ 1209 0189 32       		.byte	0x32
+ 1210 018a 76050000 		.4byte	0x576
+ 1211 018e 6E000000 		.4byte	.LLST3
+ 1212 0192 09       		.uleb128 0x9
+ 1213 0193 C5010000 		.4byte	.LASF31
+ 1214 0197 01       		.byte	0x1
+ 1215 0198 34       		.byte	0x34
+ 1216 0199 7C050000 		.4byte	0x57c
+ 1217 019d 02       		.uleb128 0x2
+ 1218 019e 91       		.byte	0x91
+ 1219 019f 48       		.sleb128 -56
+ 1220 01a0 09       		.uleb128 0x9
+ 1221 01a1 A9010000 		.4byte	.LASF32
+ 1222 01a5 01       		.byte	0x1
+ 1223 01a6 34       		.byte	0x34
+ 1224 01a7 7C050000 		.4byte	0x57c
+ 1225 01ab 03       		.uleb128 0x3
+ 1226 01ac 91       		.byte	0x91
+ 1227 01ad B87F     		.sleb128 -72
+ 1228 01af 09       		.uleb128 0x9
+ 1229 01b0 1E000000 		.4byte	.LASF33
+ 1230 01b4 01       		.byte	0x1
+ 1231 01b5 35       		.byte	0x35
+ 1232 01b6 7C050000 		.4byte	0x57c
+ 1233 01ba 03       		.uleb128 0x3
+ 1234 01bb 91       		.byte	0x91
+ 1235 01bc A87F     		.sleb128 -88
+ 1236 01be 09       		.uleb128 0x9
+ 1237 01bf D2000000 		.4byte	.LASF34
+ 1238 01c3 01       		.byte	0x1
+ 1239 01c4 36       		.byte	0x36
+ 1240 01c5 8C050000 		.4byte	0x58c
+ 1241 01c9 03       		.uleb128 0x3
+ 1242 01ca 91       		.byte	0x91
+ 1243 01cb 987F     		.sleb128 -104
+ 1244 01cd 0A       		.uleb128 0xa
+ 1245 01ce E9010000 		.4byte	.LASF35
+ 1246 01d2 01       		.byte	0x1
+ 1247 01d3 37       		.byte	0x37
+ 1248 01d4 94000000 		.4byte	0x94
+ 1249 01d8 9A000000 		.4byte	.LLST4
+ 1250 01dc 0A       		.uleb128 0xa
+ 1251 01dd 5A010000 		.4byte	.LASF36
+ 1252 01e1 01       		.byte	0x1
+ 1253 01e2 4D       		.byte	0x4d
+ 1254 01e3 70050000 		.4byte	0x570
+ 1255 01e7 B9000000 		.4byte	.LLST5
+ 1256 01eb 0A       		.uleb128 0xa
+ 1257 01ec 23020000 		.4byte	.LASF37
+ 1258 01f0 01       		.byte	0x1
+ 1259 01f1 4D       		.byte	0x4d
+ 1260 01f2 70050000 		.4byte	0x570
+ 1261 01f6 E4000000 		.4byte	.LLST6
+ 1262 01fa 0A       		.uleb128 0xa
+ 1263 01fb 64010000 		.4byte	.LASF38
+ 1264 01ff 01       		.byte	0x1
+ 1265 0200 4E       		.byte	0x4e
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 27
+
+
+ 1266 0201 70050000 		.4byte	0x570
+ 1267 0205 1C010000 		.4byte	.LLST7
+ 1268 0209 0A       		.uleb128 0xa
+ 1269 020a 2D020000 		.4byte	.LASF39
+ 1270 020e 01       		.byte	0x1
+ 1271 020f 4E       		.byte	0x4e
+ 1272 0210 70050000 		.4byte	0x570
+ 1273 0214 47010000 		.4byte	.LLST8
+ 1274 0218 0A       		.uleb128 0xa
+ 1275 0219 6E010000 		.4byte	.LASF40
+ 1276 021d 01       		.byte	0x1
+ 1277 021e 4F       		.byte	0x4f
+ 1278 021f 70050000 		.4byte	0x570
+ 1279 0223 7F010000 		.4byte	.LLST9
+ 1280 0227 0A       		.uleb128 0xa
+ 1281 0228 9F010000 		.4byte	.LASF41
+ 1282 022c 01       		.byte	0x1
+ 1283 022d 4F       		.byte	0x4f
+ 1284 022e 70050000 		.4byte	0x570
+ 1285 0232 AA010000 		.4byte	.LLST10
+ 1286 0236 0A       		.uleb128 0xa
+ 1287 0237 78010000 		.4byte	.LASF42
+ 1288 023b 01       		.byte	0x1
+ 1289 023c 50       		.byte	0x50
+ 1290 023d 70050000 		.4byte	0x570
+ 1291 0241 E2010000 		.4byte	.LLST11
+ 1292 0245 0A       		.uleb128 0xa
+ 1293 0246 40020000 		.4byte	.LASF43
+ 1294 024a 01       		.byte	0x1
+ 1295 024b 50       		.byte	0x50
+ 1296 024c 70050000 		.4byte	0x570
+ 1297 0250 0D020000 		.4byte	.LLST12
+ 1298 0254 0B       		.uleb128 0xb
+ 1299 0255 746D7000 		.ascii	"tmp\000"
+ 1300 0259 01       		.byte	0x1
+ 1301 025a 52       		.byte	0x52
+ 1302 025b 70050000 		.4byte	0x570
+ 1303 025f 45020000 		.4byte	.LLST13
+ 1304 0263 0B       		.uleb128 0xb
+ 1305 0264 6900     		.ascii	"i\000"
+ 1306 0266 01       		.byte	0x1
+ 1307 0267 53       		.byte	0x53
+ 1308 0268 94000000 		.4byte	0x94
+ 1309 026c 91020000 		.4byte	.LLST14
+ 1310 0270 0B       		.uleb128 0xb
+ 1311 0271 7900     		.ascii	"y\000"
+ 1312 0273 01       		.byte	0x1
+ 1313 0274 53       		.byte	0x53
+ 1314 0275 94000000 		.4byte	0x94
+ 1315 0279 63030000 		.4byte	.LLST15
+ 1316 027d 0C       		.uleb128 0xc
+ 1317 027e 00000000 		.4byte	.Ldebug_ranges0+0
+ 1318 0282 82040000 		.4byte	0x482
+ 1319 0286 0A       		.uleb128 0xa
+ 1320 0287 74020000 		.4byte	.LASF44
+ 1321 028b 01       		.byte	0x1
+ 1322 028c 59       		.byte	0x59
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 28
+
+
+ 1323 028d C3000000 		.4byte	0xc3
+ 1324 0291 82030000 		.4byte	.LLST16
+ 1325 0295 0A       		.uleb128 0xa
+ 1326 0296 2F000000 		.4byte	.LASF45
+ 1327 029a 01       		.byte	0x1
+ 1328 029b 5A       		.byte	0x5a
+ 1329 029c A2000000 		.4byte	0xa2
+ 1330 02a0 EE030000 		.4byte	.LLST17
+ 1331 02a4 0A       		.uleb128 0xa
+ 1332 02a5 C1000000 		.4byte	.LASF46
+ 1333 02a9 01       		.byte	0x1
+ 1334 02aa 5A       		.byte	0x5a
+ 1335 02ab A2000000 		.4byte	0xa2
+ 1336 02af EE030000 		.4byte	.LLST17
+ 1337 02b3 0A       		.uleb128 0xa
+ 1338 02b4 7F030000 		.4byte	.LASF47
+ 1339 02b8 01       		.byte	0x1
+ 1340 02b9 5A       		.byte	0x5a
+ 1341 02ba A2000000 		.4byte	0xa2
+ 1342 02be 22040000 		.4byte	.LLST19
+ 1343 02c2 0A       		.uleb128 0xa
+ 1344 02c3 00000000 		.4byte	.LASF48
+ 1345 02c7 01       		.byte	0x1
+ 1346 02c8 5A       		.byte	0x5a
+ 1347 02c9 A2000000 		.4byte	0xa2
+ 1348 02cd 22040000 		.4byte	.LLST19
+ 1349 02d1 0D       		.uleb128 0xd
+ 1350 02d2 AE000000 		.4byte	.LBB3
+ 1351 02d6 2C000000 		.4byte	.LBE3-.LBB3
+ 1352 02da EE020000 		.4byte	0x2ee
+ 1353 02de 0A       		.uleb128 0xa
+ 1354 02df 02010000 		.4byte	.LASF49
+ 1355 02e3 01       		.byte	0x1
+ 1356 02e4 5E       		.byte	0x5e
+ 1357 02e5 94000000 		.4byte	0x94
+ 1358 02e9 77040000 		.4byte	.LLST21
+ 1359 02ed 00       		.byte	0
+ 1360 02ee 0D       		.uleb128 0xd
+ 1361 02ef DA000000 		.4byte	.LBB4
+ 1362 02f3 28000000 		.4byte	.LBE4-.LBB4
+ 1363 02f7 0B030000 		.4byte	0x30b
+ 1364 02fb 0B       		.uleb128 0xb
+ 1365 02fc 64593200 		.ascii	"dY2\000"
+ 1366 0300 01       		.byte	0x1
+ 1367 0301 61       		.byte	0x61
+ 1368 0302 C3000000 		.4byte	0xc3
+ 1369 0306 8A040000 		.4byte	.LLST22
+ 1370 030a 00       		.byte	0
+ 1371 030b 0D       		.uleb128 0xd
+ 1372 030c 5A010000 		.4byte	.LBB5
+ 1373 0310 2C000000 		.4byte	.LBE5-.LBB5
+ 1374 0314 28030000 		.4byte	0x328
+ 1375 0318 0A       		.uleb128 0xa
+ 1376 0319 02010000 		.4byte	.LASF49
+ 1377 031d 01       		.byte	0x1
+ 1378 031e 75       		.byte	0x75
+ 1379 031f 94000000 		.4byte	0x94
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 29
+
+
+ 1380 0323 AD040000 		.4byte	.LLST23
+ 1381 0327 00       		.byte	0
+ 1382 0328 0D       		.uleb128 0xd
+ 1383 0329 86010000 		.4byte	.LBB6
+ 1384 032d 28000000 		.4byte	.LBE6-.LBB6
+ 1385 0331 45030000 		.4byte	0x345
+ 1386 0335 0B       		.uleb128 0xb
+ 1387 0336 64593200 		.ascii	"dY2\000"
+ 1388 033a 01       		.byte	0x1
+ 1389 033b 78       		.byte	0x78
+ 1390 033c C3000000 		.4byte	0xc3
+ 1391 0340 C0040000 		.4byte	.LLST24
+ 1392 0344 00       		.byte	0
+ 1393 0345 0D       		.uleb128 0xd
+ 1394 0346 06020000 		.4byte	.LBB7
+ 1395 034a 2C000000 		.4byte	.LBE7-.LBB7
+ 1396 034e 62030000 		.4byte	0x362
+ 1397 0352 0A       		.uleb128 0xa
+ 1398 0353 02010000 		.4byte	.LASF49
+ 1399 0357 01       		.byte	0x1
+ 1400 0358 8C       		.byte	0x8c
+ 1401 0359 94000000 		.4byte	0x94
+ 1402 035d E3040000 		.4byte	.LLST25
+ 1403 0361 00       		.byte	0
+ 1404 0362 0D       		.uleb128 0xd
+ 1405 0363 32020000 		.4byte	.LBB8
+ 1406 0367 28000000 		.4byte	.LBE8-.LBB8
+ 1407 036b 7F030000 		.4byte	0x37f
+ 1408 036f 0B       		.uleb128 0xb
+ 1409 0370 64593200 		.ascii	"dY2\000"
+ 1410 0374 01       		.byte	0x1
+ 1411 0375 8F       		.byte	0x8f
+ 1412 0376 C3000000 		.4byte	0xc3
+ 1413 037a F6040000 		.4byte	.LLST26
+ 1414 037e 00       		.byte	0
+ 1415 037f 0D       		.uleb128 0xd
+ 1416 0380 B2020000 		.4byte	.LBB9
+ 1417 0384 2C000000 		.4byte	.LBE9-.LBB9
+ 1418 0388 9C030000 		.4byte	0x39c
+ 1419 038c 0A       		.uleb128 0xa
+ 1420 038d 02010000 		.4byte	.LASF49
+ 1421 0391 01       		.byte	0x1
+ 1422 0392 A3       		.byte	0xa3
+ 1423 0393 94000000 		.4byte	0x94
+ 1424 0397 19050000 		.4byte	.LLST27
+ 1425 039b 00       		.byte	0
+ 1426 039c 0D       		.uleb128 0xd
+ 1427 039d DE020000 		.4byte	.LBB10
+ 1428 03a1 28000000 		.4byte	.LBE10-.LBB10
+ 1429 03a5 B9030000 		.4byte	0x3b9
+ 1430 03a9 0B       		.uleb128 0xb
+ 1431 03aa 64593200 		.ascii	"dY2\000"
+ 1432 03ae 01       		.byte	0x1
+ 1433 03af A6       		.byte	0xa6
+ 1434 03b0 C3000000 		.4byte	0xc3
+ 1435 03b4 2C050000 		.4byte	.LLST28
+ 1436 03b8 00       		.byte	0
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 30
+
+
+ 1437 03b9 0E       		.uleb128 0xe
+ 1438 03ba 1E010000 		.4byte	.LVL28
+ 1439 03be 3C060000 		.4byte	0x63c
+ 1440 03c2 CC030000 		.4byte	0x3cc
+ 1441 03c6 0F       		.uleb128 0xf
+ 1442 03c7 01       		.uleb128 0x1
+ 1443 03c8 50       		.byte	0x50
+ 1444 03c9 01       		.uleb128 0x1
+ 1445 03ca 30       		.byte	0x30
+ 1446 03cb 00       		.byte	0
+ 1447 03cc 0E       		.uleb128 0xe
+ 1448 03cd 56010000 		.4byte	.LVL33
+ 1449 03d1 4D060000 		.4byte	0x64d
+ 1450 03d5 EC030000 		.4byte	0x3ec
+ 1451 03d9 0F       		.uleb128 0xf
+ 1452 03da 01       		.uleb128 0x1
+ 1453 03db 52       		.byte	0x52
+ 1454 03dc 03       		.uleb128 0x3
+ 1455 03dd 0A       		.byte	0xa
+ 1456 03de 8002     		.2byte	0x280
+ 1457 03e0 0F       		.uleb128 0xf
+ 1458 03e1 01       		.uleb128 0x1
+ 1459 03e2 51       		.byte	0x51
+ 1460 03e3 02       		.uleb128 0x2
+ 1461 03e4 75       		.byte	0x75
+ 1462 03e5 00       		.sleb128 0
+ 1463 03e6 0F       		.uleb128 0xf
+ 1464 03e7 01       		.uleb128 0x1
+ 1465 03e8 50       		.byte	0x50
+ 1466 03e9 01       		.uleb128 0x1
+ 1467 03ea 30       		.byte	0x30
+ 1468 03eb 00       		.byte	0
+ 1469 03ec 0E       		.uleb128 0xe
+ 1470 03ed CA010000 		.4byte	.LVL50
+ 1471 03f1 3C060000 		.4byte	0x63c
+ 1472 03f5 FF030000 		.4byte	0x3ff
+ 1473 03f9 0F       		.uleb128 0xf
+ 1474 03fa 01       		.uleb128 0x1
+ 1475 03fb 50       		.byte	0x50
+ 1476 03fc 01       		.uleb128 0x1
+ 1477 03fd 31       		.byte	0x31
+ 1478 03fe 00       		.byte	0
+ 1479 03ff 0E       		.uleb128 0xe
+ 1480 0400 02020000 		.4byte	.LVL55
+ 1481 0404 4D060000 		.4byte	0x64d
+ 1482 0408 1F040000 		.4byte	0x41f
+ 1483 040c 0F       		.uleb128 0xf
+ 1484 040d 01       		.uleb128 0x1
+ 1485 040e 52       		.byte	0x52
+ 1486 040f 03       		.uleb128 0x3
+ 1487 0410 0A       		.byte	0xa
+ 1488 0411 8002     		.2byte	0x280
+ 1489 0413 0F       		.uleb128 0xf
+ 1490 0414 01       		.uleb128 0x1
+ 1491 0415 51       		.byte	0x51
+ 1492 0416 02       		.uleb128 0x2
+ 1493 0417 76       		.byte	0x76
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 31
+
+
+ 1494 0418 00       		.sleb128 0
+ 1495 0419 0F       		.uleb128 0xf
+ 1496 041a 01       		.uleb128 0x1
+ 1497 041b 50       		.byte	0x50
+ 1498 041c 01       		.uleb128 0x1
+ 1499 041d 31       		.byte	0x31
+ 1500 041e 00       		.byte	0
+ 1501 041f 0E       		.uleb128 0xe
+ 1502 0420 76020000 		.4byte	.LVL72
+ 1503 0424 3C060000 		.4byte	0x63c
+ 1504 0428 32040000 		.4byte	0x432
+ 1505 042c 0F       		.uleb128 0xf
+ 1506 042d 01       		.uleb128 0x1
+ 1507 042e 50       		.byte	0x50
+ 1508 042f 01       		.uleb128 0x1
+ 1509 0430 32       		.byte	0x32
+ 1510 0431 00       		.byte	0
+ 1511 0432 0E       		.uleb128 0xe
+ 1512 0433 AE020000 		.4byte	.LVL77
+ 1513 0437 4D060000 		.4byte	0x64d
+ 1514 043b 52040000 		.4byte	0x452
+ 1515 043f 0F       		.uleb128 0xf
+ 1516 0440 01       		.uleb128 0x1
+ 1517 0441 52       		.byte	0x52
+ 1518 0442 03       		.uleb128 0x3
+ 1519 0443 0A       		.byte	0xa
+ 1520 0444 8002     		.2byte	0x280
+ 1521 0446 0F       		.uleb128 0xf
+ 1522 0447 01       		.uleb128 0x1
+ 1523 0448 51       		.byte	0x51
+ 1524 0449 02       		.uleb128 0x2
+ 1525 044a 77       		.byte	0x77
+ 1526 044b 00       		.sleb128 0
+ 1527 044c 0F       		.uleb128 0xf
+ 1528 044d 01       		.uleb128 0x1
+ 1529 044e 50       		.byte	0x50
+ 1530 044f 01       		.uleb128 0x1
+ 1531 0450 32       		.byte	0x32
+ 1532 0451 00       		.byte	0
+ 1533 0452 0E       		.uleb128 0xe
+ 1534 0453 22030000 		.4byte	.LVL94
+ 1535 0457 3C060000 		.4byte	0x63c
+ 1536 045b 65040000 		.4byte	0x465
+ 1537 045f 0F       		.uleb128 0xf
+ 1538 0460 01       		.uleb128 0x1
+ 1539 0461 50       		.byte	0x50
+ 1540 0462 01       		.uleb128 0x1
+ 1541 0463 33       		.byte	0x33
+ 1542 0464 00       		.byte	0
+ 1543 0465 10       		.uleb128 0x10
+ 1544 0466 7C030000 		.4byte	.LVL99
+ 1545 046a 4D060000 		.4byte	0x64d
+ 1546 046e 0F       		.uleb128 0xf
+ 1547 046f 01       		.uleb128 0x1
+ 1548 0470 52       		.byte	0x52
+ 1549 0471 03       		.uleb128 0x3
+ 1550 0472 0A       		.byte	0xa
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 32
+
+
+ 1551 0473 8002     		.2byte	0x280
+ 1552 0475 0F       		.uleb128 0xf
+ 1553 0476 01       		.uleb128 0x1
+ 1554 0477 51       		.byte	0x51
+ 1555 0478 02       		.uleb128 0x2
+ 1556 0479 78       		.byte	0x78
+ 1557 047a 00       		.sleb128 0
+ 1558 047b 0F       		.uleb128 0xf
+ 1559 047c 01       		.uleb128 0x1
+ 1560 047d 50       		.byte	0x50
+ 1561 047e 01       		.uleb128 0x1
+ 1562 047f 33       		.byte	0x33
+ 1563 0480 00       		.byte	0
+ 1564 0481 00       		.byte	0
+ 1565 0482 11       		.uleb128 0x11
+ 1566 0483 16000000 		.4byte	.LVL7
+ 1567 0487 6E060000 		.4byte	0x66e
+ 1568 048b 11       		.uleb128 0x11
+ 1569 048c 2A000000 		.4byte	.LVL8
+ 1570 0490 83060000 		.4byte	0x683
+ 1571 0494 0E       		.uleb128 0xe
+ 1572 0495 64000000 		.4byte	.LVL9
+ 1573 0499 98060000 		.4byte	0x698
+ 1574 049d C1040000 		.4byte	0x4c1
+ 1575 04a1 0F       		.uleb128 0xf
+ 1576 04a2 01       		.uleb128 0x1
+ 1577 04a3 53       		.byte	0x53
+ 1578 04a4 01       		.uleb128 0x1
+ 1579 04a5 30       		.byte	0x30
+ 1580 04a6 0F       		.uleb128 0xf
+ 1581 04a7 01       		.uleb128 0x1
+ 1582 04a8 52       		.byte	0x52
+ 1583 04a9 03       		.uleb128 0x3
+ 1584 04aa 0A       		.byte	0xa
+ 1585 04ab 3F01     		.2byte	0x13f
+ 1586 04ad 0F       		.uleb128 0xf
+ 1587 04ae 01       		.uleb128 0x1
+ 1588 04af 51       		.byte	0x51
+ 1589 04b0 01       		.uleb128 0x1
+ 1590 04b1 30       		.byte	0x30
+ 1591 04b2 0F       		.uleb128 0xf
+ 1592 04b3 01       		.uleb128 0x1
+ 1593 04b4 50       		.byte	0x50
+ 1594 04b5 02       		.uleb128 0x2
+ 1595 04b6 75       		.byte	0x75
+ 1596 04b7 00       		.sleb128 0
+ 1597 04b8 0F       		.uleb128 0xf
+ 1598 04b9 02       		.uleb128 0x2
+ 1599 04ba 7D       		.byte	0x7d
+ 1600 04bb 00       		.sleb128 0
+ 1601 04bc 03       		.uleb128 0x3
+ 1602 04bd 0A       		.byte	0xa
+ 1603 04be DF01     		.2byte	0x1df
+ 1604 04c0 00       		.byte	0
+ 1605 04c1 0E       		.uleb128 0xe
+ 1606 04c2 6C000000 		.4byte	.LVL10
+ 1607 04c6 BD060000 		.4byte	0x6bd
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 33
+
+
+ 1608 04ca DB040000 		.4byte	0x4db
+ 1609 04ce 0F       		.uleb128 0xf
+ 1610 04cf 01       		.uleb128 0x1
+ 1611 04d0 51       		.byte	0x51
+ 1612 04d1 02       		.uleb128 0x2
+ 1613 04d2 08       		.byte	0x8
+ 1614 04d3 2C       		.byte	0x2c
+ 1615 04d4 0F       		.uleb128 0xf
+ 1616 04d5 01       		.uleb128 0x1
+ 1617 04d6 50       		.byte	0x50
+ 1618 04d7 02       		.uleb128 0x2
+ 1619 04d8 75       		.byte	0x75
+ 1620 04d9 00       		.sleb128 0
+ 1621 04da 00       		.byte	0
+ 1622 04db 0E       		.uleb128 0xe
+ 1623 04dc 78000000 		.4byte	.LVL12
+ 1624 04e0 D3060000 		.4byte	0x6d3
+ 1625 04e4 EE040000 		.4byte	0x4ee
+ 1626 04e8 0F       		.uleb128 0xf
+ 1627 04e9 01       		.uleb128 0x1
+ 1628 04ea 50       		.byte	0x50
+ 1629 04eb 01       		.uleb128 0x1
+ 1630 04ec 31       		.byte	0x31
+ 1631 04ed 00       		.byte	0
+ 1632 04ee 0E       		.uleb128 0xe
+ 1633 04ef 7E000000 		.4byte	.LVL13
+ 1634 04f3 E4060000 		.4byte	0x6e4
+ 1635 04f7 01050000 		.4byte	0x501
+ 1636 04fb 0F       		.uleb128 0xf
+ 1637 04fc 01       		.uleb128 0x1
+ 1638 04fd 50       		.byte	0x50
+ 1639 04fe 01       		.uleb128 0x1
+ 1640 04ff 31       		.byte	0x31
+ 1641 0500 00       		.byte	0
+ 1642 0501 0E       		.uleb128 0xe
+ 1643 0502 84000000 		.4byte	.LVL14
+ 1644 0506 F5060000 		.4byte	0x6f5
+ 1645 050a 14050000 		.4byte	0x514
+ 1646 050e 0F       		.uleb128 0xf
+ 1647 050f 01       		.uleb128 0x1
+ 1648 0510 50       		.byte	0x50
+ 1649 0511 01       		.uleb128 0x1
+ 1650 0512 31       		.byte	0x31
+ 1651 0513 00       		.byte	0
+ 1652 0514 0E       		.uleb128 0xe
+ 1653 0515 8A000000 		.4byte	.LVL15
+ 1654 0519 06070000 		.4byte	0x706
+ 1655 051d 27050000 		.4byte	0x527
+ 1656 0521 0F       		.uleb128 0xf
+ 1657 0522 01       		.uleb128 0x1
+ 1658 0523 50       		.byte	0x50
+ 1659 0524 01       		.uleb128 0x1
+ 1660 0525 31       		.byte	0x31
+ 1661 0526 00       		.byte	0
+ 1662 0527 0E       		.uleb128 0xe
+ 1663 0528 A8030000 		.4byte	.LVL112
+ 1664 052c 3C060000 		.4byte	0x63c
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 34
+
+
+ 1665 0530 3A050000 		.4byte	0x53a
+ 1666 0534 0F       		.uleb128 0xf
+ 1667 0535 01       		.uleb128 0x1
+ 1668 0536 50       		.byte	0x50
+ 1669 0537 01       		.uleb128 0x1
+ 1670 0538 30       		.byte	0x30
+ 1671 0539 00       		.byte	0
+ 1672 053a 0E       		.uleb128 0xe
+ 1673 053b AE030000 		.4byte	.LVL113
+ 1674 053f 3C060000 		.4byte	0x63c
+ 1675 0543 4D050000 		.4byte	0x54d
+ 1676 0547 0F       		.uleb128 0xf
+ 1677 0548 01       		.uleb128 0x1
+ 1678 0549 50       		.byte	0x50
+ 1679 054a 01       		.uleb128 0x1
+ 1680 054b 31       		.byte	0x31
+ 1681 054c 00       		.byte	0
+ 1682 054d 0E       		.uleb128 0xe
+ 1683 054e B4030000 		.4byte	.LVL114
+ 1684 0552 3C060000 		.4byte	0x63c
+ 1685 0556 60050000 		.4byte	0x560
+ 1686 055a 0F       		.uleb128 0xf
+ 1687 055b 01       		.uleb128 0x1
+ 1688 055c 50       		.byte	0x50
+ 1689 055d 01       		.uleb128 0x1
+ 1690 055e 32       		.byte	0x32
+ 1691 055f 00       		.byte	0
+ 1692 0560 10       		.uleb128 0x10
+ 1693 0561 BA030000 		.4byte	.LVL115
+ 1694 0565 3C060000 		.4byte	0x63c
+ 1695 0569 0F       		.uleb128 0xf
+ 1696 056a 01       		.uleb128 0x1
+ 1697 056b 50       		.byte	0x50
+ 1698 056c 01       		.uleb128 0x1
+ 1699 056d 33       		.byte	0x33
+ 1700 056e 00       		.byte	0
+ 1701 056f 00       		.byte	0
+ 1702 0570 12       		.uleb128 0x12
+ 1703 0571 04       		.byte	0x4
+ 1704 0572 A2000000 		.4byte	0xa2
+ 1705 0576 12       		.uleb128 0x12
+ 1706 0577 04       		.byte	0x4
+ 1707 0578 B8000000 		.4byte	0xb8
+ 1708 057c 13       		.uleb128 0x13
+ 1709 057d C3000000 		.4byte	0xc3
+ 1710 0581 8C050000 		.4byte	0x58c
+ 1711 0585 14       		.uleb128 0x14
+ 1712 0586 06010000 		.4byte	0x106
+ 1713 058a 03       		.byte	0x3
+ 1714 058b 00       		.byte	0
+ 1715 058c 13       		.uleb128 0x13
+ 1716 058d 94000000 		.4byte	0x94
+ 1717 0591 9C050000 		.4byte	0x59c
+ 1718 0595 14       		.uleb128 0x14
+ 1719 0596 06010000 		.4byte	0x106
+ 1720 059a 03       		.byte	0x3
+ 1721 059b 00       		.byte	0
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 35
+
+
+ 1722 059c 15       		.uleb128 0x15
+ 1723 059d 72030000 		.4byte	.LASF50
+ 1724 05a1 05       		.byte	0x5
+ 1725 05a2 9606     		.2byte	0x696
+ 1726 05a4 A8050000 		.4byte	0x5a8
+ 1727 05a8 16       		.uleb128 0x16
+ 1728 05a9 C3000000 		.4byte	0xc3
+ 1729 05ad 13       		.uleb128 0x13
+ 1730 05ae D9000000 		.4byte	0xd9
+ 1731 05b2 BE050000 		.4byte	0x5be
+ 1732 05b6 17       		.uleb128 0x17
+ 1733 05b7 06010000 		.4byte	0x106
+ 1734 05bb 7F02     		.2byte	0x27f
+ 1735 05bd 00       		.byte	0
+ 1736 05be 18       		.uleb128 0x18
+ 1737 05bf 9F030000 		.4byte	.LASF51
+ 1738 05c3 06       		.byte	0x6
+ 1739 05c4 08       		.byte	0x8
+ 1740 05c5 AD050000 		.4byte	0x5ad
+ 1741 05c9 18       		.uleb128 0x18
+ 1742 05ca 38030000 		.4byte	.LASF52
+ 1743 05ce 06       		.byte	0x6
+ 1744 05cf 09       		.byte	0x9
+ 1745 05d0 AD050000 		.4byte	0x5ad
+ 1746 05d4 18       		.uleb128 0x18
+ 1747 05d5 A9030000 		.4byte	.LASF53
+ 1748 05d9 06       		.byte	0x6
+ 1749 05da 0D       		.byte	0xd
+ 1750 05db AD050000 		.4byte	0x5ad
+ 1751 05df 18       		.uleb128 0x18
+ 1752 05e0 42030000 		.4byte	.LASF54
+ 1753 05e4 06       		.byte	0x6
+ 1754 05e5 0E       		.byte	0xe
+ 1755 05e6 AD050000 		.4byte	0x5ad
+ 1756 05ea 18       		.uleb128 0x18
+ 1757 05eb B3030000 		.4byte	.LASF55
+ 1758 05ef 06       		.byte	0x6
+ 1759 05f0 12       		.byte	0x12
+ 1760 05f1 AD050000 		.4byte	0x5ad
+ 1761 05f5 18       		.uleb128 0x18
+ 1762 05f6 4C030000 		.4byte	.LASF56
+ 1763 05fa 06       		.byte	0x6
+ 1764 05fb 13       		.byte	0x13
+ 1765 05fc AD050000 		.4byte	0x5ad
+ 1766 0600 18       		.uleb128 0x18
+ 1767 0601 BD030000 		.4byte	.LASF57
+ 1768 0605 06       		.byte	0x6
+ 1769 0606 17       		.byte	0x17
+ 1770 0607 AD050000 		.4byte	0x5ad
+ 1771 060b 18       		.uleb128 0x18
+ 1772 060c 56030000 		.4byte	.LASF58
+ 1773 0610 06       		.byte	0x6
+ 1774 0611 18       		.byte	0x18
+ 1775 0612 AD050000 		.4byte	0x5ad
+ 1776 0616 13       		.uleb128 0x13
+ 1777 0617 B8000000 		.4byte	0xb8
+ 1778 061b 26060000 		.4byte	0x626
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 36
+
+
+ 1779 061f 14       		.uleb128 0x14
+ 1780 0620 06010000 		.4byte	0x106
+ 1781 0624 FF       		.byte	0xff
+ 1782 0625 00       		.byte	0
+ 1783 0626 19       		.uleb128 0x19
+ 1784 0627 37020000 		.4byte	.LASF59
+ 1785 062b 01       		.byte	0x1
+ 1786 062c 18       		.byte	0x18
+ 1787 062d 37060000 		.4byte	0x637
+ 1788 0631 05       		.uleb128 0x5
+ 1789 0632 03       		.byte	0x3
+ 1790 0633 00000000 		.4byte	atan_lut
+ 1791 0637 1A       		.uleb128 0x1a
+ 1792 0638 16060000 		.4byte	0x616
+ 1793 063c 1B       		.uleb128 0x1b
+ 1794 063d 26010000 		.4byte	.LASF60
+ 1795 0641 06       		.byte	0x6
+ 1796 0642 1E       		.byte	0x1e
+ 1797 0643 4D060000 		.4byte	0x64d
+ 1798 0647 1C       		.uleb128 0x1c
+ 1799 0648 D9000000 		.4byte	0xd9
+ 1800 064c 00       		.byte	0
+ 1801 064d 1B       		.uleb128 0x1b
+ 1802 064e 25030000 		.4byte	.LASF61
+ 1803 0652 06       		.byte	0x6
+ 1804 0653 1D       		.byte	0x1d
+ 1805 0654 68060000 		.4byte	0x668
+ 1806 0658 1C       		.uleb128 0x1c
+ 1807 0659 D9000000 		.4byte	0xd9
+ 1808 065d 1C       		.uleb128 0x1c
+ 1809 065e 68060000 		.4byte	0x668
+ 1810 0662 1C       		.uleb128 0x1c
+ 1811 0663 E5000000 		.4byte	0xe5
+ 1812 0667 00       		.byte	0
+ 1813 0668 12       		.uleb128 0x12
+ 1814 0669 04       		.byte	0x4
+ 1815 066a D9000000 		.4byte	0xd9
+ 1816 066e 1D       		.uleb128 0x1d
+ 1817 066f 08010000 		.4byte	.LASF62
+ 1818 0673 07       		.byte	0x7
+ 1819 0674 04       		.byte	0x4
+ 1820 0675 AD000000 		.4byte	0xad
+ 1821 0679 83060000 		.4byte	0x683
+ 1822 067d 1C       		.uleb128 0x1c
+ 1823 067e B8000000 		.4byte	0xb8
+ 1824 0682 00       		.byte	0
+ 1825 0683 1D       		.uleb128 0x1d
+ 1826 0684 11020000 		.4byte	.LASF63
+ 1827 0688 07       		.byte	0x7
+ 1828 0689 05       		.byte	0x5
+ 1829 068a AD000000 		.4byte	0xad
+ 1830 068e 98060000 		.4byte	0x698
+ 1831 0692 1C       		.uleb128 0x1c
+ 1832 0693 B8000000 		.4byte	0xb8
+ 1833 0697 00       		.byte	0
+ 1834 0698 1B       		.uleb128 0x1b
+ 1835 0699 60030000 		.4byte	.LASF64
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 37
+
+
+ 1836 069d 08       		.byte	0x8
+ 1837 069e 0E       		.byte	0xe
+ 1838 069f BD060000 		.4byte	0x6bd
+ 1839 06a3 1C       		.uleb128 0x1c
+ 1840 06a4 D9000000 		.4byte	0xd9
+ 1841 06a8 1C       		.uleb128 0x1c
+ 1842 06a9 E5000000 		.4byte	0xe5
+ 1843 06ad 1C       		.uleb128 0x1c
+ 1844 06ae E5000000 		.4byte	0xe5
+ 1845 06b2 1C       		.uleb128 0x1c
+ 1846 06b3 E5000000 		.4byte	0xe5
+ 1847 06b7 1C       		.uleb128 0x1c
+ 1848 06b8 E5000000 		.4byte	0xe5
+ 1849 06bc 00       		.byte	0
+ 1850 06bd 1B       		.uleb128 0x1b
+ 1851 06be DD000000 		.4byte	.LASF65
+ 1852 06c2 08       		.byte	0x8
+ 1853 06c3 0C       		.byte	0xc
+ 1854 06c4 D3060000 		.4byte	0x6d3
+ 1855 06c8 1C       		.uleb128 0x1c
+ 1856 06c9 D9000000 		.4byte	0xd9
+ 1857 06cd 1C       		.uleb128 0x1c
+ 1858 06ce D9000000 		.4byte	0xd9
+ 1859 06d2 00       		.byte	0
+ 1860 06d3 1B       		.uleb128 0x1b
+ 1861 06d4 C8000000 		.4byte	.LASF66
+ 1862 06d8 09       		.byte	0x9
+ 1863 06d9 26       		.byte	0x26
+ 1864 06da E4060000 		.4byte	0x6e4
+ 1865 06de 1C       		.uleb128 0x1c
+ 1866 06df D9000000 		.4byte	0xd9
+ 1867 06e3 00       		.byte	0
+ 1868 06e4 1B       		.uleb128 0x1b
+ 1869 06e5 6A020000 		.4byte	.LASF67
+ 1870 06e9 0A       		.byte	0xa
+ 1871 06ea 26       		.byte	0x26
+ 1872 06eb F5060000 		.4byte	0x6f5
+ 1873 06ef 1C       		.uleb128 0x1c
+ 1874 06f0 D9000000 		.4byte	0xd9
+ 1875 06f4 00       		.byte	0
+ 1876 06f5 1B       		.uleb128 0x1b
+ 1877 06f6 F8000000 		.4byte	.LASF68
+ 1878 06fa 0B       		.byte	0xb
+ 1879 06fb 26       		.byte	0x26
+ 1880 06fc 06070000 		.4byte	0x706
+ 1881 0700 1C       		.uleb128 0x1c
+ 1882 0701 D9000000 		.4byte	0xd9
+ 1883 0705 00       		.byte	0
+ 1884 0706 1E       		.uleb128 0x1e
+ 1885 0707 87030000 		.4byte	.LASF73
+ 1886 070b 0C       		.byte	0xc
+ 1887 070c 26       		.byte	0x26
+ 1888 070d 1C       		.uleb128 0x1c
+ 1889 070e D9000000 		.4byte	0xd9
+ 1890 0712 00       		.byte	0
+ 1891 0713 00       		.byte	0
+ 1892              		.section	.debug_abbrev,"",%progbits
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 38
+
+
+ 1893              	.Ldebug_abbrev0:
+ 1894 0000 01       		.uleb128 0x1
+ 1895 0001 11       		.uleb128 0x11
+ 1896 0002 01       		.byte	0x1
+ 1897 0003 25       		.uleb128 0x25
+ 1898 0004 0E       		.uleb128 0xe
+ 1899 0005 13       		.uleb128 0x13
+ 1900 0006 0B       		.uleb128 0xb
+ 1901 0007 03       		.uleb128 0x3
+ 1902 0008 0E       		.uleb128 0xe
+ 1903 0009 1B       		.uleb128 0x1b
+ 1904 000a 0E       		.uleb128 0xe
+ 1905 000b 55       		.uleb128 0x55
+ 1906 000c 17       		.uleb128 0x17
+ 1907 000d 11       		.uleb128 0x11
+ 1908 000e 01       		.uleb128 0x1
+ 1909 000f 10       		.uleb128 0x10
+ 1910 0010 17       		.uleb128 0x17
+ 1911 0011 00       		.byte	0
+ 1912 0012 00       		.byte	0
+ 1913 0013 02       		.uleb128 0x2
+ 1914 0014 24       		.uleb128 0x24
+ 1915 0015 00       		.byte	0
+ 1916 0016 0B       		.uleb128 0xb
+ 1917 0017 0B       		.uleb128 0xb
+ 1918 0018 3E       		.uleb128 0x3e
+ 1919 0019 0B       		.uleb128 0xb
+ 1920 001a 03       		.uleb128 0x3
+ 1921 001b 0E       		.uleb128 0xe
+ 1922 001c 00       		.byte	0
+ 1923 001d 00       		.byte	0
+ 1924 001e 03       		.uleb128 0x3
+ 1925 001f 16       		.uleb128 0x16
+ 1926 0020 00       		.byte	0
+ 1927 0021 03       		.uleb128 0x3
+ 1928 0022 0E       		.uleb128 0xe
+ 1929 0023 3A       		.uleb128 0x3a
+ 1930 0024 0B       		.uleb128 0xb
+ 1931 0025 3B       		.uleb128 0x3b
+ 1932 0026 0B       		.uleb128 0xb
+ 1933 0027 49       		.uleb128 0x49
+ 1934 0028 13       		.uleb128 0x13
+ 1935 0029 00       		.byte	0
+ 1936 002a 00       		.byte	0
+ 1937 002b 04       		.uleb128 0x4
+ 1938 002c 24       		.uleb128 0x24
+ 1939 002d 00       		.byte	0
+ 1940 002e 0B       		.uleb128 0xb
+ 1941 002f 0B       		.uleb128 0xb
+ 1942 0030 3E       		.uleb128 0x3e
+ 1943 0031 0B       		.uleb128 0xb
+ 1944 0032 03       		.uleb128 0x3
+ 1945 0033 08       		.uleb128 0x8
+ 1946 0034 00       		.byte	0
+ 1947 0035 00       		.byte	0
+ 1948 0036 05       		.uleb128 0x5
+ 1949 0037 16       		.uleb128 0x16
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 39
+
+
+ 1950 0038 00       		.byte	0
+ 1951 0039 03       		.uleb128 0x3
+ 1952 003a 0E       		.uleb128 0xe
+ 1953 003b 3A       		.uleb128 0x3a
+ 1954 003c 0B       		.uleb128 0xb
+ 1955 003d 3B       		.uleb128 0x3b
+ 1956 003e 05       		.uleb128 0x5
+ 1957 003f 49       		.uleb128 0x49
+ 1958 0040 13       		.uleb128 0x13
+ 1959 0041 00       		.byte	0
+ 1960 0042 00       		.byte	0
+ 1961 0043 06       		.uleb128 0x6
+ 1962 0044 2E       		.uleb128 0x2e
+ 1963 0045 01       		.byte	0x1
+ 1964 0046 3F       		.uleb128 0x3f
+ 1965 0047 19       		.uleb128 0x19
+ 1966 0048 03       		.uleb128 0x3
+ 1967 0049 0E       		.uleb128 0xe
+ 1968 004a 3A       		.uleb128 0x3a
+ 1969 004b 0B       		.uleb128 0xb
+ 1970 004c 3B       		.uleb128 0x3b
+ 1971 004d 0B       		.uleb128 0xb
+ 1972 004e 27       		.uleb128 0x27
+ 1973 004f 19       		.uleb128 0x19
+ 1974 0050 49       		.uleb128 0x49
+ 1975 0051 13       		.uleb128 0x13
+ 1976 0052 11       		.uleb128 0x11
+ 1977 0053 01       		.uleb128 0x1
+ 1978 0054 12       		.uleb128 0x12
+ 1979 0055 06       		.uleb128 0x6
+ 1980 0056 40       		.uleb128 0x40
+ 1981 0057 18       		.uleb128 0x18
+ 1982 0058 9742     		.uleb128 0x2117
+ 1983 005a 19       		.uleb128 0x19
+ 1984 005b 01       		.uleb128 0x1
+ 1985 005c 13       		.uleb128 0x13
+ 1986 005d 00       		.byte	0
+ 1987 005e 00       		.byte	0
+ 1988 005f 07       		.uleb128 0x7
+ 1989 0060 05       		.uleb128 0x5
+ 1990 0061 00       		.byte	0
+ 1991 0062 03       		.uleb128 0x3
+ 1992 0063 0E       		.uleb128 0xe
+ 1993 0064 3A       		.uleb128 0x3a
+ 1994 0065 0B       		.uleb128 0xb
+ 1995 0066 3B       		.uleb128 0x3b
+ 1996 0067 0B       		.uleb128 0xb
+ 1997 0068 49       		.uleb128 0x49
+ 1998 0069 13       		.uleb128 0x13
+ 1999 006a 02       		.uleb128 0x2
+ 2000 006b 17       		.uleb128 0x17
+ 2001 006c 00       		.byte	0
+ 2002 006d 00       		.byte	0
+ 2003 006e 08       		.uleb128 0x8
+ 2004 006f 2E       		.uleb128 0x2e
+ 2005 0070 01       		.byte	0x1
+ 2006 0071 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 40
+
+
+ 2007 0072 19       		.uleb128 0x19
+ 2008 0073 03       		.uleb128 0x3
+ 2009 0074 0E       		.uleb128 0xe
+ 2010 0075 3A       		.uleb128 0x3a
+ 2011 0076 0B       		.uleb128 0xb
+ 2012 0077 3B       		.uleb128 0x3b
+ 2013 0078 0B       		.uleb128 0xb
+ 2014 0079 27       		.uleb128 0x27
+ 2015 007a 19       		.uleb128 0x19
+ 2016 007b 11       		.uleb128 0x11
+ 2017 007c 01       		.uleb128 0x1
+ 2018 007d 12       		.uleb128 0x12
+ 2019 007e 06       		.uleb128 0x6
+ 2020 007f 40       		.uleb128 0x40
+ 2021 0080 18       		.uleb128 0x18
+ 2022 0081 9742     		.uleb128 0x2117
+ 2023 0083 19       		.uleb128 0x19
+ 2024 0084 01       		.uleb128 0x1
+ 2025 0085 13       		.uleb128 0x13
+ 2026 0086 00       		.byte	0
+ 2027 0087 00       		.byte	0
+ 2028 0088 09       		.uleb128 0x9
+ 2029 0089 34       		.uleb128 0x34
+ 2030 008a 00       		.byte	0
+ 2031 008b 03       		.uleb128 0x3
+ 2032 008c 0E       		.uleb128 0xe
+ 2033 008d 3A       		.uleb128 0x3a
+ 2034 008e 0B       		.uleb128 0xb
+ 2035 008f 3B       		.uleb128 0x3b
+ 2036 0090 0B       		.uleb128 0xb
+ 2037 0091 49       		.uleb128 0x49
+ 2038 0092 13       		.uleb128 0x13
+ 2039 0093 02       		.uleb128 0x2
+ 2040 0094 18       		.uleb128 0x18
+ 2041 0095 00       		.byte	0
+ 2042 0096 00       		.byte	0
+ 2043 0097 0A       		.uleb128 0xa
+ 2044 0098 34       		.uleb128 0x34
+ 2045 0099 00       		.byte	0
+ 2046 009a 03       		.uleb128 0x3
+ 2047 009b 0E       		.uleb128 0xe
+ 2048 009c 3A       		.uleb128 0x3a
+ 2049 009d 0B       		.uleb128 0xb
+ 2050 009e 3B       		.uleb128 0x3b
+ 2051 009f 0B       		.uleb128 0xb
+ 2052 00a0 49       		.uleb128 0x49
+ 2053 00a1 13       		.uleb128 0x13
+ 2054 00a2 02       		.uleb128 0x2
+ 2055 00a3 17       		.uleb128 0x17
+ 2056 00a4 00       		.byte	0
+ 2057 00a5 00       		.byte	0
+ 2058 00a6 0B       		.uleb128 0xb
+ 2059 00a7 34       		.uleb128 0x34
+ 2060 00a8 00       		.byte	0
+ 2061 00a9 03       		.uleb128 0x3
+ 2062 00aa 08       		.uleb128 0x8
+ 2063 00ab 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 41
+
+
+ 2064 00ac 0B       		.uleb128 0xb
+ 2065 00ad 3B       		.uleb128 0x3b
+ 2066 00ae 0B       		.uleb128 0xb
+ 2067 00af 49       		.uleb128 0x49
+ 2068 00b0 13       		.uleb128 0x13
+ 2069 00b1 02       		.uleb128 0x2
+ 2070 00b2 17       		.uleb128 0x17
+ 2071 00b3 00       		.byte	0
+ 2072 00b4 00       		.byte	0
+ 2073 00b5 0C       		.uleb128 0xc
+ 2074 00b6 0B       		.uleb128 0xb
+ 2075 00b7 01       		.byte	0x1
+ 2076 00b8 55       		.uleb128 0x55
+ 2077 00b9 17       		.uleb128 0x17
+ 2078 00ba 01       		.uleb128 0x1
+ 2079 00bb 13       		.uleb128 0x13
+ 2080 00bc 00       		.byte	0
+ 2081 00bd 00       		.byte	0
+ 2082 00be 0D       		.uleb128 0xd
+ 2083 00bf 0B       		.uleb128 0xb
+ 2084 00c0 01       		.byte	0x1
+ 2085 00c1 11       		.uleb128 0x11
+ 2086 00c2 01       		.uleb128 0x1
+ 2087 00c3 12       		.uleb128 0x12
+ 2088 00c4 06       		.uleb128 0x6
+ 2089 00c5 01       		.uleb128 0x1
+ 2090 00c6 13       		.uleb128 0x13
+ 2091 00c7 00       		.byte	0
+ 2092 00c8 00       		.byte	0
+ 2093 00c9 0E       		.uleb128 0xe
+ 2094 00ca 898201   		.uleb128 0x4109
+ 2095 00cd 01       		.byte	0x1
+ 2096 00ce 11       		.uleb128 0x11
+ 2097 00cf 01       		.uleb128 0x1
+ 2098 00d0 31       		.uleb128 0x31
+ 2099 00d1 13       		.uleb128 0x13
+ 2100 00d2 01       		.uleb128 0x1
+ 2101 00d3 13       		.uleb128 0x13
+ 2102 00d4 00       		.byte	0
+ 2103 00d5 00       		.byte	0
+ 2104 00d6 0F       		.uleb128 0xf
+ 2105 00d7 8A8201   		.uleb128 0x410a
+ 2106 00da 00       		.byte	0
+ 2107 00db 02       		.uleb128 0x2
+ 2108 00dc 18       		.uleb128 0x18
+ 2109 00dd 9142     		.uleb128 0x2111
+ 2110 00df 18       		.uleb128 0x18
+ 2111 00e0 00       		.byte	0
+ 2112 00e1 00       		.byte	0
+ 2113 00e2 10       		.uleb128 0x10
+ 2114 00e3 898201   		.uleb128 0x4109
+ 2115 00e6 01       		.byte	0x1
+ 2116 00e7 11       		.uleb128 0x11
+ 2117 00e8 01       		.uleb128 0x1
+ 2118 00e9 31       		.uleb128 0x31
+ 2119 00ea 13       		.uleb128 0x13
+ 2120 00eb 00       		.byte	0
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 42
+
+
+ 2121 00ec 00       		.byte	0
+ 2122 00ed 11       		.uleb128 0x11
+ 2123 00ee 898201   		.uleb128 0x4109
+ 2124 00f1 00       		.byte	0
+ 2125 00f2 11       		.uleb128 0x11
+ 2126 00f3 01       		.uleb128 0x1
+ 2127 00f4 31       		.uleb128 0x31
+ 2128 00f5 13       		.uleb128 0x13
+ 2129 00f6 00       		.byte	0
+ 2130 00f7 00       		.byte	0
+ 2131 00f8 12       		.uleb128 0x12
+ 2132 00f9 0F       		.uleb128 0xf
+ 2133 00fa 00       		.byte	0
+ 2134 00fb 0B       		.uleb128 0xb
+ 2135 00fc 0B       		.uleb128 0xb
+ 2136 00fd 49       		.uleb128 0x49
+ 2137 00fe 13       		.uleb128 0x13
+ 2138 00ff 00       		.byte	0
+ 2139 0100 00       		.byte	0
+ 2140 0101 13       		.uleb128 0x13
+ 2141 0102 01       		.uleb128 0x1
+ 2142 0103 01       		.byte	0x1
+ 2143 0104 49       		.uleb128 0x49
+ 2144 0105 13       		.uleb128 0x13
+ 2145 0106 01       		.uleb128 0x1
+ 2146 0107 13       		.uleb128 0x13
+ 2147 0108 00       		.byte	0
+ 2148 0109 00       		.byte	0
+ 2149 010a 14       		.uleb128 0x14
+ 2150 010b 21       		.uleb128 0x21
+ 2151 010c 00       		.byte	0
+ 2152 010d 49       		.uleb128 0x49
+ 2153 010e 13       		.uleb128 0x13
+ 2154 010f 2F       		.uleb128 0x2f
+ 2155 0110 0B       		.uleb128 0xb
+ 2156 0111 00       		.byte	0
+ 2157 0112 00       		.byte	0
+ 2158 0113 15       		.uleb128 0x15
+ 2159 0114 34       		.uleb128 0x34
+ 2160 0115 00       		.byte	0
+ 2161 0116 03       		.uleb128 0x3
+ 2162 0117 0E       		.uleb128 0xe
+ 2163 0118 3A       		.uleb128 0x3a
+ 2164 0119 0B       		.uleb128 0xb
+ 2165 011a 3B       		.uleb128 0x3b
+ 2166 011b 05       		.uleb128 0x5
+ 2167 011c 49       		.uleb128 0x49
+ 2168 011d 13       		.uleb128 0x13
+ 2169 011e 3F       		.uleb128 0x3f
+ 2170 011f 19       		.uleb128 0x19
+ 2171 0120 3C       		.uleb128 0x3c
+ 2172 0121 19       		.uleb128 0x19
+ 2173 0122 00       		.byte	0
+ 2174 0123 00       		.byte	0
+ 2175 0124 16       		.uleb128 0x16
+ 2176 0125 35       		.uleb128 0x35
+ 2177 0126 00       		.byte	0
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 43
+
+
+ 2178 0127 49       		.uleb128 0x49
+ 2179 0128 13       		.uleb128 0x13
+ 2180 0129 00       		.byte	0
+ 2181 012a 00       		.byte	0
+ 2182 012b 17       		.uleb128 0x17
+ 2183 012c 21       		.uleb128 0x21
+ 2184 012d 00       		.byte	0
+ 2185 012e 49       		.uleb128 0x49
+ 2186 012f 13       		.uleb128 0x13
+ 2187 0130 2F       		.uleb128 0x2f
+ 2188 0131 05       		.uleb128 0x5
+ 2189 0132 00       		.byte	0
+ 2190 0133 00       		.byte	0
+ 2191 0134 18       		.uleb128 0x18
+ 2192 0135 34       		.uleb128 0x34
+ 2193 0136 00       		.byte	0
+ 2194 0137 03       		.uleb128 0x3
+ 2195 0138 0E       		.uleb128 0xe
+ 2196 0139 3A       		.uleb128 0x3a
+ 2197 013a 0B       		.uleb128 0xb
+ 2198 013b 3B       		.uleb128 0x3b
+ 2199 013c 0B       		.uleb128 0xb
+ 2200 013d 49       		.uleb128 0x49
+ 2201 013e 13       		.uleb128 0x13
+ 2202 013f 3F       		.uleb128 0x3f
+ 2203 0140 19       		.uleb128 0x19
+ 2204 0141 3C       		.uleb128 0x3c
+ 2205 0142 19       		.uleb128 0x19
+ 2206 0143 00       		.byte	0
+ 2207 0144 00       		.byte	0
+ 2208 0145 19       		.uleb128 0x19
+ 2209 0146 34       		.uleb128 0x34
+ 2210 0147 00       		.byte	0
+ 2211 0148 03       		.uleb128 0x3
+ 2212 0149 0E       		.uleb128 0xe
+ 2213 014a 3A       		.uleb128 0x3a
+ 2214 014b 0B       		.uleb128 0xb
+ 2215 014c 3B       		.uleb128 0x3b
+ 2216 014d 0B       		.uleb128 0xb
+ 2217 014e 49       		.uleb128 0x49
+ 2218 014f 13       		.uleb128 0x13
+ 2219 0150 3F       		.uleb128 0x3f
+ 2220 0151 19       		.uleb128 0x19
+ 2221 0152 02       		.uleb128 0x2
+ 2222 0153 18       		.uleb128 0x18
+ 2223 0154 00       		.byte	0
+ 2224 0155 00       		.byte	0
+ 2225 0156 1A       		.uleb128 0x1a
+ 2226 0157 26       		.uleb128 0x26
+ 2227 0158 00       		.byte	0
+ 2228 0159 49       		.uleb128 0x49
+ 2229 015a 13       		.uleb128 0x13
+ 2230 015b 00       		.byte	0
+ 2231 015c 00       		.byte	0
+ 2232 015d 1B       		.uleb128 0x1b
+ 2233 015e 2E       		.uleb128 0x2e
+ 2234 015f 01       		.byte	0x1
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 44
+
+
+ 2235 0160 3F       		.uleb128 0x3f
+ 2236 0161 19       		.uleb128 0x19
+ 2237 0162 03       		.uleb128 0x3
+ 2238 0163 0E       		.uleb128 0xe
+ 2239 0164 3A       		.uleb128 0x3a
+ 2240 0165 0B       		.uleb128 0xb
+ 2241 0166 3B       		.uleb128 0x3b
+ 2242 0167 0B       		.uleb128 0xb
+ 2243 0168 27       		.uleb128 0x27
+ 2244 0169 19       		.uleb128 0x19
+ 2245 016a 3C       		.uleb128 0x3c
+ 2246 016b 19       		.uleb128 0x19
+ 2247 016c 01       		.uleb128 0x1
+ 2248 016d 13       		.uleb128 0x13
+ 2249 016e 00       		.byte	0
+ 2250 016f 00       		.byte	0
+ 2251 0170 1C       		.uleb128 0x1c
+ 2252 0171 05       		.uleb128 0x5
+ 2253 0172 00       		.byte	0
+ 2254 0173 49       		.uleb128 0x49
+ 2255 0174 13       		.uleb128 0x13
+ 2256 0175 00       		.byte	0
+ 2257 0176 00       		.byte	0
+ 2258 0177 1D       		.uleb128 0x1d
+ 2259 0178 2E       		.uleb128 0x2e
+ 2260 0179 01       		.byte	0x1
+ 2261 017a 3F       		.uleb128 0x3f
+ 2262 017b 19       		.uleb128 0x19
+ 2263 017c 03       		.uleb128 0x3
+ 2264 017d 0E       		.uleb128 0xe
+ 2265 017e 3A       		.uleb128 0x3a
+ 2266 017f 0B       		.uleb128 0xb
+ 2267 0180 3B       		.uleb128 0x3b
+ 2268 0181 0B       		.uleb128 0xb
+ 2269 0182 27       		.uleb128 0x27
+ 2270 0183 19       		.uleb128 0x19
+ 2271 0184 49       		.uleb128 0x49
+ 2272 0185 13       		.uleb128 0x13
+ 2273 0186 3C       		.uleb128 0x3c
+ 2274 0187 19       		.uleb128 0x19
+ 2275 0188 01       		.uleb128 0x1
+ 2276 0189 13       		.uleb128 0x13
+ 2277 018a 00       		.byte	0
+ 2278 018b 00       		.byte	0
+ 2279 018c 1E       		.uleb128 0x1e
+ 2280 018d 2E       		.uleb128 0x2e
+ 2281 018e 01       		.byte	0x1
+ 2282 018f 3F       		.uleb128 0x3f
+ 2283 0190 19       		.uleb128 0x19
+ 2284 0191 03       		.uleb128 0x3
+ 2285 0192 0E       		.uleb128 0xe
+ 2286 0193 3A       		.uleb128 0x3a
+ 2287 0194 0B       		.uleb128 0xb
+ 2288 0195 3B       		.uleb128 0x3b
+ 2289 0196 0B       		.uleb128 0xb
+ 2290 0197 27       		.uleb128 0x27
+ 2291 0198 19       		.uleb128 0x19
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 45
+
+
+ 2292 0199 3C       		.uleb128 0x3c
+ 2293 019a 19       		.uleb128 0x19
+ 2294 019b 00       		.byte	0
+ 2295 019c 00       		.byte	0
+ 2296 019d 00       		.byte	0
+ 2297              		.section	.debug_loc,"",%progbits
+ 2298              	.Ldebug_loc0:
+ 2299              	.LLST0:
+ 2300 0000 00000000 		.4byte	.LVL0
+ 2301 0004 08000000 		.4byte	.LVL1
+ 2302 0008 0100     		.2byte	0x1
+ 2303 000a 50       		.byte	0x50
+ 2304 000b 08000000 		.4byte	.LVL1
+ 2305 000f 0C000000 		.4byte	.LFE63
+ 2306 0013 0400     		.2byte	0x4
+ 2307 0015 F3       		.byte	0xf3
+ 2308 0016 01       		.uleb128 0x1
+ 2309 0017 50       		.byte	0x50
+ 2310 0018 9F       		.byte	0x9f
+ 2311 0019 00000000 		.4byte	0
+ 2312 001d 00000000 		.4byte	0
+ 2313              	.LLST1:
+ 2314 0021 00000000 		.4byte	.LVL2
+ 2315 0025 06000000 		.4byte	.LVL3
+ 2316 0029 0100     		.2byte	0x1
+ 2317 002b 50       		.byte	0x50
+ 2318 002c 06000000 		.4byte	.LVL3
+ 2319 0030 0C000000 		.4byte	.LFE64
+ 2320 0034 0400     		.2byte	0x4
+ 2321 0036 F3       		.byte	0xf3
+ 2322 0037 01       		.uleb128 0x1
+ 2323 0038 50       		.byte	0x50
+ 2324 0039 9F       		.byte	0x9f
+ 2325 003a 00000000 		.4byte	0
+ 2326 003e 00000000 		.4byte	0
+ 2327              	.LLST2:
+ 2328 0042 00000000 		.4byte	.LVL4
+ 2329 0046 0E000000 		.4byte	.LVL6
+ 2330 004a 0100     		.2byte	0x1
+ 2331 004c 50       		.byte	0x50
+ 2332 004d 0E000000 		.4byte	.LVL6
+ 2333 0051 9C000000 		.4byte	.LVL16
+ 2334 0055 0100     		.2byte	0x1
+ 2335 0057 57       		.byte	0x57
+ 2336 0058 9C000000 		.4byte	.LVL16
+ 2337 005c C0030000 		.4byte	.LFE65
+ 2338 0060 0400     		.2byte	0x4
+ 2339 0062 F3       		.byte	0xf3
+ 2340 0063 01       		.uleb128 0x1
+ 2341 0064 50       		.byte	0x50
+ 2342 0065 9F       		.byte	0x9f
+ 2343 0066 00000000 		.4byte	0
+ 2344 006a 00000000 		.4byte	0
+ 2345              	.LLST3:
+ 2346 006e 00000000 		.4byte	.LVL4
+ 2347 0072 0E000000 		.4byte	.LVL6
+ 2348 0076 0100     		.2byte	0x1
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 46
+
+
+ 2349 0078 51       		.byte	0x51
+ 2350 0079 0E000000 		.4byte	.LVL6
+ 2351 007d A2000000 		.4byte	.LVL17
+ 2352 0081 0100     		.2byte	0x1
+ 2353 0083 56       		.byte	0x56
+ 2354 0084 A2000000 		.4byte	.LVL17
+ 2355 0088 C0030000 		.4byte	.LFE65
+ 2356 008c 0400     		.2byte	0x4
+ 2357 008e F3       		.byte	0xf3
+ 2358 008f 01       		.uleb128 0x1
+ 2359 0090 51       		.byte	0x51
+ 2360 0091 9F       		.byte	0x9f
+ 2361 0092 00000000 		.4byte	0
+ 2362 0096 00000000 		.4byte	0
+ 2363              	.LLST4:
+ 2364 009a 0A000000 		.4byte	.LVL5
+ 2365 009e 0E000000 		.4byte	.LVL6
+ 2366 00a2 0200     		.2byte	0x2
+ 2367 00a4 30       		.byte	0x30
+ 2368 00a5 9F       		.byte	0x9f
+ 2369 00a6 0E000000 		.4byte	.LVL6
+ 2370 00aa AA000000 		.4byte	.LVL18
+ 2371 00ae 0100     		.2byte	0x1
+ 2372 00b0 54       		.byte	0x54
+ 2373 00b1 00000000 		.4byte	0
+ 2374 00b5 00000000 		.4byte	0
+ 2375              	.LLST5:
+ 2376 00b9 AA000000 		.4byte	.LVL18
+ 2377 00bd 56010000 		.4byte	.LVL33
+ 2378 00c1 0100     		.2byte	0x1
+ 2379 00c3 55       		.byte	0x55
+ 2380 00c4 56010000 		.4byte	.LVL33
+ 2381 00c8 9A030000 		.4byte	.LVL111
+ 2382 00cc 0300     		.2byte	0x3
+ 2383 00ce 91       		.byte	0x91
+ 2384 00cf 887F     		.sleb128 -120
+ 2385 00d1 9A030000 		.4byte	.LVL111
+ 2386 00d5 C0030000 		.4byte	.LFE65
+ 2387 00d9 0100     		.2byte	0x1
+ 2388 00db 55       		.byte	0x55
+ 2389 00dc 00000000 		.4byte	0
+ 2390 00e0 00000000 		.4byte	0
+ 2391              	.LLST6:
+ 2392 00e4 AA000000 		.4byte	.LVL18
+ 2393 00e8 56010000 		.4byte	.LVL33
+ 2394 00ec 0300     		.2byte	0x3
+ 2395 00ee 91       		.byte	0x91
+ 2396 00ef 887F     		.sleb128 -120
+ 2397 00f1 56010000 		.4byte	.LVL33
+ 2398 00f5 98030000 		.4byte	.LVL110
+ 2399 00f9 0100     		.2byte	0x1
+ 2400 00fb 55       		.byte	0x55
+ 2401 00fc 98030000 		.4byte	.LVL110
+ 2402 0100 9A030000 		.4byte	.LVL111
+ 2403 0104 0100     		.2byte	0x1
+ 2404 0106 53       		.byte	0x53
+ 2405 0107 9A030000 		.4byte	.LVL111
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 47
+
+
+ 2406 010b C0030000 		.4byte	.LFE65
+ 2407 010f 0300     		.2byte	0x3
+ 2408 0111 91       		.byte	0x91
+ 2409 0112 887F     		.sleb128 -120
+ 2410 0114 00000000 		.4byte	0
+ 2411 0118 00000000 		.4byte	0
+ 2412              	.LLST7:
+ 2413 011c AA000000 		.4byte	.LVL18
+ 2414 0120 02020000 		.4byte	.LVL55
+ 2415 0124 0100     		.2byte	0x1
+ 2416 0126 56       		.byte	0x56
+ 2417 0127 02020000 		.4byte	.LVL55
+ 2418 012b 94030000 		.4byte	.LVL108
+ 2419 012f 0300     		.2byte	0x3
+ 2420 0131 91       		.byte	0x91
+ 2421 0132 8C7F     		.sleb128 -116
+ 2422 0134 9A030000 		.4byte	.LVL111
+ 2423 0138 C0030000 		.4byte	.LFE65
+ 2424 013c 0100     		.2byte	0x1
+ 2425 013e 56       		.byte	0x56
+ 2426 013f 00000000 		.4byte	0
+ 2427 0143 00000000 		.4byte	0
+ 2428              	.LLST8:
+ 2429 0147 AA000000 		.4byte	.LVL18
+ 2430 014b 02020000 		.4byte	.LVL55
+ 2431 014f 0300     		.2byte	0x3
+ 2432 0151 91       		.byte	0x91
+ 2433 0152 8C7F     		.sleb128 -116
+ 2434 0154 02020000 		.4byte	.LVL55
+ 2435 0158 92030000 		.4byte	.LVL107
+ 2436 015c 0100     		.2byte	0x1
+ 2437 015e 56       		.byte	0x56
+ 2438 015f 92030000 		.4byte	.LVL107
+ 2439 0163 96030000 		.4byte	.LVL109
+ 2440 0167 0100     		.2byte	0x1
+ 2441 0169 53       		.byte	0x53
+ 2442 016a 96030000 		.4byte	.LVL109
+ 2443 016e C0030000 		.4byte	.LFE65
+ 2444 0172 0300     		.2byte	0x3
+ 2445 0174 91       		.byte	0x91
+ 2446 0175 8C7F     		.sleb128 -116
+ 2447 0177 00000000 		.4byte	0
+ 2448 017b 00000000 		.4byte	0
+ 2449              	.LLST9:
+ 2450 017f AA000000 		.4byte	.LVL18
+ 2451 0183 AE020000 		.4byte	.LVL77
+ 2452 0187 0100     		.2byte	0x1
+ 2453 0189 57       		.byte	0x57
+ 2454 018a AE020000 		.4byte	.LVL77
+ 2455 018e 8E030000 		.4byte	.LVL105
+ 2456 0192 0300     		.2byte	0x3
+ 2457 0194 91       		.byte	0x91
+ 2458 0195 907F     		.sleb128 -112
+ 2459 0197 9A030000 		.4byte	.LVL111
+ 2460 019b C0030000 		.4byte	.LFE65
+ 2461 019f 0100     		.2byte	0x1
+ 2462 01a1 57       		.byte	0x57
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 48
+
+
+ 2463 01a2 00000000 		.4byte	0
+ 2464 01a6 00000000 		.4byte	0
+ 2465              	.LLST10:
+ 2466 01aa AA000000 		.4byte	.LVL18
+ 2467 01ae AE020000 		.4byte	.LVL77
+ 2468 01b2 0300     		.2byte	0x3
+ 2469 01b4 91       		.byte	0x91
+ 2470 01b5 907F     		.sleb128 -112
+ 2471 01b7 AE020000 		.4byte	.LVL77
+ 2472 01bb 8C030000 		.4byte	.LVL104
+ 2473 01bf 0100     		.2byte	0x1
+ 2474 01c1 57       		.byte	0x57
+ 2475 01c2 8C030000 		.4byte	.LVL104
+ 2476 01c6 90030000 		.4byte	.LVL106
+ 2477 01ca 0100     		.2byte	0x1
+ 2478 01cc 53       		.byte	0x53
+ 2479 01cd 90030000 		.4byte	.LVL106
+ 2480 01d1 C0030000 		.4byte	.LFE65
+ 2481 01d5 0300     		.2byte	0x3
+ 2482 01d7 91       		.byte	0x91
+ 2483 01d8 907F     		.sleb128 -112
+ 2484 01da 00000000 		.4byte	0
+ 2485 01de 00000000 		.4byte	0
+ 2486              	.LLST11:
+ 2487 01e2 AA000000 		.4byte	.LVL18
+ 2488 01e6 7C030000 		.4byte	.LVL99
+ 2489 01ea 0100     		.2byte	0x1
+ 2490 01ec 58       		.byte	0x58
+ 2491 01ed 7C030000 		.4byte	.LVL99
+ 2492 01f1 88030000 		.4byte	.LVL102
+ 2493 01f5 0300     		.2byte	0x3
+ 2494 01f7 91       		.byte	0x91
+ 2495 01f8 947F     		.sleb128 -108
+ 2496 01fa 88030000 		.4byte	.LVL102
+ 2497 01fe C0030000 		.4byte	.LFE65
+ 2498 0202 0100     		.2byte	0x1
+ 2499 0204 58       		.byte	0x58
+ 2500 0205 00000000 		.4byte	0
+ 2501 0209 00000000 		.4byte	0
+ 2502              	.LLST12:
+ 2503 020d AA000000 		.4byte	.LVL18
+ 2504 0211 7C030000 		.4byte	.LVL99
+ 2505 0215 0300     		.2byte	0x3
+ 2506 0217 91       		.byte	0x91
+ 2507 0218 947F     		.sleb128 -108
+ 2508 021a 7C030000 		.4byte	.LVL99
+ 2509 021e 86030000 		.4byte	.LVL101
+ 2510 0222 0100     		.2byte	0x1
+ 2511 0224 58       		.byte	0x58
+ 2512 0225 86030000 		.4byte	.LVL101
+ 2513 0229 8A030000 		.4byte	.LVL103
+ 2514 022d 0100     		.2byte	0x1
+ 2515 022f 53       		.byte	0x53
+ 2516 0230 8A030000 		.4byte	.LVL103
+ 2517 0234 C0030000 		.4byte	.LFE65
+ 2518 0238 0300     		.2byte	0x3
+ 2519 023a 91       		.byte	0x91
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 49
+
+
+ 2520 023b 947F     		.sleb128 -108
+ 2521 023d 00000000 		.4byte	0
+ 2522 0241 00000000 		.4byte	0
+ 2523              	.LLST13:
+ 2524 0245 56010000 		.4byte	.LVL33
+ 2525 0249 02020000 		.4byte	.LVL55
+ 2526 024d 0100     		.2byte	0x1
+ 2527 024f 55       		.byte	0x55
+ 2528 0250 02020000 		.4byte	.LVL55
+ 2529 0254 AE020000 		.4byte	.LVL77
+ 2530 0258 0100     		.2byte	0x1
+ 2531 025a 56       		.byte	0x56
+ 2532 025b AE020000 		.4byte	.LVL77
+ 2533 025f 7C030000 		.4byte	.LVL99
+ 2534 0263 0100     		.2byte	0x1
+ 2535 0265 57       		.byte	0x57
+ 2536 0266 7C030000 		.4byte	.LVL99
+ 2537 026a 86030000 		.4byte	.LVL101
+ 2538 026e 0100     		.2byte	0x1
+ 2539 0270 58       		.byte	0x58
+ 2540 0271 86030000 		.4byte	.LVL101
+ 2541 0275 8A030000 		.4byte	.LVL103
+ 2542 0279 0100     		.2byte	0x1
+ 2543 027b 53       		.byte	0x53
+ 2544 027c 8A030000 		.4byte	.LVL103
+ 2545 0280 9A030000 		.4byte	.LVL111
+ 2546 0284 0300     		.2byte	0x3
+ 2547 0286 91       		.byte	0x91
+ 2548 0287 947F     		.sleb128 -108
+ 2549 0289 00000000 		.4byte	0
+ 2550 028d 00000000 		.4byte	0
+ 2551              	.LLST14:
+ 2552 0291 1E010000 		.4byte	.LVL28
+ 2553 0295 22010000 		.4byte	.LVL29
+ 2554 0299 0200     		.2byte	0x2
+ 2555 029b 30       		.byte	0x30
+ 2556 029c 9F       		.byte	0x9f
+ 2557 029d 22010000 		.4byte	.LVL29
+ 2558 02a1 36010000 		.4byte	.LVL31
+ 2559 02a5 0100     		.2byte	0x1
+ 2560 02a7 53       		.byte	0x53
+ 2561 02a8 36010000 		.4byte	.LVL31
+ 2562 02ac 7E010000 		.4byte	.LVL35
+ 2563 02b0 0100     		.2byte	0x1
+ 2564 02b2 54       		.byte	0x54
+ 2565 02b3 80010000 		.4byte	.LVL36
+ 2566 02b7 84010000 		.4byte	.LVL37
+ 2567 02bb 0100     		.2byte	0x1
+ 2568 02bd 54       		.byte	0x54
+ 2569 02be 86010000 		.4byte	.LVL38
+ 2570 02c2 8A010000 		.4byte	.LVL39
+ 2571 02c6 0100     		.2byte	0x1
+ 2572 02c8 54       		.byte	0x54
+ 2573 02c9 CA010000 		.4byte	.LVL50
+ 2574 02cd CE010000 		.4byte	.LVL51
+ 2575 02d1 0200     		.2byte	0x2
+ 2576 02d3 30       		.byte	0x30
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 50
+
+
+ 2577 02d4 9F       		.byte	0x9f
+ 2578 02d5 CE010000 		.4byte	.LVL51
+ 2579 02d9 E2010000 		.4byte	.LVL53
+ 2580 02dd 0100     		.2byte	0x1
+ 2581 02df 53       		.byte	0x53
+ 2582 02e0 E2010000 		.4byte	.LVL53
+ 2583 02e4 2A020000 		.4byte	.LVL57
+ 2584 02e8 0100     		.2byte	0x1
+ 2585 02ea 54       		.byte	0x54
+ 2586 02eb 2C020000 		.4byte	.LVL58
+ 2587 02ef 30020000 		.4byte	.LVL59
+ 2588 02f3 0100     		.2byte	0x1
+ 2589 02f5 54       		.byte	0x54
+ 2590 02f6 32020000 		.4byte	.LVL60
+ 2591 02fa 36020000 		.4byte	.LVL61
+ 2592 02fe 0100     		.2byte	0x1
+ 2593 0300 54       		.byte	0x54
+ 2594 0301 76020000 		.4byte	.LVL72
+ 2595 0305 7A020000 		.4byte	.LVL73
+ 2596 0309 0200     		.2byte	0x2
+ 2597 030b 30       		.byte	0x30
+ 2598 030c 9F       		.byte	0x9f
+ 2599 030d 7A020000 		.4byte	.LVL73
+ 2600 0311 8E020000 		.4byte	.LVL75
+ 2601 0315 0100     		.2byte	0x1
+ 2602 0317 53       		.byte	0x53
+ 2603 0318 8E020000 		.4byte	.LVL75
+ 2604 031c D6020000 		.4byte	.LVL79
+ 2605 0320 0100     		.2byte	0x1
+ 2606 0322 54       		.byte	0x54
+ 2607 0323 D8020000 		.4byte	.LVL80
+ 2608 0327 DC020000 		.4byte	.LVL81
+ 2609 032b 0100     		.2byte	0x1
+ 2610 032d 54       		.byte	0x54
+ 2611 032e DE020000 		.4byte	.LVL82
+ 2612 0332 E2020000 		.4byte	.LVL83
+ 2613 0336 0100     		.2byte	0x1
+ 2614 0338 54       		.byte	0x54
+ 2615 0339 22030000 		.4byte	.LVL94
+ 2616 033d 26030000 		.4byte	.LVL95
+ 2617 0341 0200     		.2byte	0x2
+ 2618 0343 30       		.byte	0x30
+ 2619 0344 9F       		.byte	0x9f
+ 2620 0345 26030000 		.4byte	.LVL95
+ 2621 0349 5C030000 		.4byte	.LVL97
+ 2622 034d 0100     		.2byte	0x1
+ 2623 034f 53       		.byte	0x53
+ 2624 0350 5C030000 		.4byte	.LVL97
+ 2625 0354 9A030000 		.4byte	.LVL111
+ 2626 0358 0100     		.2byte	0x1
+ 2627 035a 54       		.byte	0x54
+ 2628 035b 00000000 		.4byte	0
+ 2629 035f 00000000 		.4byte	0
+ 2630              	.LLST15:
+ 2631 0363 8A000000 		.4byte	.LVL15
+ 2632 0367 AA000000 		.4byte	.LVL18
+ 2633 036b 0200     		.2byte	0x2
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 51
+
+
+ 2634 036d 30       		.byte	0x30
+ 2635 036e 9F       		.byte	0x9f
+ 2636 036f AA000000 		.4byte	.LVL18
+ 2637 0373 C0030000 		.4byte	.LFE65
+ 2638 0377 0100     		.2byte	0x1
+ 2639 0379 59       		.byte	0x59
+ 2640 037a 00000000 		.4byte	0
+ 2641 037e 00000000 		.4byte	0
+ 2642              	.LLST16:
+ 2643 0382 D8000000 		.4byte	.LVL20
+ 2644 0386 DA000000 		.4byte	.LVL21
+ 2645 038a 0400     		.2byte	0x4
+ 2646 038c 0A       		.byte	0xa
+ 2647 038d 4001     		.2byte	0x140
+ 2648 038f 9F       		.byte	0x9f
+ 2649 0390 F2000000 		.4byte	.LVL24
+ 2650 0394 36010000 		.4byte	.LVL31
+ 2651 0398 0100     		.2byte	0x1
+ 2652 039a 54       		.byte	0x54
+ 2653 039b 84010000 		.4byte	.LVL37
+ 2654 039f 86010000 		.4byte	.LVL38
+ 2655 03a3 0400     		.2byte	0x4
+ 2656 03a5 0A       		.byte	0xa
+ 2657 03a6 4001     		.2byte	0x140
+ 2658 03a8 9F       		.byte	0x9f
+ 2659 03a9 9E010000 		.4byte	.LVL42
+ 2660 03ad E2010000 		.4byte	.LVL53
+ 2661 03b1 0100     		.2byte	0x1
+ 2662 03b3 54       		.byte	0x54
+ 2663 03b4 30020000 		.4byte	.LVL59
+ 2664 03b8 32020000 		.4byte	.LVL60
+ 2665 03bc 0400     		.2byte	0x4
+ 2666 03be 0A       		.byte	0xa
+ 2667 03bf 4001     		.2byte	0x140
+ 2668 03c1 9F       		.byte	0x9f
+ 2669 03c2 4A020000 		.4byte	.LVL64
+ 2670 03c6 8E020000 		.4byte	.LVL75
+ 2671 03ca 0100     		.2byte	0x1
+ 2672 03cc 54       		.byte	0x54
+ 2673 03cd DC020000 		.4byte	.LVL81
+ 2674 03d1 DE020000 		.4byte	.LVL82
+ 2675 03d5 0400     		.2byte	0x4
+ 2676 03d7 0A       		.byte	0xa
+ 2677 03d8 4001     		.2byte	0x140
+ 2678 03da 9F       		.byte	0x9f
+ 2679 03db F6020000 		.4byte	.LVL86
+ 2680 03df 5C030000 		.4byte	.LVL97
+ 2681 03e3 0100     		.2byte	0x1
+ 2682 03e5 54       		.byte	0x54
+ 2683 03e6 00000000 		.4byte	0
+ 2684 03ea 00000000 		.4byte	0
+ 2685              	.LLST17:
+ 2686 03ee 18010000 		.4byte	.LVL27
+ 2687 03f2 BA010000 		.4byte	.LVL46
+ 2688 03f6 0100     		.2byte	0x1
+ 2689 03f8 5B       		.byte	0x5b
+ 2690 03f9 BC010000 		.4byte	.LVL47
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 52
+
+
+ 2691 03fd 66020000 		.4byte	.LVL68
+ 2692 0401 0100     		.2byte	0x1
+ 2693 0403 5B       		.byte	0x5b
+ 2694 0404 68020000 		.4byte	.LVL69
+ 2695 0408 12030000 		.4byte	.LVL90
+ 2696 040c 0100     		.2byte	0x1
+ 2697 040e 5B       		.byte	0x5b
+ 2698 040f 14030000 		.4byte	.LVL91
+ 2699 0413 9A030000 		.4byte	.LVL111
+ 2700 0417 0100     		.2byte	0x1
+ 2701 0419 5B       		.byte	0x5b
+ 2702 041a 00000000 		.4byte	0
+ 2703 041e 00000000 		.4byte	0
+ 2704              	.LLST19:
+ 2705 0422 18010000 		.4byte	.LVL27
+ 2706 0426 B6010000 		.4byte	.LVL45
+ 2707 042a 0100     		.2byte	0x1
+ 2708 042c 5A       		.byte	0x5a
+ 2709 042d BC010000 		.4byte	.LVL47
+ 2710 0431 C0010000 		.4byte	.LVL48
+ 2711 0435 0100     		.2byte	0x1
+ 2712 0437 5A       		.byte	0x5a
+ 2713 0438 C4010000 		.4byte	.LVL49
+ 2714 043c 62020000 		.4byte	.LVL67
+ 2715 0440 0100     		.2byte	0x1
+ 2716 0442 5A       		.byte	0x5a
+ 2717 0443 68020000 		.4byte	.LVL69
+ 2718 0447 6C020000 		.4byte	.LVL70
+ 2719 044b 0100     		.2byte	0x1
+ 2720 044d 5A       		.byte	0x5a
+ 2721 044e 70020000 		.4byte	.LVL71
+ 2722 0452 0E030000 		.4byte	.LVL89
+ 2723 0456 0100     		.2byte	0x1
+ 2724 0458 5A       		.byte	0x5a
+ 2725 0459 14030000 		.4byte	.LVL91
+ 2726 045d 18030000 		.4byte	.LVL92
+ 2727 0461 0100     		.2byte	0x1
+ 2728 0463 5A       		.byte	0x5a
+ 2729 0464 1C030000 		.4byte	.LVL93
+ 2730 0468 9A030000 		.4byte	.LVL111
+ 2731 046c 0100     		.2byte	0x1
+ 2732 046e 5A       		.byte	0x5a
+ 2733 046f 00000000 		.4byte	0
+ 2734 0473 00000000 		.4byte	0
+ 2735              	.LLST21:
+ 2736 0477 CE000000 		.4byte	.LVL19
+ 2737 047b DA000000 		.4byte	.LVL21
+ 2738 047f 0100     		.2byte	0x1
+ 2739 0481 53       		.byte	0x53
+ 2740 0482 00000000 		.4byte	0
+ 2741 0486 00000000 		.4byte	0
+ 2742              	.LLST22:
+ 2743 048a E0000000 		.4byte	.LVL22
+ 2744 048e EC000000 		.4byte	.LVL23
+ 2745 0492 0100     		.2byte	0x1
+ 2746 0494 54       		.byte	0x54
+ 2747 0495 EC000000 		.4byte	.LVL23
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 53
+
+
+ 2748 0499 02010000 		.4byte	.LVL26
+ 2749 049d 0600     		.2byte	0x6
+ 2750 049f 79       		.byte	0x79
+ 2751 04a0 907E     		.sleb128 -240
+ 2752 04a2 31       		.byte	0x31
+ 2753 04a3 24       		.byte	0x24
+ 2754 04a4 9F       		.byte	0x9f
+ 2755 04a5 00000000 		.4byte	0
+ 2756 04a9 00000000 		.4byte	0
+ 2757              	.LLST23:
+ 2758 04ad 7A010000 		.4byte	.LVL34
+ 2759 04b1 86010000 		.4byte	.LVL38
+ 2760 04b5 0100     		.2byte	0x1
+ 2761 04b7 53       		.byte	0x53
+ 2762 04b8 00000000 		.4byte	0
+ 2763 04bc 00000000 		.4byte	0
+ 2764              	.LLST24:
+ 2765 04c0 8C010000 		.4byte	.LVL40
+ 2766 04c4 98010000 		.4byte	.LVL41
+ 2767 04c8 0100     		.2byte	0x1
+ 2768 04ca 54       		.byte	0x54
+ 2769 04cb 98010000 		.4byte	.LVL41
+ 2770 04cf AE010000 		.4byte	.LVL44
+ 2771 04d3 0600     		.2byte	0x6
+ 2772 04d5 79       		.byte	0x79
+ 2773 04d6 907E     		.sleb128 -240
+ 2774 04d8 31       		.byte	0x31
+ 2775 04d9 24       		.byte	0x24
+ 2776 04da 9F       		.byte	0x9f
+ 2777 04db 00000000 		.4byte	0
+ 2778 04df 00000000 		.4byte	0
+ 2779              	.LLST25:
+ 2780 04e3 26020000 		.4byte	.LVL56
+ 2781 04e7 32020000 		.4byte	.LVL60
+ 2782 04eb 0100     		.2byte	0x1
+ 2783 04ed 53       		.byte	0x53
+ 2784 04ee 00000000 		.4byte	0
+ 2785 04f2 00000000 		.4byte	0
+ 2786              	.LLST26:
+ 2787 04f6 38020000 		.4byte	.LVL62
+ 2788 04fa 44020000 		.4byte	.LVL63
+ 2789 04fe 0100     		.2byte	0x1
+ 2790 0500 54       		.byte	0x54
+ 2791 0501 44020000 		.4byte	.LVL63
+ 2792 0505 5A020000 		.4byte	.LVL66
+ 2793 0509 0600     		.2byte	0x6
+ 2794 050b 79       		.byte	0x79
+ 2795 050c 907E     		.sleb128 -240
+ 2796 050e 31       		.byte	0x31
+ 2797 050f 24       		.byte	0x24
+ 2798 0510 9F       		.byte	0x9f
+ 2799 0511 00000000 		.4byte	0
+ 2800 0515 00000000 		.4byte	0
+ 2801              	.LLST27:
+ 2802 0519 D2020000 		.4byte	.LVL78
+ 2803 051d DE020000 		.4byte	.LVL82
+ 2804 0521 0100     		.2byte	0x1
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 54
+
+
+ 2805 0523 53       		.byte	0x53
+ 2806 0524 00000000 		.4byte	0
+ 2807 0528 00000000 		.4byte	0
+ 2808              	.LLST28:
+ 2809 052c E4020000 		.4byte	.LVL84
+ 2810 0530 F0020000 		.4byte	.LVL85
+ 2811 0534 0100     		.2byte	0x1
+ 2812 0536 54       		.byte	0x54
+ 2813 0537 F0020000 		.4byte	.LVL85
+ 2814 053b 06030000 		.4byte	.LVL88
+ 2815 053f 0600     		.2byte	0x6
+ 2816 0541 79       		.byte	0x79
+ 2817 0542 907E     		.sleb128 -240
+ 2818 0544 31       		.byte	0x31
+ 2819 0545 24       		.byte	0x24
+ 2820 0546 9F       		.byte	0x9f
+ 2821 0547 00000000 		.4byte	0
+ 2822 054b 00000000 		.4byte	0
+ 2823              		.section	.debug_aranges,"",%progbits
+ 2824 0000 2C000000 		.4byte	0x2c
+ 2825 0004 0200     		.2byte	0x2
+ 2826 0006 00000000 		.4byte	.Ldebug_info0
+ 2827 000a 04       		.byte	0x4
+ 2828 000b 00       		.byte	0
+ 2829 000c 0000     		.2byte	0
+ 2830 000e 0000     		.2byte	0
+ 2831 0010 00000000 		.4byte	.LFB63
+ 2832 0014 0C000000 		.4byte	.LFE63-.LFB63
+ 2833 0018 00000000 		.4byte	.LFB64
+ 2834 001c 0C000000 		.4byte	.LFE64-.LFB64
+ 2835 0020 00000000 		.4byte	.LFB65
+ 2836 0024 C0030000 		.4byte	.LFE65-.LFB65
+ 2837 0028 00000000 		.4byte	0
+ 2838 002c 00000000 		.4byte	0
+ 2839              		.section	.debug_ranges,"",%progbits
+ 2840              	.Ldebug_ranges0:
+ 2841 0000 AA000000 		.4byte	.LBB2
+ 2842 0004 7C030000 		.4byte	.LBE2
+ 2843 0008 80030000 		.4byte	.LBB11
+ 2844 000c 9A030000 		.4byte	.LBE11
+ 2845 0010 00000000 		.4byte	0
+ 2846 0014 00000000 		.4byte	0
+ 2847 0018 00000000 		.4byte	.LFB63
+ 2848 001c 0C000000 		.4byte	.LFE63
+ 2849 0020 00000000 		.4byte	.LFB64
+ 2850 0024 0C000000 		.4byte	.LFE64
+ 2851 0028 00000000 		.4byte	.LFB65
+ 2852 002c C0030000 		.4byte	.LFE65
+ 2853 0030 00000000 		.4byte	0
+ 2854 0034 00000000 		.4byte	0
+ 2855              		.section	.debug_line,"",%progbits
+ 2856              	.Ldebug_line0:
+ 2857 0000 5E030000 		.section	.debug_str,"MS",%progbits,1
+ 2857      02009D01 
+ 2857      00000201 
+ 2857      FB0E0D00 
+ 2857      01010101 
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 55
+
+
+ 2858              	.LASF48:
+ 2859 0000 72696768 		.ascii	"rightLo\000"
+ 2859      744C6F00 
+ 2860              	.LASF0:
+ 2861 0008 7369676E 		.ascii	"signed char\000"
+ 2861      65642063 
+ 2861      68617200 
+ 2862              	.LASF4:
+ 2863 0014 73686F72 		.ascii	"short int\000"
+ 2863      7420696E 
+ 2863      7400
+ 2864              	.LASF33:
+ 2865 001e 66696C6C 		.ascii	"fillRow\000"
+ 2865      526F7700 
+ 2866              	.LASF24:
+ 2867 0026 73697A65 		.ascii	"sizetype\000"
+ 2867      74797065 
+ 2867      00
+ 2868              	.LASF45:
+ 2869 002f 6C656674 		.ascii	"leftHi\000"
+ 2869      486900
+ 2870              	.LASF11:
+ 2871 0036 6C6F6E67 		.ascii	"long long int\000"
+ 2871      206C6F6E 
+ 2871      6720696E 
+ 2871      7400
+ 2872              	.LASF9:
+ 2873 0044 5F5F7569 		.ascii	"__uint32_t\000"
+ 2873      6E743332 
+ 2873      5F7400
+ 2874              	.LASF5:
+ 2875 004f 5F5F7569 		.ascii	"__uint16_t\000"
+ 2875      6E743136 
+ 2875      5F7400
+ 2876              	.LASF20:
+ 2877 005a 75696E74 		.ascii	"uint16\000"
+ 2877      313600
+ 2878              	.LASF14:
+ 2879 0061 75696E74 		.ascii	"uint8_t\000"
+ 2879      385F7400 
+ 2880              	.LASF71:
+ 2881 0069 433A5C55 		.ascii	"C:\\Users\\ericz\\OneDrive\\Documents\\PSoC Creator"
+ 2881      73657273 
+ 2881      5C657269 
+ 2881      637A5C4F 
+ 2881      6E654472 
+ 2882 0097 5C46696E 		.ascii	"\\FinalProjectWorkspace\\FinalProject.cydsn\000"
+ 2882      616C5072 
+ 2882      6F6A6563 
+ 2882      74576F72 
+ 2882      6B737061 
+ 2883              	.LASF46:
+ 2884 00c1 6C656674 		.ascii	"leftLo\000"
+ 2884      4C6F00
+ 2885              	.LASF66:
+ 2886 00c8 4443305F 		.ascii	"DC0_Write\000"
+ 2886      57726974 
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 56
+
+
+ 2886      6500
+ 2887              	.LASF34:
+ 2888 00d2 6C697175 		.ascii	"liquidLeft\000"
+ 2888      69644C65 
+ 2888      667400
+ 2889              	.LASF65:
+ 2890 00dd 77726974 		.ascii	"write8_a0\000"
+ 2890      65385F61 
+ 2890      3000
+ 2891              	.LASF25:
+ 2892 00e7 61646354 		.ascii	"adcToAngle\000"
+ 2892      6F416E67 
+ 2892      6C6500
+ 2893              	.LASF21:
+ 2894 00f2 666C6F61 		.ascii	"float\000"
+ 2894      7400
+ 2895              	.LASF68:
+ 2896 00f8 4443325F 		.ascii	"DC2_Write\000"
+ 2896      57726974 
+ 2896      6500
+ 2897              	.LASF49:
+ 2898 0102 69734C69 		.ascii	"isLiq\000"
+ 2898      7100
+ 2899              	.LASF62:
+ 2900 0108 67657453 		.ascii	"getSinQ15\000"
+ 2900      696E5131 
+ 2900      3500
+ 2901              	.LASF72:
+ 2902 0112 64726177 		.ascii	"drawLiquid\000"
+ 2902      4C697175 
+ 2902      696400
+ 2903              	.LASF8:
+ 2904 011d 6C6F6E67 		.ascii	"long int\000"
+ 2904      20696E74 
+ 2904      00
+ 2905              	.LASF60:
+ 2906 0126 444D415F 		.ascii	"DMA_Wait_For_Completion\000"
+ 2906      57616974 
+ 2906      5F466F72 
+ 2906      5F436F6D 
+ 2906      706C6574 
+ 2907              	.LASF70:
+ 2908 013e 2E5C726F 		.ascii	".\\rotate_liquid.c\000"
+ 2908      74617465 
+ 2908      5F6C6971 
+ 2908      7569642E 
+ 2908      6300
+ 2909              	.LASF2:
+ 2910 0150 5F5F7569 		.ascii	"__uint8_t\000"
+ 2910      6E74385F 
+ 2910      7400
+ 2911              	.LASF36:
+ 2912 015a 66696C6C 		.ascii	"fillBuf_0\000"
+ 2912      4275665F 
+ 2912      3000
+ 2913              	.LASF38:
+ 2914 0164 66696C6C 		.ascii	"fillBuf_1\000"
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 57
+
+
+ 2914      4275665F 
+ 2914      3100
+ 2915              	.LASF40:
+ 2916 016e 66696C6C 		.ascii	"fillBuf_2\000"
+ 2916      4275665F 
+ 2916      3200
+ 2917              	.LASF42:
+ 2918 0178 66696C6C 		.ascii	"fillBuf_3\000"
+ 2918      4275665F 
+ 2918      3300
+ 2919              	.LASF19:
+ 2920 0182 75696E74 		.ascii	"uint8\000"
+ 2920      3800
+ 2921              	.LASF1:
+ 2922 0188 756E7369 		.ascii	"unsigned char\000"
+ 2922      676E6564 
+ 2922      20636861 
+ 2922      7200
+ 2923              	.LASF29:
+ 2924 0196 66726163 		.ascii	"fracFull\000"
+ 2924      46756C6C 
+ 2924      00
+ 2925              	.LASF41:
+ 2926 019f 73656E64 		.ascii	"sendBuf_2\000"
+ 2926      4275665F 
+ 2926      3200
+ 2927              	.LASF32:
+ 2928 01a9 636F7356 		.ascii	"cosV\000"
+ 2928      00
+ 2929              	.LASF12:
+ 2930 01ae 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2930      206C6F6E 
+ 2930      6720756E 
+ 2930      7369676E 
+ 2930      65642069 
+ 2931              	.LASF31:
+ 2932 01c5 73696E56 		.ascii	"sinV\000"
+ 2932      00
+ 2933              	.LASF18:
+ 2934 01ca 75696E74 		.ascii	"uint32_t\000"
+ 2934      33325F74 
+ 2934      00
+ 2935              	.LASF13:
+ 2936 01d3 756E7369 		.ascii	"unsigned int\000"
+ 2936      676E6564 
+ 2936      20696E74 
+ 2936      00
+ 2937              	.LASF16:
+ 2938 01e0 75696E74 		.ascii	"uint16_t\000"
+ 2938      31365F74 
+ 2938      00
+ 2939              	.LASF35:
+ 2940 01e9 64697370 		.ascii	"disp\000"
+ 2940      00
+ 2941              	.LASF26:
+ 2942 01ee 73637265 		.ascii	"screenAtan\000"
+ 2942      656E4174 
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 58
+
+
+ 2942      616E00
+ 2943              	.LASF6:
+ 2944 01f9 73686F72 		.ascii	"short unsigned int\000"
+ 2944      7420756E 
+ 2944      7369676E 
+ 2944      65642069 
+ 2944      6E7400
+ 2945              	.LASF23:
+ 2946 020c 63686172 		.ascii	"char\000"
+ 2946      00
+ 2947              	.LASF63:
+ 2948 0211 67657443 		.ascii	"getCosQ15\000"
+ 2948      6F735131 
+ 2948      3500
+ 2949              	.LASF17:
+ 2950 021b 696E7433 		.ascii	"int32_t\000"
+ 2950      325F7400 
+ 2951              	.LASF37:
+ 2952 0223 73656E64 		.ascii	"sendBuf_0\000"
+ 2952      4275665F 
+ 2952      3000
+ 2953              	.LASF39:
+ 2954 022d 73656E64 		.ascii	"sendBuf_1\000"
+ 2954      4275665F 
+ 2954      3100
+ 2955              	.LASF59:
+ 2956 0237 6174616E 		.ascii	"atan_lut\000"
+ 2956      5F6C7574 
+ 2956      00
+ 2957              	.LASF43:
+ 2958 0240 73656E64 		.ascii	"sendBuf_3\000"
+ 2958      4275665F 
+ 2958      3300
+ 2959              	.LASF27:
+ 2960 024a 61646356 		.ascii	"adcVal\000"
+ 2960      616C00
+ 2961              	.LASF10:
+ 2962 0251 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2962      20756E73 
+ 2962      69676E65 
+ 2962      6420696E 
+ 2962      7400
+ 2963              	.LASF22:
+ 2964 0263 646F7562 		.ascii	"double\000"
+ 2964      6C6500
+ 2965              	.LASF67:
+ 2966 026a 4443315F 		.ascii	"DC1_Write\000"
+ 2966      57726974 
+ 2966      6500
+ 2967              	.LASF44:
+ 2968 0274 785F626F 		.ascii	"x_bound\000"
+ 2968      756E6400 
+ 2969              	.LASF7:
+ 2970 027c 5F5F696E 		.ascii	"__int32_t\000"
+ 2970      7433325F 
+ 2970      7400
+ 2971              	.LASF69:
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 59
+
+
+ 2972 0286 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 2972      4320342E 
+ 2972      392E3320 
+ 2972      32303135 
+ 2972      30333033 
+ 2973 02b9 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 2973      20726576 
+ 2973      6973696F 
+ 2973      6E203232 
+ 2973      31323230 
+ 2974 02ec 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2974      66756E63 
+ 2974      74696F6E 
+ 2974      2D736563 
+ 2974      74696F6E 
+ 2975              	.LASF30:
+ 2976 0314 616E676C 		.ascii	"angles\000"
+ 2976      657300
+ 2977              	.LASF3:
+ 2978 031b 5F5F696E 		.ascii	"__int16_t\000"
+ 2978      7431365F 
+ 2978      7400
+ 2979              	.LASF61:
+ 2980 0325 444D415F 		.ascii	"DMA_Feed_SPI_Async\000"
+ 2980      46656564 
+ 2980      5F535049 
+ 2980      5F417379 
+ 2980      6E6300
+ 2981              	.LASF52:
+ 2982 0338 62756666 		.ascii	"bufferB_0\000"
+ 2982      6572425F 
+ 2982      3000
+ 2983              	.LASF54:
+ 2984 0342 62756666 		.ascii	"bufferB_1\000"
+ 2984      6572425F 
+ 2984      3100
+ 2985              	.LASF56:
+ 2986 034c 62756666 		.ascii	"bufferB_2\000"
+ 2986      6572425F 
+ 2986      3200
+ 2987              	.LASF58:
+ 2988 0356 62756666 		.ascii	"bufferB_3\000"
+ 2988      6572425F 
+ 2988      3300
+ 2989              	.LASF64:
+ 2990 0360 73657452 		.ascii	"setRowCol\000"
+ 2990      6F77436F 
+ 2990      6C00
+ 2991              	.LASF15:
+ 2992 036a 696E7431 		.ascii	"int16_t\000"
+ 2992      365F7400 
+ 2993              	.LASF50:
+ 2994 0372 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2994      52784275 
+ 2994      66666572 
+ 2994      00
+ 2995              	.LASF47:
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccKXUKbe.s 			page 60
+
+
+ 2996 037f 72696768 		.ascii	"rightHi\000"
+ 2996      74486900 
+ 2997              	.LASF73:
+ 2998 0387 4443335F 		.ascii	"DC3_Write\000"
+ 2998      57726974 
+ 2998      6500
+ 2999              	.LASF28:
+ 3000 0391 66726163 		.ascii	"fracFull_left\000"
+ 3000      46756C6C 
+ 3000      5F6C6566 
+ 3000      7400
+ 3001              	.LASF51:
+ 3002 039f 62756666 		.ascii	"bufferA_0\000"
+ 3002      6572415F 
+ 3002      3000
+ 3003              	.LASF53:
+ 3004 03a9 62756666 		.ascii	"bufferA_1\000"
+ 3004      6572415F 
+ 3004      3100
+ 3005              	.LASF55:
+ 3006 03b3 62756666 		.ascii	"bufferA_2\000"
+ 3006      6572415F 
+ 3006      3200
+ 3007              	.LASF57:
+ 3008 03bd 62756666 		.ascii	"bufferA_3\000"
+ 3008      6572415F 
+ 3008      3300
+ 3009              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
