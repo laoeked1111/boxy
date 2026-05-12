@@ -1,6 +1,6 @@
 // ======================================================================
 // FinalProject.v generated from TopDesign.cysch
-// 05/12/2026 at 06:14
+// 05/12/2026 at 14:16
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -977,6 +977,9 @@ endmodule
 // top
 module top ;
 
+          wire  Net_675;
+          wire  Net_674;
+          wire  Net_672;
           wire  Net_440;
           wire  Net_654;
           wire  Net_653;
@@ -1032,11 +1035,13 @@ module top ;
           wire  Net_228;
           wire  Net_227;
           wire  Net_16;
+          wire  Net_670;
+          wire  Net_677;
+          wire  Net_679;
           wire  Net_496;
           wire  Net_412;
           wire  Net_392;
           wire  Net_387;
-          wire  Net_332;
           wire  Net_331;
     electrical  Net_379;
     electrical  Net_381;
@@ -3620,12 +3625,12 @@ module top ;
 		  .is_direct(0),
 		  .is_digital(1))
 		Clock_1
-		 (.clock_out(Net_332));
+		 (.clock_out(Net_670));
 
 
     Debouncer_v1_0 Debouncer_1 (
         .d(Net_331),
-        .clock(Net_332),
+        .clock(Net_670),
         .q(Net_353),
         .neg(Net_387),
         .either(Net_354),
@@ -3985,6 +3990,99 @@ module top ;
 		  .is_digital(1))
 		Clock_3
 		 (.clock_out(Net_412));
+
+
+	wire [0:0] tmpOE__TOGGLE_LANTERN_net;
+	wire [0:0] tmpIO_0__TOGGLE_LANTERN_net;
+	wire [0:0] tmpINTERRUPT_0__TOGGLE_LANTERN_net;
+	electrical [0:0] tmpSIOVREF__TOGGLE_LANTERN_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("7c1acf84-034e-4c13-a81d-5ad54c7df14e"),
+		  .drive_mode(3'b010),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b1),
+		  .input_clk_en(0),
+		  .input_sync(1'b0),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("I"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b00),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		TOGGLE_LANTERN
+		 (.oe(tmpOE__TOGGLE_LANTERN_net),
+		  .y({1'b0}),
+		  .fb({Net_679}),
+		  .io({tmpIO_0__TOGGLE_LANTERN_net[0:0]}),
+		  .siovref(tmpSIOVREF__TOGGLE_LANTERN_net),
+		  .interrupt({tmpINTERRUPT_0__TOGGLE_LANTERN_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__TOGGLE_LANTERN_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+    Debouncer_v1_0 Debouncer_2 (
+        .d(Net_679),
+        .clock(Net_670),
+        .q(Net_672),
+        .neg(Net_677),
+        .either(Net_674),
+        .pos(Net_675));
+    defparam Debouncer_2.EitherEdgeDetect = 0;
+    defparam Debouncer_2.NegEdgeDetect = 1;
+    defparam Debouncer_2.PosEdgeDetect = 0;
+    defparam Debouncer_2.SignalWidth = 1;
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b00))
+		LANTERN_TOGGLE_ISR
+		 (.int_signal(Net_677));
 
 
 

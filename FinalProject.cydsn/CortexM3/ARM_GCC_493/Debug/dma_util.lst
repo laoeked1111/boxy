@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
   29:.\dma_util.c  **** uint8 bufferB_1[BUF_SIZE];
   30:.\dma_util.c  **** uint8 bufferA_2[BUF_SIZE];
   31:.\dma_util.c  **** uint8 bufferB_2[BUF_SIZE];
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 2
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 2
 
 
   32:.\dma_util.c  **** uint8 bufferA_3[BUF_SIZE];
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
   63              		.align	2
   64              	.L5:
   65 0008 00000000 		.word	.LANCHOR0
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 3
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 3
 
 
   66              		.cfi_endproc
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  110 0004 DA70     		strb	r2, [r3, #3]
  111 0006 7047     		bx	lr
  112              	.L12:
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 4
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 4
 
 
  113              		.align	2
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  153 001a FFF7FEFF 		bl	DMA_0_DmaInitialize
  154              	.LVL2:
  155 001e 344C     		ldr	r4, .L21
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 5
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 5
 
 
  156 0020 2071     		strb	r0, [r4, #4]
@@ -261,7 +261,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  167              		.loc 1 79 0
  168 0032 6079     		ldrb	r0, [r4, #5]	@ zero_extendqisi2
  169 0034 0021     		movs	r1, #0
- 170 0036 46F24452 		movw	r2, #25924
+ 170 0036 46F24752 		movw	r2, #25927
  171 003a FFF7FEFF 		bl	CyDmaTdSetAddress
  172              	.LVL5:
   80:.\dma_util.c  ****             DMA_Complete_ISR_0_StartEx(DMA_0_Complete_Handler);
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  198 0064 0523     		movs	r3, #5
  199 0066 FFF7FEFF 		bl	CyDmaTdSetConfiguration
  200              	.LVL11:
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 6
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 6
 
 
   86:.\dma_util.c  ****                 1,
@@ -308,7 +308,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  201              		.loc 1 89 0
  202 006a E079     		ldrb	r0, [r4, #7]	@ zero_extendqisi2
  203 006c 0021     		movs	r1, #0
- 204 006e 46F24142 		movw	r2, #25665
+ 204 006e 46F24242 		movw	r2, #25666
  205 0072 FFF7FEFF 		bl	CyDmaTdSetAddress
  206              	.LVL12:
   90:.\dma_util.c  ****             DMA_Complete_ISR_1_StartEx(DMA_1_Complete_Handler);
@@ -352,13 +352,13 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  235              		.loc 1 99 0
  236 00a2 607A     		ldrb	r0, [r4, #9]	@ zero_extendqisi2
  237 00a4 0021     		movs	r1, #0
- 238 00a6 46F24A52 		movw	r2, #25930
+ 238 00a6 46F24942 		movw	r2, #25673
  239 00aa FFF7FEFF 		bl	CyDmaTdSetAddress
  240              	.LVL19:
  100:.\dma_util.c  ****             DMA_Complete_ISR_2_StartEx(DMA_2_Complete_Handler);
  241              		.loc 1 100 0
  242 00ae 1348     		ldr	r0, .L21+12
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 7
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 7
 
 
  243 00b0 FFF7FEFF 		bl	DMA_Complete_ISR_2_StartEx
@@ -399,7 +399,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  269              		.loc 1 109 0
  270 00da E07A     		ldrb	r0, [r4, #11]	@ zero_extendqisi2
  271 00dc 0021     		movs	r1, #0
- 272 00de 46F24242 		movw	r2, #25666
+ 272 00de 46F24542 		movw	r2, #25669
  273 00e2 FFF7FEFF 		bl	CyDmaTdSetAddress
  274              	.LVL26:
  110:.\dma_util.c  ****             DMA_Complete_ISR_3_StartEx(DMA_3_Complete_Handler);
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  287 00fc 00000000 		.word	DMA_2_Complete_Handler
  288 0100 00000000 		.word	DMA_3_Complete_Handler
  289              		.cfi_endproc
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 8
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 8
 
 
  290              	.LFE67:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  328 0016 6879     		ldrb	r0, [r5, #5]	@ zero_extendqisi2
  329              	.LVL29:
  330 0018 1146     		mov	r1, r2
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 9
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 9
 
 
  331              	.LVL30:
@@ -492,7 +492,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  337              		.loc 1 128 0
  338 0022 6879     		ldrb	r0, [r5, #5]	@ zero_extendqisi2
  339 0024 A1B2     		uxth	r1, r4
- 340 0026 46F24452 		movw	r2, #25924
+ 340 0026 46F24752 		movw	r2, #25927
  341 002a FFF7FEFF 		bl	CyDmaTdSetAddress
  342              	.LVL33:
  129:.\dma_util.c  ****             CyDmaChSetInitialTd(DMA_Chan_0, DMA_TD_0);
@@ -534,11 +534,11 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  371              		.loc 1 136 0
  372 0052 E879     		ldrb	r0, [r5, #7]	@ zero_extendqisi2
  373 0054 A1B2     		uxth	r1, r4
- 374 0056 46F24142 		movw	r2, #25665
+ 374 0056 46F24242 		movw	r2, #25666
  375 005a FFF7FEFF 		bl	CyDmaTdSetAddress
  376              	.LVL41:
  137:.\dma_util.c  ****             CyDmaChSetInitialTd(DMA_Chan_1, DMA_TD_1);
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 10
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 10
 
 
  377              		.loc 1 137 0
@@ -579,7 +579,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  405              		.loc 1 144 0
  406 0082 687A     		ldrb	r0, [r5, #9]	@ zero_extendqisi2
  407 0084 A1B2     		uxth	r1, r4
- 408 0086 46F24A52 		movw	r2, #25930
+ 408 0086 46F24942 		movw	r2, #25673
  409 008a FFF7FEFF 		bl	CyDmaTdSetAddress
  410              	.LVL49:
  145:.\dma_util.c  ****             CyDmaChSetInitialTd(DMA_Chan_2, DMA_TD_2);
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  421              		.loc 1 147 0
  422 009e 70BD     		pop	{r4, r5, r6, pc}
  423              	.LVL52:
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 11
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 11
 
 
  424              	.L29:
@@ -624,7 +624,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  439              		.loc 1 152 0
  440 00b2 E87A     		ldrb	r0, [r5, #11]	@ zero_extendqisi2
  441 00b4 A1B2     		uxth	r1, r4
- 442 00b6 46F24242 		movw	r2, #25666
+ 442 00b6 46F24542 		movw	r2, #25669
  443 00ba FFF7FEFF 		bl	CyDmaTdSetAddress
  444              	.LVL57:
  153:.\dma_util.c  ****             CyDmaChSetInitialTd(DMA_Chan_3, DMA_TD_3);
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  471              	DMA_Wait_For_Completion:
  472              	.LFB69:
  155:.\dma_util.c  ****             break;
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 12
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 12
 
 
  156:.\dma_util.c  ****     }
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  509 0028 0DF10701 		add	r1, sp, #7
  510 002c 0DF10602 		add	r2, sp, #6
  511 0030 FFF7FEFF 		bl	CyDmaChStatus
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 13
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 13
 
 
  512              	.LVL63:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  554 0076 13F0FF0F 		tst	r3, #255
  555 007a 25D0     		beq	.L33
  556              	.LVL68:
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 14
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 14
 
 
  557              	.L43:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  197:.\dma_util.c  ****             break;
  198:.\dma_util.c  ****     }
  199:.\dma_util.c  **** }
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 15
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 15
 
 
  600              		.loc 1 199 0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  654              		.type	DMA_TD_1, %object
  655              		.size	DMA_TD_1, 1
  656              	DMA_TD_1:
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 16
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 16
 
 
  657 0007 00       		.space	1
@@ -940,53 +940,53 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  693 0006 00000000 		.4byte	.Ldebug_abbrev0
  694 000a 04       		.byte	0x4
  695 000b 01       		.uleb128 0x1
- 696 000c 6A030000 		.4byte	.LASF67
+ 696 000c 43030000 		.4byte	.LASF67
  697 0010 01       		.byte	0x1
- 698 0011 24030000 		.4byte	.LASF68
- 699 0015 20010000 		.4byte	.LASF69
+ 698 0011 CC020000 		.4byte	.LASF68
+ 699 0015 08030000 		.4byte	.LASF69
  700 0019 00000000 		.4byte	.Ldebug_ranges0+0
  701 001d 00000000 		.4byte	0
  702 0021 00000000 		.4byte	.Ldebug_line0
  703 0025 02       		.uleb128 0x2
  704 0026 01       		.byte	0x1
  705 0027 06       		.byte	0x6
- 706 0028 68020000 		.4byte	.LASF0
+ 706 0028 10020000 		.4byte	.LASF0
  707 002c 02       		.uleb128 0x2
  708 002d 01       		.byte	0x1
  709 002e 08       		.byte	0x8
- 710 002f E5010000 		.4byte	.LASF1
+ 710 002f 8D010000 		.4byte	.LASF1
  711 0033 02       		.uleb128 0x2
  712 0034 02       		.byte	0x2
  713 0035 05       		.byte	0x5
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 17
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 17
 
 
  714 0036 3C000000 		.4byte	.LASF2
  715 003a 02       		.uleb128 0x2
  716 003b 02       		.byte	0x2
  717 003c 07       		.byte	0x7
- 718 003d B8020000 		.4byte	.LASF3
+ 718 003d 60020000 		.4byte	.LASF3
  719 0041 03       		.uleb128 0x3
- 720 0042 60030000 		.4byte	.LASF9
+ 720 0042 39030000 		.4byte	.LASF9
  721 0046 02       		.byte	0x2
  722 0047 3F       		.byte	0x3f
  723 0048 4C000000 		.4byte	0x4c
  724 004c 02       		.uleb128 0x2
  725 004d 04       		.byte	0x4
  726 004e 05       		.byte	0x5
- 727 004f A9010000 		.4byte	.LASF4
+ 727 004f 51010000 		.4byte	.LASF4
  728 0053 02       		.uleb128 0x2
  729 0054 04       		.byte	0x4
  730 0055 07       		.byte	0x7
- 731 0056 3D030000 		.4byte	.LASF5
+ 731 0056 E5020000 		.4byte	.LASF5
  732 005a 02       		.uleb128 0x2
  733 005b 08       		.byte	0x8
  734 005c 05       		.byte	0x5
- 735 005d 9B010000 		.4byte	.LASF6
+ 735 005d 43010000 		.4byte	.LASF6
  736 0061 02       		.uleb128 0x2
  737 0062 08       		.byte	0x8
  738 0063 07       		.byte	0x7
- 739 0064 74020000 		.4byte	.LASF7
+ 739 0064 1C020000 		.4byte	.LASF7
  740 0068 04       		.uleb128 0x4
  741 0069 04       		.byte	0x4
  742 006a 05       		.byte	0x5
@@ -994,14 +994,14 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  744 006f 02       		.uleb128 0x2
  745 0070 04       		.byte	0x4
  746 0071 07       		.byte	0x7
- 747 0072 A6020000 		.4byte	.LASF8
+ 747 0072 4E020000 		.4byte	.LASF8
  748 0076 03       		.uleb128 0x3
- 749 0077 F0020000 		.4byte	.LASF10
+ 749 0077 98020000 		.4byte	.LASF10
  750 007b 03       		.byte	0x3
  751 007c 2C       		.byte	0x2c
  752 007d 41000000 		.4byte	0x41
  753 0081 05       		.uleb128 0x5
- 754 0082 78010000 		.4byte	.LASF11
+ 754 0082 20010000 		.4byte	.LASF11
  755 0086 04       		.byte	0x4
  756 0087 9201     		.2byte	0x192
  757 0089 2C000000 		.4byte	0x2c
@@ -1011,39 +1011,39 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  761 0093 9301     		.2byte	0x193
  762 0095 3A000000 		.4byte	0x3a
  763 0099 05       		.uleb128 0x5
- 764 009a 31030000 		.4byte	.LASF13
+ 764 009a D9020000 		.4byte	.LASF13
  765 009e 04       		.byte	0x4
  766 009f 9401     		.2byte	0x194
  767 00a1 53000000 		.4byte	0x53
  768 00a5 02       		.uleb128 0x2
  769 00a6 04       		.byte	0x4
  770 00a7 04       		.byte	0x4
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 18
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 18
 
 
- 771 00a8 95010000 		.4byte	.LASF14
+ 771 00a8 3D010000 		.4byte	.LASF14
  772 00ac 02       		.uleb128 0x2
  773 00ad 08       		.byte	0x8
  774 00ae 04       		.byte	0x4
- 775 00af 4F030000 		.4byte	.LASF15
+ 775 00af F7020000 		.4byte	.LASF15
  776 00b3 02       		.uleb128 0x2
  777 00b4 01       		.byte	0x1
  778 00b5 08       		.byte	0x8
- 779 00b6 CB020000 		.4byte	.LASF16
+ 779 00b6 73020000 		.4byte	.LASF16
  780 00ba 05       		.uleb128 0x5
- 781 00bb D0020000 		.4byte	.LASF17
+ 781 00bb 78020000 		.4byte	.LASF17
  782 00bf 04       		.byte	0x4
  783 00c0 3402     		.2byte	0x234
  784 00c2 53000000 		.4byte	0x53
  785 00c6 05       		.uleb128 0x5
- 786 00c7 38030000 		.4byte	.LASF18
+ 786 00c7 E0020000 		.4byte	.LASF18
  787 00cb 04       		.byte	0x4
  788 00cc 3C02     		.2byte	0x23c
  789 00ce D2000000 		.4byte	0xd2
  790 00d2 06       		.uleb128 0x6
  791 00d3 81000000 		.4byte	0x81
  792 00d7 05       		.uleb128 0x5
- 793 00d8 40020000 		.4byte	.LASF19
+ 793 00d8 E8010000 		.4byte	.LASF19
  794 00dc 04       		.byte	0x4
  795 00dd 4E02     		.2byte	0x24e
  796 00df E3000000 		.4byte	0xe3
@@ -1056,7 +1056,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  803 00ec 07       		.byte	0x7
  804 00ed 80000000 		.4byte	.LASF20
  805 00f1 09       		.uleb128 0x9
- 806 00f2 07020000 		.4byte	.LASF21
+ 806 00f2 AF010000 		.4byte	.LASF21
  807 00f6 01       		.byte	0x1
  808 00f7 2A       		.byte	0x2a
  809 00f8 00000000 		.4byte	.LFB63
@@ -1064,7 +1064,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  811 0100 01       		.uleb128 0x1
  812 0101 9C       		.byte	0x9c
  813 0102 09       		.uleb128 0x9
- 814 0103 3D040000 		.4byte	.LASF22
+ 814 0103 16040000 		.4byte	.LASF22
  815 0107 01       		.byte	0x1
  816 0108 2F       		.byte	0x2f
  817 0109 00000000 		.4byte	.LFB64
@@ -1072,18 +1072,18 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  819 0111 01       		.uleb128 0x1
  820 0112 9C       		.byte	0x9c
  821 0113 09       		.uleb128 0x9
- 822 0114 D9020000 		.4byte	.LASF23
+ 822 0114 81020000 		.4byte	.LASF23
  823 0118 01       		.byte	0x1
  824 0119 34       		.byte	0x34
  825 011a 00000000 		.4byte	.LFB65
  826 011e 0C000000 		.4byte	.LFE65-.LFB65
  827 0122 01       		.uleb128 0x1
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 19
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 19
 
 
  828 0123 9C       		.byte	0x9c
  829 0124 09       		.uleb128 0x9
- 830 0125 7E010000 		.4byte	.LASF24
+ 830 0125 26010000 		.4byte	.LASF24
  831 0129 01       		.byte	0x1
  832 012a 39       		.byte	0x39
  833 012b 00000000 		.4byte	.LFB66
@@ -1091,7 +1091,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  835 0133 01       		.uleb128 0x1
  836 0134 9C       		.byte	0x9c
  837 0135 0A       		.uleb128 0xa
- 838 0136 6B040000 		.4byte	.LASF25
+ 838 0136 44040000 		.4byte	.LASF25
  839 013a 01       		.byte	0x1
  840 013b 44       		.byte	0x44
  841 013c 00000000 		.4byte	.LFB67
@@ -1100,7 +1100,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  844 0145 9C       		.byte	0x9c
  845 0146 4E030000 		.4byte	0x34e
  846 014a 0B       		.uleb128 0xb
- 847 014b B3020000 		.4byte	.LASF27
+ 847 014b 5B020000 		.4byte	.LASF27
  848 014f 01       		.byte	0x1
  849 0150 44       		.byte	0x44
  850 0151 81000000 		.4byte	0x81
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  882 0188 0C       		.uleb128 0xc
  883 0189 32000000 		.4byte	.LVL4
  884 018d 21070000 		.4byte	0x721
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 20
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 20
 
 
  885 0191 A6010000 		.4byte	0x1a6
@@ -1168,7 +1168,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  909 01b5 52       		.byte	0x52
  910 01b6 03       		.uleb128 0x3
  911 01b7 0A       		.byte	0xa
- 912 01b8 4465     		.2byte	0x6544
+ 912 01b8 4765     		.2byte	0x6547
  913 01ba 0D       		.uleb128 0xd
  914 01bb 01       		.uleb128 0x1
  915 01bc 51       		.byte	0x51
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  939 01e9 0040     		.2byte	0x4000
  940 01eb 0D       		.uleb128 0xd
  941 01ec 01       		.uleb128 0x1
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 21
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 21
 
 
  942 01ed 52       		.byte	0x52
@@ -1249,7 +1249,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  987 0233 52       		.byte	0x52
  988 0234 03       		.uleb128 0x3
  989 0235 0A       		.byte	0xa
- 990 0236 4164     		.2byte	0x6441
+ 990 0236 4264     		.2byte	0x6442
  991 0238 0D       		.uleb128 0xd
  992 0239 01       		.uleb128 0x1
  993 023a 51       		.byte	0x51
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  996 023d 00       		.byte	0
  997 023e 0C       		.uleb128 0xc
  998 023f 7C000000 		.4byte	.LVL13
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 22
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 22
 
 
  999 0243 99070000 		.4byte	0x799
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1053 029c 0D       		.uleb128 0xd
  1054 029d 01       		.uleb128 0x1
  1055 029e 51       		.byte	0x51
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 23
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 23
 
 
  1056 029f 01       		.uleb128 0x1
@@ -1333,7 +1333,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1065 02b1 52       		.byte	0x52
  1066 02b2 03       		.uleb128 0x3
  1067 02b3 0A       		.byte	0xa
- 1068 02b4 4A65     		.2byte	0x654a
+ 1068 02b4 4964     		.2byte	0x6449
  1069 02b6 0D       		.uleb128 0xd
  1070 02b7 01       		.uleb128 0x1
  1071 02b8 51       		.byte	0x51
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1110 02f6 01       		.uleb128 0x1
  1111 02f7 31       		.byte	0x31
  1112 02f8 00       		.byte	0
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 24
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 24
 
 
  1113 02f9 0E       		.uleb128 0xe
@@ -1414,7 +1414,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1143 032f 52       		.byte	0x52
  1144 0330 03       		.uleb128 0x3
  1145 0331 0A       		.byte	0xa
- 1146 0332 4264     		.2byte	0x6442
+ 1146 0332 4564     		.2byte	0x6445
  1147 0334 0D       		.uleb128 0xd
  1148 0335 01       		.uleb128 0x1
  1149 0336 51       		.byte	0x51
@@ -1433,19 +1433,19 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1162 034c 00       		.byte	0
  1163 034d 00       		.byte	0
  1164 034e 0A       		.uleb128 0xa
- 1165 034f 02040000 		.4byte	.LASF26
+ 1165 034f DB030000 		.4byte	.LASF26
  1166 0353 01       		.byte	0x1
  1167 0354 78       		.byte	0x78
  1168 0355 00000000 		.4byte	.LFB68
  1169 0359 D4000000 		.4byte	.LFE68-.LFB68
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 25
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 25
 
 
  1170 035d 01       		.uleb128 0x1
  1171 035e 9C       		.byte	0x9c
  1172 035f D1040000 		.4byte	0x4d1
  1173 0363 0B       		.uleb128 0xb
- 1174 0364 B3020000 		.4byte	.LASF27
+ 1174 0364 5B020000 		.4byte	.LASF27
  1175 0368 01       		.byte	0x1
  1176 0369 78       		.byte	0x78
  1177 036a 81000000 		.4byte	0x81
@@ -1457,7 +1457,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1183 0379 D1040000 		.4byte	0x4d1
  1184 037d D8000000 		.4byte	.LLST2
  1185 0381 0B       		.uleb128 0xb
- 1186 0382 39020000 		.4byte	.LASF29
+ 1186 0382 E1010000 		.4byte	.LASF29
  1187 0386 01       		.byte	0x1
  1188 0387 78       		.byte	0x78
  1189 0388 8D000000 		.4byte	0x8d
@@ -1487,7 +1487,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1213 03b8 52       		.byte	0x52
  1214 03b9 03       		.uleb128 0x3
  1215 03ba 0A       		.byte	0xa
- 1216 03bb 4465     		.2byte	0x6544
+ 1216 03bb 4765     		.2byte	0x6547
  1217 03bd 0D       		.uleb128 0xd
  1218 03be 01       		.uleb128 0x1
  1219 03bf 51       		.byte	0x51
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1224 03c4 0E       		.uleb128 0xe
  1225 03c5 36000000 		.4byte	.LVL34
  1226 03c9 14080000 		.4byte	0x814
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 26
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 26
 
 
  1227 03cd 0C       		.uleb128 0xc
@@ -1537,7 +1537,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1260 0409 52       		.byte	0x52
  1261 040a 03       		.uleb128 0x3
  1262 040b 0A       		.byte	0xa
- 1263 040c 4164     		.2byte	0x6441
+ 1263 040c 4264     		.2byte	0x6442
  1264 040e 0D       		.uleb128 0xd
  1265 040f 01       		.uleb128 0x1
  1266 0410 51       		.byte	0x51
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1281 042e 02       		.uleb128 0x2
  1282 042f 76       		.byte	0x76
  1283 0430 00       		.sleb128 0
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 27
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 27
 
 
  1284 0431 00       		.byte	0
@@ -1587,7 +1587,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1307 045a 52       		.byte	0x52
  1308 045b 03       		.uleb128 0x3
  1309 045c 0A       		.byte	0xa
- 1310 045d 4A65     		.2byte	0x654a
+ 1310 045d 4964     		.2byte	0x6449
  1311 045f 0D       		.uleb128 0xd
  1312 0460 01       		.uleb128 0x1
  1313 0461 51       		.byte	0x51
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1338 0492 53       		.byte	0x53
  1339 0493 01       		.uleb128 0x1
  1340 0494 35       		.byte	0x35
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 28
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 28
 
 
  1341 0495 0D       		.uleb128 0xd
@@ -1637,7 +1637,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1354 04ab 52       		.byte	0x52
  1355 04ac 03       		.uleb128 0x3
  1356 04ad 0A       		.byte	0xa
- 1357 04ae 4264     		.2byte	0x6442
+ 1357 04ae 4564     		.2byte	0x6445
  1358 04b0 0D       		.uleb128 0xd
  1359 04b1 01       		.uleb128 0x1
  1360 04b2 51       		.byte	0x51
@@ -1663,7 +1663,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1380 04d2 04       		.byte	0x4
  1381 04d3 81000000 		.4byte	0x81
  1382 04d7 0A       		.uleb128 0xa
- 1383 04d8 B2010000 		.4byte	.LASF30
+ 1383 04d8 5A010000 		.4byte	.LASF30
  1384 04dc 01       		.byte	0x1
  1385 04dd A4       		.byte	0xa4
  1386 04de 00000000 		.4byte	.LFB69
@@ -1672,16 +1672,16 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1389 04e7 9C       		.byte	0x9c
  1390 04e8 7C050000 		.4byte	0x57c
  1391 04ec 0B       		.uleb128 0xb
- 1392 04ed B3020000 		.4byte	.LASF27
+ 1392 04ed 5B020000 		.4byte	.LASF27
  1393 04f1 01       		.byte	0x1
  1394 04f2 A4       		.byte	0xa4
  1395 04f3 81000000 		.4byte	0x81
  1396 04f7 B2010000 		.4byte	.LLST4
  1397 04fb 10       		.uleb128 0x10
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 29
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 29
 
 
- 1398 04fc 56030000 		.4byte	.LASF31
+ 1398 04fc FE020000 		.4byte	.LASF31
  1399 0500 01       		.byte	0x1
  1400 0501 A5       		.byte	0xa5
  1401 0502 81000000 		.4byte	0x81
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1452 0559 01       		.uleb128 0x1
  1453 055a 52       		.byte	0x52
  1454 055b 02       		.uleb128 0x2
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 30
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 30
 
 
  1455 055c 91       		.byte	0x91
@@ -1768,7 +1768,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1479 057a 00       		.byte	0
  1480 057b 00       		.byte	0
  1481 057c 10       		.uleb128 0x10
- 1482 057d F8020000 		.4byte	.LASF33
+ 1482 057d A0020000 		.4byte	.LASF33
  1483 0581 01       		.byte	0x1
  1484 0582 0A       		.byte	0xa
  1485 0583 81000000 		.4byte	0x81
@@ -1784,7 +1784,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1495 0599 03       		.byte	0x3
  1496 059a 05000000 		.4byte	DMA_TD_0
  1497 059e 10       		.uleb128 0x10
- 1498 059f 03030000 		.4byte	.LASF35
+ 1498 059f AB020000 		.4byte	.LASF35
  1499 05a3 01       		.byte	0x1
  1500 05a4 0C       		.byte	0xc
  1501 05a5 81000000 		.4byte	0x81
@@ -1798,12 +1798,12 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1509 05b6 81000000 		.4byte	0x81
  1510 05ba 05       		.uleb128 0x5
  1511 05bb 03       		.byte	0x3
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 31
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 31
 
 
  1512 05bc 07000000 		.4byte	DMA_TD_1
  1513 05c0 10       		.uleb128 0x10
- 1514 05c1 0E030000 		.4byte	.LASF37
+ 1514 05c1 B6020000 		.4byte	.LASF37
  1515 05c5 01       		.byte	0x1
  1516 05c6 0E       		.byte	0xe
  1517 05c7 81000000 		.4byte	0x81
@@ -1819,7 +1819,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1527 05dd 03       		.byte	0x3
  1528 05de 09000000 		.4byte	DMA_TD_2
  1529 05e2 10       		.uleb128 0x10
- 1530 05e3 19030000 		.4byte	.LASF39
+ 1530 05e3 C1020000 		.4byte	.LASF39
  1531 05e7 01       		.byte	0x1
  1532 05e8 10       		.byte	0x10
  1533 05e9 81000000 		.4byte	0x81
@@ -1835,7 +1835,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1543 05ff 03       		.byte	0x3
  1544 0600 0B000000 		.4byte	DMA_TD_3
  1545 0604 11       		.uleb128 0x11
- 1546 0605 54040000 		.4byte	.LASF41
+ 1546 0605 2D040000 		.4byte	.LASF41
  1547 0609 05       		.byte	0x5
  1548 060a 9606     		.2byte	0x696
  1549 060c 10060000 		.4byte	0x610
@@ -1849,7 +1849,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1557 0623 7F02     		.2byte	0x27f
  1558 0625 00       		.byte	0
  1559 0626 14       		.uleb128 0x14
- 1560 0627 61040000 		.4byte	.LASF42
+ 1560 0627 3A040000 		.4byte	.LASF42
  1561 062b 01       		.byte	0x1
  1562 062c 1A       		.byte	0x1a
  1563 062d 15060000 		.4byte	0x615
@@ -1857,8 +1857,8 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1565 0632 03       		.byte	0x3
  1566 0633 00000000 		.4byte	bufferA_0
  1567 0637 14       		.uleb128 0x14
- 1568 0638 15040000 		.4byte	.LASF43
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 32
+ 1568 0638 EE030000 		.4byte	.LASF43
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 32
 
 
  1569 063c 01       		.byte	0x1
@@ -1876,7 +1876,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1581 0654 03       		.byte	0x3
  1582 0655 00000000 		.4byte	isDmaBusy_0
  1583 0659 14       		.uleb128 0x14
- 1584 065a F8030000 		.4byte	.LASF45
+ 1584 065a D1030000 		.4byte	.LASF45
  1585 065e 01       		.byte	0x1
  1586 065f 1C       		.byte	0x1c
  1587 0660 15060000 		.4byte	0x615
@@ -1884,7 +1884,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1589 0665 03       		.byte	0x3
  1590 0666 00000000 		.4byte	bufferA_1
  1591 066a 14       		.uleb128 0x14
- 1592 066b 1F040000 		.4byte	.LASF46
+ 1592 066b F8030000 		.4byte	.LASF46
  1593 066f 01       		.byte	0x1
  1594 0670 1D       		.byte	0x1d
  1595 0671 15060000 		.4byte	0x615
@@ -1900,7 +1900,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1605 0687 03       		.byte	0x3
  1606 0688 00000000 		.4byte	isDmaBusy_1
  1607 068c 14       		.uleb128 0x14
- 1608 068d 78040000 		.4byte	.LASF48
+ 1608 068d 51040000 		.4byte	.LASF48
  1609 0691 01       		.byte	0x1
  1610 0692 1E       		.byte	0x1e
  1611 0693 15060000 		.4byte	0x615
@@ -1908,7 +1908,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1613 0698 03       		.byte	0x3
  1614 0699 00000000 		.4byte	bufferA_2
  1615 069d 14       		.uleb128 0x14
- 1616 069e 29040000 		.4byte	.LASF49
+ 1616 069e 02040000 		.4byte	.LASF49
  1617 06a2 01       		.byte	0x1
  1618 06a3 1F       		.byte	0x1f
  1619 06a4 15060000 		.4byte	0x615
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1623 06ae 14       		.uleb128 0x14
  1624 06af C5000000 		.4byte	.LASF50
  1625 06b3 01       		.byte	0x1
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 33
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 33
 
 
  1626 06b4 26       		.byte	0x26
@@ -1927,7 +1927,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1629 06ba 03       		.byte	0x3
  1630 06bb 00000000 		.4byte	isDmaBusy_2
  1631 06bf 14       		.uleb128 0x14
- 1632 06c0 82040000 		.4byte	.LASF51
+ 1632 06c0 5B040000 		.4byte	.LASF51
  1633 06c4 01       		.byte	0x1
  1634 06c5 20       		.byte	0x20
  1635 06c6 15060000 		.4byte	0x615
@@ -1935,7 +1935,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1637 06cb 03       		.byte	0x3
  1638 06cc 00000000 		.4byte	bufferA_3
  1639 06d0 14       		.uleb128 0x14
- 1640 06d1 33040000 		.4byte	.LASF52
+ 1640 06d1 0C040000 		.4byte	.LASF52
  1641 06d5 01       		.byte	0x1
  1642 06d6 21       		.byte	0x21
  1643 06d7 15060000 		.4byte	0x615
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1680 072c 45070000 		.4byte	0x745
  1681 0730 16       		.uleb128 0x16
  1682 0731 81000000 		.4byte	0x81
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 34
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 34
 
 
  1683 0735 16       		.uleb128 0x16
@@ -2002,7 +2002,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1701 075f 8D000000 		.4byte	0x8d
  1702 0763 00       		.byte	0
  1703 0764 18       		.uleb128 0x18
- 1704 0765 CA010000 		.4byte	.LASF58
+ 1704 0765 72010000 		.4byte	.LASF58
  1705 0769 09       		.byte	0x9
  1706 076a 18       		.byte	0x18
  1707 076b 75070000 		.4byte	0x775
@@ -2010,7 +2010,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1709 0770 D7000000 		.4byte	0xd7
  1710 0774 00       		.byte	0
  1711 0775 15       		.uleb128 0x15
- 1712 0776 F3010000 		.4byte	.LASF57
+ 1712 0776 9B010000 		.4byte	.LASF57
  1713 077a 08       		.byte	0x8
  1714 077b 1E       		.byte	0x1e
  1715 077c 81000000 		.4byte	0x81
@@ -2025,7 +2025,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1724 0794 8D000000 		.4byte	0x8d
  1725 0798 00       		.byte	0
  1726 0799 18       		.uleb128 0x18
- 1727 079a 8B020000 		.4byte	.LASF59
+ 1727 079a 33020000 		.4byte	.LASF59
  1728 079e 0A       		.byte	0xa
  1729 079f 18       		.byte	0x18
  1730 07a0 AA070000 		.4byte	0x7aa
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1737 07b0 1E       		.byte	0x1e
  1738 07b1 81000000 		.4byte	0x81
  1739 07b5 CE070000 		.4byte	0x7ce
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 35
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 35
 
 
  1740 07b9 16       		.uleb128 0x16
@@ -2051,7 +2051,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1747 07c9 8D000000 		.4byte	0x8d
  1748 07cd 00       		.byte	0
  1749 07ce 18       		.uleb128 0x18
- 1750 07cf 1E020000 		.4byte	.LASF61
+ 1750 07cf C6010000 		.4byte	.LASF61
  1751 07d3 0C       		.byte	0xc
  1752 07d4 18       		.byte	0x18
  1753 07d5 DF070000 		.4byte	0x7df
@@ -2074,7 +2074,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1770 07fe 8D000000 		.4byte	0x8d
  1771 0802 00       		.byte	0
  1772 0803 18       		.uleb128 0x18
- 1773 0804 4D020000 		.4byte	.LASF63
+ 1773 0804 F5010000 		.4byte	.LASF63
  1774 0808 0E       		.byte	0xe
  1775 0809 18       		.byte	0x18
  1776 080a 14080000 		.4byte	0x814
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1794 0834 29       		.byte	0x29
  1795 0835 BA000000 		.4byte	0xba
  1796 0839 48080000 		.4byte	0x848
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 36
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 36
 
 
  1797 083d 16       		.uleb128 0x16
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1851 0022 0E       		.uleb128 0xe
  1852 0023 3A       		.uleb128 0x3a
  1853 0024 0B       		.uleb128 0xb
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 37
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 37
 
 
  1854 0025 3B       		.uleb128 0x3b
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1908 005b 2E       		.uleb128 0x2e
  1909 005c 00       		.byte	0
  1910 005d 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 38
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 38
 
 
  1911 005e 19       		.uleb128 0x19
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  1965 0096 13       		.uleb128 0x13
  1966 0097 02       		.uleb128 0x2
  1967 0098 17       		.uleb128 0x17
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 39
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 39
 
 
  1968 0099 00       		.byte	0
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  2022 00d8 00       		.byte	0
  2023 00d9 11       		.uleb128 0x11
  2024 00da 34       		.uleb128 0x34
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 40
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 40
 
 
  2025 00db 00       		.byte	0
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  2079 0111 19       		.uleb128 0x19
  2080 0112 03       		.uleb128 0x3
  2081 0113 0E       		.uleb128 0xe
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 41
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 41
 
 
  2082 0114 3A       		.uleb128 0x3a
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  2136 014a 19       		.uleb128 0x19
  2137 014b 01       		.uleb128 0x1
  2138 014c 13       		.uleb128 0x13
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 42
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 42
 
 
  2139 014d 00       		.byte	0
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  2193 0047 F3       		.byte	0xf3
  2194 0048 01       		.uleb128 0x1
  2195 0049 50       		.byte	0x50
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 43
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 43
 
 
  2196 004a 9F       		.byte	0x9f
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  2250 00ca 0400     		.2byte	0x4
  2251 00cc F3       		.byte	0xf3
  2252 00cd 01       		.uleb128 0x1
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 44
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 44
 
 
  2253 00ce 50       		.byte	0x50
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  2307 015b F3       		.byte	0xf3
  2308 015c 01       		.uleb128 0x1
  2309 015d 52       		.byte	0x52
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 45
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 45
 
 
  2310 015e 9F       		.byte	0x9f
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  2364 01de 0400     		.2byte	0x4
  2365 01e0 F3       		.byte	0xf3
  2366 01e1 01       		.uleb128 0x1
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 46
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 46
 
 
  2367 01e2 50       		.byte	0x50
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  2421 0008 00000000 		.4byte	.LFB64
  2422 000c 0C000000 		.4byte	.LFE64
  2423 0010 00000000 		.4byte	.LFB65
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 47
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 47
 
 
  2424 0014 0C000000 		.4byte	.LFE65
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  2453      6E666967 
  2453      75726174 
  2454              	.LASF65:
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 48
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 48
 
 
  2455 0072 4379446D 		.ascii	"CyDmaChEnable\000"
@@ -2878,264 +2878,260 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 1
  2479      61436853 
  2479      6574496E 
  2479      69746961 
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 49
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 49
 
 
  2479      6C546400 
  2480              	.LASF12:
  2481 0119 75696E74 		.ascii	"uint16\000"
  2481      313600
- 2482              	.LASF69:
- 2483 0120 433A5C55 		.ascii	"C:\\Users\\ericz\\OneDrive\\Documents\\PSoC Creator"
- 2483      73657273 
- 2483      5C657269 
- 2483      637A5C4F 
- 2483      6E654472 
- 2484 014e 5C46696E 		.ascii	"\\FinalProjectWorkspace\\FinalProject.cydsn\000"
- 2484      616C5072 
- 2484      6F6A6563 
- 2484      74576F72 
- 2484      6B737061 
- 2485              	.LASF11:
- 2486 0178 75696E74 		.ascii	"uint8\000"
- 2486      3800
- 2487              	.LASF24:
- 2488 017e 444D415F 		.ascii	"DMA_3_Complete_Handler\000"
- 2488      335F436F 
- 2488      6D706C65 
- 2488      74655F48 
- 2488      616E646C 
- 2489              	.LASF14:
- 2490 0195 666C6F61 		.ascii	"float\000"
- 2490      7400
- 2491              	.LASF6:
- 2492 019b 6C6F6E67 		.ascii	"long long int\000"
- 2492      206C6F6E 
- 2492      6720696E 
- 2492      7400
- 2493              	.LASF4:
- 2494 01a9 6C6F6E67 		.ascii	"long int\000"
- 2494      20696E74 
- 2494      00
- 2495              	.LASF30:
- 2496 01b2 444D415F 		.ascii	"DMA_Wait_For_Completion\000"
- 2496      57616974 
- 2496      5F466F72 
- 2496      5F436F6D 
- 2496      706C6574 
- 2497              	.LASF58:
- 2498 01ca 444D415F 		.ascii	"DMA_Complete_ISR_0_StartEx\000"
- 2498      436F6D70 
- 2498      6C657465 
- 2498      5F495352 
- 2498      5F305F53 
- 2499              	.LASF1:
- 2500 01e5 756E7369 		.ascii	"unsigned char\000"
- 2500      676E6564 
- 2500      20636861 
- 2500      7200
- 2501              	.LASF57:
- 2502 01f3 444D415F 		.ascii	"DMA_1_DmaInitialize\000"
- 2502      315F446D 
- 2502      61496E69 
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 50
+ 2482              	.LASF11:
+ 2483 0120 75696E74 		.ascii	"uint8\000"
+ 2483      3800
+ 2484              	.LASF24:
+ 2485 0126 444D415F 		.ascii	"DMA_3_Complete_Handler\000"
+ 2485      335F436F 
+ 2485      6D706C65 
+ 2485      74655F48 
+ 2485      616E646C 
+ 2486              	.LASF14:
+ 2487 013d 666C6F61 		.ascii	"float\000"
+ 2487      7400
+ 2488              	.LASF6:
+ 2489 0143 6C6F6E67 		.ascii	"long long int\000"
+ 2489      206C6F6E 
+ 2489      6720696E 
+ 2489      7400
+ 2490              	.LASF4:
+ 2491 0151 6C6F6E67 		.ascii	"long int\000"
+ 2491      20696E74 
+ 2491      00
+ 2492              	.LASF30:
+ 2493 015a 444D415F 		.ascii	"DMA_Wait_For_Completion\000"
+ 2493      57616974 
+ 2493      5F466F72 
+ 2493      5F436F6D 
+ 2493      706C6574 
+ 2494              	.LASF58:
+ 2495 0172 444D415F 		.ascii	"DMA_Complete_ISR_0_StartEx\000"
+ 2495      436F6D70 
+ 2495      6C657465 
+ 2495      5F495352 
+ 2495      5F305F53 
+ 2496              	.LASF1:
+ 2497 018d 756E7369 		.ascii	"unsigned char\000"
+ 2497      676E6564 
+ 2497      20636861 
+ 2497      7200
+ 2498              	.LASF57:
+ 2499 019b 444D415F 		.ascii	"DMA_1_DmaInitialize\000"
+ 2499      315F446D 
+ 2499      61496E69 
+ 2499      7469616C 
+ 2499      697A6500 
+ 2500              	.LASF21:
+ 2501 01af 444D415F 		.ascii	"DMA_0_Complete_Handler\000"
+ 2501      305F436F 
+ 2501      6D706C65 
+ 2501      74655F48 
+ 2501      616E646C 
+ 2502              	.LASF61:
+ 2503 01c6 444D415F 		.ascii	"DMA_Complete_ISR_2_StartEx\000"
+ 2503      436F6D70 
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 50
 
 
- 2502      7469616C 
- 2502      697A6500 
- 2503              	.LASF21:
- 2504 0207 444D415F 		.ascii	"DMA_0_Complete_Handler\000"
- 2504      305F436F 
- 2504      6D706C65 
- 2504      74655F48 
- 2504      616E646C 
- 2505              	.LASF61:
- 2506 021e 444D415F 		.ascii	"DMA_Complete_ISR_2_StartEx\000"
- 2506      436F6D70 
- 2506      6C657465 
- 2506      5F495352 
- 2506      5F325F53 
- 2507              	.LASF29:
- 2508 0239 6C656E67 		.ascii	"length\000"
- 2508      746800
- 2509              	.LASF19:
- 2510 0240 63796973 		.ascii	"cyisraddress\000"
- 2510      72616464 
- 2510      72657373 
- 2510      00
- 2511              	.LASF63:
- 2512 024d 444D415F 		.ascii	"DMA_Complete_ISR_3_StartEx\000"
- 2512      436F6D70 
- 2512      6C657465 
- 2512      5F495352 
- 2512      5F335F53 
- 2513              	.LASF0:
- 2514 0268 7369676E 		.ascii	"signed char\000"
- 2514      65642063 
- 2514      68617200 
- 2515              	.LASF7:
- 2516 0274 6C6F6E67 		.ascii	"long long unsigned int\000"
- 2516      206C6F6E 
- 2516      6720756E 
- 2516      7369676E 
- 2516      65642069 
- 2517              	.LASF59:
- 2518 028b 444D415F 		.ascii	"DMA_Complete_ISR_1_StartEx\000"
- 2518      436F6D70 
- 2518      6C657465 
- 2518      5F495352 
- 2518      5F315F53 
- 2519              	.LASF8:
- 2520 02a6 756E7369 		.ascii	"unsigned int\000"
- 2520      676E6564 
- 2520      20696E74 
- 2520      00
- 2521              	.LASF27:
- 2522 02b3 64697370 		.ascii	"disp\000"
- 2522      00
- 2523              	.LASF3:
- 2524 02b8 73686F72 		.ascii	"short unsigned int\000"
- 2524      7420756E 
- 2524      7369676E 
- 2524      65642069 
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 51
+ 2503      6C657465 
+ 2503      5F495352 
+ 2503      5F325F53 
+ 2504              	.LASF29:
+ 2505 01e1 6C656E67 		.ascii	"length\000"
+ 2505      746800
+ 2506              	.LASF19:
+ 2507 01e8 63796973 		.ascii	"cyisraddress\000"
+ 2507      72616464 
+ 2507      72657373 
+ 2507      00
+ 2508              	.LASF63:
+ 2509 01f5 444D415F 		.ascii	"DMA_Complete_ISR_3_StartEx\000"
+ 2509      436F6D70 
+ 2509      6C657465 
+ 2509      5F495352 
+ 2509      5F335F53 
+ 2510              	.LASF0:
+ 2511 0210 7369676E 		.ascii	"signed char\000"
+ 2511      65642063 
+ 2511      68617200 
+ 2512              	.LASF7:
+ 2513 021c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2513      206C6F6E 
+ 2513      6720756E 
+ 2513      7369676E 
+ 2513      65642069 
+ 2514              	.LASF59:
+ 2515 0233 444D415F 		.ascii	"DMA_Complete_ISR_1_StartEx\000"
+ 2515      436F6D70 
+ 2515      6C657465 
+ 2515      5F495352 
+ 2515      5F315F53 
+ 2516              	.LASF8:
+ 2517 024e 756E7369 		.ascii	"unsigned int\000"
+ 2517      676E6564 
+ 2517      20696E74 
+ 2517      00
+ 2518              	.LASF27:
+ 2519 025b 64697370 		.ascii	"disp\000"
+ 2519      00
+ 2520              	.LASF3:
+ 2521 0260 73686F72 		.ascii	"short unsigned int\000"
+ 2521      7420756E 
+ 2521      7369676E 
+ 2521      65642069 
+ 2521      6E7400
+ 2522              	.LASF16:
+ 2523 0273 63686172 		.ascii	"char\000"
+ 2523      00
+ 2524              	.LASF17:
+ 2525 0278 63797374 		.ascii	"cystatus\000"
+ 2525      61747573 
+ 2525      00
+ 2526              	.LASF23:
+ 2527 0281 444D415F 		.ascii	"DMA_2_Complete_Handler\000"
+ 2527      325F436F 
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 51
 
 
- 2524      6E7400
- 2525              	.LASF16:
- 2526 02cb 63686172 		.ascii	"char\000"
- 2526      00
- 2527              	.LASF17:
- 2528 02d0 63797374 		.ascii	"cystatus\000"
- 2528      61747573 
- 2528      00
- 2529              	.LASF23:
- 2530 02d9 444D415F 		.ascii	"DMA_2_Complete_Handler\000"
- 2530      325F436F 
- 2530      6D706C65 
- 2530      74655F48 
- 2530      616E646C 
- 2531              	.LASF10:
- 2532 02f0 696E7433 		.ascii	"int32_t\000"
- 2532      325F7400 
- 2533              	.LASF33:
- 2534 02f8 444D415F 		.ascii	"DMA_Chan_0\000"
- 2534      4368616E 
- 2534      5F3000
- 2535              	.LASF35:
- 2536 0303 444D415F 		.ascii	"DMA_Chan_1\000"
- 2536      4368616E 
- 2536      5F3100
- 2537              	.LASF37:
- 2538 030e 444D415F 		.ascii	"DMA_Chan_2\000"
- 2538      4368616E 
- 2538      5F3200
- 2539              	.LASF39:
- 2540 0319 444D415F 		.ascii	"DMA_Chan_3\000"
- 2540      4368616E 
- 2540      5F3300
- 2541              	.LASF68:
- 2542 0324 2E5C646D 		.ascii	".\\dma_util.c\000"
- 2542      615F7574 
- 2542      696C2E63 
- 2542      00
- 2543              	.LASF13:
- 2544 0331 75696E74 		.ascii	"uint32\000"
- 2544      333200
- 2545              	.LASF18:
- 2546 0338 72656738 		.ascii	"reg8\000"
- 2546      00
- 2547              	.LASF5:
- 2548 033d 6C6F6E67 		.ascii	"long unsigned int\000"
- 2548      20756E73 
- 2548      69676E65 
- 2548      6420696E 
- 2548      7400
- 2549              	.LASF15:
- 2550 034f 646F7562 		.ascii	"double\000"
- 2550      6C6500
- 2551              	.LASF31:
- 2552 0356 63757272 		.ascii	"currentTd\000"
- 2552      656E7454 
- 2552      6400
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 52
-
-
+ 2527      6D706C65 
+ 2527      74655F48 
+ 2527      616E646C 
+ 2528              	.LASF10:
+ 2529 0298 696E7433 		.ascii	"int32_t\000"
+ 2529      325F7400 
+ 2530              	.LASF33:
+ 2531 02a0 444D415F 		.ascii	"DMA_Chan_0\000"
+ 2531      4368616E 
+ 2531      5F3000
+ 2532              	.LASF35:
+ 2533 02ab 444D415F 		.ascii	"DMA_Chan_1\000"
+ 2533      4368616E 
+ 2533      5F3100
+ 2534              	.LASF37:
+ 2535 02b6 444D415F 		.ascii	"DMA_Chan_2\000"
+ 2535      4368616E 
+ 2535      5F3200
+ 2536              	.LASF39:
+ 2537 02c1 444D415F 		.ascii	"DMA_Chan_3\000"
+ 2537      4368616E 
+ 2537      5F3300
+ 2538              	.LASF68:
+ 2539 02cc 2E5C646D 		.ascii	".\\dma_util.c\000"
+ 2539      615F7574 
+ 2539      696C2E63 
+ 2539      00
+ 2540              	.LASF13:
+ 2541 02d9 75696E74 		.ascii	"uint32\000"
+ 2541      333200
+ 2542              	.LASF18:
+ 2543 02e0 72656738 		.ascii	"reg8\000"
+ 2543      00
+ 2544              	.LASF5:
+ 2545 02e5 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2545      20756E73 
+ 2545      69676E65 
+ 2545      6420696E 
+ 2545      7400
+ 2546              	.LASF15:
+ 2547 02f7 646F7562 		.ascii	"double\000"
+ 2547      6C6500
+ 2548              	.LASF31:
+ 2549 02fe 63757272 		.ascii	"currentTd\000"
+ 2549      656E7454 
+ 2549      6400
+ 2550              	.LASF69:
+ 2551 0308 433A5C55 		.ascii	"C:\\Users\\ericz\\Documents\\boxy\\FinalProject.cyd"
+ 2551      73657273 
+ 2551      5C657269 
+ 2551      637A5C44 
+ 2551      6F63756D 
+ 2552 0336 736E00   		.ascii	"sn\000"
  2553              	.LASF9:
- 2554 0360 5F5F696E 		.ascii	"__int32_t\000"
+ 2554 0339 5F5F696E 		.ascii	"__int32_t\000"
  2554      7433325F 
  2554      7400
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 52
+
+
  2555              	.LASF67:
- 2556 036a 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 2556 0343 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
  2556      4320342E 
  2556      392E3320 
  2556      32303135 
  2556      30333033 
- 2557 039d 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 2557 0376 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
  2557      20726576 
  2557      6973696F 
  2557      6E203232 
  2557      31323230 
- 2558 03d0 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2558 03a9 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  2558      66756E63 
  2558      74696F6E 
  2558      2D736563 
  2558      74696F6E 
  2559              	.LASF45:
- 2560 03f8 62756666 		.ascii	"bufferA_1\000"
+ 2560 03d1 62756666 		.ascii	"bufferA_1\000"
  2560      6572415F 
  2560      3100
  2561              	.LASF26:
- 2562 0402 444D415F 		.ascii	"DMA_Feed_SPI_Async\000"
+ 2562 03db 444D415F 		.ascii	"DMA_Feed_SPI_Async\000"
  2562      46656564 
  2562      5F535049 
  2562      5F417379 
  2562      6E6300
  2563              	.LASF43:
- 2564 0415 62756666 		.ascii	"bufferB_0\000"
+ 2564 03ee 62756666 		.ascii	"bufferB_0\000"
  2564      6572425F 
  2564      3000
  2565              	.LASF46:
- 2566 041f 62756666 		.ascii	"bufferB_1\000"
+ 2566 03f8 62756666 		.ascii	"bufferB_1\000"
  2566      6572425F 
  2566      3100
  2567              	.LASF49:
- 2568 0429 62756666 		.ascii	"bufferB_2\000"
+ 2568 0402 62756666 		.ascii	"bufferB_2\000"
  2568      6572425F 
  2568      3200
  2569              	.LASF52:
- 2570 0433 62756666 		.ascii	"bufferB_3\000"
+ 2570 040c 62756666 		.ascii	"bufferB_3\000"
  2570      6572425F 
  2570      3300
  2571              	.LASF22:
- 2572 043d 444D415F 		.ascii	"DMA_1_Complete_Handler\000"
+ 2572 0416 444D415F 		.ascii	"DMA_1_Complete_Handler\000"
  2572      315F436F 
  2572      6D706C65 
  2572      74655F48 
  2572      616E646C 
  2573              	.LASF41:
- 2574 0454 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2574 042d 49544D5F 		.ascii	"ITM_RxBuffer\000"
  2574      52784275 
  2574      66666572 
  2574      00
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccNBdFy5.s 			page 53
-
-
  2575              	.LASF42:
- 2576 0461 62756666 		.ascii	"bufferA_0\000"
+ 2576 043a 62756666 		.ascii	"bufferA_0\000"
  2576      6572415F 
  2576      3000
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\ccYuQiS9.s 			page 53
+
+
  2577              	.LASF25:
- 2578 046b 496E6974 		.ascii	"Init_DMA_SPI\000"
+ 2578 0444 496E6974 		.ascii	"Init_DMA_SPI\000"
  2578      5F444D41 
  2578      5F535049 
  2578      00
  2579              	.LASF48:
- 2580 0478 62756666 		.ascii	"bufferA_2\000"
+ 2580 0451 62756666 		.ascii	"bufferA_2\000"
  2580      6572415F 
  2580      3200
  2581              	.LASF51:
- 2582 0482 62756666 		.ascii	"bufferA_3\000"
+ 2582 045b 62756666 		.ascii	"bufferA_3\000"
  2582      6572415F 
  2582      3300
  2583              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

@@ -2,7 +2,7 @@
 --	Conversion of FinalProject.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue May 12 06:14:53 2026
+--	Tue May 12 14:16:46 2026
 --
 
 USE cypress.cypress.all;
@@ -738,7 +738,7 @@ SIGNAL Net_331 : bit;
 SIGNAL tmpIO_0__MODE_net_0 : bit;
 TERMINAL tmpSIOVREF__MODE_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__MODE_net_0 : bit;
-SIGNAL Net_332 : bit;
+SIGNAL Net_670 : bit;
 SIGNAL \Debouncer_1:op_clk\ : bit;
 SIGNAL \Debouncer_1:DEBOUNCER[0]:d_sync_0\ : bit;
 SIGNAL \Debouncer_1:DEBOUNCER[0]:d_sync_1\ : bit;
@@ -1120,6 +1120,18 @@ SIGNAL Net_644 : bit;
 SIGNAL \PWM_1:Net_113\ : bit;
 SIGNAL \PWM_1:Net_107\ : bit;
 SIGNAL \PWM_1:Net_114\ : bit;
+SIGNAL tmpOE__TOGGLE_LANTERN_net_0 : bit;
+SIGNAL Net_679 : bit;
+SIGNAL tmpIO_0__TOGGLE_LANTERN_net_0 : bit;
+TERMINAL tmpSIOVREF__TOGGLE_LANTERN_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__TOGGLE_LANTERN_net_0 : bit;
+SIGNAL \Debouncer_2:op_clk\ : bit;
+SIGNAL \Debouncer_2:DEBOUNCER[0]:d_sync_0\ : bit;
+SIGNAL \Debouncer_2:DEBOUNCER[0]:d_sync_1\ : bit;
+SIGNAL Net_672 : bit;
+SIGNAL Net_675 : bit;
+SIGNAL Net_677 : bit;
+SIGNAL Net_674 : bit;
 SIGNAL \SPIM_0:BSPIM:so_send_reg\\D\ : bit;
 SIGNAL \SPIM_0:BSPIM:mosi_reg\\D\ : bit;
 SIGNAL \SPIM_0:BSPIM:state_2\\D\ : bit;
@@ -1193,6 +1205,11 @@ SIGNAL \PWM_1:PWMUDB:pwm_i_reg\\D\ : bit;
 SIGNAL \PWM_1:PWMUDB:pwm1_i_reg\\D\ : bit;
 SIGNAL \PWM_1:PWMUDB:pwm2_i_reg\\D\ : bit;
 SIGNAL \PWM_1:PWMUDB:tc_i_reg\\D\ : bit;
+SIGNAL \Debouncer_2:DEBOUNCER[0]:d_sync_0\\D\ : bit;
+SIGNAL \Debouncer_2:DEBOUNCER[0]:d_sync_1\\D\ : bit;
+SIGNAL Net_675D : bit;
+SIGNAL Net_677D : bit;
+SIGNAL Net_674D : bit;
 BEGIN
 
 zero <=  ('0') ;
@@ -1499,6 +1516,8 @@ Net_387D <= ((not \Debouncer_1:DEBOUNCER[0]:d_sync_0\ and \Debouncer_1:DEBOUNCER
 \PWM_1:PWMUDB:status_2\ <= ((\PWM_1:PWMUDB:runmode_enable\ and \PWM_1:PWMUDB:tc_i\));
 
 \PWM_1:PWMUDB:pwm_i\ <= ((\PWM_1:PWMUDB:runmode_enable\ and \PWM_1:PWMUDB:cmp1_less\));
+
+Net_677D <= ((not \Debouncer_2:DEBOUNCER[0]:d_sync_0\ and \Debouncer_2:DEBOUNCER[0]:d_sync_1\));
 
 DMA_0:cy_dma_v1_0
 	GENERIC MAP(drq_type=>"01",
@@ -4448,11 +4467,11 @@ Clock_1:cy_clock_v1_0
 		period=>"20000000000000",
 		is_direct=>'0',
 		is_digital=>'1')
-	PORT MAP(clock_out=>Net_332,
+	PORT MAP(clock_out=>Net_670,
 		dig_domain_out=>open);
 \Debouncer_1:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
-	PORT MAP(clock_in=>Net_332,
+	PORT MAP(clock_in=>Net_670,
 		enable=>one,
 		clock_out=>\Debouncer_1:op_clk\);
 MODE_ISR:cy_isr_v1_0
@@ -4845,6 +4864,84 @@ Clock_3:cy_clock_v1_0
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_412,
 		dig_domain_out=>open);
+TOGGLE_LANTERN:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"7c1acf84-034e-4c13-a81d-5ad54c7df14e",
+		drive_mode=>"010",
+		ibuf_enabled=>"1",
+		init_dr_st=>"1",
+		input_sync=>"0",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(one),
+		y=>(zero),
+		fb=>Net_679,
+		analog=>(open),
+		io=>(tmpIO_0__TOGGLE_LANTERN_net_0),
+		siovref=>(tmpSIOVREF__TOGGLE_LANTERN_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__TOGGLE_LANTERN_net_0);
+\Debouncer_2:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_670,
+		enable=>one,
+		clock_out=>\Debouncer_2:op_clk\);
+LANTERN_TOGGLE_ISR:cy_isr_v1_0
+	GENERIC MAP(int_type=>"00")
+	PORT MAP(int_signal=>Net_677);
 \SPIM_0:BSPIM:so_send_reg\:cy_dff
 	PORT MAP(d=>zero,
 		clk=>\SPIM_0:BSPIM:clk_fin\,
@@ -5153,5 +5250,25 @@ Net_354:cy_dff
 	PORT MAP(d=>\PWM_1:PWMUDB:status_2\,
 		clk=>\PWM_1:PWMUDB:ClockOutFromEnBlock\,
 		q=>\PWM_1:PWMUDB:tc_i_reg\);
+\Debouncer_2:DEBOUNCER[0]:d_sync_0\:cy_dff
+	PORT MAP(d=>Net_679,
+		clk=>\Debouncer_2:op_clk\,
+		q=>\Debouncer_2:DEBOUNCER[0]:d_sync_0\);
+\Debouncer_2:DEBOUNCER[0]:d_sync_1\:cy_dff
+	PORT MAP(d=>\Debouncer_2:DEBOUNCER[0]:d_sync_0\,
+		clk=>\Debouncer_2:op_clk\,
+		q=>\Debouncer_2:DEBOUNCER[0]:d_sync_1\);
+Net_675:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Debouncer_2:op_clk\,
+		q=>Net_675);
+Net_677:cy_dff
+	PORT MAP(d=>Net_677D,
+		clk=>\Debouncer_2:op_clk\,
+		q=>Net_677);
+Net_674:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Debouncer_2:op_clk\,
+		q=>Net_674);
 
 END R_T_L;

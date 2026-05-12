@@ -1,235 +1,240 @@
 <?xml version="1.0" encoding="us-ascii"?>
 
-<fileSet version="1" anchorPath="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp" xsi:schemaLocation="http://cypress.com/xsd/cypathdictionary cypathdictionary.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://cypress.com/xsd/cypathdictionary">
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cyfitter_cfg.h" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cyfitter_cfg.c" value="ARM_C_FILE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\config.hex" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\protect.hex" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\eeprom.hex" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cymetadata.c" value="ARM_C_FILE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cydevice.h" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cydevicegnu.inc" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cydevicerv.inc" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cydeviceiar.inc" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cydevice_trm.h" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cydevicegnu_trm.inc" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cydevicerv_trm.inc" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cydeviceiar_trm.inc" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cyfittergnu.inc" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cyfitterrv.inc" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cyfitteriar.inc" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cyfitter.h" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cydisabledsheets.h" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_0_dma.c" value="ARM_C_FILE;DMA_0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_0_dma.h" value="NONE;DMA_0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_0.c" value="ARM_C_FILE;SPIM_0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_0.h" value="NONE;SPIM_0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_0_PM.c" value="ARM_C_FILE;SPIM_0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_0_INT.c" value="ARM_C_FILE;SPIM_0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_0_PVT.h" value="NONE;SPIM_0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MOSI0_aliases.h" value="NONE;MOSI0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MOSI0.c" value="ARM_C_FILE;MOSI0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MOSI0.h" value="NONE;MOSI0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MISO0_aliases.h" value="NONE;MISO0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MISO0.c" value="ARM_C_FILE;MISO0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MISO0.h" value="NONE;MISO0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCLK0_aliases.h" value="NONE;SCLK0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCLK0.c" value="ARM_C_FILE;SCLK0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCLK0.h" value="NONE;SCLK0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SS0_aliases.h" value="NONE;SS0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SS0.c" value="ARM_C_FILE;SS0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SS0.h" value="NONE;SS0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DC0_aliases.h" value="NONE;DC0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DC0.c" value="ARM_C_FILE;DC0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DC0.h" value="NONE;DC0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED0_aliases.h" value="NONE;LED0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED0.c" value="ARM_C_FILE;LED0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED0.h" value="NONE;LED0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\RESET0_aliases.h" value="NONE;RESET0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\RESET0.c" value="ARM_C_FILE;RESET0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\RESET0.h" value="NONE;RESET0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_0.c" value="ARM_C_FILE;DMA_Complete_ISR_0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_0.h" value="NONE;DMA_Complete_ISR_0" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\POT_IN_aliases.h" value="NONE;POT_IN" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\POT_IN.c" value="ARM_C_FILE;POT_IN" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\POT_IN.h" value="NONE;POT_IN" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\ADC_DelSig_1.c" value="ARM_C_FILE;ADC_DelSig_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\ADC_DelSig_1.h" value="NONE;ADC_DelSig_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\ADC_DelSig_1_PM.c" value="ARM_C_FILE;ADC_DelSig_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\ADC_DelSig_1_INT.c" value="ARM_C_FILE;ADC_DelSig_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_1.c" value="ARM_C_FILE;SPIM_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_1.h" value="NONE;SPIM_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_1_PM.c" value="ARM_C_FILE;SPIM_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_1_INT.c" value="ARM_C_FILE;SPIM_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_1_PVT.h" value="NONE;SPIM_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MOSI1_aliases.h" value="NONE;MOSI1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MOSI1.c" value="ARM_C_FILE;MOSI1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MOSI1.h" value="NONE;MOSI1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCLK1_aliases.h" value="NONE;SCLK1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCLK1.c" value="ARM_C_FILE;SCLK1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCLK1.h" value="NONE;SCLK1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SS1_aliases.h" value="NONE;SS1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SS1.c" value="ARM_C_FILE;SS1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SS1.h" value="NONE;SS1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED1_aliases.h" value="NONE;LED1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED1.c" value="ARM_C_FILE;LED1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED1.h" value="NONE;LED1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\RESET1_aliases.h" value="NONE;RESET1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\RESET1.c" value="ARM_C_FILE;RESET1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\RESET1.h" value="NONE;RESET1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DC1_aliases.h" value="NONE;DC1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DC1.c" value="ARM_C_FILE;DC1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DC1.h" value="NONE;DC1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MISO1_aliases.h" value="NONE;MISO1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MISO1.c" value="ARM_C_FILE;MISO1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MISO1.h" value="NONE;MISO1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_1_dma.c" value="ARM_C_FILE;DMA_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_1_dma.h" value="NONE;DMA_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_1.c" value="ARM_C_FILE;DMA_Complete_ISR_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_1.h" value="NONE;DMA_Complete_ISR_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_2_dma.c" value="ARM_C_FILE;DMA_2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_2_dma.h" value="NONE;DMA_2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_2.c" value="ARM_C_FILE;SPIM_2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_2.h" value="NONE;SPIM_2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_2_PM.c" value="ARM_C_FILE;SPIM_2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_2_INT.c" value="ARM_C_FILE;SPIM_2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_2_PVT.h" value="NONE;SPIM_2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MOSI2_aliases.h" value="NONE;MOSI2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MOSI2.c" value="ARM_C_FILE;MOSI2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MOSI2.h" value="NONE;MOSI2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MISO2_aliases.h" value="NONE;MISO2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MISO2.c" value="ARM_C_FILE;MISO2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MISO2.h" value="NONE;MISO2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCLK2_aliases.h" value="NONE;SCLK2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCLK2.c" value="ARM_C_FILE;SCLK2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCLK2.h" value="NONE;SCLK2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SS2_aliases.h" value="NONE;SS2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SS2.c" value="ARM_C_FILE;SS2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SS2.h" value="NONE;SS2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DC2_aliases.h" value="NONE;DC2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DC2.c" value="ARM_C_FILE;DC2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DC2.h" value="NONE;DC2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED2_aliases.h" value="NONE;LED2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED2.c" value="ARM_C_FILE;LED2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED2.h" value="NONE;LED2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\RESET2_aliases.h" value="NONE;RESET2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\RESET2.c" value="ARM_C_FILE;RESET2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\RESET2.h" value="NONE;RESET2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_2.c" value="ARM_C_FILE;DMA_Complete_ISR_2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_2.h" value="NONE;DMA_Complete_ISR_2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_3_dma.c" value="ARM_C_FILE;DMA_3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_3_dma.h" value="NONE;DMA_3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_3.c" value="ARM_C_FILE;SPIM_3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_3.h" value="NONE;SPIM_3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_3_PM.c" value="ARM_C_FILE;SPIM_3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_3_INT.c" value="ARM_C_FILE;SPIM_3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_3_PVT.h" value="NONE;SPIM_3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MOSI3_aliases.h" value="NONE;MOSI3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MOSI3.c" value="ARM_C_FILE;MOSI3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MOSI3.h" value="NONE;MOSI3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MISO3_aliases.h" value="NONE;MISO3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MISO3.c" value="ARM_C_FILE;MISO3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MISO3.h" value="NONE;MISO3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCLK3_aliases.h" value="NONE;SCLK3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCLK3.c" value="ARM_C_FILE;SCLK3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCLK3.h" value="NONE;SCLK3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SS3_aliases.h" value="NONE;SS3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SS3.c" value="ARM_C_FILE;SS3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SS3.h" value="NONE;SS3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DC3_aliases.h" value="NONE;DC3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DC3.c" value="ARM_C_FILE;DC3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DC3.h" value="NONE;DC3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED3_aliases.h" value="NONE;LED3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED3.c" value="ARM_C_FILE;LED3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED3.h" value="NONE;LED3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\RESET3_aliases.h" value="NONE;RESET3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\RESET3.c" value="ARM_C_FILE;RESET3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\RESET3.h" value="NONE;RESET3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_3.c" value="ARM_C_FILE;DMA_Complete_ISR_3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_3.h" value="NONE;DMA_Complete_ISR_3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SDA_1_aliases.h" value="NONE;SDA_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SDA_1.c" value="ARM_C_FILE;SDA_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SDA_1.h" value="NONE;SDA_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCL_1_aliases.h" value="NONE;SCL_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCL_1.c" value="ARM_C_FILE;SCL_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SCL_1.h" value="NONE;SCL_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\I2C_1.c" value="ARM_C_FILE;I2C_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\I2C_1.h" value="NONE;I2C_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\I2C_1_BOOT.c" value="ARM_C_FILE;I2C_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\I2C_1_INT.c" value="ARM_C_FILE;I2C_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\I2C_1_PM.c" value="ARM_C_FILE;I2C_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\I2C_1_SLAVE.c" value="ARM_C_FILE;I2C_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\I2C_1_MASTER.c" value="ARM_C_FILE;I2C_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\I2C_1_PVT.h" value="NONE;I2C_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MODE_aliases.h" value="NONE;MODE" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MODE.c" value="ARM_C_FILE;MODE" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MODE.h" value="NONE;MODE" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\Clock_1.c" value="ARM_C_FILE;Clock_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\Clock_1.h" value="NONE;Clock_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MODE_ISR.c" value="ARM_C_FILE;MODE_ISR" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\MODE_ISR.h" value="NONE;MODE_ISR" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED_MODE_1_aliases.h" value="NONE;LED_MODE_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED_MODE_1.c" value="ARM_C_FILE;LED_MODE_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED_MODE_1.h" value="NONE;LED_MODE_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED_MODE_2_aliases.h" value="NONE;LED_MODE_2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED_MODE_2.c" value="ARM_C_FILE;LED_MODE_2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED_MODE_2.h" value="NONE;LED_MODE_2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED_STATUS_aliases.h" value="NONE;LED_STATUS" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED_STATUS.c" value="ARM_C_FILE;LED_STATUS" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\LED_STATUS.h" value="NONE;LED_STATUS" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\Clock_2.c" value="ARM_C_FILE;Clock_2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\Clock_2.h" value="NONE;Clock_2" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\BRIGHT_ISR.c" value="ARM_C_FILE;BRIGHT_ISR" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\BRIGHT_ISR.h" value="NONE;BRIGHT_ISR" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\PWM_1.c" value="ARM_C_FILE;PWM_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\PWM_1.h" value="NONE;PWM_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\PWM_1_PM.c" value="ARM_C_FILE;PWM_1" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\Clock_3.c" value="ARM_C_FILE;Clock_3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\Clock_3.h" value="NONE;Clock_3" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_0_IntClock.c" value="ARM_C_FILE;SPIM_0_IntClock" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_0_IntClock.h" value="NONE;SPIM_0_IntClock" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\ADC_DelSig_1_AMux.c" value="ARM_C_FILE;ADC_DelSig_1_AMux" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\ADC_DelSig_1_AMux.h" value="NONE;ADC_DelSig_1_AMux" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\ADC_DelSig_1_Ext_CP_Clk.c" value="ARM_C_FILE;ADC_DelSig_1_Ext_CP_Clk" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\ADC_DelSig_1_Ext_CP_Clk.h" value="NONE;ADC_DelSig_1_Ext_CP_Clk" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\ADC_DelSig_1_IRQ.c" value="ARM_C_FILE;ADC_DelSig_1_IRQ" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\ADC_DelSig_1_IRQ.h" value="NONE;ADC_DelSig_1_IRQ" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\ADC_DelSig_1_theACLK.c" value="ARM_C_FILE;ADC_DelSig_1_theACLK" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\ADC_DelSig_1_theACLK.h" value="NONE;ADC_DelSig_1_theACLK" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_1_IntClock.c" value="ARM_C_FILE;SPIM_1_IntClock" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_1_IntClock.h" value="NONE;SPIM_1_IntClock" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_2_IntClock.c" value="ARM_C_FILE;SPIM_2_IntClock" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_2_IntClock.h" value="NONE;SPIM_2_IntClock" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_3_IntClock.c" value="ARM_C_FILE;SPIM_3_IntClock" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\SPIM_3_IntClock.h" value="NONE;SPIM_3_IntClock" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cycodeshareimport.ld" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cycodeshareexport.ld" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cycodeshareimport.scat" value="NONE;" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cm3gcc.ld" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\Cm3RealView.scat" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\Cm3Start.c" value="ARM_C_FILE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\core_cm3.h" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\core_cm3_psoc5.h" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\CyBootAsmGnu.s" value="GNU_ARM_ASM_FILE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\CyBootAsmRv.s" value="REALVIEW_ARM_ASM_FILE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\CyDmac.c" value="ARM_C_FILE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\CyDmac.h" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\CyFlash.c" value="ARM_C_FILE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\CyFlash.h" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\CyLib.c" value="ARM_C_FILE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\CyLib.h" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cypins.h" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cyPm.c" value="ARM_C_FILE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cyPm.h" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\CySpc.c" value="ARM_C_FILE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\CySpc.h" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cytypes.h" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cyutils.c" value="ARM_C_FILE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\core_cmFunc.h" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\core_cmInstr.h" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\Cm3Iar.icf" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\CyBootAsmIar.s" value="IAR_ASM_FILE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cmsis_armcc.h" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\cmsis_gcc.h" value="NONE;cy_boot" />
-  <file name="C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\codegentemp\project.h" value="NONE;" />
+<fileSet version="1" anchorPath="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp" xsi:schemaLocation="http://cypress.com/xsd/cypathdictionary cypathdictionary.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://cypress.com/xsd/cypathdictionary">
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cyfitter_cfg.h" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cyfitter_cfg.c" value="ARM_C_FILE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\config.hex" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\protect.hex" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\eeprom.hex" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cymetadata.c" value="ARM_C_FILE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cydevice.h" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cydevicegnu.inc" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cydevicerv.inc" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cydeviceiar.inc" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cydevice_trm.h" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cydevicegnu_trm.inc" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cydevicerv_trm.inc" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cydeviceiar_trm.inc" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cyfittergnu.inc" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cyfitterrv.inc" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cyfitteriar.inc" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cyfitter.h" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cydisabledsheets.h" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_0_dma.c" value="ARM_C_FILE;DMA_0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_0_dma.h" value="NONE;DMA_0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_0.c" value="ARM_C_FILE;SPIM_0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_0.h" value="NONE;SPIM_0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_0_PM.c" value="ARM_C_FILE;SPIM_0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_0_INT.c" value="ARM_C_FILE;SPIM_0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_0_PVT.h" value="NONE;SPIM_0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MOSI0_aliases.h" value="NONE;MOSI0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MOSI0.c" value="ARM_C_FILE;MOSI0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MOSI0.h" value="NONE;MOSI0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MISO0_aliases.h" value="NONE;MISO0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MISO0.c" value="ARM_C_FILE;MISO0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MISO0.h" value="NONE;MISO0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCLK0_aliases.h" value="NONE;SCLK0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCLK0.c" value="ARM_C_FILE;SCLK0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCLK0.h" value="NONE;SCLK0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SS0_aliases.h" value="NONE;SS0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SS0.c" value="ARM_C_FILE;SS0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SS0.h" value="NONE;SS0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DC0_aliases.h" value="NONE;DC0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DC0.c" value="ARM_C_FILE;DC0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DC0.h" value="NONE;DC0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED0_aliases.h" value="NONE;LED0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED0.c" value="ARM_C_FILE;LED0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED0.h" value="NONE;LED0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\RESET0_aliases.h" value="NONE;RESET0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\RESET0.c" value="ARM_C_FILE;RESET0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\RESET0.h" value="NONE;RESET0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_0.c" value="ARM_C_FILE;DMA_Complete_ISR_0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_0.h" value="NONE;DMA_Complete_ISR_0" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\POT_IN_aliases.h" value="NONE;POT_IN" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\POT_IN.c" value="ARM_C_FILE;POT_IN" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\POT_IN.h" value="NONE;POT_IN" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1.c" value="ARM_C_FILE;ADC_DelSig_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1.h" value="NONE;ADC_DelSig_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_PM.c" value="ARM_C_FILE;ADC_DelSig_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_INT.c" value="ARM_C_FILE;ADC_DelSig_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_1.c" value="ARM_C_FILE;SPIM_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_1.h" value="NONE;SPIM_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_1_PM.c" value="ARM_C_FILE;SPIM_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_1_INT.c" value="ARM_C_FILE;SPIM_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_1_PVT.h" value="NONE;SPIM_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MOSI1_aliases.h" value="NONE;MOSI1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MOSI1.c" value="ARM_C_FILE;MOSI1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MOSI1.h" value="NONE;MOSI1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCLK1_aliases.h" value="NONE;SCLK1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCLK1.c" value="ARM_C_FILE;SCLK1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCLK1.h" value="NONE;SCLK1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SS1_aliases.h" value="NONE;SS1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SS1.c" value="ARM_C_FILE;SS1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SS1.h" value="NONE;SS1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED1_aliases.h" value="NONE;LED1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED1.c" value="ARM_C_FILE;LED1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED1.h" value="NONE;LED1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\RESET1_aliases.h" value="NONE;RESET1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\RESET1.c" value="ARM_C_FILE;RESET1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\RESET1.h" value="NONE;RESET1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DC1_aliases.h" value="NONE;DC1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DC1.c" value="ARM_C_FILE;DC1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DC1.h" value="NONE;DC1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MISO1_aliases.h" value="NONE;MISO1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MISO1.c" value="ARM_C_FILE;MISO1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MISO1.h" value="NONE;MISO1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_1_dma.c" value="ARM_C_FILE;DMA_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_1_dma.h" value="NONE;DMA_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_1.c" value="ARM_C_FILE;DMA_Complete_ISR_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_1.h" value="NONE;DMA_Complete_ISR_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_2_dma.c" value="ARM_C_FILE;DMA_2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_2_dma.h" value="NONE;DMA_2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_2.c" value="ARM_C_FILE;SPIM_2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_2.h" value="NONE;SPIM_2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_2_PM.c" value="ARM_C_FILE;SPIM_2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_2_INT.c" value="ARM_C_FILE;SPIM_2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_2_PVT.h" value="NONE;SPIM_2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MOSI2_aliases.h" value="NONE;MOSI2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MOSI2.c" value="ARM_C_FILE;MOSI2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MOSI2.h" value="NONE;MOSI2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MISO2_aliases.h" value="NONE;MISO2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MISO2.c" value="ARM_C_FILE;MISO2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MISO2.h" value="NONE;MISO2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCLK2_aliases.h" value="NONE;SCLK2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCLK2.c" value="ARM_C_FILE;SCLK2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCLK2.h" value="NONE;SCLK2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SS2_aliases.h" value="NONE;SS2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SS2.c" value="ARM_C_FILE;SS2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SS2.h" value="NONE;SS2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DC2_aliases.h" value="NONE;DC2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DC2.c" value="ARM_C_FILE;DC2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DC2.h" value="NONE;DC2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED2_aliases.h" value="NONE;LED2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED2.c" value="ARM_C_FILE;LED2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED2.h" value="NONE;LED2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\RESET2_aliases.h" value="NONE;RESET2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\RESET2.c" value="ARM_C_FILE;RESET2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\RESET2.h" value="NONE;RESET2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_2.c" value="ARM_C_FILE;DMA_Complete_ISR_2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_2.h" value="NONE;DMA_Complete_ISR_2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_3_dma.c" value="ARM_C_FILE;DMA_3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_3_dma.h" value="NONE;DMA_3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_3.c" value="ARM_C_FILE;SPIM_3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_3.h" value="NONE;SPIM_3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_3_PM.c" value="ARM_C_FILE;SPIM_3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_3_INT.c" value="ARM_C_FILE;SPIM_3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_3_PVT.h" value="NONE;SPIM_3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MOSI3_aliases.h" value="NONE;MOSI3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MOSI3.c" value="ARM_C_FILE;MOSI3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MOSI3.h" value="NONE;MOSI3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MISO3_aliases.h" value="NONE;MISO3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MISO3.c" value="ARM_C_FILE;MISO3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MISO3.h" value="NONE;MISO3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCLK3_aliases.h" value="NONE;SCLK3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCLK3.c" value="ARM_C_FILE;SCLK3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCLK3.h" value="NONE;SCLK3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SS3_aliases.h" value="NONE;SS3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SS3.c" value="ARM_C_FILE;SS3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SS3.h" value="NONE;SS3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DC3_aliases.h" value="NONE;DC3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DC3.c" value="ARM_C_FILE;DC3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DC3.h" value="NONE;DC3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED3_aliases.h" value="NONE;LED3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED3.c" value="ARM_C_FILE;LED3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED3.h" value="NONE;LED3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\RESET3_aliases.h" value="NONE;RESET3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\RESET3.c" value="ARM_C_FILE;RESET3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\RESET3.h" value="NONE;RESET3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_3.c" value="ARM_C_FILE;DMA_Complete_ISR_3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\DMA_Complete_ISR_3.h" value="NONE;DMA_Complete_ISR_3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SDA_1_aliases.h" value="NONE;SDA_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SDA_1.c" value="ARM_C_FILE;SDA_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SDA_1.h" value="NONE;SDA_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCL_1_aliases.h" value="NONE;SCL_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCL_1.c" value="ARM_C_FILE;SCL_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SCL_1.h" value="NONE;SCL_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\I2C_1.c" value="ARM_C_FILE;I2C_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\I2C_1.h" value="NONE;I2C_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\I2C_1_BOOT.c" value="ARM_C_FILE;I2C_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\I2C_1_INT.c" value="ARM_C_FILE;I2C_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\I2C_1_PM.c" value="ARM_C_FILE;I2C_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\I2C_1_SLAVE.c" value="ARM_C_FILE;I2C_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\I2C_1_MASTER.c" value="ARM_C_FILE;I2C_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\I2C_1_PVT.h" value="NONE;I2C_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MODE_aliases.h" value="NONE;MODE" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MODE.c" value="ARM_C_FILE;MODE" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MODE.h" value="NONE;MODE" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\Clock_1.c" value="ARM_C_FILE;Clock_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\Clock_1.h" value="NONE;Clock_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MODE_ISR.c" value="ARM_C_FILE;MODE_ISR" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\MODE_ISR.h" value="NONE;MODE_ISR" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED_MODE_1_aliases.h" value="NONE;LED_MODE_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED_MODE_1.c" value="ARM_C_FILE;LED_MODE_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED_MODE_1.h" value="NONE;LED_MODE_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED_MODE_2_aliases.h" value="NONE;LED_MODE_2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED_MODE_2.c" value="ARM_C_FILE;LED_MODE_2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED_MODE_2.h" value="NONE;LED_MODE_2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED_STATUS_aliases.h" value="NONE;LED_STATUS" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED_STATUS.c" value="ARM_C_FILE;LED_STATUS" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LED_STATUS.h" value="NONE;LED_STATUS" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\Clock_2.c" value="ARM_C_FILE;Clock_2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\Clock_2.h" value="NONE;Clock_2" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\BRIGHT_ISR.c" value="ARM_C_FILE;BRIGHT_ISR" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\BRIGHT_ISR.h" value="NONE;BRIGHT_ISR" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\PWM_1.c" value="ARM_C_FILE;PWM_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\PWM_1.h" value="NONE;PWM_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\PWM_1_PM.c" value="ARM_C_FILE;PWM_1" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\Clock_3.c" value="ARM_C_FILE;Clock_3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\Clock_3.h" value="NONE;Clock_3" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\TOGGLE_LANTERN_aliases.h" value="NONE;TOGGLE_LANTERN" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\TOGGLE_LANTERN.c" value="ARM_C_FILE;TOGGLE_LANTERN" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\TOGGLE_LANTERN.h" value="NONE;TOGGLE_LANTERN" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LANTERN_TOGGLE_ISR.c" value="ARM_C_FILE;LANTERN_TOGGLE_ISR" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\LANTERN_TOGGLE_ISR.h" value="NONE;LANTERN_TOGGLE_ISR" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_0_IntClock.c" value="ARM_C_FILE;SPIM_0_IntClock" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_0_IntClock.h" value="NONE;SPIM_0_IntClock" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_AMux.c" value="ARM_C_FILE;ADC_DelSig_1_AMux" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_AMux.h" value="NONE;ADC_DelSig_1_AMux" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_Ext_CP_Clk.c" value="ARM_C_FILE;ADC_DelSig_1_Ext_CP_Clk" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_Ext_CP_Clk.h" value="NONE;ADC_DelSig_1_Ext_CP_Clk" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_IRQ.c" value="ARM_C_FILE;ADC_DelSig_1_IRQ" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_IRQ.h" value="NONE;ADC_DelSig_1_IRQ" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_theACLK.c" value="ARM_C_FILE;ADC_DelSig_1_theACLK" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\ADC_DelSig_1_theACLK.h" value="NONE;ADC_DelSig_1_theACLK" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_1_IntClock.c" value="ARM_C_FILE;SPIM_1_IntClock" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_1_IntClock.h" value="NONE;SPIM_1_IntClock" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_2_IntClock.c" value="ARM_C_FILE;SPIM_2_IntClock" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_2_IntClock.h" value="NONE;SPIM_2_IntClock" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_3_IntClock.c" value="ARM_C_FILE;SPIM_3_IntClock" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\SPIM_3_IntClock.h" value="NONE;SPIM_3_IntClock" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cycodeshareimport.ld" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cycodeshareexport.ld" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cycodeshareimport.scat" value="NONE;" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cm3gcc.ld" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\Cm3RealView.scat" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\Cm3Start.c" value="ARM_C_FILE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\core_cm3.h" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\core_cm3_psoc5.h" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\CyBootAsmGnu.s" value="GNU_ARM_ASM_FILE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\CyBootAsmRv.s" value="REALVIEW_ARM_ASM_FILE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\CyDmac.c" value="ARM_C_FILE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\CyDmac.h" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\CyFlash.c" value="ARM_C_FILE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\CyFlash.h" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\CyLib.c" value="ARM_C_FILE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\CyLib.h" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cypins.h" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cyPm.c" value="ARM_C_FILE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cyPm.h" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\CySpc.c" value="ARM_C_FILE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\CySpc.h" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cytypes.h" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cyutils.c" value="ARM_C_FILE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\core_cmFunc.h" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\core_cmInstr.h" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\Cm3Iar.icf" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\CyBootAsmIar.s" value="IAR_ASM_FILE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cmsis_armcc.h" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\cmsis_gcc.h" value="NONE;cy_boot" />
+  <file name="C:\Users\ericz\Documents\boxy\FinalProject.cydsn\codegentemp\project.h" value="NONE;" />
 </fileSet>

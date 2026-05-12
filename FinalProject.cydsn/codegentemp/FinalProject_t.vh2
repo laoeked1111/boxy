@@ -1,5 +1,5 @@
--- Project:   C:\Users\ericz\OneDrive\Documents\PSoC Creator\FinalProjectWorkspace\FinalProject.cydsn\FinalProject.cyprj
--- Generated: 05/12/2026 06:14:57
+-- Project:   C:\Users\ericz\Documents\boxy\FinalProject.cydsn\FinalProject.cyprj
+-- Generated: 05/12/2026 14:16:50
 -- PSoC Creator  3.3 CP3
 
 ENTITY FinalProject IS
@@ -37,7 +37,8 @@ ENTITY FinalProject IS
         MODE(0)_PAD : IN std_ulogic;
         LED_MODE_1(0)_PAD : OUT std_ulogic;
         LED_MODE_2(0)_PAD : OUT std_ulogic;
-        LED_STATUS(0)_PAD : OUT std_ulogic);
+        LED_STATUS(0)_PAD : OUT std_ulogic;
+        TOGGLE_LANTERN(0)_PAD : IN std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
@@ -89,32 +90,28 @@ ARCHITECTURE __DEFAULT__ OF FinalProject IS
     SIGNAL Net_15 : bit;
     SIGNAL Net_151 : bit;
     SIGNAL Net_152 : bit;
-    ATTRIBUTE placement_force OF Net_152 : SIGNAL IS "U(0,0,A)0";
+    ATTRIBUTE placement_force OF Net_152 : SIGNAL IS "U(0,1,A)0";
     SIGNAL Net_153 : bit;
-    ATTRIBUTE placement_force OF Net_153 : SIGNAL IS "U(0,1,A)3";
+    ATTRIBUTE placement_force OF Net_153 : SIGNAL IS "U(0,2,A)0";
     SIGNAL Net_154 : bit;
-    ATTRIBUTE placement_force OF Net_154 : SIGNAL IS "U(0,1,A)0";
+    ATTRIBUTE placement_force OF Net_154 : SIGNAL IS "U(0,1,B)0";
     SIGNAL Net_155 : bit;
     SIGNAL Net_160 : bit;
     SIGNAL Net_162 : bit;
     SIGNAL Net_163 : bit;
-    ATTRIBUTE placement_force OF Net_163 : SIGNAL IS "U(3,1,B)0";
+    ATTRIBUTE placement_force OF Net_163 : SIGNAL IS "U(3,3,A)0";
     SIGNAL Net_164 : bit;
-    ATTRIBUTE placement_force OF Net_164 : SIGNAL IS "U(2,3,B)3";
+    ATTRIBUTE placement_force OF Net_164 : SIGNAL IS "U(2,1,B)0";
     SIGNAL Net_165 : bit;
-    ATTRIBUTE placement_force OF Net_165 : SIGNAL IS "U(3,4,B)1";
+    ATTRIBUTE placement_force OF Net_165 : SIGNAL IS "U(2,1,B)1";
     SIGNAL Net_166 : bit;
     SIGNAL Net_25 : bit;
-    ATTRIBUTE placement_force OF Net_25 : SIGNAL IS "U(2,3,A)2";
+    ATTRIBUTE placement_force OF Net_25 : SIGNAL IS "U(3,1,A)3";
     SIGNAL Net_26 : bit;
-    ATTRIBUTE placement_force OF Net_26 : SIGNAL IS "U(2,2,A)2";
+    ATTRIBUTE placement_force OF Net_26 : SIGNAL IS "U(3,1,B)0";
     SIGNAL Net_331 : bit;
-    SIGNAL Net_332 : bit;
-    ATTRIBUTE udbclken_assigned OF Net_332 : SIGNAL IS "True";
-    ATTRIBUTE global_signal OF Net_332 : SIGNAL IS true;
-    SIGNAL Net_332_local : bit;
     SIGNAL Net_387 : bit;
-    ATTRIBUTE placement_force OF Net_387 : SIGNAL IS "U(2,2,B)2";
+    ATTRIBUTE placement_force OF Net_387 : SIGNAL IS "U(2,4,B)2";
     SIGNAL Net_392 : bit;
     ATTRIBUTE global_signal OF Net_392 : SIGNAL IS true;
     SIGNAL Net_392_local : bit;
@@ -123,17 +120,24 @@ ARCHITECTURE __DEFAULT__ OF FinalProject IS
     ATTRIBUTE global_signal OF Net_412 : SIGNAL IS true;
     SIGNAL Net_412_local : bit;
     SIGNAL Net_496 : bit;
-    ATTRIBUTE placement_force OF Net_496 : SIGNAL IS "U(2,4,A)2";
+    ATTRIBUTE placement_force OF Net_496 : SIGNAL IS "U(3,0,B)0";
     SIGNAL Net_57 : bit;
+    SIGNAL Net_670 : bit;
+    ATTRIBUTE udbclken_assigned OF Net_670 : SIGNAL IS "True";
+    ATTRIBUTE global_signal OF Net_670 : SIGNAL IS true;
+    SIGNAL Net_670_local : bit;
+    SIGNAL Net_677 : bit;
+    ATTRIBUTE placement_force OF Net_677 : SIGNAL IS "U(2,3,A)2";
+    SIGNAL Net_679 : bit;
     SIGNAL Net_7 : bit;
     SIGNAL Net_82 : bit;
     SIGNAL Net_89 : bit;
     SIGNAL Net_95 : bit;
-    ATTRIBUTE placement_force OF Net_95 : SIGNAL IS "U(3,5,A)0";
+    ATTRIBUTE placement_force OF Net_95 : SIGNAL IS "U(3,4,A)0";
     SIGNAL Net_96 : bit;
-    ATTRIBUTE placement_force OF Net_96 : SIGNAL IS "U(3,2,A)1";
+    ATTRIBUTE placement_force OF Net_96 : SIGNAL IS "U(3,5,B)2";
     SIGNAL Net_97 : bit;
-    ATTRIBUTE placement_force OF Net_97 : SIGNAL IS "U(3,3,A)0";
+    ATTRIBUTE placement_force OF Net_97 : SIGNAL IS "U(2,2,A)0";
     SIGNAL POT_IN(0)__PA : bit;
     SIGNAL RESET0(0)__PA : bit;
     SIGNAL RESET1(0)__PA : bit;
@@ -149,6 +153,7 @@ ARCHITECTURE __DEFAULT__ OF FinalProject IS
     SIGNAL SS1(0)__PA : bit;
     SIGNAL SS2(0)__PA : bit;
     SIGNAL SS3(0)__PA : bit;
+    SIGNAL TOGGLE_LANTERN(0)__PA : bit;
     SIGNAL \ADC_DelSig_1:Net_245_0\ : bit;
     SIGNAL \ADC_DelSig_1:Net_245_1\ : bit;
     SIGNAL \ADC_DelSig_1:Net_245_2\ : bit;
@@ -172,9 +177,13 @@ ARCHITECTURE __DEFAULT__ OF FinalProject IS
     SIGNAL \ADC_DelSig_1:mod_dat_3\ : bit;
     SIGNAL \ADC_DelSig_1:mod_reset\ : bit;
     SIGNAL \Debouncer_1:DEBOUNCER[0]:d_sync_0\ : bit;
-    ATTRIBUTE placement_force OF \Debouncer_1:DEBOUNCER[0]:d_sync_0\ : SIGNAL IS "U(2,5,B)3";
+    ATTRIBUTE placement_force OF \Debouncer_1:DEBOUNCER[0]:d_sync_0\ : SIGNAL IS "U(2,4,A)1";
     SIGNAL \Debouncer_1:DEBOUNCER[0]:d_sync_1\ : bit;
-    ATTRIBUTE placement_force OF \Debouncer_1:DEBOUNCER[0]:d_sync_1\ : SIGNAL IS "U(2,5,A)1";
+    ATTRIBUTE placement_force OF \Debouncer_1:DEBOUNCER[0]:d_sync_1\ : SIGNAL IS "U(2,4,A)0";
+    SIGNAL \Debouncer_2:DEBOUNCER[0]:d_sync_0\ : bit;
+    ATTRIBUTE placement_force OF \Debouncer_2:DEBOUNCER[0]:d_sync_0\ : SIGNAL IS "U(1,2,A)1";
+    SIGNAL \Debouncer_2:DEBOUNCER[0]:d_sync_1\ : bit;
+    ATTRIBUTE placement_force OF \Debouncer_2:DEBOUNCER[0]:d_sync_1\ : SIGNAL IS "U(1,2,A)3";
     SIGNAL \I2C_1:Net_1109_0\ : bit;
     SIGNAL \I2C_1:Net_1109_1\ : bit;
     SIGNAL \I2C_1:Net_643_0\ : bit;
@@ -190,17 +199,17 @@ ARCHITECTURE __DEFAULT__ OF FinalProject IS
     SIGNAL \PWM_1:PWMUDB:control_6\ : bit;
     SIGNAL \PWM_1:PWMUDB:control_7\ : bit;
     SIGNAL \PWM_1:PWMUDB:prevCompare1\ : bit;
-    ATTRIBUTE placement_force OF \PWM_1:PWMUDB:prevCompare1\ : SIGNAL IS "U(2,4,B)2";
+    ATTRIBUTE placement_force OF \PWM_1:PWMUDB:prevCompare1\ : SIGNAL IS "U(3,0,B)2";
     SIGNAL \PWM_1:PWMUDB:runmode_enable\ : bit;
-    ATTRIBUTE placement_force OF \PWM_1:PWMUDB:runmode_enable\ : SIGNAL IS "U(2,4,A)3";
+    ATTRIBUTE placement_force OF \PWM_1:PWMUDB:runmode_enable\ : SIGNAL IS "U(3,0,B)1";
     SIGNAL \PWM_1:PWMUDB:status_0\ : bit;
-    ATTRIBUTE placement_force OF \PWM_1:PWMUDB:status_0\ : SIGNAL IS "U(2,4,A)0";
+    ATTRIBUTE placement_force OF \PWM_1:PWMUDB:status_0\ : SIGNAL IS "U(3,0,B)3";
     SIGNAL \PWM_1:PWMUDB:status_2\ : bit;
-    ATTRIBUTE placement_force OF \PWM_1:PWMUDB:status_2\ : SIGNAL IS "U(2,2,A)1";
+    ATTRIBUTE placement_force OF \PWM_1:PWMUDB:status_2\ : SIGNAL IS "U(3,1,A)0";
     SIGNAL \PWM_1:PWMUDB:status_3\ : bit;
     SIGNAL \PWM_1:PWMUDB:tc_i\ : bit;
     SIGNAL \SPIM_0:BSPIM:cnt_enable\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_0:BSPIM:cnt_enable\ : SIGNAL IS "U(1,0,B)0";
+    ATTRIBUTE placement_force OF \SPIM_0:BSPIM:cnt_enable\ : SIGNAL IS "U(3,1,A)2";
     SIGNAL \SPIM_0:BSPIM:cnt_tc\ : bit;
     SIGNAL \SPIM_0:BSPIM:count_0\ : bit;
     SIGNAL \SPIM_0:BSPIM:count_1\ : bit;
@@ -210,18 +219,18 @@ ARCHITECTURE __DEFAULT__ OF FinalProject IS
     SIGNAL \SPIM_0:BSPIM:count_5\ : bit;
     SIGNAL \SPIM_0:BSPIM:count_6\ : bit;
     SIGNAL \SPIM_0:BSPIM:ld_ident\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_0:BSPIM:ld_ident\ : SIGNAL IS "U(2,1,A)1";
+    ATTRIBUTE placement_force OF \SPIM_0:BSPIM:ld_ident\ : SIGNAL IS "U(2,0,B)2";
     SIGNAL \SPIM_0:BSPIM:load_cond\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_0:BSPIM:load_cond\ : SIGNAL IS "U(2,1,A)0";
+    ATTRIBUTE placement_force OF \SPIM_0:BSPIM:load_cond\ : SIGNAL IS "U(3,2,A)0";
     SIGNAL \SPIM_0:BSPIM:load_rx_data\ : bit;
     ATTRIBUTE placement_force OF \SPIM_0:BSPIM:load_rx_data\ : SIGNAL IS "U(2,0,A)1";
     SIGNAL \SPIM_0:BSPIM:mosi_from_dp\ : bit;
     SIGNAL \SPIM_0:BSPIM:rx_status_4\ : bit;
     SIGNAL \SPIM_0:BSPIM:rx_status_5\ : bit;
     SIGNAL \SPIM_0:BSPIM:rx_status_6\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_0:BSPIM:rx_status_6\ : SIGNAL IS "U(2,1,A)2";
+    ATTRIBUTE placement_force OF \SPIM_0:BSPIM:rx_status_6\ : SIGNAL IS "U(2,2,B)2";
     SIGNAL \SPIM_0:BSPIM:state_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_0:BSPIM:state_0\ : SIGNAL IS "U(2,0,B)2";
+    ATTRIBUTE placement_force OF \SPIM_0:BSPIM:state_0\ : SIGNAL IS "U(3,0,A)0";
     SIGNAL \SPIM_0:BSPIM:state_1\ : bit;
     ATTRIBUTE placement_force OF \SPIM_0:BSPIM:state_1\ : SIGNAL IS "U(2,0,B)0";
     SIGNAL \SPIM_0:BSPIM:state_2\ : bit;
@@ -231,13 +240,13 @@ ARCHITECTURE __DEFAULT__ OF FinalProject IS
     SIGNAL \SPIM_0:BSPIM:tx_status_1\ : bit;
     SIGNAL \SPIM_0:BSPIM:tx_status_2\ : bit;
     SIGNAL \SPIM_0:BSPIM:tx_status_4\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_0:BSPIM:tx_status_4\ : SIGNAL IS "U(1,1,B)3";
+    ATTRIBUTE placement_force OF \SPIM_0:BSPIM:tx_status_4\ : SIGNAL IS "U(2,2,A)1";
     SIGNAL \SPIM_0:Net_276\ : bit;
     ATTRIBUTE udbclken_assigned OF \SPIM_0:Net_276\ : SIGNAL IS "True";
     ATTRIBUTE global_signal OF \SPIM_0:Net_276\ : SIGNAL IS true;
     SIGNAL \SPIM_0:Net_276_local\ : bit;
     SIGNAL \SPIM_1:BSPIM:cnt_enable\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:cnt_enable\ : SIGNAL IS "U(3,2,A)0";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:cnt_enable\ : SIGNAL IS "U(3,4,B)0";
     SIGNAL \SPIM_1:BSPIM:cnt_tc\ : bit;
     SIGNAL \SPIM_1:BSPIM:count_0\ : bit;
     SIGNAL \SPIM_1:BSPIM:count_1\ : bit;
@@ -247,34 +256,34 @@ ARCHITECTURE __DEFAULT__ OF FinalProject IS
     SIGNAL \SPIM_1:BSPIM:count_5\ : bit;
     SIGNAL \SPIM_1:BSPIM:count_6\ : bit;
     SIGNAL \SPIM_1:BSPIM:ld_ident\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:ld_ident\ : SIGNAL IS "U(3,5,B)1";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:ld_ident\ : SIGNAL IS "U(3,5,A)1";
     SIGNAL \SPIM_1:BSPIM:load_cond\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_cond\ : SIGNAL IS "U(3,5,B)0";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_cond\ : SIGNAL IS "U(3,5,A)0";
     SIGNAL \SPIM_1:BSPIM:load_rx_data\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_rx_data\ : SIGNAL IS "U(3,5,A)1";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:load_rx_data\ : SIGNAL IS "U(3,4,A)1";
     SIGNAL \SPIM_1:BSPIM:mosi_from_dp\ : bit;
     SIGNAL \SPIM_1:BSPIM:rx_status_4\ : bit;
     SIGNAL \SPIM_1:BSPIM:rx_status_5\ : bit;
     SIGNAL \SPIM_1:BSPIM:rx_status_6\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:rx_status_6\ : SIGNAL IS "U(3,5,B)2";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:rx_status_6\ : SIGNAL IS "U(2,5,B)1";
     SIGNAL \SPIM_1:BSPIM:state_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_0\ : SIGNAL IS "U(3,4,A)2";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_0\ : SIGNAL IS "U(3,4,B)1";
     SIGNAL \SPIM_1:BSPIM:state_1\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_1\ : SIGNAL IS "U(3,4,A)0";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_1\ : SIGNAL IS "U(3,5,B)0";
     SIGNAL \SPIM_1:BSPIM:state_2\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_2\ : SIGNAL IS "U(3,4,A)1";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:state_2\ : SIGNAL IS "U(3,5,B)1";
     SIGNAL \SPIM_1:BSPIM:tx_status_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_0\ : SIGNAL IS "U(2,3,B)2";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_0\ : SIGNAL IS "U(3,5,A)2";
     SIGNAL \SPIM_1:BSPIM:tx_status_1\ : bit;
     SIGNAL \SPIM_1:BSPIM:tx_status_2\ : bit;
     SIGNAL \SPIM_1:BSPIM:tx_status_4\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_4\ : SIGNAL IS "U(3,3,B)1";
+    ATTRIBUTE placement_force OF \SPIM_1:BSPIM:tx_status_4\ : SIGNAL IS "U(3,5,B)3";
     SIGNAL \SPIM_1:Net_276\ : bit;
     ATTRIBUTE udbclken_assigned OF \SPIM_1:Net_276\ : SIGNAL IS "True";
     ATTRIBUTE global_signal OF \SPIM_1:Net_276\ : SIGNAL IS true;
     SIGNAL \SPIM_1:Net_276_local\ : bit;
     SIGNAL \SPIM_2:BSPIM:cnt_enable\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:cnt_enable\ : SIGNAL IS "U(1,1,A)1";
+    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:cnt_enable\ : SIGNAL IS "U(1,1,B)2";
     SIGNAL \SPIM_2:BSPIM:cnt_tc\ : bit;
     SIGNAL \SPIM_2:BSPIM:count_0\ : bit;
     SIGNAL \SPIM_2:BSPIM:count_1\ : bit;
@@ -284,34 +293,34 @@ ARCHITECTURE __DEFAULT__ OF FinalProject IS
     SIGNAL \SPIM_2:BSPIM:count_5\ : bit;
     SIGNAL \SPIM_2:BSPIM:count_6\ : bit;
     SIGNAL \SPIM_2:BSPIM:ld_ident\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:ld_ident\ : SIGNAL IS "U(0,0,B)2";
+    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:ld_ident\ : SIGNAL IS "U(0,1,B)1";
     SIGNAL \SPIM_2:BSPIM:load_cond\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:load_cond\ : SIGNAL IS "U(0,0,B)0";
+    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:load_cond\ : SIGNAL IS "U(1,1,A)0";
     SIGNAL \SPIM_2:BSPIM:load_rx_data\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:load_rx_data\ : SIGNAL IS "U(0,0,A)1";
+    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:load_rx_data\ : SIGNAL IS "U(0,2,B)3";
     SIGNAL \SPIM_2:BSPIM:mosi_from_dp\ : bit;
     SIGNAL \SPIM_2:BSPIM:rx_status_4\ : bit;
     SIGNAL \SPIM_2:BSPIM:rx_status_5\ : bit;
     SIGNAL \SPIM_2:BSPIM:rx_status_6\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:rx_status_6\ : SIGNAL IS "U(0,0,B)1";
+    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:rx_status_6\ : SIGNAL IS "U(1,2,B)2";
     SIGNAL \SPIM_2:BSPIM:state_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:state_0\ : SIGNAL IS "U(0,1,B)0";
+    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:state_0\ : SIGNAL IS "U(0,2,A)2";
     SIGNAL \SPIM_2:BSPIM:state_1\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:state_1\ : SIGNAL IS "U(0,1,B)1";
+    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:state_1\ : SIGNAL IS "U(0,2,B)0";
     SIGNAL \SPIM_2:BSPIM:state_2\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:state_2\ : SIGNAL IS "U(0,1,A)2";
+    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:state_2\ : SIGNAL IS "U(0,2,B)1";
     SIGNAL \SPIM_2:BSPIM:tx_status_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:tx_status_0\ : SIGNAL IS "U(1,1,B)2";
+    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:tx_status_0\ : SIGNAL IS "U(0,2,B)2";
     SIGNAL \SPIM_2:BSPIM:tx_status_1\ : bit;
     SIGNAL \SPIM_2:BSPIM:tx_status_2\ : bit;
     SIGNAL \SPIM_2:BSPIM:tx_status_4\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:tx_status_4\ : SIGNAL IS "U(1,1,A)3";
+    ATTRIBUTE placement_force OF \SPIM_2:BSPIM:tx_status_4\ : SIGNAL IS "U(0,1,B)3";
     SIGNAL \SPIM_2:Net_276\ : bit;
     ATTRIBUTE udbclken_assigned OF \SPIM_2:Net_276\ : SIGNAL IS "True";
     ATTRIBUTE global_signal OF \SPIM_2:Net_276\ : SIGNAL IS true;
     SIGNAL \SPIM_2:Net_276_local\ : bit;
     SIGNAL \SPIM_3:BSPIM:cnt_enable\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:cnt_enable\ : SIGNAL IS "U(2,3,B)1";
+    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:cnt_enable\ : SIGNAL IS "U(2,1,A)0";
     SIGNAL \SPIM_3:BSPIM:cnt_tc\ : bit;
     SIGNAL \SPIM_3:BSPIM:count_0\ : bit;
     SIGNAL \SPIM_3:BSPIM:count_1\ : bit;
@@ -321,34 +330,34 @@ ARCHITECTURE __DEFAULT__ OF FinalProject IS
     SIGNAL \SPIM_3:BSPIM:count_5\ : bit;
     SIGNAL \SPIM_3:BSPIM:count_6\ : bit;
     SIGNAL \SPIM_3:BSPIM:ld_ident\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:ld_ident\ : SIGNAL IS "U(3,4,B)0";
+    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:ld_ident\ : SIGNAL IS "U(3,3,B)3";
     SIGNAL \SPIM_3:BSPIM:load_cond\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:load_cond\ : SIGNAL IS "U(2,1,B)2";
+    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:load_cond\ : SIGNAL IS "U(3,3,B)0";
     SIGNAL \SPIM_3:BSPIM:load_rx_data\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:load_rx_data\ : SIGNAL IS "U(3,3,B)2";
+    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:load_rx_data\ : SIGNAL IS "U(3,3,A)1";
     SIGNAL \SPIM_3:BSPIM:mosi_from_dp\ : bit;
     SIGNAL \SPIM_3:BSPIM:rx_status_4\ : bit;
     SIGNAL \SPIM_3:BSPIM:rx_status_5\ : bit;
     SIGNAL \SPIM_3:BSPIM:rx_status_6\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:rx_status_6\ : SIGNAL IS "U(3,2,A)3";
+    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:rx_status_6\ : SIGNAL IS "U(3,3,B)2";
     SIGNAL \SPIM_3:BSPIM:state_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:state_0\ : SIGNAL IS "U(3,3,B)3";
+    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:state_0\ : SIGNAL IS "U(3,2,B)2";
     SIGNAL \SPIM_3:BSPIM:state_1\ : bit;
     ATTRIBUTE placement_force OF \SPIM_3:BSPIM:state_1\ : SIGNAL IS "U(3,2,B)0";
     SIGNAL \SPIM_3:BSPIM:state_2\ : bit;
     ATTRIBUTE placement_force OF \SPIM_3:BSPIM:state_2\ : SIGNAL IS "U(3,2,B)1";
     SIGNAL \SPIM_3:BSPIM:tx_status_0\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:tx_status_0\ : SIGNAL IS "U(3,2,B)2";
+    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:tx_status_0\ : SIGNAL IS "U(2,4,B)1";
     SIGNAL \SPIM_3:BSPIM:tx_status_1\ : bit;
     SIGNAL \SPIM_3:BSPIM:tx_status_2\ : bit;
     SIGNAL \SPIM_3:BSPIM:tx_status_4\ : bit;
-    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:tx_status_4\ : SIGNAL IS "U(3,1,A)1";
+    ATTRIBUTE placement_force OF \SPIM_3:BSPIM:tx_status_4\ : SIGNAL IS "U(2,5,B)3";
     SIGNAL \SPIM_3:Net_276\ : bit;
     ATTRIBUTE udbclken_assigned OF \SPIM_3:Net_276\ : SIGNAL IS "True";
     ATTRIBUTE global_signal OF \SPIM_3:Net_276\ : SIGNAL IS true;
     SIGNAL \SPIM_3:Net_276_local\ : bit;
     SIGNAL __ONE__ : bit;
-    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(3,1,B)1";
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(1,4,A)1";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
@@ -429,95 +438,98 @@ ARCHITECTURE __DEFAULT__ OF FinalProject IS
     ATTRIBUTE Location OF LED_MODE_2(0) : LABEL IS "P6[3]";
     ATTRIBUTE lib_model OF LED_STATUS(0) : LABEL IS "iocell35";
     ATTRIBUTE Location OF LED_STATUS(0) : LABEL IS "P6[0]";
+    ATTRIBUTE lib_model OF TOGGLE_LANTERN(0) : LABEL IS "iocell36";
+    ATTRIBUTE Location OF TOGGLE_LANTERN(0) : LABEL IS "P15[5]";
     ATTRIBUTE lib_model OF \SPIM_0:BSPIM:load_rx_data\ : LABEL IS "macrocell1";
     ATTRIBUTE Location OF \SPIM_0:BSPIM:load_rx_data\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \SPIM_0:BSPIM:tx_status_0\ : LABEL IS "macrocell2";
     ATTRIBUTE Location OF \SPIM_0:BSPIM:tx_status_0\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \SPIM_0:BSPIM:tx_status_4\ : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF \SPIM_0:BSPIM:tx_status_4\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SPIM_0:BSPIM:tx_status_4\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \SPIM_0:BSPIM:rx_status_6\ : LABEL IS "macrocell4";
-    ATTRIBUTE Location OF \SPIM_0:BSPIM:rx_status_6\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \SPIM_0:BSPIM:rx_status_6\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:load_rx_data\ : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:load_rx_data\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:load_rx_data\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:tx_status_0\ : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:tx_status_0\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:tx_status_0\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:tx_status_4\ : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:tx_status_4\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:tx_status_4\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:rx_status_6\ : LABEL IS "macrocell8";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:rx_status_6\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:rx_status_6\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \SPIM_2:BSPIM:load_rx_data\ : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF \SPIM_2:BSPIM:load_rx_data\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \SPIM_2:BSPIM:load_rx_data\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \SPIM_2:BSPIM:tx_status_0\ : LABEL IS "macrocell10";
-    ATTRIBUTE Location OF \SPIM_2:BSPIM:tx_status_0\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SPIM_2:BSPIM:tx_status_0\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \SPIM_2:BSPIM:tx_status_4\ : LABEL IS "macrocell11";
-    ATTRIBUTE Location OF \SPIM_2:BSPIM:tx_status_4\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SPIM_2:BSPIM:tx_status_4\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \SPIM_2:BSPIM:rx_status_6\ : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF \SPIM_2:BSPIM:rx_status_6\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \SPIM_2:BSPIM:rx_status_6\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \SPIM_3:BSPIM:load_rx_data\ : LABEL IS "macrocell13";
     ATTRIBUTE Location OF \SPIM_3:BSPIM:load_rx_data\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \SPIM_3:BSPIM:tx_status_0\ : LABEL IS "macrocell14";
-    ATTRIBUTE Location OF \SPIM_3:BSPIM:tx_status_0\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \SPIM_3:BSPIM:tx_status_0\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \SPIM_3:BSPIM:tx_status_4\ : LABEL IS "macrocell15";
-    ATTRIBUTE Location OF \SPIM_3:BSPIM:tx_status_4\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \SPIM_3:BSPIM:tx_status_4\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \SPIM_3:BSPIM:rx_status_6\ : LABEL IS "macrocell16";
-    ATTRIBUTE Location OF \SPIM_3:BSPIM:rx_status_6\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \SPIM_3:BSPIM:rx_status_6\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \PWM_1:PWMUDB:status_2\ : LABEL IS "macrocell17";
-    ATTRIBUTE Location OF \PWM_1:PWMUDB:status_2\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \PWM_1:PWMUDB:status_2\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF DMA_0 : LABEL IS "drqcell1";
     ATTRIBUTE Location OF DMA_0 : LABEL IS "[DrqContainer=(0)][DrqId=(0)]";
     ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell18";
-    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(3,1)";
-    ATTRIBUTE Location OF \SPIM_0:BSPIM:BitCounter\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \SPIM_0:BSPIM:BitCounter\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \SPIM_0:BSPIM:TxStsReg\ : LABEL IS "statusicell1";
-    ATTRIBUTE Location OF \SPIM_0:BSPIM:TxStsReg\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \SPIM_0:BSPIM:TxStsReg\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \SPIM_0:BSPIM:RxStsReg\ : LABEL IS "statusicell2";
-    ATTRIBUTE Location OF \SPIM_0:BSPIM:RxStsReg\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \SPIM_0:BSPIM:RxStsReg\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \SPIM_0:BSPIM:sR8:Dp:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \SPIM_0:BSPIM:sR8:Dp:u0\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \SPIM_0:BSPIM:sR8:Dp:u0\ : LABEL IS "U(2,1)";
     ATTRIBUTE Location OF DMA_Complete_ISR_0 : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
     ATTRIBUTE Location OF \ADC_DelSig_1:DSM\ : LABEL IS "F(DSM,0)";
     ATTRIBUTE Location OF \ADC_DelSig_1:IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(29)]";
     ATTRIBUTE Location OF \ADC_DelSig_1:DEC\ : LABEL IS "F(Decimator,0)";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:BitCounter\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:BitCounter\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:TxStsReg\ : LABEL IS "statusicell3";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:TxStsReg\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:TxStsReg\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:RxStsReg\ : LABEL IS "statusicell4";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:RxStsReg\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:RxStsReg\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:sR8:Dp:u0\ : LABEL IS "datapathcell2";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:sR8:Dp:u0\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:sR8:Dp:u0\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF DMA_1 : LABEL IS "drqcell2";
     ATTRIBUTE Location OF DMA_1 : LABEL IS "[DrqContainer=(0)][DrqId=(1)]";
     ATTRIBUTE Location OF DMA_Complete_ISR_1 : LABEL IS "[IntrContainer=(0)][IntrId=(2)]";
     ATTRIBUTE lib_model OF DMA_2 : LABEL IS "drqcell3";
     ATTRIBUTE Location OF DMA_2 : LABEL IS "[DrqContainer=(0)][DrqId=(2)]";
-    ATTRIBUTE Location OF \SPIM_2:BSPIM:BitCounter\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \SPIM_2:BSPIM:BitCounter\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \SPIM_2:BSPIM:TxStsReg\ : LABEL IS "statusicell5";
-    ATTRIBUTE Location OF \SPIM_2:BSPIM:TxStsReg\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SPIM_2:BSPIM:TxStsReg\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \SPIM_2:BSPIM:RxStsReg\ : LABEL IS "statusicell6";
-    ATTRIBUTE Location OF \SPIM_2:BSPIM:RxStsReg\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \SPIM_2:BSPIM:RxStsReg\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \SPIM_2:BSPIM:sR8:Dp:u0\ : LABEL IS "datapathcell3";
-    ATTRIBUTE Location OF \SPIM_2:BSPIM:sR8:Dp:u0\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \SPIM_2:BSPIM:sR8:Dp:u0\ : LABEL IS "U(0,2)";
     ATTRIBUTE Location OF DMA_Complete_ISR_2 : LABEL IS "[IntrContainer=(0)][IntrId=(3)]";
     ATTRIBUTE lib_model OF DMA_3 : LABEL IS "drqcell4";
     ATTRIBUTE Location OF DMA_3 : LABEL IS "[DrqContainer=(0)][DrqId=(3)]";
     ATTRIBUTE Location OF \SPIM_3:BSPIM:BitCounter\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \SPIM_3:BSPIM:TxStsReg\ : LABEL IS "statusicell7";
-    ATTRIBUTE Location OF \SPIM_3:BSPIM:TxStsReg\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \SPIM_3:BSPIM:TxStsReg\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \SPIM_3:BSPIM:RxStsReg\ : LABEL IS "statusicell8";
-    ATTRIBUTE Location OF \SPIM_3:BSPIM:RxStsReg\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \SPIM_3:BSPIM:RxStsReg\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \SPIM_3:BSPIM:sR8:Dp:u0\ : LABEL IS "datapathcell4";
-    ATTRIBUTE Location OF \SPIM_3:BSPIM:sR8:Dp:u0\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \SPIM_3:BSPIM:sR8:Dp:u0\ : LABEL IS "U(3,3)";
     ATTRIBUTE Location OF DMA_Complete_ISR_3 : LABEL IS "[IntrContainer=(0)][IntrId=(4)]";
     ATTRIBUTE Location OF \I2C_1:I2C_IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(15)]";
     ATTRIBUTE Location OF \I2C_1:I2C_FF\ : LABEL IS "F(I2C,0)";
-    ATTRIBUTE Location OF MODE_ISR : LABEL IS "[IntrContainer=(0)][IntrId=(5)]";
+    ATTRIBUTE Location OF MODE_ISR : LABEL IS "[IntrContainer=(0)][IntrId=(6)]";
     ATTRIBUTE Location OF BRIGHT_ISR : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
     ATTRIBUTE lib_model OF \PWM_1:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \PWM_1:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \PWM_1:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \PWM_1:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell9";
-    ATTRIBUTE Location OF \PWM_1:PWMUDB:genblk8:stsreg\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \PWM_1:PWMUDB:genblk8:stsreg\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \PWM_1:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "datapathcell5";
-    ATTRIBUTE Location OF \PWM_1:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \PWM_1:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF LANTERN_TOGGLE_ISR : LABEL IS "[IntrContainer=(0)][IntrId=(5)]";
     ATTRIBUTE lib_model OF Net_13 : LABEL IS "macrocell19";
     ATTRIBUTE Location OF Net_13 : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \SPIM_0:BSPIM:state_2\ : LABEL IS "macrocell20";
@@ -525,85 +537,91 @@ ARCHITECTURE __DEFAULT__ OF FinalProject IS
     ATTRIBUTE lib_model OF \SPIM_0:BSPIM:state_1\ : LABEL IS "macrocell21";
     ATTRIBUTE Location OF \SPIM_0:BSPIM:state_1\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \SPIM_0:BSPIM:state_0\ : LABEL IS "macrocell22";
-    ATTRIBUTE Location OF \SPIM_0:BSPIM:state_0\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \SPIM_0:BSPIM:state_0\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF Net_26 : LABEL IS "macrocell23";
-    ATTRIBUTE Location OF Net_26 : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF Net_26 : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \SPIM_0:BSPIM:load_cond\ : LABEL IS "macrocell24";
-    ATTRIBUTE Location OF \SPIM_0:BSPIM:load_cond\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \SPIM_0:BSPIM:load_cond\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \SPIM_0:BSPIM:ld_ident\ : LABEL IS "macrocell25";
-    ATTRIBUTE Location OF \SPIM_0:BSPIM:ld_ident\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \SPIM_0:BSPIM:ld_ident\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \SPIM_0:BSPIM:cnt_enable\ : LABEL IS "macrocell26";
-    ATTRIBUTE Location OF \SPIM_0:BSPIM:cnt_enable\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \SPIM_0:BSPIM:cnt_enable\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF Net_25 : LABEL IS "macrocell27";
-    ATTRIBUTE Location OF Net_25 : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF Net_25 : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF Net_95 : LABEL IS "macrocell28";
-    ATTRIBUTE Location OF Net_95 : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF Net_95 : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:state_2\ : LABEL IS "macrocell29";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:state_2\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:state_2\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:state_1\ : LABEL IS "macrocell30";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:state_1\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:state_1\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:state_0\ : LABEL IS "macrocell31";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:state_0\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF Net_97 : LABEL IS "macrocell32";
-    ATTRIBUTE Location OF Net_97 : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF Net_97 : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:load_cond\ : LABEL IS "macrocell33";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:load_cond\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:ld_ident\ : LABEL IS "macrocell34";
     ATTRIBUTE Location OF \SPIM_1:BSPIM:ld_ident\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \SPIM_1:BSPIM:cnt_enable\ : LABEL IS "macrocell35";
-    ATTRIBUTE Location OF \SPIM_1:BSPIM:cnt_enable\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \SPIM_1:BSPIM:cnt_enable\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF Net_96 : LABEL IS "macrocell36";
-    ATTRIBUTE Location OF Net_96 : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF Net_96 : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF Net_152 : LABEL IS "macrocell37";
-    ATTRIBUTE Location OF Net_152 : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF Net_152 : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \SPIM_2:BSPIM:state_2\ : LABEL IS "macrocell38";
-    ATTRIBUTE Location OF \SPIM_2:BSPIM:state_2\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \SPIM_2:BSPIM:state_2\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \SPIM_2:BSPIM:state_1\ : LABEL IS "macrocell39";
-    ATTRIBUTE Location OF \SPIM_2:BSPIM:state_1\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \SPIM_2:BSPIM:state_1\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \SPIM_2:BSPIM:state_0\ : LABEL IS "macrocell40";
-    ATTRIBUTE Location OF \SPIM_2:BSPIM:state_0\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \SPIM_2:BSPIM:state_0\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF Net_154 : LABEL IS "macrocell41";
     ATTRIBUTE Location OF Net_154 : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \SPIM_2:BSPIM:load_cond\ : LABEL IS "macrocell42";
-    ATTRIBUTE Location OF \SPIM_2:BSPIM:load_cond\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \SPIM_2:BSPIM:load_cond\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \SPIM_2:BSPIM:ld_ident\ : LABEL IS "macrocell43";
-    ATTRIBUTE Location OF \SPIM_2:BSPIM:ld_ident\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \SPIM_2:BSPIM:ld_ident\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \SPIM_2:BSPIM:cnt_enable\ : LABEL IS "macrocell44";
     ATTRIBUTE Location OF \SPIM_2:BSPIM:cnt_enable\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF Net_153 : LABEL IS "macrocell45";
-    ATTRIBUTE Location OF Net_153 : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF Net_153 : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF Net_163 : LABEL IS "macrocell46";
-    ATTRIBUTE Location OF Net_163 : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF Net_163 : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \SPIM_3:BSPIM:state_2\ : LABEL IS "macrocell47";
     ATTRIBUTE Location OF \SPIM_3:BSPIM:state_2\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \SPIM_3:BSPIM:state_1\ : LABEL IS "macrocell48";
     ATTRIBUTE Location OF \SPIM_3:BSPIM:state_1\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \SPIM_3:BSPIM:state_0\ : LABEL IS "macrocell49";
-    ATTRIBUTE Location OF \SPIM_3:BSPIM:state_0\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \SPIM_3:BSPIM:state_0\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF Net_165 : LABEL IS "macrocell50";
-    ATTRIBUTE Location OF Net_165 : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF Net_165 : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \SPIM_3:BSPIM:load_cond\ : LABEL IS "macrocell51";
-    ATTRIBUTE Location OF \SPIM_3:BSPIM:load_cond\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \SPIM_3:BSPIM:load_cond\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \SPIM_3:BSPIM:ld_ident\ : LABEL IS "macrocell52";
-    ATTRIBUTE Location OF \SPIM_3:BSPIM:ld_ident\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \SPIM_3:BSPIM:ld_ident\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \SPIM_3:BSPIM:cnt_enable\ : LABEL IS "macrocell53";
-    ATTRIBUTE Location OF \SPIM_3:BSPIM:cnt_enable\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \SPIM_3:BSPIM:cnt_enable\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF Net_164 : LABEL IS "macrocell54";
-    ATTRIBUTE Location OF Net_164 : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF Net_164 : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \Debouncer_1:DEBOUNCER[0]:d_sync_0\ : LABEL IS "macrocell55";
-    ATTRIBUTE Location OF \Debouncer_1:DEBOUNCER[0]:d_sync_0\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \Debouncer_1:DEBOUNCER[0]:d_sync_0\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \Debouncer_1:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell56";
-    ATTRIBUTE Location OF \Debouncer_1:DEBOUNCER[0]:d_sync_1\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \Debouncer_1:DEBOUNCER[0]:d_sync_1\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF Net_387 : LABEL IS "macrocell57";
-    ATTRIBUTE Location OF Net_387 : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF Net_387 : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \PWM_1:PWMUDB:runmode_enable\ : LABEL IS "macrocell58";
-    ATTRIBUTE Location OF \PWM_1:PWMUDB:runmode_enable\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \PWM_1:PWMUDB:runmode_enable\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \PWM_1:PWMUDB:prevCompare1\ : LABEL IS "macrocell59";
-    ATTRIBUTE Location OF \PWM_1:PWMUDB:prevCompare1\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \PWM_1:PWMUDB:prevCompare1\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \PWM_1:PWMUDB:status_0\ : LABEL IS "macrocell60";
-    ATTRIBUTE Location OF \PWM_1:PWMUDB:status_0\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \PWM_1:PWMUDB:status_0\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF Net_496 : LABEL IS "macrocell61";
-    ATTRIBUTE Location OF Net_496 : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF Net_496 : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \Debouncer_2:DEBOUNCER[0]:d_sync_0\ : LABEL IS "macrocell62";
+    ATTRIBUTE Location OF \Debouncer_2:DEBOUNCER[0]:d_sync_0\ : LABEL IS "U(1,2)";
+    ATTRIBUTE lib_model OF \Debouncer_2:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell63";
+    ATTRIBUTE Location OF \Debouncer_2:DEBOUNCER[0]:d_sync_1\ : LABEL IS "U(1,2)";
+    ATTRIBUTE lib_model OF Net_677 : LABEL IS "macrocell64";
+    ATTRIBUTE Location OF Net_677 : LABEL IS "U(2,3)";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -988,8 +1006,8 @@ BEGIN
             aclk_0 => \ADC_DelSig_1:Net_488_local\,
             clk_a_dig_glb_0 => \ADC_DelSig_1:Net_488_adig\,
             clk_a_dig_0 => \ADC_DelSig_1:Net_488_adig_local\,
-            dclk_glb_6 => Net_332,
-            dclk_6 => Net_332_local,
+            dclk_glb_6 => Net_670,
+            dclk_6 => Net_670_local,
             dclk_glb_7 => Net_392,
             dclk_7 => Net_392_local,
             clk_bus_glb_ff => \ClockBlock.clk_bus_glb_ff__sig\,
@@ -4189,6 +4207,97 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
+    TOGGLE_LANTERN:logicalport
+        GENERIC MAP(
+            drive_mode => "010",
+            ibuf_enabled => "1",
+            id => "7c1acf84-034e-4c13-a81d-5ad54c7df14e",
+            init_dr_st => "1",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "0",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "I",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "00",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    TOGGLE_LANTERN(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "TOGGLE_LANTERN",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => TOGGLE_LANTERN(0)__PA,
+            oe => open,
+            fb => Net_679,
+            pad_in => TOGGLE_LANTERN(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
     \SPIM_0:BSPIM:load_rx_data\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_2 * !main_3 * main_4)",
@@ -4996,6 +5105,13 @@ BEGIN
             f1_blk_stat_comb => \PWM_1:PWMUDB:status_3\,
             busclk => ClockBlock_BUS_CLK);
 
+    LANTERN_TOGGLE_ISR:interrupt
+        GENERIC MAP(
+            int_type => "00")
+        PORT MAP(
+            interrupt => Net_677,
+            clock => ClockBlock_BUS_CLK);
+
     Net_13:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_3) + (!main_1 * !main_2 * !main_3) + (!main_1 * !main_3 * !main_5 * !main_6 * !main_7 * main_8 * !main_9 * !main_10) + (main_1 * !main_2 * main_3) + (main_1 * main_2 * !main_3) + (main_1 * !main_4) + (!main_3 * !main_4)",
@@ -5587,7 +5703,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \Debouncer_1:DEBOUNCER[0]:d_sync_0\,
-            clock_0 => Net_332,
+            clock_0 => Net_670,
             main_0 => Net_331);
 
     \Debouncer_1:DEBOUNCER[0]:d_sync_1\:macrocell
@@ -5597,7 +5713,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \Debouncer_1:DEBOUNCER[0]:d_sync_1\,
-            clock_0 => Net_332,
+            clock_0 => Net_670,
             main_0 => \Debouncer_1:DEBOUNCER[0]:d_sync_0\);
 
     Net_387:macrocell
@@ -5607,7 +5723,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => Net_387,
-            clock_0 => Net_332,
+            clock_0 => Net_670,
             main_0 => \Debouncer_1:DEBOUNCER[0]:d_sync_0\,
             main_1 => \Debouncer_1:DEBOUNCER[0]:d_sync_1\);
 
@@ -5652,5 +5768,36 @@ BEGIN
             clock_0 => Net_412,
             main_0 => \PWM_1:PWMUDB:runmode_enable\,
             main_1 => \PWM_1:PWMUDB:cmp1_less\);
+
+    \Debouncer_2:DEBOUNCER[0]:d_sync_0\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \Debouncer_2:DEBOUNCER[0]:d_sync_0\,
+            clock_0 => Net_670,
+            main_0 => Net_679);
+
+    \Debouncer_2:DEBOUNCER[0]:d_sync_1\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \Debouncer_2:DEBOUNCER[0]:d_sync_1\,
+            clock_0 => Net_670,
+            main_0 => \Debouncer_2:DEBOUNCER[0]:d_sync_0\);
+
+    Net_677:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_677,
+            clock_0 => Net_670,
+            main_0 => \Debouncer_2:DEBOUNCER[0]:d_sync_0\,
+            main_1 => \Debouncer_2:DEBOUNCER[0]:d_sync_1\);
 
 END __DEFAULT__;

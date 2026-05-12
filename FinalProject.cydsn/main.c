@@ -28,6 +28,14 @@ CY_ISR(Bright_Handler) {
     }
 }
 
+// changing between orange and blue lantern
+volatile uint8_t lanternMode = 0;
+volatile uint8_t lanternModeChanged = 0;
+CY_ISR(LanternToggle_Handler) {
+    lanternMode = (lanternMode == 0) ? 1 : 0;
+    lanternModeChanged = 1;
+}
+
 int main() {
     
     // enable global interrupts
@@ -78,6 +86,9 @@ int main() {
     // brightness ISR for mode 2 (lantern)
     BRIGHT_ISR_StartEx(Bright_Handler);
     
+    // lantern mode ISR
+    LANTERN_TOGGLE_ISR_StartEx(LanternToggle_Handler);
+    
     PWM_1_Start();
     
     // main loop
@@ -92,7 +103,7 @@ int main() {
             LED_MODE_2_Write((mode >> 1) & 0x01);
             
             if (mode == 1) snowglobeInit();
-            if (mode == 2) lightLantern(0);
+            if (mode == 2) lightLantern(lanternMode);
         }
         
         if (brightnessChanged) {
@@ -136,6 +147,15 @@ int main() {
         } else if (mode == 1) {
             Read_Accel_Data(&ax, &ay, &az);
             snowglobeUpdate(ax, ay, az);
-        } 
+            
+        // =============================================
+        // Mode 2: lantern mode
+        // =============================================     
+        } else if (mode == 2) {
+            if (lanternModeChanged) {
+                lanternModeChanged = 0;
+                lightLantern(lanternMode);
+            }
+        }
     }
 }

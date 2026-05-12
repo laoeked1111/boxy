@@ -77,6 +77,69 @@ void lightLantern(uint8_t mode) {
         }
         
     } else {                                        // orange lantern
-        clearScreen(disp, 0);
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            clearScreen(disp, 0x4A8C);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 0, 319, 120, 419, 0x8204);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 0, 319, 0, 59, 0);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 0, 319, 180, 359, 0x8A86);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 40, 279, 120, 420, 0xEC89);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 40, 99, 120, 179, 0xC304);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 220, 279, 120, 179, 0xC304);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 100, 219, 180, 239, 0xF64C);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 100, 219, 360, 419, 0xF64C);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 40, 99, 240, 359, 0xF64C);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 220, 279, 240, 359, 0xF64C);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 100, 219, 240, 359, 0xFFFA);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 160, 219, 300, 359, 0xFFF1);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 100, 159, 240, 299, 0xFFF1);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 0, 39, 60, 119, 0x422A);
+        }
+        for (disp = 0; disp < NUM_SCREENS; disp ++ ) {
+            DMA_Wait_For_Completion(disp);
+            drawRect(disp, 280, 319, 60, 119, 0x422A);
+        }
     }
 }

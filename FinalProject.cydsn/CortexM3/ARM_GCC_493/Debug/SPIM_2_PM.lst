@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
   29:.\Generated_Source\PSoC5/SPIM_2_PM.c **** ********************************************************************************
   30:.\Generated_Source\PSoC5/SPIM_2_PM.c **** *
   31:.\Generated_Source\PSoC5/SPIM_2_PM.c **** * Summary:
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 2
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/SPIM_2_PM.c **** *  Empty function. Included for consistency with other components.
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
   50              		.cfi_endproc
   51              	.LFE1:
   52              		.size	SPIM_2_RestoreConfig, .-SPIM_2_RestoreConfig
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 3
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 3
 
 
   53 0002 00BF     		.section	.text.SPIM_2_Sleep,"ax",%progbits
@@ -178,13 +178,13 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
   77 000e FFF7FEFF 		bl	SPIM_2_Stop
   78              	.LVL0:
   79 0012 08BD     		pop	{r3, pc}
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 4
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 4
 
 
   80              	.L6:
   81              		.align	2
   82              	.L5:
-  83 0014 98650040 		.word	1073767832
+  83 0014 99650040 		.word	1073767833
   84 0018 00000000 		.word	.LANCHOR0
   85              		.cfi_endproc
   86              	.LFE2:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  101              		.cfi_def_cfa_offset 8
  102              		.cfi_offset 3, -8
  103              		.cfi_offset 14, -4
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 5
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 5
 
 
  126:.\Generated_Source\PSoC5/SPIM_2_PM.c ****     #if(SPIM_2_RX_SOFTWARE_BUF_ENABLED)
@@ -298,28 +298,28 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  139 0006 00000000 		.4byte	.Ldebug_abbrev0
  140 000a 04       		.byte	0x4
  141 000b 01       		.uleb128 0x1
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 6
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 6
 
 
- 142 000c 90010000 		.4byte	.LASF25
+ 142 000c 69010000 		.4byte	.LASF25
  143 0010 01       		.byte	0x1
- 144 0011 DA000000 		.4byte	.LASF26
- 145 0015 08010000 		.4byte	.LASF27
+ 144 0011 0B010000 		.4byte	.LASF26
+ 145 0015 94000000 		.4byte	.LASF27
  146 0019 00000000 		.4byte	.Ldebug_ranges0+0
  147 001d 00000000 		.4byte	0
  148 0021 00000000 		.4byte	.Ldebug_line0
  149 0025 02       		.uleb128 0x2
  150 0026 01       		.byte	0x1
  151 0027 06       		.byte	0x6
- 152 0028 84010000 		.4byte	.LASF0
+ 152 0028 5D010000 		.4byte	.LASF0
  153 002c 02       		.uleb128 0x2
  154 002d 01       		.byte	0x1
  155 002e 08       		.byte	0x8
- 156 002f CC000000 		.4byte	.LASF1
+ 156 002f FD000000 		.4byte	.LASF1
  157 0033 02       		.uleb128 0x2
  158 0034 02       		.byte	0x2
  159 0035 05       		.byte	0x5
- 160 0036 32020000 		.4byte	.LASF2
+ 160 0036 0B020000 		.4byte	.LASF2
  161 003a 02       		.uleb128 0x2
  162 003b 02       		.byte	0x2
  163 003c 07       		.byte	0x7
@@ -327,7 +327,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  165 0041 02       		.uleb128 0x2
  166 0042 04       		.byte	0x4
  167 0043 05       		.byte	0x5
- 168 0044 FF000000 		.4byte	.LASF4
+ 168 0044 30010000 		.4byte	.LASF4
  169 0048 02       		.uleb128 0x2
  170 0049 04       		.byte	0x4
  171 004a 07       		.byte	0x7
@@ -339,7 +339,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  177 0056 02       		.uleb128 0x2
  178 0057 08       		.byte	0x8
  179 0058 07       		.byte	0x7
- 180 0059 94000000 		.4byte	.LASF7
+ 180 0059 C5000000 		.4byte	.LASF7
  181 005d 03       		.uleb128 0x3
  182 005e 04       		.byte	0x4
  183 005f 05       		.byte	0x5
@@ -349,27 +349,27 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  187 0066 07       		.byte	0x7
  188 0067 36000000 		.4byte	.LASF8
  189 006b 04       		.uleb128 0x4
- 190 006c 7E010000 		.4byte	.LASF12
+ 190 006c 57010000 		.4byte	.LASF12
  191 0070 02       		.byte	0x2
  192 0071 9201     		.2byte	0x192
  193 0073 2C000000 		.4byte	0x2c
  194 0077 02       		.uleb128 0x2
  195 0078 04       		.byte	0x4
  196 0079 04       		.byte	0x4
- 197 007a 2C020000 		.4byte	.LASF9
+ 197 007a 05020000 		.4byte	.LASF9
  198 007e 02       		.uleb128 0x2
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 7
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 7
 
 
  199 007f 08       		.byte	0x8
  200 0080 04       		.byte	0x4
- 201 0081 6C010000 		.4byte	.LASF10
+ 201 0081 45010000 		.4byte	.LASF10
  202 0085 02       		.uleb128 0x2
  203 0086 01       		.byte	0x1
  204 0087 08       		.byte	0x8
- 205 0088 C7000000 		.4byte	.LASF11
+ 205 0088 F8000000 		.4byte	.LASF11
  206 008c 04       		.uleb128 0x4
- 207 008d 3C020000 		.4byte	.LASF13
+ 207 008d 15020000 		.4byte	.LASF13
  208 0091 02       		.byte	0x2
  209 0092 3C02     		.2byte	0x23c
  210 0094 98000000 		.4byte	0x98
@@ -378,20 +378,20 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  213 009d 02       		.uleb128 0x2
  214 009e 04       		.byte	0x4
  215 009f 07       		.byte	0x7
- 216 00a0 53020000 		.4byte	.LASF14
+ 216 00a0 2C020000 		.4byte	.LASF14
  217 00a4 06       		.uleb128 0x6
  218 00a5 02       		.byte	0x2
  219 00a6 03       		.byte	0x3
  220 00a7 46       		.byte	0x46
  221 00a8 C5000000 		.4byte	0xc5
  222 00ac 07       		.uleb128 0x7
- 223 00ad 60010000 		.4byte	.LASF15
+ 223 00ad 39010000 		.4byte	.LASF15
  224 00b1 03       		.byte	0x3
  225 00b2 48       		.byte	0x48
  226 00b3 6B000000 		.4byte	0x6b
  227 00b7 00       		.byte	0
  228 00b8 07       		.uleb128 0x7
- 229 00b9 73010000 		.4byte	.LASF16
+ 229 00b9 4C010000 		.4byte	.LASF16
  230 00bd 03       		.byte	0x3
  231 00be 49       		.byte	0x49
  232 00bf 6B000000 		.4byte	0x6b
@@ -403,7 +403,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  238 00cb 4A       		.byte	0x4a
  239 00cc A4000000 		.4byte	0xa4
  240 00d0 09       		.uleb128 0x9
- 241 00d1 41020000 		.4byte	.LASF18
+ 241 00d1 1A020000 		.4byte	.LASF18
  242 00d5 01       		.byte	0x1
  243 00d6 29       		.byte	0x29
  244 00d7 00000000 		.4byte	.LFB0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  253 00ec 02000000 		.4byte	.LFE1-.LFB1
  254 00f0 01       		.uleb128 0x1
  255 00f1 9C       		.byte	0x9c
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 8
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 8
 
 
  256 00f2 0A       		.uleb128 0xa
@@ -435,7 +435,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  267 010c 4A010000 		.4byte	0x14a
  268 0110 00       		.byte	0
  269 0111 0A       		.uleb128 0xa
- 270 0112 AB000000 		.4byte	.LASF21
+ 270 0112 DC000000 		.4byte	.LASF21
  271 0116 01       		.byte	0x1
  272 0117 7C       		.byte	0x7c
  273 0118 00000000 		.4byte	.LFB3
@@ -451,7 +451,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  283 0134 58010000 		.4byte	0x158
  284 0138 00       		.byte	0
  285 0139 0C       		.uleb128 0xc
- 286 013a 1E020000 		.4byte	.LASF28
+ 286 013a F7010000 		.4byte	.LASF28
  287 013e 01       		.byte	0x1
  288 013f 14       		.byte	0x14
  289 0140 C5000000 		.4byte	0xc5
@@ -467,7 +467,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  299 0156 03       		.byte	0x3
  300 0157 6C       		.byte	0x6c
  301 0158 0D       		.uleb128 0xd
- 302 0159 B9000000 		.4byte	.LASF24
+ 302 0159 EA000000 		.4byte	.LASF24
  303 015d 03       		.byte	0x3
  304 015e 52       		.byte	0x52
  305 015f 00       		.byte	0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  310 0002 01       		.byte	0x1
  311 0003 25       		.uleb128 0x25
  312 0004 0E       		.uleb128 0xe
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 9
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 9
 
 
  313 0005 13       		.uleb128 0x13
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  367 003b 00       		.byte	0
  368 003c 00       		.byte	0
  369 003d 06       		.uleb128 0x6
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 10
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 10
 
 
  370 003e 13       		.uleb128 0x13
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  424 0074 01       		.uleb128 0x1
  425 0075 12       		.uleb128 0x12
  426 0076 06       		.uleb128 0x6
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 11
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 11
 
 
  427 0077 40       		.uleb128 0x40
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  481 00b1 00       		.byte	0
  482 00b2 0D       		.uleb128 0xd
  483 00b3 2E       		.uleb128 0x2e
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 12
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 12
 
 
  484 00b4 00       		.byte	0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  534 0000 6C6F6E67 		.ascii	"long long int\000"
  534      206C6F6E 
  534      6720696E 
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 13
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 13
 
 
  534      7400
@@ -766,114 +766,110 @@ ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 1
  550      69676E65 
  550      6420696E 
  550      7400
- 551              	.LASF7:
- 552 0094 6C6F6E67 		.ascii	"long long unsigned int\000"
- 552      206C6F6E 
- 552      6720756E 
- 552      7369676E 
- 552      65642069 
- 553              	.LASF21:
- 554 00ab 5350494D 		.ascii	"SPIM_2_Wakeup\000"
- 554      5F325F57 
- 554      616B6575 
- 554      7000
- 555              	.LASF24:
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 14
+ 551              	.LASF27:
+ 552 0094 433A5C55 		.ascii	"C:\\Users\\ericz\\Documents\\boxy\\FinalProject.cyd"
+ 552      73657273 
+ 552      5C657269 
+ 552      637A5C44 
+ 552      6F63756D 
+ 553 00c2 736E00   		.ascii	"sn\000"
+ 554              	.LASF7:
+ 555 00c5 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 555      206C6F6E 
+ 555      6720756E 
+ 555      7369676E 
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 14
 
 
- 556 00b9 5350494D 		.ascii	"SPIM_2_Enable\000"
- 556      5F325F45 
- 556      6E61626C 
- 556      6500
- 557              	.LASF11:
- 558 00c7 63686172 		.ascii	"char\000"
- 558      00
- 559              	.LASF1:
- 560 00cc 756E7369 		.ascii	"unsigned char\000"
- 560      676E6564 
- 560      20636861 
- 560      7200
- 561              	.LASF26:
- 562 00da 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\SPIM_2_PM.c\000"
- 562      6E657261 
- 562      7465645F 
- 562      536F7572 
- 562      63655C50 
- 563              	.LASF4:
- 564 00ff 6C6F6E67 		.ascii	"long int\000"
- 564      20696E74 
- 564      00
- 565              	.LASF27:
- 566 0108 433A5C55 		.ascii	"C:\\Users\\ericz\\OneDrive\\Documents\\PSoC Creator"
- 566      73657273 
- 566      5C657269 
- 566      637A5C4F 
- 566      6E654472 
- 567 0136 5C46696E 		.ascii	"\\FinalProjectWorkspace\\FinalProject.cydsn\000"
- 567      616C5072 
- 567      6F6A6563 
- 567      74576F72 
- 567      6B737061 
+ 555      65642069 
+ 556              	.LASF21:
+ 557 00dc 5350494D 		.ascii	"SPIM_2_Wakeup\000"
+ 557      5F325F57 
+ 557      616B6575 
+ 557      7000
+ 558              	.LASF24:
+ 559 00ea 5350494D 		.ascii	"SPIM_2_Enable\000"
+ 559      5F325F45 
+ 559      6E61626C 
+ 559      6500
+ 560              	.LASF11:
+ 561 00f8 63686172 		.ascii	"char\000"
+ 561      00
+ 562              	.LASF1:
+ 563 00fd 756E7369 		.ascii	"unsigned char\000"
+ 563      676E6564 
+ 563      20636861 
+ 563      7200
+ 564              	.LASF26:
+ 565 010b 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\SPIM_2_PM.c\000"
+ 565      6E657261 
+ 565      7465645F 
+ 565      536F7572 
+ 565      63655C50 
+ 566              	.LASF4:
+ 567 0130 6C6F6E67 		.ascii	"long int\000"
+ 567      20696E74 
+ 567      00
  568              	.LASF15:
- 569 0160 656E6162 		.ascii	"enableState\000"
+ 569 0139 656E6162 		.ascii	"enableState\000"
  569      6C655374 
  569      61746500 
  570              	.LASF10:
- 571 016c 646F7562 		.ascii	"double\000"
+ 571 0145 646F7562 		.ascii	"double\000"
  571      6C6500
  572              	.LASF16:
- 573 0173 636E7472 		.ascii	"cntrPeriod\000"
+ 573 014c 636E7472 		.ascii	"cntrPeriod\000"
  573      50657269 
  573      6F6400
  574              	.LASF12:
- 575 017e 75696E74 		.ascii	"uint8\000"
+ 575 0157 75696E74 		.ascii	"uint8\000"
  575      3800
  576              	.LASF0:
- 577 0184 7369676E 		.ascii	"signed char\000"
+ 577 015d 7369676E 		.ascii	"signed char\000"
  577      65642063 
  577      68617200 
  578              	.LASF25:
- 579 0190 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 579 0169 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
  579      4320342E 
  579      392E3320 
  579      32303135 
  579      30333033 
-ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc265hz9.s 			page 15
-
-
- 580 01c3 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 580 019c 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
  580      20726576 
  580      6973696F 
  580      6E203232 
+ARM GAS  C:\Users\ericz\AppData\Local\Temp\cc1HUlDP.s 			page 15
+
+
  580      31323230 
- 581 01f6 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 581 01cf 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
  581      66756E63 
  581      74696F6E 
  581      2D736563 
  581      74696F6E 
  582              	.LASF28:
- 583 021e 5350494D 		.ascii	"SPIM_2_backup\000"
+ 583 01f7 5350494D 		.ascii	"SPIM_2_backup\000"
  583      5F325F62 
  583      61636B75 
  583      7000
  584              	.LASF9:
- 585 022c 666C6F61 		.ascii	"float\000"
+ 585 0205 666C6F61 		.ascii	"float\000"
  585      7400
  586              	.LASF2:
- 587 0232 73686F72 		.ascii	"short int\000"
+ 587 020b 73686F72 		.ascii	"short int\000"
  587      7420696E 
  587      7400
  588              	.LASF13:
- 589 023c 72656738 		.ascii	"reg8\000"
+ 589 0215 72656738 		.ascii	"reg8\000"
  589      00
  590              	.LASF18:
- 591 0241 5350494D 		.ascii	"SPIM_2_SaveConfig\000"
+ 591 021a 5350494D 		.ascii	"SPIM_2_SaveConfig\000"
  591      5F325F53 
  591      61766543 
  591      6F6E6669 
  591      6700
  592              	.LASF14:
- 593 0253 73697A65 		.ascii	"sizetype\000"
+ 593 022c 73697A65 		.ascii	"sizetype\000"
  593      74797065 
  593      00
  594              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
